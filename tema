@@ -1,0 +1,198 @@
+{
+  "estado": 200,
+  "dados": [
+    {
+      "id_do_usuário": 27,
+      "valor": "<font color=\"#007eff\">ALFA INTERNET</font>",
+      "id": 37,
+      "nome": "nome_do_aplicativo"
+    },
+    {
+      "identidade": 2163,
+      "id_do_usuário": 27,
+      "valor": "https://i.ibb.co/c6Tt68P/s8plus-gradient.jpg",
+      "nome": "app_background_image"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#00000000",
+      "identidade": 2165,
+      "nome": "cor_de_fundo"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#00000000",
+      "id": 39,
+      "nome": "cor_do_cartão"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#ffffff",
+      "id": 40,
+      "nome": "cor_do_texto"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#007eff",
+      "id": 41,
+      "nome": "cor_do_botão"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#007eff",
+      "id": 42,
+      "nome": "cor_do_ícone"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#333333",
+      "identidade": 556,
+      "nome": "cor_da_borda"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "250",
+      "identidade": 557,
+      "nome": "logo_height"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "250",
+      "identidade": 558,
+      "nome": "largura_do_logotipo"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "https://whatsapp.com/channel/0029Vb2Fb0pHQbRw1ZjjTy0i",
+      "identidade": 2224,
+      "nome": "app_contact_link"
+    },
+
+    {
+      "id_do_usuário": 27,
+      "valor": "#007eff",
+      "identidade": 2382,
+      "nome": "cor_da_borda"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "200",
+      "identidade": 2383,
+      "nome": "logo_height"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "200",
+      "identidade": 2384,
+      "nome": "largura_do_logotipo"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "https://www.google.com.br/",
+      "identidade": 2385,
+      "nome": "app_conta_link"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "https://i.ibb.co/6wpfvm8/banner.png",
+      "identidade": 2386,
+      "nome": "app_logo"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#00000000",
+      "identidade": 3134,
+      "nome": "app_dialog_config_background_color"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#333333",
+      "identidade": 3135,
+      "nome": "app_config_item_background_color"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#222222",
+      "identidade": 3136,
+      "nome": "app_dialog_success_background_color"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#222222",
+      "identidade": 3137,
+      "nome": "app_dialog_error_background_color"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "27_app_qsTileIcon_FC2AF74D2F82B28A9482.png",
+      "identidade": 5130,
+      "nome": "app_qsTileIcon"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#007eff",
+      "identidade": 5139,
+      "nome": "app_dialog_success_text_color"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "#ed1c24",
+      "identidade": 5140,
+      "nome": "app_dialog_error_text_color"
+    },
+    {
+      "id_do_usuário": 27,
+      "value": "CONFIGURAÇÕES ATUALIZADAS ✅ LIGUE MODO AVIÃO, DESLIGUE E TESTE",
+      "identidade": 5141,
+      "nome": "app_message_text"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "1",
+      "identidade": 5142,
+      "nome": "app_message_type"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "27_app_dialog_image_success_BF629882C4376A8477E9.png",
+      "identidade": 5143,
+      "nome": "app_dialog_image_success"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "https://i.ibb.co/ZLqw9xt/ic-error.png",
+      "identidade": 5144,
+      "nome": "app_dialog_image_fail"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "https://i.ibb.co/6wpfvm8/banner.png",
+      "identidade": 5145,
+      "nome": "app_dialog_image_validate"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "27_app_dialog_image_message_18B74AC4C05657CA3735.png",
+      "identidade": 5146,
+      "nome": "app_dialog_image_message"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "https://i.ibb.co/ZLqw9xt/ic-error.png",
+      "identidade": 5147,
+      "nome": "app_dialog_image_limit_exceeded"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "27_app_dialog_image_invalid_data_BFAF550666A9ABE1BC26.png",
+      "identidade": 5148,
+      "nome": "app_dialog_image_invalid_data"
+    },
+    {
+      "id_do_usuário": 27,
+      "valor": "27_app_contact_icon_02734E1B8D116203659C.png",
+      "identidade": 7732,
+      "nome": "app_contct_icon"
+    }
+  ]
+}
