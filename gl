@@ -1,0 +1,155 @@
+[
+    {
+        "auth": {
+            "password": null,
+            "username": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "color": "#800006FF",
+            "created_at": "2023-07-24 16:37:27",
+            "id": 5465,
+            "name": "🌐 CONEXÕES 🌐",
+            "sorter": 1,
+            "status": "ACTIVE",
+            "updated_at": "2023-07-24 16:37:27",
+            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        },
+        "category_id": 5465,
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "PATCH / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]X-Forward-Host: uol.alfalemos.shop[crlf]wss://[crlf]Connection: upgrade[crlf]upgrade: websocket[realData][crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "created_at": "2023-07-24 17:51:24",
+        "description": "SERVIDOR: 🇧🇷",
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
+        "id": 67060,
+        "mode": "SSH_PROXY",
+        "name": "🟣 VIVO 🟣",
+        "proxy": {
+            "host": "141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br",
+            "port": 80
+        },
+        "sorter": 1,
+        "status": "ACTIVE",
+        "tls_version": "TLSv1.2",
+        "udp_ports": [
+            7300
+        ],
+        "updated_at": "2023-09-07 00:12:21",
+        "url_check_user": "https://109987070f.dtunnel.shop:2053",
+        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+    },
+    {
+        "auth": {
+            "password": null,
+            "username": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "color": "#800006FF",
+            "created_at": "2023-07-24 16:37:27",
+            "id": 5465,
+            "name": "🌐 CONEXÕES 🌐",
+            "sorter": 1,
+            "status": "ACTIVE",
+            "updated_at": "2023-07-24 16:37:27",
+            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        },
+        "category_id": 5465,
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "PATCH / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]X-Forward-Host: uol.alfalemos.shop[crlf]wss://[crlf]Connection: upgrade[crlf]upgrade: websocket[realData][crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "created_at": "2023-07-24 17:51:33",
+        "description": "SERVIDOR: 🇧🇷",
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+        "id": 67061,
+        "mode": "SSH_PROXY",
+        "name": "🔵 TIM 🔵",
+        "proxy": {
+            "host": "104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
+            "port": 80
+        },
+        "server": {
+            "host": "104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
+            "port": 80
+        },
+        "sorter": 1,
+        "status": "ACTIVE",
+        "tls_version": "TLSv1.2",
+        "udp_ports": [
+            7300
+        ],
+        "updated_at": "2023-09-07 03:26:30",
+        "url_check_user": "http://185.194.205.50:5000",
+        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+    },
+    {
+        "auth": {
+            "password": null,
+            "username": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "color": "#800006FF",
+            "created_at": "2023-07-24 16:37:27",
+            "id": 5465,
+            "name": "🌐 CONEXÕES 🌐",
+            "sorter": 1,
+            "status": "ACTIVE",
+            "updated_at": "2023-07-24 16:37:27",
+            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        },
+        "category_id": 5465,
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "PATCH / HTTP/1.1[crlf]Host: [random=static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.com;minha.claro.com.br;static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.com;minha.claro.com.br;meuplanoclaro.com.br;api.whatsapp.com;m.twitter.com;m.waze.com;web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;twitter.com;dns.web.whatsapp.com;static.whatsapp.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;meuplanoclaro.com.br;api.whatsapp.com;m.twitter.com;m.waze.com;web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;twitter.com;dns.web.whatsapp.com;static.whatsapp.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;portal.clarorecompensas.com.br;minhaclaro.claro.com.br][crlf]Connection: Upgrade[crlf]Upgrade: websocket[realData][crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "created_at": "2023-07-24 17:51:33",
+        "description": "SERVIDOR: 🇧🇷",
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
+        "id": 67062,
+        "mode": "SSH_PROXY",
+        "name": "🔴 CLARO 🔴",
+        "proxy": {
+            "host": "185.194.205.50#uol.alfalemos.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "185.194.205.50#uol.alfalemos.shop",
+            "port": 80
+        },
+        "sorter": 1,
+        "status": "ACTIVE",
+        "tls_version": "TLSv1.2",
+        "udp_ports": [
+            7300
+        ],
+        "updated_at": "2023-09-06 02:43:27",
+        "url_check_user": "http://185.194.205.50:5000",
+        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+    }
+]
