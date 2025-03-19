@@ -1,0 +1,84 @@
+{
+  "Version":"4",
+  "Update":"https://raw.githubusercontent.com/hwoxan/connectplus/refs/heads/main/config",
+  "UdpPort":"7300",
+  "Sms":"https://raw.githubusercontent.com/hwoxan/connectplus/refs/heads/main/sms",
+  "UpdateApk": "https://github.com/hwoxan/pnetplus/releases/download/v1.0.4/PnetPlus-LN-1.0.4.apk",
+  "Contato":"https://whatsapp.com/channel/0029Vb2Fb0pHQbRw1ZjjTy0i",
+  "Site":"https://t.me/alfalemos",
+  "Servers": [
+       {
+         "Color": "#FF252525",
+         "ColorDescription": "#FFFFFFFF",
+         "ColorName": "#FFFFFFFF",
+         "Description": "",
+         "FLAG":"https://i.postimg.cc/RVCwXHdJ/bpc.webp",
+         "Name":"  SERVIDOR  🇧🇷  ",
+         "USER":"",
+         "PASS":"",
+         "SSLPort":"443",
+         "ServerIP":"oul.alfalemos.shop", 
+         "ServerPort":"80",
+         "TYPE":"on",
+         "CheckUser": "http://185.194.205.50:5454/checkUser"
+      }
+  ],
+"Networks": [
+       {
+         "Color": "#FF252525",
+         "ColorDescription": "#FFFFFFFF",
+         "ColorName": "#FFFFFFFF",
+         "Description": "",
+         "FLAG":"https://i.postimg.cc/RVCwXHdJ/bpc.webp",
+         "Info":"",
+         "Name":"⚠️ SELECIONAR OPERADORA ⚠️",
+         "Payload":"",
+         "ProxyIP":"",
+         "ProxyPort":"",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
+         "Color": "#993399",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "vivo",
+         "FLAG":"https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
+         "Info":"Proxy",
+         "Name":"  VIVO  🇧🇷  ",
+         "Payload":"PATCH / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]X-Forward-Host: uol.alfalemos.shop[crlf]wss://[crlf]Connection: upgrade[crlf]upgrade: websocket[realData][crlf][crlf]",
+         "ProxyIP":"104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#141.193.213.10#141.193.213.11#cdnjs.cloudflare.com#aceitedigital.vivo.com.br#api.vivo.com.br#gateway.ipfs.cloudflare.com#topspeed.c6bank.app#www.google.com/bot.html#104.19.240.93#vs.timrecompensas.com.br#104.26.12.205#Host:reddit.com#teams.microsoft.com#kh.google.com#zoom.us#mobilemaps.googleapis.com#Host:Soundcloud.com#Instagram.com#www.Bittorrent.com#www.utorrent.com#swcdn.apple.com#myetisalat-app.speedtestcustom.com.ph#www.speedtest.net#www.ebay.com#www.dailymotion.com#chats.viber.com#www.wikipedia.org#crt.rootg2.amazontrust.com#cacerts.digicert.com#Host:www.google.com#www.youtube.com#www.facebook.com#www.amazon.com#www.twitter.com#www.instagram.com#www.linkedin.com#www.wikipedia.org#www.netflix.com#www.reddit.com#vs.timrecompensas.com.br#portal.timrecompensas.com.br#revive.timrecompensas.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
+         "Color": "#0000ff",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "tim",
+         "FLAG":"https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+         "Info":"Proxy",
+         "Name":"  TIM  🇧🇷  ",
+         "Payload":"PATCH / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]X-Forward-Host: uol.alfalemos.shop[crlf]wss://[crlf]Connection: upgrade[crlf]upgrade: websocket[realData][crlf][crlf]",
+         "ProxyIP":"104.19.240.93#vs.timrecompensas.com.br#104.26.12.205#Host:reddit.com#teams.microsoft.com#kh.google.com#zoom.us#mobilemaps.googleapis.com#Host:Soundcloud.com#Instagram.com#www.Bittorrent.com#www.utorrent.com#swcdn.apple.com#myetisalat-app.speedtestcustom.com.ph#www.speedtest.net#www.ebay.com#www.dailymotion.com#chats.viber.com#www.wikipedia.org#crt.rootg2.amazontrust.com#cacerts.digicert.com#Host:www.google.com#www.youtube.com#www.facebook.com#www.amazon.com#www.twitter.com#www.instagram.com#www.linkedin.com#www.wikipedia.org#www.netflix.com#www.reddit.com#vs.timrecompensas.com.br#portal.timrecompensas.com.br#revive.timrecompensas.com.br#104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#141.193.213.10#141.193.213.11#cdnjs.cloudflare.com#aceitedigital.vivo.com.br#api.vivo.com.br#gateway.ipfs.cloudflare.com#topspeed.c6bank.app#www.google.com/bot.html#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
+         "Color": "#ff0000",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "claro",
+         "FLAG":"https://i.postimg.cc/pLzBL7CB/claro.png",
+         "Info":"Proxy",
+         "Name":"  CLARO  🇧🇷  ",
+         "Payload":"PATCH / HTTP/1.1[crlf]Host: [random=static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.com;minha.claro.com.br;static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.com;minha.claro.com.br;meuplanoclaro.com.br;api.whatsapp.com;m.twitter.com;m.waze.com;web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;twitter.com;dns.web.whatsapp.com;static.whatsapp.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;meuplanoclaro.com.br;api.whatsapp.com;m.twitter.com;m.waze.com;web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;twitter.com;dns.web.whatsapp.com;static.whatsapp.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;portal.clarorecompensas.com.br;minhaclaro.claro.com.br][crlf]Connection: Upgrade[crlf]Upgrade: websocket[realData][crlf][crlf]",
+         "ProxyIP":"185.194.205.50#oul.alfalemos.shop",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      }
+  ]
+}
