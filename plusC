@@ -1,9 +1,9 @@
 {
   "Version":"4",
-  "Update":"https://raw.githubusercontent.com/hwoxan/connectplus/refs/heads/main/config",
+  "Update":"https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusC",
   "UdpPort":"7300",
-  "Sms":"https://raw.githubusercontent.com/hwoxan/connectplus/refs/heads/main/sms",
-  "UpdateApk": "https://github.com/hwoxan/pnetplus/releases/download/v1.0.4/PnetPlus-LN-1.0.4.apk",
+  "Sms":"https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusm",
+  "UpdateApk": "",
   "Contato":"https://whatsapp.com/channel/0029Vb2Fb0pHQbRw1ZjjTy0i",
   "Site":"https://t.me/alfalemos",
   "Servers": [
