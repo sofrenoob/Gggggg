@@ -1,0 +1,256 @@
+[
+    {
+        "label": "Nome do app",
+        "name": "APP_NAME",
+        "value": "DTunnel Mod",
+        "type": "STRING"
+    },
+    {
+        "label": "Logo do app",
+        "name": "APP_LOGO",
+        "value": "https://i.ibb.co/P181RRJ/79326328394a.png",
+        "type": "IMAGE"
+    },
+    {
+        "label": "Imagem de fundo",
+        "name": "APP_BACKGROUND_IMAGE",
+        "value": "https://i.ibb.co/5T7dc3d/32574bece78b.png",
+        "type": "IMAGE"
+    },
+    {
+        "label": "Tipo do fundo do app",
+        "name": "APP_BACKGROUND_TYPE",
+        "value": {
+            "options": [
+                {
+                    "label": "Imagem",
+                    "value": "IMAGE"
+                },
+                {
+                    "label": "Cor",
+                    "value": "COLOR"
+                }
+            ],
+            "selected": "IMAGE"
+        },
+        "type": "SELECT"
+    },
+    {
+        "label": "Cor de fundo",
+        "name": "APP_BACKGROUND_COLOR",
+        "value": "#000987ff",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor do card inicial",
+        "name": "APP_CARD_COLOR",
+        "value": "#05103600",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio do card inicial",
+        "name": "APP_CARD_RADIUS",
+        "value": 20,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor do card de status",
+        "name": "APP_CARD_STATUS_COLOR",
+        "value": "#502bd699",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio do card de status",
+        "name": "APP_CARD_STATUS_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor do card de configurações",
+        "name": "APP_CARD_CONFIG_COLOR",
+        "value": "#0E171EC9",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor do fundo dos dialogs",
+        "name": "APP_DIALOG_BACKGROUND_COLOR",
+        "value": "#050C5AE4",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor do fundo do dialog de log",
+        "name": "APP_DIALOG_LOGGER_COLOR",
+        "value": "#080e16c7",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor das bordas",
+        "name": "APP_BORDER_COLOR",
+        "value": "#ffffffff",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor dos inputs",
+        "name": "APP_INPUT_COLOR",
+        "value": "#502bd699",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio dos inputs",
+        "name": "APP_INPUT_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor dos textos",
+        "name": "APP_TEXT_COLOR",
+        "value": "#f9f0ffff",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor dos botões",
+        "name": "APP_BUTTON_COLOR",
+        "value": "#502bd699",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio dos botões",
+        "name": "APP_BUTTON_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor dos icones",
+        "name": "APP_ICON_COLOR",
+        "value": "#ffffffff",
+        "type": "COLOR"
+    },
+    {
+        "label": "Exibir modo de conexão",
+        "name": "APP_SHOW_CONNECTION_MODE",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Atualizar automaticamente as configurações ao lançar uma atualização.",
+        "name": "APP_CONFIG_AUTO_UPDATE",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Iniciar o app automaticamente ao reiniciar o dispositivo",
+        "name": "APP_AUTO_START",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar limiter de conexão",
+        "name": "APP_CONNECTION_LIMITER",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de atualizações",
+        "name": "APP_BTN_UPDATE_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de registros",
+        "name": "APP_BTN_LOGGER_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de pagina webview",
+        "name": "APP_BTN_PAGE_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar dialog de erros",
+        "name": "APP_DIALOG_ERROR_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar dialog de checkuser",
+        "name": "APP_CHECKUSER_DIALOG_ENABLED",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar toast de sucesso",
+        "name": "APP_SUCCESS_TOAST_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar toast de erro",
+        "name": "APP_ERROR_TOAST_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar layout webview",
+        "name": "APP_LAYOUT_WEBVIEW_ENABLED",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Mensagem",
+        "name": "APP_MESSAGE",
+        "value": null,
+        "type": "TEXT"
+    },
+    {
+        "label": "Tipo de mensagem",
+        "name": "APP_MESSAGE_TYPE",
+        "value": {
+            "options": [
+                {
+                    "label": "Alerta",
+                    "value": "ALERT"
+                },
+                {
+                    "label": "Informação",
+                    "value": "INFO"
+                },
+                {
+                    "label": "Boas vindas",
+                    "value": "WELCOME"
+                },
+                {
+                    "label": "Sem mensagem",
+                    "value": "NONE"
+                }
+            ],
+            "selected": "NONE"
+        },
+        "type": "SELECT"
+    },
+    {
+        "label": "URL de atualização do aplicativo",
+        "name": "APP_UPDATE_URL",
+        "value": null,
+        "type": "URL"
+    },
+    {
+        "label": "LAYOUT WEBVIEW (POR SUA CONTA E RISCO)",
+        "name": "APP_LAYOUT_WEBVIEW",
+        "value": null,
+        "type": "HTML"
+    },
+    {
+        "label": "ANDROID WEBVIEW (POR SUA CONTA E RISCO)",
+        "name": "APP_SUPPORT_BUTTON",
+        "value": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\n    <title>1794025851 - @RISYFITY</title>\n\n    <style>\n      :root {\n        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;\n        line-height: 1.5;\n        font-weight: 400;\n        font-synthesis: none;\n        text-rendering: optimizeLegibility;\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        text-size-adjust: 100%;\n        -webkit-text-size-adjust: 100%;\n\n        --space-status-bar: 10px;\n        --space-nav-bar: 33px;\n      }\n\n      @keyframes spin {\n        0% {\n          transform: rotate(0deg);\n        }\n        100% {\n          transform: rotate(360deg);\n        }\n      }\n\n      *,\n      *::before,\n      *::after {\n        margin: 0;\n        padding: 0;\n\n        box-sizing: border-box;\n      }\n\n      html {\n        width: 100%;\n        height: 100%;\n\n        & > body {\n          width: 100%;\n          height: 100%;\n\n          & > main {\n            width: 100%;\n            height: 100%;\n\n            display: flex;\n            flex-direction: column;\n\n            padding: var(--space-status-bar) 10px var(--space-nav-bar) 10px;\n\n            & > section.top {\n              width: 100%;\n              height: auto;\n\n              display: flex;\n\n              & > div:first-child {\n                margin: 0 0 0 0;\n\n                box-shadow: none;\n\n                background: transparent;\n\n                & > span {\n                  color: #04FF20;\n                  font-weight: bold;\n                }\n              }\n\n              & > div {\n                width: auto;\n                height: auto;\n\n                display: flex;\n                align-items: center;\n                gap: 7px;\n\n                margin: 0 0 0 auto;\n                padding: 10px;\n\n                border-radius: 10px;\n\n                box-shadow: 0px 0px 4px rgba(44, 56, 146, 0.9);\n                background: rgba(0, 0, 0, 3);\n\n                & > svg {\n                  width: 16px;\n                  height: 16px;\n\n                  color: #FFFFFF;\n                }\n\n                & > span {\n                  color: #FFFFFF;\n                  font-weight: 500;\n                  font-size: 0.7rem;\n                }\n              }\n            }\n\n            & > section.bottom {\n              position: relative;\n\n              display: flex;\n              justify-content: center;\n              align-items: center;\n              gap: 0.4rem;\n\n              margin: auto 0 0 0;\n              \n              & > button {\n                display: flex;\n                justify-content: center;\n                align-items: center;\n                gap: 0.3rem;\n  \n                padding: 0.6rem 0.5rem;\n  \n                border: 0;\n                border-radius: 8px;\n  \n                box-shadow: 0px 0px 4px rgba(44, 56, 146, 1.1);\n  \n                background: black;\n  \n                & > svg {\n                  color: #ffffff;\n                }\n  \n                & > span {\n                  color: #ffffff;\n                  font-family: \"Lucida Sans\", \"Lucida Sans Regular\", \"Lucida Grande\",\n                    \"Lucida Sans Unicode\", Geneva, Verdana, sans-serif;\n                  font-size: 0.6rem;\n                }\n              }\n  \n              & > ul {\n                width: 100%;\n                height: auto;\n  \n                display: flex;\n                justify-content: center;\n                align-items: center;\n                gap: 0.8rem;\n  \n                position: absolute;\n                top: -150%;\n  \n                list-style: none;\n  \n                & > li {\n                  width: 40px;\n                  height: 40px;\n  \n                  display: flex;\n                  justify-content: center;\n                  align-items: center;\n  \n                  position: relative;\n  \n                  border-radius: 999999999px;\n  \n                  background: #000000;\n  \n                  & > svg {\n                    color: #ffffff;\n                  }\n  \n                  & > svg.hidden {\n                    display: none;\n                  }\n                }\n  \n                & > li::before,\n                & > li::before {\n                  content: \"\";\n  \n                  width: calc(100% + 2px);\n                  height: calc(100% + 2px);\n  \n                  position: absolute;\n                  z-index: -1;\n  \n                  border-top: 2px solid #2C3892;\n                  border-left: 2px solid #2C3892;\n                  border-bottom: 2px solid #ffffff;\n                  border-right: 2px solid #ffffff;\n                  border-radius: 999999999px;\n  \n                  background: #000000;\n  \n                  animation: spin 2s linear infinite;\n                }\n  \n                & > li::after {\n                  width: calc(100% + 4px);\n                  height: calc(100% + 4px);\n                  filter: blur(5px);\n                }\n              }\n  \n              & > ul.hidden {\n                display: none;\n              }\n            }\n          }\n        }\n      }  \n\n      @media screen and (min-width: 300px) {\n        section.bottom {\n          & > button {\n            padding: 0.8rem 1.3rem;\n          }\n\n          & > ul {\n            gap: 1rem;\n\n            top: -170%;\n\n            & > li {\n              width: 50px;\n              height: 50px;\n            }\n          }\n        }\n      }\n    </style>\n  </head>\n  <body>\n    <main>\n      <section class=\"top\">\n        <div>\n          <span id=\"local-ip\">Buscando IP...</span>\n        </div>\n\n        <div>\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width=\"18\"\n            height=\"16\"\n            fill=\"currentColor\"\n            class=\"bi bi-git\"\n            viewBox=\"0 0 16 16\"\n          >\n            <path\n              d=\"M15.698 7.287 8.712.302a1.03 1.03 0 0 0-1.457 0l-1.45 1.45 1.84 1.84a1.223 1.223 0 0 1 1.55 1.56l1.773 1.774a1.224 1.224 0 0 1 1.267 2.025 1.226 1.226 0 0 1-2.002-1.334L8.58 5.963v4.353a1.226 1.226 0 1 1-1.008-.036V5.887a1.226 1.226 0 0 1-.666-1.608L5.093 2.465l-4.79 4.79a1.03 1.03 0 0 0 0 1.457l6.986 6.986a1.03 1.03 0 0 0 1.457 0l6.953-6.953a1.031 1.031 0 0 0 0-1.457\"\n            />\n          </svg>\n\n          <span id=\"version\">Buscando versão...</span>\n        </div>\n      </section>\n\n      <section class=\"bottom\">\n        <button type=\"button\" title=\"checkuser\">\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width=\"14\"\n            height=\"14\"\n            fill=\"currentColor\"\n            class=\"bi bi-person-fill\"\n            viewBox=\"0 0 16 16\"\n          >\n            <path\n              d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z\"\n            />\n          </svg>\n\n          <span>PERFIL</span>\n        </button>\n\n        <button type=\"button\" title=\"tools\">\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width=\"16\"\n            height=\"16\"\n            fill=\"currentColor\"\n            class=\"bi bi-nut\"\n            viewBox=\"0 0 16 16\"\n          >\n            <path\n              d=\"m11.42 2 3.428 6-3.428 6H4.58L1.152 8 4.58 2h6.84zM4.58 1a1 1 0 0 0-.868.504l-3.428 6a1 1 0 0 0 0 .992l3.428 6A1 1 0 0 0 4.58 15h6.84a1 1 0 0 0 .868-.504l3.429-6a1 1 0 0 0 0-.992l-3.429-6A1 1 0 0 0 11.42 1H4.58z\"\n            />\n            <path\n              d=\"M6.848 5.933a2.5 2.5 0 1 0 2.5 4.33 2.5 2.5 0 0 0-2.5-4.33zm-1.78 3.915a3.5 3.5 0 1 1 6.061-3.5 3.5 3.5 0 0 1-6.062 3.5z\"\n            />\n          </svg>\n\n          <span>FERRAMENTAS</span>\n        </button>\n\n        <button type=\"button\" title=\"renew\">\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width=\"16\"\n            height=\"16\"\n            fill=\"currentColor\"\n            class=\"bi bi-bank\"\n            viewBox=\"0 0 16 16\"\n          >\n            <path \n              d=\"M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z\"\n            />\n            <path \n              d=\"M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z\"\n            />\n            <path \n              d=\"M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z\"/>\n          </svg>\n\n          <span>RENOVAR</span>\n        </button>\n\n        <ul class=\"hidden\">\n          <li id=\"apn\">\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              width=\"16\"\n              height=\"16\"\n              fill=\"currentColor\"\n              class=\"bi bi-wrench\"\n              viewBox=\"0 0 16 16\"\n            >\n              <path\n                d=\"M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z\"\n              />\n            </svg>\n          </li>\n\n          <li id=\"battery\">\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              width=\"16\"\n              height=\"16\"\n              fill=\"currentColor\"\n              class=\"bi bi-battery-charging\"\n              viewBox=\"0 0 16 16\"\n            >\n              <path\n                d=\"M9.585 2.568a.5.5 0 0 1 .226.58L8.677 6.832h1.99a.5.5 0 0 1 .364.843l-5.334 5.667a.5.5 0 0 1-.842-.49L5.99 9.167H4a.5.5 0 0 1-.364-.843l5.333-5.667a.5.5 0 0 1 .616-.09z\"\n              />\n              <path\n                d=\"M2 4h4.332l-.94 1H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2.38l-.308 1H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z\"\n              />\n              <path\n                d=\"M2 6h2.45L2.908 7.639A1.5 1.5 0 0 0 3.313 10H2V6zm8.595-2-.308 1H12a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H9.276l-.942 1H12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.405z\"\n              />\n              <path\n                d=\"M12 10h-1.783l1.542-1.639c.097-.103.178-.218.241-.34V10zm0-3.354V6h-.646a1.5 1.5 0 0 1 .646.646zM16 8a1.5 1.5 0 0 1-1.5 1.5v-3A1.5 1.5 0 0 1 16 8z\"\n              />\n            </svg>\n          </li>\n\n          <li id=\"hotspot\">\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              width=\"16\"\n              height=\"16\"\n              fill=\"currentColor\"\n              id=\"hotspot-on\"\n              class=\"bi bi-wifi\"\n              viewBox=\"0 0 16 16\"\n            >\n              <path\n                d=\"M15.384 6.115a.485.485 0 0 0-.047-.736A12.444 12.444 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049z\"\n              />\n              <path\n                d=\"M13.229 8.271a.482.482 0 0 0-.063-.745A9.455 9.455 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091l.016-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z\"\n              />\n            </svg>\n\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              width=\"16\"\n              height=\"16\"\n              fill=\"currentColor\"\n              id=\"hotspot-off\"\n              class=\"bi bi-wifi-off hidden\"\n              viewBox=\"0 0 16 16\"\n            >\n              <path\n                d=\"M10.706 3.294A12.545 12.545 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c.63 0 1.249.05 1.852.148l.854-.854zM8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065 8.448 8.448 0 0 1 3.51-1.27L8 6zm2.596 1.404.785-.785c.63.24 1.227.545 1.785.907a.482.482 0 0 1 .063.745.525.525 0 0 1-.652.065 8.462 8.462 0 0 0-1.98-.932zM8 10l.933-.933a6.455 6.455 0 0 1 2.013.637c.285.145.326.524.1.75l-.015.015a.532.532 0 0 1-.611.09A5.478 5.478 0 0 0 8 10zm4.905-4.905.747-.747c.59.3 1.153.645 1.685 1.03a.485.485 0 0 1 .047.737.518.518 0 0 1-.668.05 11.493 11.493 0 0 0-1.811-1.07zM9.02 11.78c.238.14.236.464.04.66l-.707.706a.5.5 0 0 1-.707 0l-.707-.707c-.195-.195-.197-.518.04-.66A1.99 1.99 0 0 1 8 11.5c.374 0 .723.102 1.021.28zm4.355-9.905a.53.53 0 0 1 .75.75l-10.75 10.75a.53.53 0 0 1-.75-.75l10.75-10.75z\"\n              />\n            </svg>\n          </li>\n\n          <li id=\"register\">\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              width=\"16\"\n              height=\"16\"\n              fill=\"currentColor\"\n              class=\"bi bi-person-fill-add\"\n              viewBox=\"0 0 16 16\"\n            >\n              <path\n                d=\"M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z\"\n              />\n              <path\n                d=\"M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z\"\n              />\n            </svg>\n          </li>\n\n          <li id=\"support\">\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              width=\"16\"\n              height=\"16\"\n              fill=\"currentColor\"\n              class=\"bi bi-headset\"\n              viewBox=\"0 0 16 16\"\n            >\n              <path\n                d=\"M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z\"\n              />\n            </svg>\n          </li>\n        </ul>\n      </section>\n    </main>\n\n    <!-- DOM WRAPPER -->\n    <script>\n      const Dom = (selector) => {\n        const _elements = document.querySelectorAll(selector)\n\n        const wrapper = {\n          on(listeners) {\n            for (const [event, listener] of Object.entries(listeners)) {\n              _elements.forEach((element) => {\n                element.addEventListener(event, listener)\n              })\n            }\n\n            return wrapper\n          },\n          addClass: (...tokens) => {\n            _elements.forEach((element) => {\n              element.classList.add(...tokens)\n            })\n\n            return wrapper\n          },\n          removeClass: (...tokens) => {\n            _elements.forEach((element) => {\n              element.classList.remove(...tokens)\n            })\n\n            return wrapper\n          },\n          toggleClass: (token, force) => {\n            _elements.forEach((element) => {\n              element.classList.toggle(token, force)\n            })\n\n            return wrapper\n          },\n          style(styles) {\n            for (const [property, value] of Object.entries(styles)) {\n              console.log(value)\n              _elements.forEach((element) => {\n                element.style[property] = value\n              })\n            }\n\n            return wrapper\n          },\n          attr(attrs) {\n            for (const [name, value] of Object.entries(attrs)) {\n              _elements.forEach((element) => element.setAttribute(name, value))\n            }\n\n            return wrapper\n          },\n          html(value) {\n            _elements.forEach((element) => (element.innerHTML = value))\n            return wrapper\n          },\n        }\n\n        return wrapper\n      }\n    </script>\n\n    <!-- VARIAVEIS -->\n    <script>\n      const LocalIp = Dom('#local-ip')\n      const Version = Dom('#version')\n\n      const ContainerBottom = Dom(\"section.bottom\")\n\n      const ButtonCheckuser = Dom('button[title=\"checkuser\"]')\n      const ButtonTools = Dom('button[title=\"tools\"]')\n      const ButtonRenew = Dom('button[title=\"renew\"]')\n\n      const ContainerTools = Dom(\"section.bottom ul\")\n\n      const ButtonApn = Dom(\"#apn\")\n      const ButtonBattery = Dom(\"#battery\")\n      const ButtonHotspot = Dom(\"#hotspot\")\n      const ButtonRegister = Dom(\"#register\")\n      const ButtonSupport = Dom(\"#support\")\n\n      const IconHotspotOn = Dom(\"#hotspot-on\")\n      const IconHotspotOff = Dom(\"#hotspot-off\")\n    </script>\n\n    <script>\n      const appStatusBarHeightSize = () => DtGetStatusBarHeight.execute()\n      const appNavBarHeightSize = () => DtGetNavigationBarHeight.execute()\n      const appCheckUser = () => DtStartCheckUser.execute()\n      const appApn = () => DtStartApnActivity.execute()\n      const appBattery = () => DtIgnoreBatteryOptimizations.execute()\n      const appHotspotGetStatus = () => DtGetStatusHotSpotService.execute()\n      const appHotspotEnable = () => DtStartHotSpotService.execute()\n      const appHotspotDisable = () => DtStopHotSpotService.execute()\n      const appBrowser = (url) => DtStartWebViewActivity.execute(url)\n      const appGetConfigVersion = () => DtGetLocalConfigVersion.execute()\n      const appLocalIp = () => Android.getLocalIP()\n    </script>\n\n    <!-- FUNÇÕES -->\n    <script>\n      const writeLocalIp = () => {\n        LocalIp.html(`IP: ${appLocalIp()}`)\n      }\n      const writeVersion = () => {\n        Version.html(`Versão: ${appGetConfigVersion()}`)\n      }\n      const execLoop = () => {\n        setInterval(() => {\n          writeLocalIp()\n          writeVersion()\n        }, 200)\n      }\n\n      const startHotspot = () => {\n        appHotspotEnable()\n        IconHotspotOn.removeClass(\"hidden\")\n        IconHotspotOff.addClass(\"hidden\")\n      }\n      const stopHotspot = () => {\n        appHotspotDisable()\n        IconHotspotOn.addClass(\"hidden\")\n        IconHotspotOff.removeClass(\"hidden\")\n      }\n      const toggleHotspot = () => {\n        appHotspotGetStatus() === \"STOPPED\" ? startHotspot() : stopHotspot()\n      }\n      const setStatusHotspot = () => {\n        if (appHotspotGetStatus() === \"STOPPED\") {\n          IconHotspotOn.removeClass(\"hidden\")\n          IconHotspotOff.addClass(\"hidden\")\n        } else {\n          IconHotspotOn.removeClass(\"hidden\")\n          IconHotspotOff.addClass(\"hidden\")\n        }\n      }\n    </script>\n\n    <!-- AÇÕES -->\n    <script>\n      ButtonCheckuser.on({ click: () => appCheckUser() })\n      ButtonTools.on({ click: () => ContainerTools.toggleClass(\"hidden\") })\n      ButtonRenew.on({\n        click: () => appBrowser(\"https://t.me/NetPlus_Lite_Bot\"),\n      })\n      ButtonApn.on({ click: () => appApn() })\n      ButtonBattery.on({ click: () => appBattery() })\n      ButtonHotspot.on({ click: () => toggleHotspot() })\n      ButtonRegister.on({\n        click: () =>\n          appBrowser(\"https://t.me/NetPlus_Lite_Bot\"),\n      })\n      ButtonSupport.on({ click: () => appBrowser(\"https://t.me/NetPlus_Lite_Bot\") })\n\n      setStatusHotspot()\n      execLoop()\n    </script>\n\n    <!-- AÇÕES ROOT -->\n    <script>\n      document.documentElement.style.setProperty(\n        \"--space-status-bar\",\n        `${appStatusBarHeightSize() + 10}px`\n      )\n      document.documentElement.style.setProperty(\n        \"--space-nav-bar\",\n        `${appNavBarHeightSize() + 10}px`\n      )\n    </script>\n  </body>\n</html>\n",
+        "type": "HTML"
+    },
+    {
+        "label": "PAGINA WEBVIEW (POR SUA CONTA E RISCO)",
+        "name": "APP_WEB_VIEW",
+        "value": null,
+        "type": "HTML"
+    }
+]

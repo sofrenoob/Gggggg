@@ -1,0 +1,801 @@
+[
+    {
+        "name": "VIVO SECURITY 1",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 1,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "VIVO PRÉ ",
+            "color": "#00252525",
+            "sorter": 1
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: premium.sshtunnelcloud.store[lf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300,
+            7400,
+            7500
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "VIVO SECURITY 2",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 1,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "VIVO PRÉ ",
+            "color": "#00252525",
+            "sorter": 1
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "[delay_split] GET / HTTP/2[crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300,
+            7400,
+            7500
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "VIVO SECURITY 3",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 1,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "VIVO PRÉ ",
+            "color": "#00252525",
+            "sorter": 1
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "[delay_split]CONNECT navegue.vivo.ddivulga.com/pacote \nHTTP/1.1[lf][lf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "proxy": {
+            "host": "llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300,
+            7400,
+            7500
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "VIVO SECURITY 4",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 1,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "VIVO PRÉ ",
+            "color": "#00252525",
+            "sorter": 1
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: premium.sshtunnelcloud.store[lf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "proxy": {
+            "host": "LLNET",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300,
+            7400,
+            7500
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "VIVO SECURITY 5",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 1,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "VIVO PRÉ ",
+            "color": "#00252525",
+            "sorter": 1
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random= 104.18.6.80;104.18.7.80;162.159.138.6;162.159.128.7;104.17.70.206;104.17.71.206;104.17.72.206;104.17.73.206;104.17.74.206;172.64.144.109;104.18.43.147;104.18.7.41[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300,
+            7400,
+            7500
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "VIVO SECURITY 6",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 1,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "VIVO PRÉ ",
+            "color": "#00252525",
+            "sorter": 1
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "[split][lf]PUT / HTTP/1.1[crlf]Host: gratis.vivo-bemobi.com[crlf]Upgrade: WebSocketExtensions[crlf]Connection: [crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300,
+            7400,
+            7500
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "TIM SECURITY 1",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 2,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "TIM PRÉ ",
+            "color": "#00252525",
+            "sorter": 2
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "HTTP/ [crlf][crlf]|[crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "TIM SECURITY 2",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 2,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "TIM PRÉ ",
+            "color": "#00252525",
+            "sorter": 2
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "HTTP/ [crlf][crlf]Host:p.dgscursos.online[protocol][crlf]|[crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "proxy": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "server": {
+            "host": "1",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "TIM EXPIRADO 3",
+        "description": "LLNET🇧🇷",
+        "mode": "SSH_DIRECT",
+        "tls_version": "TLSv1.2",
+        "sorter": 2,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "TIM PRÉ ",
+            "color": "#00252525",
+            "sorter": 2
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random= 104.18.6.80;104.18.7.80;162.159.138.6;162.159.128.7;104.17.70.206;104.17.71.206;104.17.72.206;104.17.73.206;104.17.74.206;172.64.144.109;104.18.43.147;104.18.7.41[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "proxy": {
+            "host": "168.75.76.29",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "TIM EXPIRADO 4",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 2,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "TIM PRÉ ",
+            "color": "#00252525",
+            "sorter": 2
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random= 104.18.6.80;104.18.7.80;162.159.138.6;162.159.128.7;104.17.70.206;104.17.71.206;104.17.72.206;104.17.73.206;104.17.74.206;172.64.144.109;104.18.43.147;104.18.7.41[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "TIM EXPIRADO 5",
+        "description": "LLNET🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 2,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "TIM PRÉ ",
+            "color": "#00252525",
+            "sorter": 2
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "ACL /index.html HTTP/1.1[crlf]Host: br.llsart.shop [crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "172.233.1.46",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "TIM EXPIRADO 6",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 2,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "TIM PRÉ ",
+            "color": "#00252525",
+            "sorter": 2
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "ACL /index.html HTTP/1.1[crlf]Host: br.llsart.shop[crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "proxy": {
+            "host": "104.19.241.93",
+            "port": 80
+        },
+        "server": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "TIM SALDO VALIDO / EXPIRADO 7 ",
+        "description": "LLNET🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 2,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "TIM PRÉ ",
+            "color": "#00252525",
+            "sorter": 2
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "PATCH / HTTP/1.1[crlf]Host: [random=breadbox.app;c6bank.zendesk.com;cdn.navdmp.com;mobile.hom.c6bank.app][crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: br.llsart.shop[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "proxy": {
+            "host": "104.18.28.182#104.16.51.111#104.19.240.25#104.18.29.182#104.16.53.111#104.19.239.25#104.19.242.25#104.19.241.93#104.18.26.160",
+            "port": 80
+        },
+        "server": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "TIM SALDO VALIDO / EXPIRADO 8",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 2,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "TIM PRÉ ",
+            "color": "#00252525",
+            "sorter": 2
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "ACL / HTTP/1.3[crlf]Host: mtls.sandbox.c6bank.com.br[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: br.llsart.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "proxy": {
+            "host": "104.19.241.93",
+            "port": 80
+        },
+        "server": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500,
+            7600,
+            7700,
+            7800,
+            7900
+        ],
+        "url_check_user": "http://br.llsart.shop:5000/checkUser"
+    },
+    {
+        "name": "CLARO SECURITY 1",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 3,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "CLARO PRÉ",
+            "color": "#00252525",
+            "sorter": 3
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "PATCH / HTTP/1.1[crlf]Host: [rotate= 0.load.waze.com;0.waze.com;1.1.1.1.waze.com;123.xl.co.id.waze.com;123xl.waze.com;media.waze.com][crlf]X-Online-Host: media.waze.com[crlf][crlf]HEAD wss://media.waze.com/ HTTP/1.1[crlf]Host: media.waze.com[crlf]X-Online-Host: media.waze.com[crlf]Proxy-Connection: keep-alive[crlf]Connection: keep-alive[crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/RV5P5M55/claro.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "CLARO SECURITY 2",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 3,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "CLARO PRÉ",
+            "color": "#00252525",
+            "sorter": 3
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "PROPOST /authentication HTTP/1.1\\nX-CONNECTIVITY: true\\r\\n\\r\\nX-AUTHORIZATION: br.com.mobicare.clarofree\\r\\n\\r\\nContent-Type: application/json\\r\\n\\r\\nX-APP: claro.com.br[crlf]Content-Length: none\\r\\nHost: cfree.clarosgvas.mobicare.com.br\\r\\nConnection: Keep-Alive\\r\\nAccept-Encoding: gzip\\r\\n\\r\\n",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/RV5P5M55/claro.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "CLARO SECURITY 3",
+        "description": "LLnet 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 3,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "CLARO PRÉ",
+            "color": "#00252525",
+            "sorter": 3
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "PATCH http://minhaclaro.claro.com.br HTTP/1.1\\r\nHost: portal.clarorecompensas.com.br\\r\nUser-Agent: Mozilla/5.0 (Linux; U; Android 2.3.3; en-us ; LS670 Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1/UCBrowser/8.6.1.262/145/355[crlf][raw][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/RV5P5M55/claro.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "CLARO SECURITY 4",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 3,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "CLARO PRÉ",
+            "color": "#00252525",
+            "sorter": 3
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "PROGET /zero/balance/pixel/ HTTP/1.1[crlf]FB-HTTP-Engine: HUC[crlf]ZERO-EH: none[crlf]FB-HTTP-Engine: HUC[crlf]CATEGORY: none[crlf]User-Agent: none[crlf]Host: m.facebook.com[crlf]Connection: Keep-Alive[crlf]Accept-Encoding: none[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/RV5P5M55/claro.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    },
+    {
+        "name": "CLARO SECURITY 5",
+        "description": "LLNET 🇧🇷",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 3,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "CLARO PRÉ",
+            "color": "#00252525",
+            "sorter": 3
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "HNIPROPATCH /mobile/status.php HTTP/1.1[crlf]Host: buzzfeed.com[crlf]X-X-FB-Background-State: 1[crlf]X-X-FB-SIM-HNI: 72406[crlf]X-FB-Net-HNI: 72406[crlf]X-FB-HTTP-Engine: Liger Connection: keep-alive[crlf] X-FB-Background-State: 1[crlf]X-FB-SIM-HNI: 72406[crlf]X-FB-Net-HNI: 72406[crlf]X-FB-HTTP-Engine: Liger Connection: keep-alive[crlf][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "icon": "https://i.postimg.cc/RV5P5M55/claro.png",
+        "proxy": {
+            "host": "br.llsart.shop",
+            "port": 80
+        },
+        "server": {
+            "host": "18.231.174.7",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "https://b46f943126.dtunnel.online:2053"
+    }
+]
