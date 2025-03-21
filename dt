@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🌐 CONEXÕES VERSÃO 13🌐",
+            "name": "🌐 CONEXÕES VERSÃO 14🌐",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -18,7 +18,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket websocket[realData][crlf][crlf]#GET / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket websocket[realData][crlf][crlf]#GET / HTTP/1.1 Host: uol.alfalemos.shop Connection: Upgrade Upgrade: websocket User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]#PATCH / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]X-Forward-Host: uol.alfalemos.shop[crlf]wss://[crlf]Connection: upgrade[crlf]upgrade: websocket[realData][crlf][crlf]",
+            "payload": "PATCH / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]X-Forward-Host: uol.alfalemos.shop[crlf]wss://[crlf]Connection: upgrade[crlf]upgrade: websocket[realData][crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
