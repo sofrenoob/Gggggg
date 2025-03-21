@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🌐 CONEXÕES VERSÃO 12🌐",
+            "name": "🌐 CONEXÕES VERSÃO 13🌐",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -47,7 +47,7 @@
             7300
         ],
         "updated_at": "2023-09-07 00:12:21",
-        "url_check_user": "http://185.194.205.50:5000",
+        "url_check_user": "https://109987070f.dtunnel.shop:2053",
         "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
     },
     {
