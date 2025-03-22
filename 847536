@@ -1,0 +1,253 @@
+[
+    {
+        "label": "Logo do app",
+        "name": "APP_LOGO",
+        "value": "https://i.ibb.co/Yf4sHxM/DTrdc48hvb.png",
+        "type": "IMAGE"
+    },
+    {
+        "label": "Imagem de fundo",
+        "name": "APP_BACKGROUND_IMAGE",
+        "value": "https://i.ibb.co/gPdpvrK/DTd02r0fb5.jpg",
+        "type": "IMAGE"
+    },
+    {
+        "label": "Tipo do fundo do app",
+        "name": "APP_BACKGROUND_TYPE",
+        "value": {
+            "options": [
+                {
+                    "label": "Imagem",
+                    "value": "IMAGE"
+                },
+                {
+                    "label": "Cor",
+                    "value": "COLOR"
+                }
+            ],
+            "selected": "COLOR"
+        },
+        "type": "SELECT"
+    },
+    {
+        "label": "Cor de fundo",
+        "name": "APP_BACKGROUND_COLOR",
+        "value": "#080e16c7",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor do card inicial",
+        "name": "APP_CARD_COLOR",
+        "value": "#1d242e73",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio do card inicial",
+        "name": "APP_CARD_RADIUS",
+        "value": 20,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor do card de status",
+        "name": "APP_CARD_STATUS_COLOR",
+        "value": "#1d242e73",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio do card de status",
+        "name": "APP_CARD_STATUS_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor do card de configurações",
+        "name": "APP_CARD_CONFIG_COLOR",
+        "value": "#0E171EC9",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor do fundo dos dialogs",
+        "name": "APP_DIALOG_BACKGROUND_COLOR",
+        "value": "#0000006d",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor do fundo do dialog de log",
+        "name": "APP_DIALOG_LOGGER_COLOR",
+        "value": "#080e1666",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor das bordas",
+        "name": "APP_BORDER_COLOR",
+        "value": "#1d242e73",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor dos inputs",
+        "name": "APP_INPUT_COLOR",
+        "value": "#1d242e73",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio dos inputs",
+        "name": "APP_INPUT_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor dos textos",
+        "name": "APP_TEXT_COLOR",
+        "value": "#FFFFFFFF",
+        "type": "COLOR"
+    },
+    {
+        "label": "Cor dos botões",
+        "name": "APP_BUTTON_COLOR",
+        "value": "#1d242e73",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio dos botões",
+        "name": "APP_BUTTON_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor dos icones",
+        "name": "APP_ICON_COLOR",
+        "value": "#FFFFFFFF",
+        "type": "COLOR"
+    },
+    {
+        "label": "Exibir modo de conexão",
+        "name": "APP_SHOW_CONNECTION_MODE",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Atualizar automaticamente as configurações ao lançar uma atualização.",
+        "name": "APP_CONFIG_AUTO_UPDATE",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Iniciar o app automaticamente ao reiniciar o dispositivo",
+        "name": "APP_AUTO_START",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar limiter de conexão",
+        "name": "APP_CONNECTION_LIMITER",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de atualizações",
+        "name": "APP_BTN_UPDATE_ENABLED",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de registros",
+        "name": "APP_BTN_LOGGER_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de pagina webview",
+        "name": "APP_BTN_PAGE_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar dialog de erros",
+        "name": "APP_DIALOG_ERROR_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar dialog de checkuser",
+        "name": "APP_CHECKUSER_DIALOG_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar toast de sucesso",
+        "name": "APP_SUCCESS_TOAST_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar toast de erro",
+        "name": "APP_ERROR_TOAST_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar IP local no layout nativo",
+        "name": "APP_LOCAL_IP_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Filtrar configurações pelo nome da rede",
+        "name": "APP_CONFIG_FILTER_ENABLED",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar alertas sonoros",
+        "name": "APP_ALERT_SOUND_ENABLED",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar layout webview",
+        "name": "APP_LAYOUT_WEBVIEW_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Mensagem",
+        "name": "APP_MESSAGE",
+        "value": null,
+        "type": "TEXT"
+    },
+    {
+        "label": "Tipo de mensagem",
+        "name": "APP_MESSAGE_TYPE",
+        "value": {
+            "options": [
+                {
+                    "label": "Alerta",
+                    "value": "ALERT"
+                },
+                {
+                    "label": "Informação",
+                    "value": "INFO"
+                },
+                {
+                    "label": "Boas vindas",
+                    "value": "WELCOME"
+                },
+                {
+                    "label": "Sem mensagem",
+                    "value": "NONE"
+                }
+            ],
+            "selected": "NONE"
+        },
+        "type": "SELECT"
+    },
+    {
+        "label": "URL de atualização do aplicativo",
+        "name": "APP_UPDATE_URL",
+        "value": null,
+        "type": "URL"
+    },
+    {
+        "label": "LAYOUT WEBVIEW (POR SUA CONTA E RISCO)",
+        "name": "APP_LAYOUT_WEBVIEW",
+        "value": "<!DOCTYPE html>\n<html class=\"w-full h-full\" lang=\"pt-BR\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n  <title>780890715 - @RagnarVps | @alexdsgmoura</title>\n\n  <style>\n    *, :after, :before {box-sizing: border-box;border: 0 solid #e5e7eb }:after, :before {--tw-content: \"\" }html {line-height: 1.5;-webkit-text-size-adjust: 100%;-moz-tab-size: 4;-o-tab-size: 4;tab-size: 4;font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-feature-settings: normal;font-variation-settings: normal }body {margin: 0;line-height: inherit }hr {height: 0;color: inherit;border-top-width: 1px }abbr:where([title]) {-webkit-text-decoration: underline dotted;text-decoration: underline dotted }h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit }a {color: inherit;text-decoration: inherit }b, strong {font-weight: bolder }code, kbd, pre, samp {font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;font-size: 1em }small {font-size: 80% }sub, sup {font-size: 75%;line-height: 0;position: relative;vertical-align: initial }sub {bottom: -.25em }sup {top: -.5em }table {text-indent: 0;border-color: inherit;border-collapse: collapse }button, input, optgroup, select, textarea {font-family: inherit;font-feature-settings: inherit;font-variation-settings: inherit;font-size: 100%;font-weight: inherit;line-height: inherit;color: inherit;margin: 0;padding: 0 }button, select {text-transform: none }[type=button], [type=reset], [type=submit], button {-webkit-appearance: button;background-color: initial;background-image: none }:-moz-focusring {outline: auto }:-moz-ui-invalid {box-shadow: none }progress {vertical-align: initial }::-webkit-inner-spin-button, ::-webkit-outer-spin-button {height: auto }[type=search] {-webkit-appearance: textfield;outline-offset: -2px }::-webkit-search-decoration {-webkit-appearance: none }::-webkit-file-upload-button {-webkit-appearance: button;font: inherit }summary {display: list-item }blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre {margin: 0 }fieldset {margin: 0 }fieldset, legend {padding: 0 }menu, ol, ul {list-style: none;margin: 0;padding: 0 }dialog {padding: 0 }textarea {resize: vertical }input::-moz-placeholder, textarea::-moz-placeholder {opacity: 1;color: #9ca3af }input::placeholder, textarea::placeholder {opacity: 1;color: #9ca3af }[role=button], button {cursor: pointer }:disabled {cursor: default }audio, canvas, embed, iframe, img, object, svg, video {display: block;vertical-align: middle }img, video {max-width: 100%;height: auto }[hidden] {display: none }*, ::backdrop, :after, :before {--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--tw-translate-x: 0;--tw-translate-y: 0;--tw-rotate: 0;--tw-skew-x: 0;--tw-skew-y: 0;--tw-scale-x: 1;--tw-scale-y: 1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness: proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-color: #3b82f680;--tw-ring-offset-shadow: 0 0 #0000;--tw-ring-shadow: 0 0 #0000;--tw-shadow: 0 0 #0000;--tw-shadow-colored: 0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.absolute {position: absolute }.relative {position: relative }.bottom-1 {bottom: .25rem }.left-1\\/2 {left: 50% }.right-1 {right: .25rem }.top-1 {top: .25rem }.my-3 {margin-top: .75rem;margin-bottom: .75rem }.mb-1 {margin-bottom: .25rem }.mb-2 {margin-bottom: .5rem }.mb-3 {margin-bottom: .75rem }.ml-auto {margin-left: auto }.mt-14 {margin-top: 3.5rem }.mt-2 {margin-top: .5rem }.mt-2\\.5 {margin-top: .625rem }.mt-3 {margin-top: .75rem }.mt-5 {margin-top: 1.25rem }.mt-8 {margin-top: 2rem }.mt-auto {margin-top: auto }.block {display: block }.flex {display: flex }.grid {display: grid }.hidden {display: none }.h-1\\/5 {height: 20% }.h-10 {height: 2.5rem }.h-12 {height: 3rem }.h-2\\/3 {height: 66.666667% }.h-2\\/4 {height: 50% }.h-20 {height: 5rem }.h-3 {height: .75rem }.h-4 {height: 1rem }.h-5 {height: 1.25rem }.h-6 {height: 1.5rem }.h-8 {height: 2rem }.h-9 {height: 2.25rem }.h-\\[100\\%\\] {height: 100% }.h-\\[40px\\] {height: 40px }.h-\\[90\\%\\] {height: 90% }.h-\\[calc\\(100\\%-160px\\)\\] {height: calc(100% - 160px) }.h-auto {height: auto }.h-full {height: 100% }.max-h-8 {max-height: 2rem }.max-h-\\[10\\%\\] {max-height: 10% }.max-h-\\[66\\.666667\\%\\] {max-height: 66.666667% }.min-h-\\[40px\\] {min-height: 40px }.w-10 {width: 2.5rem }.w-11\\/12 {width: 91.666667% }.w-14 {width: 3.5rem }.w-2\\/4 {width: 50% }.w-20 {width: 5rem }.w-4 {width: 1rem }.w-4\\/5 {width: 80% }.w-5 {width: 1.25rem }.w-5\\/6 {width: 83.333333% }.w-6 {width: 1.5rem }.w-8 {width: 2rem }.w-\\[40px\\] {width: 40px }.w-\\[calc\\(100\\%-30px\\)\\] {width: calc(100% - 30px) }.w-\\[calc\\(100\\%-40px\\)\\] {width: calc(100% - 40px) }.w-auto {width: auto }.w-full {width: 100% }.flex-1 {flex: 1 1 0% }.-translate-x-1\\/2 {--tw-translate-x: -50% }.-translate-x-1\\/2, .-translate-x-full {transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) }.-translate-x-full {--tw-translate-x: -100% }.-translate-y-1\\/2 {--tw-translate-y: -50% }.-translate-y-1\\/2, .scale-0 {transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) }.scale-0 {--tw-scale-x: 0;--tw-scale-y: 0 }.transform {transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) }.cursor-none {cursor: none }.grid-cols-2 {grid-template-columns: repeat(2, minmax(0, 1fr)) }.flex-col {flex-direction: column }.items-end {align-items: flex-end }.items-center {align-items: center }.justify-center {justify-content: center }.justify-between {justify-content: space-between }.justify-items-center {justify-items: center }.gap-1 {gap: .25rem }.gap-2 {gap: .5rem }.gap-3 {gap: .75rem }.gap-5 {gap: 1.25rem }.overflow-auto {overflow: auto }.overflow-hidden, .truncate {overflow: hidden }.truncate {text-overflow: ellipsis;white-space: nowrap }.rounded-full {border-radius: 9999px }.rounded-md {border-radius: .375rem }.rounded-t-md {border-top-left-radius: .375rem;border-top-right-radius: .375rem }.border {border-width: 1px }.border-b {border-bottom-width: 1px }.border-\\[\\#01010342\\] {border-color: #01010342 }.border-\\[\\#767881\\] {--tw-border-opacity: 1;border-color: rgb(118 120 129/var(--tw-border-opacity)) }.bg-\\[\\#070610\\] {--tw-bg-opacity: 1;background-color: rgb(7 6 16/var(--tw-bg-opacity)) }.bg-\\[\\#0a0c17ab\\] {background-color: #0a0c17ab }.bg-\\[\\#0c0d18e0\\] {background-color: #0c0d18e0 }.bg-\\[\\#121c28\\] {--tw-bg-opacity: 1;background-color: rgb(18 28 40/var(--tw-bg-opacity)) }.bg-\\[\\#14141489\\] {background-color: #14141489 }.bg-\\[\\#414cb8\\] {--tw-bg-opacity: 1;background-color: rgb(65 76 184/var(--tw-bg-opacity)) }.bg-\\[\\#575e81\\] {--tw-bg-opacity: 1;background-color: rgb(87 94 129/var(--tw-bg-opacity)) }.bg-red-900 {--tw-bg-opacity: 1;background-color: rgb(127 29 29/var(--tw-bg-opacity)) }.bg-transparent {background-color: initial }.bg-gradient-to-r {background-image: linear-gradient(to right, var(--tw-gradient-stops)) }.from-\\[\\#0a0c17ab\\] {--tw-gradient-from: #0a0c17ab var(--tw-gradient-from-position);--tw-gradient-to: #0a0c1700 var(--tw-gradient-to-position);--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) }.to-transparent {--tw-gradient-to: #0000 var(--tw-gradient-to-position) }.stroke-\\[\\#FFFFFF\\], .stroke-white {stroke: #fff }.p-2 {padding: .5rem }.px-1 {padding-left: .25rem;padding-right: .25rem }.px-2 {padding-left: .5rem;padding-right: .5rem }.px-3 {padding-left: .75rem;padding-right: .75rem }.px-\\[10\\%\\] {padding-left: 10%;padding-right: 10% }.px-\\[10px\\] {padding-left: 10px;padding-right: 10px }.py-2 {padding-top: .5rem;padding-bottom: .5rem }.py-2\\.5 {padding-top: .625rem;padding-bottom: .625rem }.pb-\\[30px\\] {padding-bottom: 30px }.pl-1 {padding-left: .25rem }.pr-6 {padding-right: 1.5rem }.pt-\\[10px\\] {padding-top: 10px }.text-center {text-align: center }.text-\\[0\\.5rem\\] {font-size: .5rem }.text-\\[0\\.65rem\\] {font-size: .65rem }.text-\\[0\\.6rem\\] {font-size: .6rem }.text-lg {font-size: 1.125rem;line-height: 1.75rem }.text-sm {font-size: .875rem;line-height: 1.25rem }.text-xs {font-size: .75rem;line-height: 1rem }.font-medium {font-weight: 500 }.leading-7 {line-height: 1.75rem }.text-\\[\\#11c9ff\\] {--tw-text-opacity: 1;color: rgb(17 201 255/var(--tw-text-opacity)) }.text-\\[\\#767881\\] {--tw-text-opacity: 1;color: rgb(118 120 129/var(--tw-text-opacity)) }.text-\\[\\#7d7f81\\] {--tw-text-opacity: 1;color: rgb(125 127 129/var(--tw-text-opacity)) }.text-\\[\\#FF0000\\] {--tw-text-opacity: 1;color: rgb(255 0 0/var(--tw-text-opacity)) }.text-\\[\\#FFFFFF\\], .text-white {--tw-text-opacity: 1;color: rgb(255 255 255/var(--tw-text-opacity)) }.shadow-\\[0px_0px_10px_0px_rgba\\(18\\2c 22\\2c 34\\2c 1\\)\\] {--tw-shadow: 0px 0px 10px 0px #121622;--tw-shadow-colored: 0px 0px 10px 0px var(--tw-shadow-color);box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) }.outline-none {outline: 2px solid #0000;outline-offset: 2px }.transition-\\[max-height\\] {transition-property: max-height;transition-timing-function: cubic-bezier(.4, 0, .2, 1);transition-duration: .15s }.transition-all {transition-property: all;transition-timing-function: cubic-bezier(.4, 0, .2, 1);transition-duration: .15s }.duration-1000 {transition-duration: 1s }\n  </style>\n</head>\n\n<body class=\"w-full h-full\">\n  <main class=\"w-full h-full flex flex-col relative\">\n    <section class=\"w-full h-full flex flex-col px-[10px] pt-[10px] pb-[30px] overflow-hidden\" id=\"container-home\">\n      <section class=\"flex justify-between items-center\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\"\n          class=\"text-[#FFFFFF] w-8 h-8\" id=\"open-menu\" viewBox=\"0 0 16 16\">\n          <path fill-rule=\"evenodd\"\n            d=\"M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5\" />\n        </svg>\n\n        <div>\n          <span class=\"text-[#FFFFFF] text-sm\" id=\"vpn-status\">Inativo</span>\n        </div>\n      </section>\n\n      <section class=\"w-full h-1/5 flex justify-center\">\n        <img class=\"w-4/5\" id=\"app-logo\" src=\"https://i.ibb.co/DWFmFLh/DTsa3hwchn.png\" alt=\"logo\">\n      </section>\n\n      <section class=\"w-full h-[40px] flex justify-between items-center gap-2 mt-2.5\">\n        <button\n          class=\"w-[calc(100%-40px)] h-full flex items-center justify-between gap-1 px-1 rounded-md cursor-none outline-none bg-[#070610]\"\n          id=\"button-of-list-carrier\" type=\"button\" title=\"Selecionar Configuração\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\"\n            class=\"w-6 h-6 text-[#FFFFFF]\" viewBox=\"0 0 16 16\">\n            <path d=\"M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6\" />\n          </svg>\n\n          <span class=\"w-full text-[#FFFFFF] text-xs truncate\" id=\"value-of-carrier\">ESCOLHA UMA CONFIGURAÇÃO</span>\n\n          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\"\n            class=\"text-[#FFFFFF] w-5 h-5\" viewBox=\"0 0 16 16\">\n            <path fill-rule=\"evenodd\"\n              d=\"M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z\" />\n          </svg>\n        </button>\n\n        <button\n          class=\"w-[40px] h-full flex items-center justify-center rounded-md cursor-none outline-none bg-[#070610]\"\n          id=\"button-open-checkuser\" type=\"button\" title=\"checkuser\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"text-[#FFFFFF]\"\n            viewBox=\"0 0 16 16\">\n            <path\n              d=\"M4.684 11.523v-2.3h2.261v-.61H4.684V6.801h2.464v-.61H4v5.332zm3.296 0h.676V8.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a1.806 1.806 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98v4.105zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43m.094 5.093h.672V7.418h-.672z\" />\n            <path\n              d=\"M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z\" />\n          </svg>\n        </button>\n      </section>\n\n      <section class
