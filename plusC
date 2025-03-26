@@ -1,5 +1,5 @@
 {
-  "Version":"29",
+  "Version":"30",
   "Update":"https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusC",
   "UdpPort":"7300",
   "Sms":"https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusm",
@@ -103,7 +103,7 @@
          "FLAG":"https://i.postimg.cc/pLzBL7CB/claro.png",
          "Info":"Proxy",
          "Name":"     CLARO  🇧🇷  ",
-         "Payload":"PATCH / HTTP/1.1[crlf]Host: [random=GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf] X / HTTP/1.1[crlf]Host: [host][crlf][crlf]GET / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
+         "Payload":"GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf] X / HTTP/1.1[crlf]Host: [host][crlf][crlf]GET / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
          "ProxyIP":"m.claro.com.br",
          "ProxyPort":"80",
          "SNI":"",
