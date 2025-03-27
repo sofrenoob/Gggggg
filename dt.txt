@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🌐 CONEXÕES  2🌐",
+            "name": "🌐 CONEXÕES  3🌐",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -120,7 +120,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "GET / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
+            "payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf] X / HTTP/1.1[crlf]Host: [host][crlf][crlf]GET / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
