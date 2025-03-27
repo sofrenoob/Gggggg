@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🌐 CONEXÕES VERSÃO 14🌐",
+            "name": "🌐 CONEXÕES VERSÃO 15🌐",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -120,7 +120,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "PATCH / HTTP/1.1[crlf]Host: [random=static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.com;minha.claro.com.br;static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.com;minha.claro.com.br;meuplanoclaro.com.br;api.whatsapp.com;m.twitter.com;m.waze.com;web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;twitter.com;dns.web.whatsapp.com;static.whatsapp.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;meuplanoclaro.com.br;api.whatsapp.com;m.twitter.com;m.waze.com;web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;twitter.com;dns.web.whatsapp.com;static.whatsapp.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;portal.clarorecompensas.com.br;minhaclaro.claro.com.br][crlf]Connection: Upgrade[crlf]Upgrade: websocket[realData][crlf][crlf]",
+            "payload": GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf] X / HTTP/1.1[crlf]Host: [host][crlf][crlf]GET / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -135,11 +135,11 @@
         "mode": "SSH_PROXY",
         "name": "🔴 CLARO 🔴",
         "proxy": {
-            "host": "185.194.205.50#uol.alfalemos.shop",
+            "host": "m.claro.com.br",
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50#uol.alfalemos.shop",
+            "host": "dp4oz9twukxrn.cloudfront.net",
             "port": 80
         },
         "sorter": 1,
