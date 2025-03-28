@@ -1,5 +1,5 @@
 {
-  "Version":"36",
+  "Version":"37",
   "Update":"https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusC",
   "UdpPort":"7300",
   "Sms":"https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusm",
@@ -116,8 +116,8 @@
          "FLAG":"https://i.postimg.cc/pLzBL7CB/claro.png",
          "Info":"Proxy",
          "Name":"     CLARO  🇧🇷  ",
-         "Payload":"HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]",
-         "ProxyIP":"185.194.205.50#dp4oz9twukxrn.cloudfront.net",
+         "Payload":"GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf] X / HTTP/1.1[crlf]Host: [host][crlf][crlf]GET / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
+         "ProxyIP":"185.194.205.50#dp4oz9twukxrn.cloudfront.net#m.claro.com.br",
          "ProxyPort":"80",
          "SNI":"",
          "TlsIP":""
@@ -130,8 +130,8 @@
          "FLAG":"https://i.postimg.cc/pLzBL7CB/claro.png",
          "Info":"Proxy",
          "Name":"CLARO 02  🇧🇷",
-         "Payload":"GET / HTTP/1.1[crlf]Host: minhaclaro.claro.com.br[crlf] [crlf]GET / HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]|GET /cdn-cgi/trace HTTP/1.1[crlf]Host: minhaclaro.claro.com.br[crlf] [crlf]GET / HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Backend: REVHUNTER [lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]",
-         "ProxyIP":"minhaclaro.claro.com.br",
+         "Payload":"GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf] [crlf]GET / HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]|GET /cdn-cgi/trace HTTP/1.1[crlf]Host: m.claro.com.br[crlf] [crlf]GET / HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Backend: REVHUNTER [lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]",
+         "ProxyIP":"m.claro.com.br",
          "ProxyPort":"80",
          "SNI":"",
          "TlsIP":""
@@ -144,8 +144,8 @@
          "FLAG":"https://i.postimg.cc/pLzBL7CB/claro.png",
          "Info":"Proxy",
          "Name":"CLARO 03  🇧🇷",
-         "Payload":"GET / HTTP/1.1[crlf]Host: minhaclaro.claro.com.br[crlf] [crlf]GET / HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]|GET /cdn-cgi/trace HTTP/1.1[crlf]Host: minhaclaro.claro.com.br[crlf] [crlf]GET / HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Backend: REVHUNTER [lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]",
-         "ProxyIP":"multiproxy=dev-minhaclaro.claro.com.br",
+         "Payload":"GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf] [crlf]GET / HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]|GET /cdn-cgi/trace HTTP/1.1[crlf]Host: m.claro.com.br[crlf] [crlf]GET / HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Backend: REVHUNTER [lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]",
+         "ProxyIP":"multiproxy=dev-m.claro.com.br",
          "ProxyPort":"80",
          "SNI":"",
          "TlsIP":""
