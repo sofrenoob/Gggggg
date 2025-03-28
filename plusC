@@ -1,5 +1,5 @@
 {
-  "Version":"34",
+  "Version":"35",
   "Update":"https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusC",
   "UdpPort":"7300",
   "Sms":"https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusm",
@@ -67,6 +67,20 @@
          "TlsIP":""
       },
       {
+         "Color": "#993399",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "vivo",
+         "FLAG":"https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
+         "Info":"Proxy",
+         "Name":"   VIVO 3 🇧🇷 ",
+         "Payload":"GET / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf]Keep-Alive:[crlf][crlf]",
+         "ProxyIP":"d374bfm8v1rq2v.cloudfront.net",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
          "Color": "#0000ff",
          "ColorDescription": "#ffffff",
          "ColorName": "#ffffff",
@@ -115,7 +129,7 @@
          "Description": "claro",
          "FLAG":"https://i.postimg.cc/pLzBL7CB/claro.png",
          "Info":"Proxy",
-         "Name":"CLARO 02 ATIVE O IPV4  🇧🇷",
+         "Name":"CLARO 02  🇧🇷",
          "Payload":"GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf] X / HTTP/1.1[crlf]Host: [host][crlf][crlf]GET / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
          "ProxyIP":"m.claro.com.br",
          "ProxyPort":"80",
