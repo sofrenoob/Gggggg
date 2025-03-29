@@ -1,5 +1,5 @@
 {
-  "Version": "0.0.10",
+  "Version": "0.0.12",
   "ReleaseNotes": "Nova Atualização Disponível",
   "UrlUpdate": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/config",
   "Sms": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/Sms",
@@ -13,22 +13,22 @@
   ],
   "Servers": [
 {
-      "Name": "SERVIDOR 1",
+      "Name": "  SERVIDOR 1 VERSÃO:12  ",
       "TYPE": "premium",
       "FLAG": "br.png",
       "ServerIP": "uol.alfalemos.shop",
-      "CheckUser": "http://uol.alfalemos.shop:5454/checkUser",
+      "CheckUser": "http://185.194.205.50:5454/checkUser",
       "ServerPort": "22",
       "SSLPort": "443",
       "USER": "",
       "PASS": ""
     },
     {
-      "Name": "SERVIDOR 2",
+      "Name": "off",
       "TYPE": "premium",
       "FLAG": "br.png",
       "ServerIP": "uol.alfalemos.shop",
-      "CheckUser": "http://uol.alfalemos.shop:5454/checkUser",
+      "CheckUser": "http://185.194.205.50:5454/checkUser",
       "ServerPort": "22",
       "SSLPort": "443",
       "USER": "",
