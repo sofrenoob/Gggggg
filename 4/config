@@ -1,5 +1,5 @@
 {
-  "Version": "0.0.12",
+  "Version": "0.0.13",
   "ReleaseNotes": "Nova Atualização Disponível",
   "UrlUpdate": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/config",
   "Sms": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/Sms",
@@ -13,7 +13,7 @@
   ],
   "Servers": [
 {
-      "Name": "  SERVIDOR 1 VERSÃO:12  ",
+      "Name": "SERVIDOR 1",
       "TYPE": "premium",
       "FLAG": "br.png",
       "ServerIP": "uol.alfalemos.shop",
@@ -37,1097 +37,7 @@
   ],
  "Networks": [
            {
-            "Name": "VIVO SECURITY 1 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:www.whatsapp.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 2 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:204.216.130.40[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 3 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 4 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:microsoft.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 5 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host: 3netcompanybr.shop[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 6 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]GET http://m.clarosync.com/ HTTP/1.1 Host: http://m.clarosync.com/\r\nUser-Agent: Yes\r\nConnection: close\r\nProxy-Connection: Keep-Alive\r\n[crlf][crlf][netData][crlf] [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 7 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]GET http://d1n212ccp6ldpw.cloudfront.net HTTP/1.1\r\n\\r\r\n\\r\r\nCONNECT 127.0.0.1:443HTTP/1.0X-Online-Host: http://download-this-pl.info/124BR/MP.html \\r\r\n\\r",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 08 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]CONNECT http://i.vivo.ddivulga.com/i/gp/ HTTP/1.1[crlf][split]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 09 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]CONNECT http://interatividade.vivo.ddivulga.com/produto/ HTTP/1.0[crlf]<font color=\"black\">[split]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 10 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]CONNECT http://portalrecarga.vivo.com.br/recarga/home/ HTTP/1.1[lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 11 🟣",
-            "FLAG": "vivo",
-            "Payload": "[split]\r\nCONNECT [host_port]@portalrecarga.vivo.com.br/recarga/home/[protocol]\r\nGET  http://sdp.vivo.com.br/ HTTP/1.1\r\nHost: portalrecarga.vivo.com.br/recarga/home/produto[crlf]X-Forwarded-For: portalrecarga.vivo.com.br/recarga/home/",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 12 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]CONNECT [host_port]<font color=\"yelp\"> GET http://portalrecarga.vivo.com.br/recarga/home/187.8.166.33 [protocol][lf][split]CONNECT 187.8.166.33 CONNECT [host_port]149.56.42.236 HTTP/1.1[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 13 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 14 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random= 104.18.6.80;104.18.7.80;162.159.138.6;162.159.128.7;104.17.70.206;104.17.71.206;104.17.72.206;104.17.73.206;104.17.74.206;172.64.144.109;104.18.43.147;104.18.7.41][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 15 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]ACL http://1.1.1.1rotate= buzzfeed.com;mobile.adobe.com ;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate= buzzfeed.com; myspace.com;mobile.google.com ;1.0.0.5[crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 16 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]ACL HTTP/1.1[crlf]Host: community-dashbird.buzzfeed.com[crlf]X-Online-Host: uol.alfalemos.shop[crlf]Connection:l llbj  Keep-Alive[crlf]User-Agent: [ua][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 17 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: hmg-embed.claromusica.com",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 18 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: premium.sshtunnelcloud.store[lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 19 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 20 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1][lf]Host: 4netcompanybr.shop[lf]",
-            "SNI": "",
-            "TlsIP": "uol.alfalemos.shop",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 21 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1][lf]Host: 4netcompanybr.shop][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO delay 06 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 22 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 23 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]HEAD / HTTP/1.1[crlf]Host: 4netcompanybr.shop[crlf]Connection: Upgrade[crlf]Upgrade:[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 24 🟣",
-            "FLAG": "vivo",
-            "Payload": "[split][lf]ACL / HTTP/1.1[crlf]Host: vigia.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: Upgrade[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO WS [1] 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]GET http://vivo.com.br/ HTTP/1.1[crlf]Host: vivo.com.br[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "uol.alfalemos.shop",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO  EASY controle 02 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "vivo360.vivo.com.br#legado.vivo.com.br#assine.vivo.com.br#vigia.vivo.com.br",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO  EASY controle 03 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "4field.vivo.com.br#agar.black#api.app.vivo.com.br#api.vivo-torpedoempresas.vivo.com.br#api.vivo.com.br#app.vivo.com.br#assine.vivo.com.br#atendimento.vivo.com.br#atendimentoonline.vivo.com.br#author.vivotech.vivo.com.br#backoffice-equipamentos.vivo.com.br#backoffice-equipamentos01.vivo.com.br#beneficios.vivo.com.br#carrinho-pos-familia.vivo.com.br#compre.vivo.com.br#digitaldelivery.vivo.com.br#dogtshirtdesign.com#easy.vpntopspeed.tk",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO  EASY controle 04 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.7.41#104.18.7.80#104.17.70.206",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO  EASY controle 05 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "efika.vivo.com.br#equipamentos01.vivo.com.br#extranet.vivo.com.br#gestaocontactcenter.vivo.com.br#joguejunto.vivo.com.br#legado.vivo.com.br#lgpdfront.vivo.com.br#meuvivoempresas.vivo.com.br#movimenta.vivo.com.br#online2.vivo.com.br#portaldeassinaturas.vivo.com.br#portaljud.vivo.com.br#ppt03.vivo.com.br#prep-ca.daleofnorway.com#protecao.vivo.com.br#proxy.hmtutors.ga#recarga-online.aura.vivo.com.br#sigitm.vivo.com.br#store.vivo.com.br#totalethiopia.com#transmissionhero.com#vigia.vivo.com.br#vigia.vivo.com.br.cdn.cloudflare.net#vivo.ezequias.com.br#vivo360.vivo.com.br#vivo360.vivo.com.br.cdn.cloudflare.net#vivoid.vivo.com.br#vivoid.vivo.com.br.cdn.cloudflare.net#vivomusica.vivo.com.br#vivovalorizaempresas.vivo.com.br#vpoweb.vivo.com.br#web-aceitedigital.vivo.com.br",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "EASY/CONTROLE  01 🟣",
-            "FLAG": "vivo",
-            "Payload": "CLOUD-BRASIL wss://uol.alfalemos.shop HTTP/1.1[crlf]Host: atendimento.hotmart.com.br [crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]CLOUD-BRASIL[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.51.111",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "EASY/CONTROLE  02 🟣",
-            "FLAG": "vivo",
-            "Payload": "POST /connect/domainreliability/upload HTTP/1.1 [lf]Host: uol.alfalemos.shop[split][crlf]Upgrade: Websocket;Access-Control-Request-Method: POST;Access-Control-Allow-Origin: *;Save-Data: no;Connection: keep-alive;Keep-Alive: timeout=43200, max=71200;Cache-control: public max-age=16777216 immutable;Content-Length: 16777216;Upgrade-Insecure-Requests: 1/n/n[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.7.41",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "EASY/CONTROLE  03 🟣",
-            "FLAG": "vivo",
-            "Payload": "CONNECT /cdn-cgi/trace HTTP/1.1[lf]Host: uol.alfalemos.shop[lf][lf][split][lf][lf]ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
-            "SNI": "uol.alfalemos.shop",
-            "TlsIP": "",
-            "ProxyIP": "141.193.213.11",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO PRE NOVO 1 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:www.whatsapp.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO PRE NOVO 2 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:204.216.130.40[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO PRE NOVO 3 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO PRE NOVO 4 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:microsoft.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO PRE NOVO 5 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host: 4netcompanybr.shop[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 1 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]BCOPY / [crlf][crlf",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 2 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]ACL / HTTP/55",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 3 🟣",
-            "FLAG": "vivo",
-            "Payload": "CONNECT 127.0.0.1:80[instant_split]GET www.veek.com.br HTTP/1.1[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 4 🟣",
-            "FLAG": "vivo",
-            "Payload": "HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;glink.net.br-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 5 🟣",
-            "FLAG": "vivo",
-            "Payload": "ACL HTTP/1.1[crlf]Host: www.google.com.br[crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 6 🟣",
-            "FLAG": "vivo",
-            "Payload": "[split][crlf]ACL / HTTP/1.1[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 7 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:www.whatsapp.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 8 🟣",
-            "FLAG": "vivo",
-            "Payload": "[split][lf]TRACE / HTTP/1.1[crlf]Host: vivo.tl[crlf]Upgrade: WebSocketExtensions[crlf]Connection: Upgrade-Insecure-Requests[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO PRE REDE SOCIAIS 1 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.26.5.32",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO PRE REDE SOCIAIS 2 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]HEAD / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: Upgrade[crlf]Upgrade:[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.53.111",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO PRE REDE SOCIAIS 3 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO CONTROLE 1 🟣",
-            "FLAG": "vivo",
-            "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf][split][lf]",
-            "SNI": "uol.alfalemos.shop",
-            "TlsIP": "",
-            "ProxyIP": "141.193.213.11",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO CONTROLE  2 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
-            "SNI": "uol.alfalemos.shop",
-            "TlsIP": "",
-            "ProxyIP": "141.193.213.10",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO CONTROLE  3 🟣",
-            "FLAG": "vivo",
-            "Payload": "CONNECT /cdn-cgi/trace HTTP/1.1[lf]Host: uol.alfalemos.shop[lf][lf][split][lf][lf]ACL / HTTP/1.1[lf]Host: 3netcompanybr.shop[lf]Upgrade: websocket[lf][lf]",
-            "SNI": "uol.alfalemos.shop",
-            "TlsIP": "",
-            "ProxyIP": "141.193.213.11",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "NOVO VIVO CONTROLE 1 🟣",
-            "FLAG": "vivo",
-            "Payload": "SERVICE-BASELINE / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "NOVO VIVO CONTROLE 2 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.17.64.225",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "NOVO VIVO CONTROLE 3 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.51.111",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 01 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]ACL /Set-Cookie: sessionID=fbafa6258966f49f252b404ab9e5c219; path=/admin; domain=revive.vivointernetgratis.com.br; secure; HttpOnly; SameSite=strict HTTP/1.1][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 02 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split]ACL /revive.vivointernetgratis.com.br HTTP/1.1][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO CONTROLE ROTATE TODOS OS DDDS ",
-            "FLAG": "vivo",
-            "Payload": "POST /connect/domainreliability/upload HTTP/1.1 [lf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket;Access-Control-Request-Method: POST;Access-Control-Allow-Origin: *;Save-Data: no;Connection: keep-alive;Keep-Alive: timeout=43200, max=71200;Cache-control: public max-age=16777216 immutable;Content-Length: 16777216;Upgrade-Insecure-Requests: 1/n/n[crlf][crlf]#[split][delay_split]ACL / /\\n#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\\\n\\\\n\\\\n \\\\n#MOVE / HTTP/1.1[crlf]Host: @shaka_news[crlf]Upgrade: websocket[crlf][crlf]#ACL HTTP/1.1[lf]Host: google.es[lf]#PUT / Cache-Control: private: Web-security[crlf]#ACL buzzfeed.com HTTP/1.1[lf]Host:buzzfeed.com[lf]#ACL / HTTP/1.1[crlf][crlf]#PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net[crlf]#HTTP/1.1[lf]HTTP/ [lf]Host: ff.garena.com[lf]\r\n[15/03, 17:00]#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\\\n\\\\n\\\\n \\\\n",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop#141.193.213.10#141.193.213.11#104.18.18.210#104.18.19.210#104.18.22.136#104.18.23.136#104.17.70.206#104.17.71.206#104.17.72.206#104.17.73.206#104.17.74.206#104.26.4.32#104.26.5.32",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SERCURITY DDD 62+",
-            "FLAG": "vivo",
-            "Payload": "[split][lf]ACL / HTTP/1.1[crlf]Host: vigia.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: Upgrade[crlf][crlf]#GET / HTTP/1.1\\r\\n\r\nHost: uol.alfalemos.shop\\r\\n\r\nConnection: Upgrade\\r\\n\r\nUser-Agent: [ua]\\r\\n\r\nUpgrade: websocket\\r\\n\\r\\n#[delay_split]ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com]@SSHPLUSPRO[crlf]#[delay_split][crlf] SEARCH HTTP/1.1[crlf]Host: www.google.com.br[crlf]Connection: keep-alive[crlf]Referer: http://www.google.com.br[crlf][crlf]#CONNECT tibr-sdgw.datami.net:22 [protocol][crlf][crlf]#GET / HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: Websocket[crlf]Connection: Upgrade[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#ACL http://1.1.1.1rotate=buzzfeed.com;mobile.adobe.com;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate=buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5[crlf]#ACL HTTP/1.1[crlf]Host: community-dashbird.buzzfeed.com[crlf]X-Online-Host: uol.alfalemos.shop[crlf]Connection:l llbj聽 Keep-Alive[crlf]User-Agent: [ua][crlf]#ACL HTTP/1.1[crlf]Host: community-dashbird.buzzfeed.com[crlf]X-Online-Host: uol.alfalemos.shop[crlf]Connection:l llbj聽 Keep-Alive[crlf]User-Agent: [ua][crlf]#ACL HTTP/1.1 Host: plus.google.com \\r\\n \\r\\n#[delay_split]ACL / HTTP/1.1[crlf]Host: vivo.com.br[crlf]Upgrade: websocket[crlf][crlf]#[split]ACL / HTTP/1.1[crlf]Host: orion.c6bank.app[crlf][crlf]#[delay_split]GET / HTTP/1.1[crlf]Host: vivo.com.br[crlf]Upgrade: websocket[crlf][crlf]#[split]GET HTTP/1.1[crlf][crlf]Host: Websocket[crlf]#[split]GET / HTTP/1.1[crlf][crlf]Host: gratis.vivo-bemobi.com[crlf]Upgrade: WebSocket[crlf][crlf]#[protocol][crlf] [crlf][crlf]#HTTP/1.1[crlf] [crlf][crlf]#ACL 127.0.0.1:80[instant_split]ACL www.veek.com.br HTTP/1.9[crlf][crlf]#MERGE p.adsymptotic.com HTTP/2.0[crlf]Host: uol.alfalemos.shop[crlf]Connection: update, Keep-Alive-Status 101[crlf]Update: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)tlcomputingbr[crlf]Referer: http://www.google.com[crlf]#[protocol][crlf] [crlf][crlf]@#ACL buzzfeed.com HTTP/1.1[lf]Host:buzzfeed.com[lf]#HTTP/1.1[crlf] [crlf][crlf]鈥�#PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net[crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: [lf]#[split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[split][lf]TRACE / HTTP/1.1[crlf]Host: vivo.tl[crlf]Upgrade: WebSocketExtensions[crlf]Connection: Upgrade-Insecure-Requests[crlf][crlf]#[split][lf]ACL / [protocol] [crlf]Host: microsoft.com[crlf]Connection: Upgrade[crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: [host]#[delay_split]BCOPY / [crlf][crlf]#[delay_split]GET / HTTP/1.1[crlf][ssh][crlf]#POST /connect/domainreliability/upload HTTP/1.1 [lf]Host: uol.alfalemos.shop[split][crlf]Upgrade: Websocket;Access-Control-Request-Method: POST;Access-Control-Allow-Origin: *;Save-Data: no;Connection: keep-alive;Keep-Alive: timeout=43200, max=71200;Cache-control: public max-age=16777216 immutable;Content-Length: 16777216;Upgrade-Insecure-Requests: 1/n/n[crlf][crlf]#\\r[instant_split][raw][auth]OPTIONS / HTTP/1.1[crlf]Host: baal.tech/captive-static/tarif-def/pd/index.html[crlf]X-Online-Host: www.portalsva2.vivo.com.br/captive-static/tarif-def/pd/index.html[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br[lf]#[delay_split][raw] ACL HTTP/2.0[crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "VIVO SECURITY 07 Pro 🟣",
-            "FLAG": "vivo",
-            "Payload": "[delay_split][lf]ACL / HTTP/1.1[lf]Host: [rotate= portal.vivo.com.br;portalrecarga.vivo.com.br/recarga/home/;meuplano.tim.com.br;www.vivo.com.br;buzzfeed.com;mobile.adobe.com;1.0.0.5;1.1.1.1;buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5;spotify.com;pagamentonline.emis.co.ao;playwaze.com;wazer.com;soundwaze.com;escolas.playwaze.com;www.wazeunlimited.com;bucs.playwaze.com;ftp.chillwaze.com;unpkg.com;c6bank.com.br;helpypro.stoodi.com.br;atendimento.lojadointer.com.br;creatorsupport.deezer.com:80;itsupport.surveymonkey.com;linefriendshelp.zendesk.com;vivo.interflashplusvpnpro.cloud;m2.interflashplusvpnpro.cloud][crlf][crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-         },
-        {
-            "Name": "VIVO & TIM 🔵 🟣",
-            "FLAG": "vivo",
-            "Payload": "GET / HTTP/1.1\nHost: uol.alfalemos.shop\\nConnection: Upgrade\\nUpgrade: websocket\\n\\n#PATCH / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.26.5.32#104.16.239.166#mtls.sandbox.c6bank.com.br#104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.64.225#150.230.75.23#104.16.239.166#mtls.sandbox.c6bank.com.br#104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.64.225#104.16.239.166#104.16.239.166#mtls.sandbox.c6bank.com.br#104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.64.225",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM SALDO VALIDO 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL wss://uol.alfalemos.shop HTTP/1.1[lf]Host: [rotate=google.es;www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net][lf]Upgrade: Websocket[lf][split][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "172.64.154.143",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM PERMUTIVE GERAL 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.3[crlf]Host: cdn.permutive.com[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "tecnoblog.com.br",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM BROKER DDDS 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.3[crlf]Host: login-homebroker.c6bank.com.br [crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "api.vivo.com.br",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM COOKEILAW 1 🔵",
-            "FLAG": "tim",
-            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/4.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "explore.zoom.us#community.zoom.com#kit.fontawesome.com#developers.zoom.us",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM COOKEILAW 2 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.1[crlf]Host: cdn.cookielaw.org [crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "explore.zoom.us#community.zoom.com#kit.fontawesome.com#developers.zoom.us",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM ULTRASSHSERVICE 🔵",
-            "FLAG": "tim",
-            "Payload": "GET /cdn-cgi/trace HTTP/1.1[crlf]Host: gw.ruangguru.com[crlf][crlf]GET-RAY / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "ticketing.ruangguru.com# edu.ruangguru.com#www.brainacademy.id",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM SUBSTAK PREMIUM 🔵",
-            "FLAG": "tim",
-            "Payload": "[delay_split]ACL wss://uol.alfalemos.shop HTTP/1.1[lf]Host: [rotate=browser-update.org;maxcdn.bootstrapcdn.com;maxcdn.bootstrapcdn.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net][lf]Upgrade: Websocket[lf][split][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "substack.com#fee.org#tender.cash",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM GERAL 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.3[crlf]Host: mtls.sandbox.c6bank.com.br[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.53.111",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 1 EXPIRADO 🔵",
-            "FLAG": "tim",
-            "Payload": "[delay_split]ACL / HTTP/1.1[crlf]uol.alfalemos.shop[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 2 EXPIRADO 🔵",
-            "FLAG": "tim",
-            "Payload": "PROPFIND m.youtube.com.br HTTP/1.1[crlf]Host: m.youtube.com.br[crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 3 EXPIRADO 🔵",
-            "FLAG": "tim",
-            "Payload": "MERGE indexer10.sjc.northshore.akamai.com HTTP/2.0[crlf]Host: indexer10.sjc.northshore.akamai.com [crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@mateuscmf[crlf]Referer: http://www.google.com[crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 4 EXPIRADO 🔵",
-            "FLAG": "tim",
-            "Payload": "PROPPATCH www.Alipay.com HTTP/1.0[crlf]Host: www.Alipay.com[crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 5 EXPIRADO 🔵",
-            "FLAG": "tim",
-            "Payload": "HTTP/1.1[crlf] [crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "Tim validade 05 🔵",
-            "FLAG": "tim",
-            "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
-            "SNI": "",
-            "TlsIP": "104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#17",
-            "ProxyIP": "104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.64.225",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM SALDO VALIDO 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.27.160#104.16.239.166#104.19.239.25#104.17.64.225#104.16.53.111",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "Tim MAIORIA DOS DDDS 🔵",
-            "FLAG": "tim",
-            "Payload": "[delay_split][crlf][rotate=PATCH;GET;HEAD] wss://[rotate=uol.alfalemos.shop]/ HTTP/1.1[lf]Host: [rotate=static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;browser-update.org;maxcdn.bootstrapcdn.com;maxcdn.bootstrapcdn.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net][lf]Upgrade: Websocket[lf][split][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "13.227.126.126#13.227.126.5818.67.129.91#18.67.129.103#18.67.129.119#18.67.129.10#104.18.33.113#104.16.239.166#108.139.113.45#dex.descomplica.com.br#13.33.123.107#13.227.126.40#13.227.126.91#99.84.31.114#99.84.31.97#99.84.31.8#99.84.31.80#io.descomplica.com.br#3.163.10.29#3.163.10.81#3.163.10.19#3.163.10.100#13.227.97.28#13.227.97.116#13.227.97.49#18.67.145.96#18.64.207.89#13.227.126.58#13.227.126.58#18.67.129.17#99.84.31.110#99.84.31.38#99.84.31.63#99.84.31.9#13.248.245.213#54.231.225.121#65.9.95.105#18.66.147.27#108.158.172.101#108.158.172.59#108.158.172.82#108.158.172.10#99.84.37.44#13.226.22.87#108.158.172.101#108.158.172.59#108.158.172.82#108.158.172.10#13.226.22.87#104.19.240.25#104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 01 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL /wss.html HTTP/1.1[crlf]Host: landing.stoodi.com.br[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Referer:@TMYCOMNECTVPN[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 02 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL /wss.html HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Expect: 100-tmyvpn[lf]Connection: Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[lf][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 03 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.9[crlf]host: [rotate=support.snapfish.com;support.mapmyfitness.com;venon.cloud;support.kontakt.io;uarecord.zendesk.com;sweetroad.zendesk.com;vsco.zendesk.com;support.onetwotrip.com;support.viki.com;support.holmsecurity.com;support.mobileroadie.com;support.neuronmocap.com;support.dxo.com;help.clickfunnels.com;screencastsonline.zendesk.com;support.celtx.com;support.muslimpro.com;support.discogs.com;sginteractive.zendesk.com;support.credly.com;support.sugarsync.com;help.rushlimbaugh.com;support.kidizen.com;support.twilio.com;support.mumbojumbo.com;tpbgame.zendesk.com;ingresshelp.zendesk.com;help.ableton.com;help.spreadshirt.com;wetransfer.zendesk.com;help.issuu.com;meetv.zendesk.com;eight.zendesk.com;help.iheart.com;help.standingstonegames.com;help.trainerize.com;help.coasttocoastam.com;support.securly.com;workflowy.zendesk.com;support.renvu.com;g5entertainment.zendesk.com;support.zipcar.com;gemsofwar.zendesk.com;support.watch.nba.com;faq.hellosign.com;screenad.eu;support.riotgames.com;support.paradoxplaza.com;layananku.airavpn.site;drpanda.zendesk.com;support.fiplab.com;help.behance.net;slack.zendesk.com;aide.e-monsite.com;support.cwtv.com;support.strikingly.com;prodigygame.zendesk.com;support.nixplay.com;flaregames.zendesk.com:support.cmon.com;faq.mightynetworks.com;support.wealthnavi.com;help.musicnotes.com;help.makemeslick.com;help.getmevo.com;support.abra.com;help.tcgplayer.com;mykronoz.zendesk.com;support.ankama.com;help.grindr.com;support.gordonedwards.net;support.mobi2go.com;support.ipvanish.com;support.withings.com;lykkex.zendesk.com;pggmencoleden.zendesk.com;help.positivegrid.com;helpdesk.flexradio.com;help.dreamhost.com;support.cambr;dgeenglish.org;support.ask.fm;care.pressreader.com;help.olx.in;moonactive.zendesk.com;support.getbase.com;history.zendesk.com;produttivo.zendesk.com;support.orcid.org;support.golocalapps.com;support.moneytap.jp;help.acuityscheduling.com;support-pocket.sumally.com;help.remind.com;support.awesome-table.com;support.ampleair.com.au;cs.vtcmobile.vn;support.oneup.com;sup;ort.scribd.com;ecosia.zendesk.com;support.dbconvert.com;cbchelp.cbc.ca;get.cloudapp.help;support.thetileapp.com;support.taskrabbit.com;support.clickcease.com;support.bestwebsoft.com;support.waveapps.com;support.oceanex.pro;autovit.zendesk.com][crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: uol.alfalemos.shop[crlf]Accept-Encoding: identity[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Location: [crlf]Referer: abre.ai/itechnet2 [crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: cloudflare[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "www.timex.com#static.addtoany.com#www.teamworkonline.com#www.ufcstore.com#104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 04 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.9[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "www.timex.com#static.addtoany.com#www.teamworkonline.com#www.ufcstore.com#104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 05 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "GET / HTTP/1.3[crlf]Host: creatorsupport.deezer.com[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.17.64.225#104.18.41.99#104.18.99.70#141.193.213.20#141.193.213.21#172.64.146.157",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 06 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.3[crlf]Host: [rotate=mtls.sandbox.c6bank.com.br;app.sandbox.c6bank.com.br;api.sandbox.c6bank.com.br][crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.239.166#104.19.239.25#104.18.33.113#104.18.99.70#104.17.64.225#172.64.154.143#104.16.53.111#104.19.241.93",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 07 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL /index.html HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]@@@[protocol][crlf] [crlf][crlf]@@@@HTTP/1.1[crlf] [crlf][crlf]鈥@@PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net [crlf]@@@ACL http://1.1.1.1rotate=buzzfeed.com;mobile.adobe.com;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate=buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5[crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.239.166#104.19.239.25#104.18.33.113#104.18.99.70#104.17.64.225#172.64.154.143#104.16.53.111#104.19.241.93",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 08 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "HEAD / HTTP/1.9[crlf]host: pre-onboarding-p.c6bank.app[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: uol.alfalemos.shop[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.19.239.25",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 09 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.28.182#104.16.51.111#104.19.240.25#104.18.29.182#104.16.53.111#104.19.239.25#104.19.242.25#104.19.241.93#104.18.26.160#104.19.240.93#104.19.243.25#104.18.28.181#172.64.154.143#104.17.64.225#104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 10 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.3[crlf]Host: mtls.sandbox.c6bank.com.br[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "172.64.154.143",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 11 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "[split]ACL / HTTP/1.9[crlf]host: www.c6bank.com.br[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: uol.alfalemos.shop[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "www.timex.com#static.addtoany.com#www.teamworkonline.com#www.ufcstore.com#104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM 12 ATIVE O IPV4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL /HTTP/1.1[crlf]Host:[rotate=OPTIONS;GET;HEAD;POST;PUT;DELETE;TRACE;CONNECT;PROPFIND;PROPPATCH;MKCOL;COPY;MOVE;LOCK;UNLOCK;VERSION-CONTROL;REPORT;CHECKOUT;CHECKIN;UNCHECKOUT;MKWORKSPACE;UPDATE;LABEL;MERGE;BASELINE-CONTROL;MKACTIVITY;RFC;ORDERPATCH;PATCH;SEARCH] /cdn-cgi/trace/ HTTP/1.1[crlf]Host:\\ntopspeed.c6bank.app\\n[crlf][crlf][split][crlf][crlf]MOVE / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (http://www.google.com/bot.html)[crlf]@@Kurtcobain02[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.28.182#104.16.51.111#104.18.29.182#104.16.53.111#104.19.241.93#104.19.240.93#172.64.154.143#104.16.239.166#104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM CREDITO EXPIRADO 1 🔵",
-            "FLAG": "tim",
-            "Payload": "HTTP/1.2 [crlf][crlf]|[crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM EXPIRADO 2 🔵",
-            "FLAG": "tim",
-            "Payload": "[protocol][crlf] [crlf][crlf]@",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM SEMPRE Credito expirado 🔵",
-            "FLAG": "tim",
-            "Payload": "PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net[crlf]#ACL HTTP/2[crlf]Host: plus.google.com[crlf]#HTTP/ [crlf][crlf]|[crlf]]]#ACL HTTP/1.1[lf]Host: google.es[lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA ON 1 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.9[crlf]host: mtls.sandbox.c6bank.com.br[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: uol.alfalemos.shop[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA ON 2 🔵",
-            "FLAG": "tim",
-            "Payload": "[split]ACL / HTTP/1.1[crlf]host: [rotate=mtls.sandbox.c6bank.com.br;assets.c6bank.app;pre-onboarding-p.c6bank.app][crlf][crlf][split][crlf]OPTIONS- // HTTP/1.1[crlf]host: uol.alfalemos.shop[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.19.241.25",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA ON 3 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.9[crlf]host: [rotate=mtls.sandbox.c6bank.com.br;assets.c6bank.app;pre-onboarding-p.c6bank.app][crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: uol.alfalemos.shop[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA ON 4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.19.240.25",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA ON 5 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.19.239.25",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA ON 6 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.28.182",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM DDDS.91.92.95.98.86.61.11.31 🔵",
-            "FLAG": "tim",
-            "Payload": "HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM DDDS.91.92.95.98.86.61.11.31[ 02 ] 🔵",
-            "FLAG": "tim",
-            "Payload": "HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM DDDS.91.92.95.98.86.61.11.31[03] 🔵",
-            "FLAG": "tim",
-            "Payload": "HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM DDDS.91.92.95.98.86.61.11.31[ 04 ] 🔵",
-            "FLAG": "tim",
-            "Payload": "HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM PERMUTIVE GERAL 1 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.3[crlf]Host: cdn.permutive.com[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": " tecnoblog.com.br",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM PERMUTIVE GERAL 2 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.3[crlf]Host: login-homebroker.c6bank.com.br [crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: uol.alfalemos.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "api.vivo.com.br",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA 0 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL /index.html HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Origin: https://live.vivo.com.br/, http://www.google.com[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive, Upgrade[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "pre-onboarding-h.c6bank.app",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA 1 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL /wss.html HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Expect: 100-tmyvpn[lf]Connection: Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[lf][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.16.239.166",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA 2 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL /wss.html HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Expect: 100-tmyvpn[lf]Connection: Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[lf][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.17.64.225",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA 3 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL /wss.html HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Expect: 100-tmyvpn[lf]Connection: Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[lf][lf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.18.33.113",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM NOVA 4 🔵",
-            "FLAG": "tim",
-            "Payload": "ACL / HTTP/1.9[crlf]host: [rotate=support.snapfish.com;support.mapmyfitness.com;uol.alfalemos.shop;support.kontakt.io;uarecord.zendesk.com;sweetroad.zendesk.com;vsco.zendesk.com;support.onetwotrip.com;support.viki.com;support.holmsecurity.com;support.mobileroadie.com;support.neuronmocap.com;support.dxo.com;help.clickfunnels.com;screencastsonline.zendesk.com;support.celtx.com;support.muslimpro.com;support.discogs.com;sginteractive.zendesk.com;support.credly.com;support.sugarsync.com;help.rushlimbaugh.com;support.kidizen.com;support.twilio.com;support.mumbojumbo.com;tpbgame.zendesk.com;ingresshelp.zendesk.com;help.ableton.com;help.spreadshirt.com;wetransfer.zendesk.com;help.issuu.com;meetv.zendesk.com;eight.zendesk.com;help.iheart.com;help.standingstonegames.com;help.trainerize.com;help.coasttocoastam.com;support.securly.com;workflowy.zendesk.com;support.renvu.com;g5entertainment.zendesk.com;support.zipcar.com;gemsofwar.zendesk.com;support.watch.nba.com;faq.hellosign.com;screenad.eu;support.riotgames.com;support.paradoxplaza.com;layananku.airavpn.site;drpanda.zendesk.com;support.fiplab.com;help.behance.net;slack.zendesk.com;aide.e-monsite.com;support.cwtv.com;support.strikingly.com;prodigygame.zendesk.com;support.nixplay.com;flaregames.zendesk.com:support.cmon.com;faq.mightynetworks.com;support.wealthnavi.com;help.musicnotes.com;help.makemeslick.com;help.getmevo.com;support.abra.com;help.tcgplayer.com;mykronoz.zendesk.com;support.ankama.com;help.grindr.com;support.gordonedwards.net;support.mobi2go.com;support.ipvanish.com;support.withings.com;lykkex.zendesk.com;pggmencoleden.zendesk.com;help.positivegrid.com;helpdesk.flexradio.com;help.dreamhost.com;support.cambr;dgeenglish.org;support.ask.fm;care.pressreader.com;help.olx.in;moonactive.zendesk.com;support.getbase.com;history.zendesk.com;produttivo.zendesk.com;support.orcid.org;support.golocalapps.com;support.moneytap.jp;help.acuityscheduling.com;support-pocket.sumally.com;help.remind.com;support.awesome-table.com;support.ampleair.com.au;cs.vtcmobile.vn;support.oneup.com;sup;ort.scribd.com;ecosia.zendesk.com;support.dbconvert.com;cbchelp.cbc.ca;get.cloudapp.help;support.thetileapp.com;support.taskrabbit.com;support.clickcease.com;support.bestwebsoft.com;support.waveapps.com;support.oceanex.pro;autovit.zendesk.com][crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: uol.alfalemos.shop[crlf]Accept-Encoding: identity[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Location: [crlf]Referer: abre.ai/itechnet2 [crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: cloudflare[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
-            "SNI": "",
-            "TlsIP": "",
-            "ProxyIP": "104.17.64.225",
-            "ProxyPort": "80",
-            "Info": "Proxy"
-        },
-        {
-            "Name": "TIM VALIDO E EXPIRADO 1 🔵",
+            "Name": "VIVO 1 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
             "SNI": "",
@@ -1137,7 +47,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 2 🔵",
+            "Name": "VIVO 2 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
             "SNI": "",
@@ -1147,7 +57,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 3 🔵",
+            "Name": "VIVO 3 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
             "SNI": "",
@@ -1157,7 +67,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 4 🔵",
+            "Name": "VIVO 4 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
             "SNI": "",
@@ -1167,7 +77,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 5 🔵",
+            "Name": "VIVO 5 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
@@ -1177,7 +87,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 6 🔵",
+            "Name": "VIVO 6 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
@@ -1187,7 +97,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 7 🔵",
+            "Name": "VIVO 7 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
@@ -1197,7 +107,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 8 🔵",
+            "Name": "VIVO 8 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
@@ -1207,7 +117,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 9 🔵",
+            "Name": "VIVO 9 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
@@ -1217,7 +127,7 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 10 🔵",
+            "Name": "VIVO 10 🇧🇷 ",
             "FLAG": "tim",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
@@ -1227,104 +137,74 @@
             "Info": "Proxy"
         },
         {
-            "Name": "TIM VALIDO E EXPIRADO 11 🔵",
-            "FLAG": "tim",
-            "Payload": "MERGE p.adsymptotic.com HTTP/2.0[crlf]Host: p.adsymptotic.com [crlf]Connection: update, Keep-Alive-Status 101[crlf]Update: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)tlcomputingbr[crlf]Referer: http://www.google.com [crlf]",
+            "Name": "TIM 1 🇧🇷 ",
+            "FLAG": "vivo",
+            "Payload": "GET / HTTP/1.1[crlf]Host: vs.timrecompensas.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
             "SNI": "",
             "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyIP": "108.139.113.82#108.139.113.100",
             "ProxyPort": "80",
             "Info": "Proxy"
         },
         {
-            "Name": "CLARO 01 ATIVE O IPV4 🔴",
-            "FLAG": "claro",
-            "Payload": "HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]",
+            "Name": "TIM 2 🇧🇷 ",
+            "FLAG": "vivo",
+            "Payload": "GET / HTTP/1.1[crlf]Host: xspapp2.tim.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
             "SNI": "",
             "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyIP": "104.18.4.18#104.18.5.18",
             "ProxyPort": "80",
             "Info": "Proxy"
         },
         {
-            "Name": "CLARO FLEX OU CONTROLE 1 🔴",
-            "FLAG": "claro",
-            "Payload": "",
-            "SNI": "whatsapp.com",
+            "Name": "TIM 3 🇧🇷",
+            "FLAG": "vivo",
+            "Payload": "HEAD / HTTP/1.1[crlf]Host: xspapp2.tim.com.br[crlf][crlf]X / HTTP/1.1[crlf]Host: xspapp2.tim.com.br[crlf] [crlf]GET /app0000 HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Connection: Upgrade[lf]Upgrade: Websocket[split][crlf] [crlf]",
+            "SNI": "",
             "TlsIP": "",
-            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyIP": "108.139.113.82#108.139.113.100",
             "ProxyPort": "80",
-            "Info": "Ssl"
+            "Info": "Proxy"
         },
         {
-            "Name": "CLARO FLEX OU CONTROLE 2 🔴",
-            "FLAG": "claro",
-            "Payload": "",
-            "SNI": "m.waze.com",
-            "TlsIP": "uol.alfalemos.shop",
-            "ProxyIP": "",
+            "Name": "TIM 4 🇧🇷 ",
+            "FLAG": "vivo",
+            "Payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "104.18.4.18#104.18.5.18",
             "ProxyPort": "80",
-            "Info": "Ssl"
+            "Info": "Proxy"
         },
         {
-            "Name": "CLARO FLEX OU CONTROLE 3 🔴",
+            "Name": "CLARO 01 🇧🇷 ",
             "FLAG": "claro",
-            "Payload": "",
-            "SNI": "musicaclaro.com.br",
-            "TlsIP": "uol.alfalemos.shop",
-            "ProxyIP": "",
-            "ProxyPort": "443",
-            "Info": "Ssl"
+            "Payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "m.claro.com.br",
+            "ProxyPort": "80",
+            "Info": "Proxy"
         },
         {
-            "Name": "CLARO FLEX OU CONTROLE 4 🔴",
+            "Name": "CLARO 02  🇧🇷 ",
             "FLAG": "claro",
-            "Payload": "",
-            "SNI": "c.whatsapp.net",
-            "TlsIP": "uol.alfalemos.shop",
-            "ProxyIP": "",
-            "ProxyPort": "443",
-            "Info": "Ssl"
+            "Payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "m.claro.com.br",
+            "ProxyPort": "80",
+            "Info": "Proxy"
         },
         {
-            "Name": "CLARO FLEX OU CONTROLE 5 🔴",
+            "Name": "CLARO 03  🇧🇷 ",
             "FLAG": "claro",
-            "Payload": "",
-            "SNI": "web.whatsapp.com",
-            "TlsIP": "186.233.118.54",
-            "ProxyIP": "",
-            "ProxyPort": "443",
-            "Info": "Ssl"
-        },
-        {
-            "Name": "CLARO FLEX OU CONTROLE 6 🔴",
-            "FLAG": "claro",
-            "Payload": "",
-            "SNI": "media.whatsapp.net",
-            "TlsIP": "186.233.118.54",
-            "ProxyIP": "",
-            "ProxyPort": "443",
-            "Info": "Ssl"
-        },
-        {
-            "Name": "CLARO FLEX OU CONTROLE 7 🔴",
-            "FLAG": "claro",
-            "Payload": "",
-            "SNI": "twitter.com",
-            "TlsIP": "uol.alfalemos.shop",
-            "ProxyIP": "",
-            "ProxyPort": "443",
-            "Info": "Ssl"
-        },
-        {
-            "Name": "CLARO FLEX OU CONTROLE 8 🔴",
-            "FLAG": "claro",
-            "Payload": "",
-            "SNI": "m.twitter.com",
-            "TlsIP": "uol.alfalemos.shop",
-            "ProxyIP": "",
-            "ProxyPort": "443",
-            "Info": "Ssl"
+            "Payload": "[rotate=GET;POST;PUT;HEAD;OPTIONS;PATCH;DELETE;CONNECT;PROPFIND;PROPPATCH;MKCOL;COPY;MOVE;LOCK;UNLOCK;UPDATE;SEARCH] / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "m.claro.com.br",
+            "ProxyPort": "80",
+            "Info": "Proxy"
         }
     ]
 }
