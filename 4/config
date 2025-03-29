@@ -1,5 +1,5 @@
 {
-  "Version": "0.0.13",
+  "Version": "0.0.15",
   "ReleaseNotes": "Nova Atualização Disponível",
   "UrlUpdate": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/config",
   "Sms": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/Sms",
@@ -38,7 +38,7 @@
  "Networks": [
            {
             "Name": "VIVO 1 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -48,7 +48,7 @@
         },
         {
             "Name": "VIVO 2 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -58,7 +58,7 @@
         },
         {
             "Name": "VIVO 3 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -68,7 +68,7 @@
         },
         {
             "Name": "VIVO 4 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -78,7 +78,7 @@
         },
         {
             "Name": "VIVO 5 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -88,7 +88,7 @@
         },
         {
             "Name": "VIVO 6 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -98,7 +98,7 @@
         },
         {
             "Name": "VIVO 7 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -108,7 +108,7 @@
         },
         {
             "Name": "VIVO 8 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -118,7 +118,7 @@
         },
         {
             "Name": "VIVO 9 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -128,7 +128,7 @@
         },
         {
             "Name": "VIVO 10 🇧🇷 ",
-            "FLAG": "tim",
+            "FLAG": "vivo",
             "Payload": "ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf]User-Agent: Mobile Safari/9 OPR/9 [lf][split][lf]",
             "SNI": "",
             "TlsIP": "",
@@ -138,7 +138,7 @@
         },
         {
             "Name": "TIM 1 🇧🇷 ",
-            "FLAG": "vivo",
+            "FLAG": "tim",
             "Payload": "GET / HTTP/1.1[crlf]Host: vs.timrecompensas.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
             "SNI": "",
             "TlsIP": "",
@@ -148,7 +148,7 @@
         },
         {
             "Name": "TIM 2 🇧🇷 ",
-            "FLAG": "vivo",
+            "FLAG": "tim",
             "Payload": "GET / HTTP/1.1[crlf]Host: xspapp2.tim.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
             "SNI": "",
             "TlsIP": "",
@@ -158,7 +158,7 @@
         },
         {
             "Name": "TIM 3 🇧🇷",
-            "FLAG": "vivo",
+            "FLAG": "tim",
             "Payload": "HEAD / HTTP/1.1[crlf]Host: xspapp2.tim.com.br[crlf][crlf]X / HTTP/1.1[crlf]Host: xspapp2.tim.com.br[crlf] [crlf]GET /app0000 HTTP/1.1[lf]Host: dp4oz9twukxrn.cloudfront.net[lf]Connection: Upgrade[lf]Upgrade: Websocket[split][crlf] [crlf]",
             "SNI": "",
             "TlsIP": "",
@@ -168,7 +168,7 @@
         },
         {
             "Name": "TIM 4 🇧🇷 ",
-            "FLAG": "vivo",
+            "FLAG": "tim",
             "Payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[crlf][crlf]",
             "SNI": "",
             "TlsIP": "",
