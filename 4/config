@@ -1,0 +1,492 @@
+{
+  "Version": "0.0.10",
+  "ReleaseNotes": "Nova Atualização Disponível",
+  "UrlUpdate": "",
+  "Sms": "https://www.dropbox.com/scl/fi/p52b7sbrrhpjmics7dr1w/Sms.html?rlkey=p322zlr9ojngx55xf9nm1o5f9&st=opld97ut&dl=1",
+  "UrlContato": "https://whatsapp.com/channel/0029Vb2Fb0pHQbRw1ZjjTy0i",
+  "UrlTermos": "https://whatsapp.com/channel/0029Vb2Fb0pHQbRw1ZjjTy0i",
+  "CheckUser": "true",
+  "Udp": [
+    {
+      "Porta": "7300"
+    }
+  ],
+  "Servers": [
+{
+      "Name": "SERVIDOR 1",
+      "TYPE": "premium",
+      "FLAG": "br.png",
+      "ServerIP": "uol.alfalemos.shop",
+      "CheckUser": "http://uol.alfalemos.shop:5454/checkUser",
+      "ServerPort": "22",
+      "SSLPort": "443",
+      "USER": "",
+      "PASS": ""
+    },
+    {
+      "Name": "SERVIDOR 2",
+      "TYPE": "premium",
+      "FLAG": "br.png",
+      "ServerIP": "uol.alfalemos.shop",
+      "CheckUser": "http://uol.alfalemos.shop:5454/checkUser",
+      "ServerPort": "22",
+      "SSLPort": "443",
+      "USER": "",
+      "PASS": ""
+    }
+  ],
+ "Networks": [
+           {
+            "Name": "VIVO SECURITY 1 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:www.whatsapp.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 2 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:204.216.130.40[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 3 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 4 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:microsoft.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 5 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host: 3netcompanybr.shop[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 6 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]GET http://m.clarosync.com/ HTTP/1.1 Host: http://m.clarosync.com/\r\nUser-Agent: Yes\r\nConnection: close\r\nProxy-Connection: Keep-Alive\r\n[crlf][crlf][netData][crlf] [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 7 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]GET http://d1n212ccp6ldpw.cloudfront.net HTTP/1.1\r\n\\r\r\n\\r\r\nCONNECT 127.0.0.1:443HTTP/1.0X-Online-Host: http://download-this-pl.info/124BR/MP.html \\r\r\n\\r",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 08 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]CONNECT http://i.vivo.ddivulga.com/i/gp/ HTTP/1.1[crlf][split]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 09 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]CONNECT http://interatividade.vivo.ddivulga.com/produto/ HTTP/1.0[crlf]<font color=\"black\">[split]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 10 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]CONNECT http://portalrecarga.vivo.com.br/recarga/home/ HTTP/1.1[lf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 11 🟣",
+            "FLAG": "vivo",
+            "Payload": "[split]\r\nCONNECT [host_port]@portalrecarga.vivo.com.br/recarga/home/[protocol]\r\nGET  http://sdp.vivo.com.br/ HTTP/1.1\r\nHost: portalrecarga.vivo.com.br/recarga/home/produto[crlf]X-Forwarded-For: portalrecarga.vivo.com.br/recarga/home/",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 12 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]CONNECT [host_port]<font color=\"yelp\"> GET http://portalrecarga.vivo.com.br/recarga/home/187.8.166.33 [protocol][lf][split]CONNECT 187.8.166.33 CONNECT [host_port]149.56.42.236 HTTP/1.1[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 13 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop#uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 14 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random= 104.18.6.80;104.18.7.80;162.159.138.6;162.159.128.7;104.17.70.206;104.17.71.206;104.17.72.206;104.17.73.206;104.17.74.206;172.64.144.109;104.18.43.147;104.18.7.41][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 15 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]ACL http://1.1.1.1rotate= buzzfeed.com;mobile.adobe.com ;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate= buzzfeed.com; myspace.com;mobile.google.com ;1.0.0.5[crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 16 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]ACL HTTP/1.1[crlf]Host: community-dashbird.buzzfeed.com[crlf]X-Online-Host: uol.alfalemos.shop[crlf]Connection:l llbj  Keep-Alive[crlf]User-Agent: [ua][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 17 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: hmg-embed.claromusica.com",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 18 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: premium.sshtunnelcloud.store[lf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 19 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 20 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]GET / HTTP/1.1][lf]Host: 4netcompanybr.shop[lf]",
+            "SNI": "",
+            "TlsIP": "uol.alfalemos.shop",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 21 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]GET / HTTP/1.1][lf]Host: 4netcompanybr.shop][lf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO delay 06 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 22 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 23 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]HEAD / HTTP/1.1[crlf]Host: 4netcompanybr.shop[crlf]Connection: Upgrade[crlf]Upgrade:[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 24 🟣",
+            "FLAG": "vivo",
+            "Payload": "[split][lf]ACL / HTTP/1.1[crlf]Host: vigia.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: Upgrade[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO WS [1] 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]GET http://vivo.com.br/ HTTP/1.1[crlf]Host: vivo.com.br[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "uol.alfalemos.shop",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO  EASY controle 02 🟣",
+            "FLAG": "vivo",
+            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "vivo360.vivo.com.br#legado.vivo.com.br#assine.vivo.com.br#vigia.vivo.com.br",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO  EASY controle 03 🟣",
+            "FLAG": "vivo",
+            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "4field.vivo.com.br#agar.black#api.app.vivo.com.br#api.vivo-torpedoempresas.vivo.com.br#api.vivo.com.br#app.vivo.com.br#assine.vivo.com.br#atendimento.vivo.com.br#atendimentoonline.vivo.com.br#author.vivotech.vivo.com.br#backoffice-equipamentos.vivo.com.br#backoffice-equipamentos01.vivo.com.br#beneficios.vivo.com.br#carrinho-pos-familia.vivo.com.br#compre.vivo.com.br#digitaldelivery.vivo.com.br#dogtshirtdesign.com#easy.vpntopspeed.tk",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO  EASY controle 04 🟣",
+            "FLAG": "vivo",
+            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "104.18.7.41#104.18.7.80#104.17.70.206",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO  EASY controle 05 🟣",
+            "FLAG": "vivo",
+            "Payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "efika.vivo.com.br#equipamentos01.vivo.com.br#extranet.vivo.com.br#gestaocontactcenter.vivo.com.br#joguejunto.vivo.com.br#legado.vivo.com.br#lgpdfront.vivo.com.br#meuvivoempresas.vivo.com.br#movimenta.vivo.com.br#online2.vivo.com.br#portaldeassinaturas.vivo.com.br#portaljud.vivo.com.br#ppt03.vivo.com.br#prep-ca.daleofnorway.com#protecao.vivo.com.br#proxy.hmtutors.ga#recarga-online.aura.vivo.com.br#sigitm.vivo.com.br#store.vivo.com.br#totalethiopia.com#transmissionhero.com#vigia.vivo.com.br#vigia.vivo.com.br.cdn.cloudflare.net#vivo.ezequias.com.br#vivo360.vivo.com.br#vivo360.vivo.com.br.cdn.cloudflare.net#vivoid.vivo.com.br#vivoid.vivo.com.br.cdn.cloudflare.net#vivomusica.vivo.com.br#vivovalorizaempresas.vivo.com.br#vpoweb.vivo.com.br#web-aceitedigital.vivo.com.br",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "EASY/CONTROLE  01 🟣",
+            "FLAG": "vivo",
+            "Payload": "CLOUD-BRASIL wss://uol.alfalemos.shop HTTP/1.1[crlf]Host: atendimento.hotmart.com.br [crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]CLOUD-BRASIL[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "104.16.51.111",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "EASY/CONTROLE  02 🟣",
+            "FLAG": "vivo",
+            "Payload": "POST /connect/domainreliability/upload HTTP/1.1 [lf]Host: uol.alfalemos.shop[split][crlf]Upgrade: Websocket;Access-Control-Request-Method: POST;Access-Control-Allow-Origin: *;Save-Data: no;Connection: keep-alive;Keep-Alive: timeout=43200, max=71200;Cache-control: public max-age=16777216 immutable;Content-Length: 16777216;Upgrade-Insecure-Requests: 1/n/n[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "104.18.7.41",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "EASY/CONTROLE  03 🟣",
+            "FLAG": "vivo",
+            "Payload": "CONNECT /cdn-cgi/trace HTTP/1.1[lf]Host: uol.alfalemos.shop[lf][lf][split][lf][lf]ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]",
+            "SNI": "uol.alfalemos.shop",
+            "TlsIP": "",
+            "ProxyIP": "141.193.213.11",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO PRE NOVO 1 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:www.whatsapp.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO PRE NOVO 2 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:204.216.130.40[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO PRE NOVO 3 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO PRE NOVO 4 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:microsoft.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO PRE NOVO 5 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host: 4netcompanybr.shop[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 1 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split]BCOPY / [crlf][crlf",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 2 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][lf]ACL / HTTP/55",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 3 🟣",
+            "FLAG": "vivo",
+            "Payload": "CONNECT 127.0.0.1:80[instant_split]GET www.veek.com.br HTTP/1.1[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 4 🟣",
+            "FLAG": "vivo",
+            "Payload": "HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;glink.net.br-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 5 🟣",
+            "FLAG": "vivo",
+            "Payload": "ACL HTTP/1.1[crlf]Host: www.google.com.br[crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 6 🟣",
+            "FLAG": "vivo",
+            "Payload": "[split][crlf]ACL / HTTP/1.1[crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 7 🟣",
+            "FLAG": "vivo",
+            "Payload": "[delay_split][crlf]ACL / HTTP/1.1[crlf]Host:www.whatsapp.com[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]",
+            "SNI": "",
+            "TlsIP": "",
+            "ProxyIP": "uol.alfalemos.shop",
+            "ProxyPort": "80",
+            "Info": "Proxy"
+        },
+        {
+            "Name": "VIVO SECURITY 8 🟣",
+            "FLAG": "vivo",
+            "Payload": "[split][lf]TRACE / HTTP/1.1[crlf]Host: vivo.tl[crlf]Upgrade: WebSocketExtensions[crlf]Connection: Upgrade-Insecure-Reques
