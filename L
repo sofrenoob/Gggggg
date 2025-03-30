@@ -1,1 +1,79 @@
-jb
+[
+    {
+        "name": "Claro 1",
+        "description": "",
+        "mode": "SSH_PROXY",
+        "tls_version": "TLSv1.2",
+        "sorter": 1,
+        "status": "ACTIVE",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "name": "Claro",
+            "color": "#80000000",
+            "sorter": 1
+        },
+        "config_openvpn": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
+            "sni": null
+        },
+        "config_v2ray": null,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "icon": "",
+        "proxy": {
+            "host": "m.claro.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "dp4oz9twukxrn.cloudfront.net",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": "http://185.194.205.50:5000"
+    },
+    {
+        "name": "Vivo",
+        "description": "",
+        "mode": "SSH_PROXY",
+        "sorter": 1,
+        "status": "ACTIVE",
+        "auth": {
+            "username": "",
+            "password": ""
+        },
+        "category": {
+            "name": "Claro",
+            "color": "#00000080",
+            "sorter": 1
+        },
+        "config_payload": {
+            "payload": "Vhhgguu"
+        },
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "icon": "",
+        "proxy": {
+            "host": "Chvgu",
+            "port": 80
+        },
+        "server": {
+            "host": "Cuvvhj",
+            "port": 80
+        },
+        "udp_ports": [
+            7300
+        ],
+        "url_check_user": ""
+    }
+]
