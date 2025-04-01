@@ -1,5 +1,18 @@
 {
-"Version": "0",
-"Notes": "Teste sms com update ok",
-"Atualization": "true"
+  "Version": "1",
+  "Update": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plust",
+  "AppName": "Alfa Internet",
+  "ImgFundo": "https://i.postimg.cc/0QhyHtSz/Screenshot-20250310-174327-1.png",
+  "ImgLogo": "https://www.dropbox.com/s/0kirl17awj42562/compass.png?st=24b9i2ik&dl=1",
+  "ImgBanner": "https://www.dropbox.com/scl/fi/tmfrl0d868lwdug75442n/Pngtree-gradient-circle-text-box-sale_8134196.png?rlkey=amwfq8ch8has9548i27a0mkad&st=ezrqghku&dl=1",
+  "ImgMenu": "https://i.postimg.cc/3JCcLk5h/6.webp",
+  "ImgLogs": "https://i.postimg.cc/C5Cm6Q27/7t.webp",
+  "ImgCheck": "https://i.postimg.cc/FsmPJhfB/b8i.webp",
+  'ImgUser': "https://telegra.ph/file/51cfbf308fa6a293d6f7b.png",
+  'ImgPass': "https://telegra.ph/file/0aae4b5cc75034f04611d.png",
+  "ColorOne": "#7A333333",
+  "ColorTwo": "#7A333333",
+  "ColorStarter": "#7A333333",
+  "ColorDialogs": "#84ffffff",
+  "ColorButtons": "#333333"
 }
