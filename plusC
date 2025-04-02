@@ -1,5 +1,5 @@
 {
- "Version": "52",
+ "Version": "53",
  "Update": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusC",
  "UdpPort": "7300",
  "Sms": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/sms",
@@ -60,7 +60,7 @@
    "FLAG": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
    "Info": "Proxy",
    "Name": "  VIVO  2  🇧🇷  ",
-   "Payload": "[delay_split][lf][rotate=PATCH;ACL;PROPPATCH;MKCOL;COPY;MOVE;LOCK;UNLOCK;ORDERPATCH;SEARCH] HTTP/1.1[lf]Host: [rotate=portal.vivo.com.br;portalrecarga.vivo.com.br/recarga/home/;meuplano.tim.com.br;www.vivo.com.br;buzzfeed.com;mobile.adobe.com;1.0.0.5;1.1.1.1;buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5;spotify.com;pagamentonline.emis.co.ao;playwaze.com;wazer.com;soundwaze.com;escolas.playwaze.com;www.wazeunlimited.com;bucs.playwaze.com;ftp.chillwaze.com;unpkg.com;c6bank.com.br;helpypro.stoodi.com.br;atendimento.lojadointer.com.br;creatorsupport.deezer.com:80;itsupport.surveymonkey.com;linefriendshelp.zendesk.com;vivo.interflashplusvpnpro.cloud;m2.interflashplusvpnpro.cloud][crlf][crlf][crlf]",
+   "Payload": "[delay_split]ACL / HTTP/1.1[crlf]Host: static.r4you.co[crlf]Upgrade: websocket[crlf][crlf]",
    "ProxyIP": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
    "ProxyPort": "80",
    "SNI": "",
@@ -74,7 +74,7 @@
    "FLAG": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
    "Info": "Proxy",
    "Name": "  VIVO  3  🇧🇷  ",
-   "Payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[rotate= 104.18.6.80;104.18.7.80;162.159.138.6;162.159.128.7;104.17.70.206;104.17.71.206;104.17.72.206;104.17.73.206;104.17.74.206;172.64.144.109;104.18.43.147;104.18.7.41][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+   "Payload": "[delay_split]ACL wss://static.r4you.co HTTP/1.1\r\nHost: static.r4you.co\r\nUpgrade: ws\r\n\r\n",
    "ProxyIP": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
    "ProxyPort": "80",
    "SNI": "",
@@ -117,34 +117,6 @@
    "Info": "Proxy",
    "Name": "  VIVO  6  🇧🇷  ",
    "Payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random=google.com.br;141.193.213.11;104.17.70.206;104.26.13.206;104.17.71.206;104.26.14.206;104.17.72.206;104.26.15.206;104.17.73.206;8.8.8.8;104.17.74.206;185.194.205.50][crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@alfalemos[crlf]Referer: http://www.google.com\\r\r\nUser-Agent: Mozilla/5.0 (Linux; U; Android 2.0; en-us; Droid Build/ESD20) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17[crlf][raw][crlf]",
-   "ProxyIP": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
-   "ProxyPort": "80",
-   "SNI": "",
-   "TlsIP": ""
-  },
-  {
-   "Color": "#993399",
-   "ColorDescription": "#ffffff",
-   "ColorName": "#ffffff",
-   "Description": "vivo",
-   "FLAG": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
-   "Info": "Proxy",
-   "Name": "  VIVO  7  🇧🇷  ",
-   "Payload": "[delay_split]ACL / HTTP/1.1[crlf]Host: static.r4you.co[crlf]Upgrade: websocket[crlf][crlf]",
-   "ProxyIP": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
-   "ProxyPort": "80",
-   "SNI": "",
-   "TlsIP": ""
-  },
-  {
-   "Color": "#993399",
-   "ColorDescription": "#ffffff",
-   "ColorName": "#ffffff",
-   "Description": "vivo",
-   "FLAG": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
-   "Info": "Proxy",
-   "Name": "  VIVO  8  🇧🇷  ",
-   "Payload": "[delay_split]ACL wss://static.r4you.co HTTP/1.1\r\nHost: static.r4you.co\r\nUpgrade: ws\r\n\r\n",
    "ProxyIP": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
    "ProxyPort": "80",
    "SNI": "",
@@ -387,6 +359,166 @@
    "ProxyPort": "80",
    "SNI": "",
    "TlsIP": ""
-  }
- ]
+   },
+   {
+         "Color": "#868A08",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "CLARO TESTE",
+         "FLAG":"https://i.ibb.co/2dMj64D/1000069414-removebg-preview.png",
+         "Info":"Proxy",
+         "Name":"CLARO PRÉ MODO AVIÃO ALGUNS DDDS ",
+         "Payload":"ACL / HTTP/1.1
+Host: [rotate=static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.com;minha.claro.com.br]
+Connection: Upgrade
+Upgrade: websocket\n\n",
+         "ProxyIP":"uol.alfalemos.shop",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+       {
+         "Color": "#0174DF",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "TIM ",
+         "FLAG":"https://i.ibb.co/0nk9L7j/IMG-20240702-171050-841.png",
+         "Info":"Proxy",
+         "Name":"Tim Saldo Valído 01",
+         "Payload":"GET /-cgi/trace HTTP/1.1[lf]Host: timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
+         "ProxyIP":"revive.timrecompensas.com.br#104.18.5.18#apf.maisvantagenstim.com.br#172.64.154.143#172.66.0.157#162.159.140.159#162.159.153.238#162.159.152.26",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
+         "Color": "#0174DF",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "TIM ",
+         "FLAG":"https://i.ibb.co/0nk9L7j/IMG-20240702-171050-841.png",
+         "Info":"Proxy",
+         "Name":"Tim Saldo Valído 02",
+         "Payload":"OPTIONS /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#HEAD /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#POST /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
+         "ProxyIP":"104.18.5.18#apf.maisvantagenstim.com.br#172.64.154.143#172.66.0.157#162.159.140.159#162.159.153.238#162.159.152.26#104",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
+         "Color": "#0174DF",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "TIM ",
+         "FLAG":"https://i.ibb.co/0nk9L7j/IMG-20240702-171050-841.png",
+         "Info":"Proxy",
+         "Name":"Tim Saldo Valído 03",
+         "Payload":"GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
+         "ProxyIP":"164.152.243.184#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+       {
+         "Color": "#0174DF",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "TIM ",
+         "FLAG":"https://i.ibb.co/0nk9L7j/IMG-20240702-171050-841.png",
+         "Info":"Proxy",
+         "Name":"Tim Saldo Valído 04",
+         "Payload":"GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT / HTTP/1.9[crlf]host: timofertas.com[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: [host][crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[lf]
+Host: maisvantagenstim.com.br[crlf][crlf]
+GET / HTTP/1.1[crlf]
+Host: uol.alfalemos.shop[crlf]
+Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]
+Host: maisvantagenstim.com.br[crlf][crlf]
+GET / HTTP/1.1[crlf]
+Host: uol.alfalemos.shop[crlf]
+Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]",
+         "ProxyIP":"104.21.2.132#172.66.0.157#apf.maisvantagenstim.com.br#162.159.140.159#revive.timrecompensas.com.br#portal.timrecompensas.com.br#vs.timrecompensas.com.br",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+       {
+         "Color": "#08088A",
+         "ColorDescription": "#000000",
+         "ColorName": "#000000",
+         "Description": "TIM ",
+         "FLAG":"https://i.ibb.co/0nk9L7j/IMG-20240702-171050-841.png",
+         "Info":"Proxy",
+         "Name":"TIM  SOCKS EXPIRADO 01",
+         "Payload":"PATCH /ssh-ws HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Host: Host:virginmobile.mx.www.telegram.org.redpotencia.net.music.amazon.com.mx.dev-cloudfront-tn-eu-west-1-live.video.pscp.tv.recarga.internetparaelbienestar.mx.u.mitec.com.mx.cautivo.baitmexico.com.device-provisioning.googleapis.com.s3.amazonaws.com[lf] [method] /http-ssh [host]:443[lf]Connection: Upgrade[lf][rotate=cautivo.baitmexico.com.bam-cell.nr-data.net.virginmobile.mx.instagram-p42-shv-01-lhr8.fbcdn.net][crlf]Service: Multi-spectro[crlf]ModeX: Bypass-live[crlf]Connection: Upgrade[crlf]Referer:127.0.0.1-https://s3.amazonaws.com/images/icons/icon_404_error.png.virginmobile.mx.cautivo.baitmexico.com.bam-cell.nr-data.net[lf]User-Agent:[lf]User-Agent: [ua][crlf]Upgrade: webt[crlf]Expect: 100-continue[lf][split]HTTP/1.1 200 OK[crlf][crlf]#HTTP/1.1 200[crlf]Host: swcdn.apple.com[crlf]Connection: keep-alive[crlf]#HTTP/1.1 200 ok[crlf]Host:Soundcloud.com;Instagram.com; www.Bittorrent.com;www.utorrent.com[crlf]#HTTP/1.1 200 [crlf]Host: [rotate=teams.microsoft.com;kh.google.com;zoom.us;mobilemaps.googleapis.com][crlf]#HTTP/1.1 200 [crlf]Host:reddit.com[crlf]Connection:Keep-Alive[crlf]Proxy-Connection:Keep-Alive[crlf]#HTTP/3 200 [crlf]Host:www.speedtest.net[crlf]HTTP/2.9 200[lf]Host:[rotate=speedtest.net\nHost:[rotate;myetisalat-app.speedtestcustom.com.ph\#HTTP/1.1 200 OK [crlf]Host:www.google.com[crlf]host:www.youtube.com[crlf]Host:www.facebook.com[crlf] Host:www.amazon.com[crlf]host:www.twitter.com[crlf]host:www.instagram.com[crlf]Host:www.linkedin.com[crlf]Host:www.wikipedia.org[crlf]Host:www.netflix.com[crlf]Host:www.reddit.com[crlf][crlf]#HTTP/1.0 [crlf]Host: [rotate=www.myspace.com;www.soundcloud.com][crlf]#http/ 2024[lf]HOST:https://t.me/cloudbrasil;https://t.me/cloudbrasilssh;https://t.me/arquivosandroideios-split-amazon.com[lf] Content-Length[lf]#HTTP/2.0 200 [crlf]Host: creativeservices.netflix.com[crlf][crlf]#HTTP/1.1 200[crlf]Host: vimeo.com[crlf][crlf][netData][crlf]@mip [crlf][crlf]http://uber.com/ HTTP/1.1 200[crlf]mip[crlf][crlf] [crlf][crlf]http://udemy.com/ HTTP/1.1 200[crlf]Host@mip[crlf][crlf] [crlf][crlf] http://aliyuncs.com/ HTTP/1.1 200[crlf]Host fastly.net/[crlf][crlf][netData][crlf] [crlf][crlf] http://pornhub.com/ HTTP/1.1[crlf] [crlf][crlf][netData][crlf] [crlf][crlf] http://google.com/ HTTP/1.1[cr][lf] [crlf][crlf][netData][cr][lf] [crlf][crlf]CONNECT mip:22@http://youtube.com/ HTTP/1.1[crlf] [crlf][crlf][netData][crlf] [crlf][crlf]#HTTP/1.1 8080[crlf]Host: http://https://cacerts.digicert.com;http://crt.rootg2.amazontrust.com;https://www.wikipedia.org;http://chats.viber.com;https://www.dailymotion.com;https://www.ebay.com[crlf]Connection: keep-alive[crlf]User-Agent: Dalvik/2.1.0 (Linux; U; Android 7.1.2; DM-01K Build/N2G47H)[crlf]X-Online-Host: https://cacerts.digicert.com;http://crt.rootg2.amazontrust.com;https://www.wikipedia.org;http://chats.viber.com;https://www.dailymotion.com;https://www.ebay.com[crlf]X-Forwarded-For: https://cacerts.digicert.com;http://crt.rootg2.amazontrust.com;https://www.wikipedia.org;http://chats.viber.com;https://www.dailymotion.com;https://www.ebay.com[crlf][crlf]#HTTP/1.1 80[crlf]Host:netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com[crlf][crlf]CONNECT http://netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com HTTP/1.1 80[crlf]Host:netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com[crlf]X-Online-Host:netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com[crlf]User-Agent:[ua][crlf]Connection:Keep-Alive[crlf]Proxy-Connection:Keep-Alive[crlf]X-Forwarded-For:[host][crlf]X-Forwarded-Host:netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com[crlf]Content-Type:Application/Octet-Stream[crlf][crlf]",
+         "ProxyIP":"164.152.243.184",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
+         "Color": "#08088A",
+         "ColorDescription": "#000000",
+         "ColorName": "#000000",
+         "Description": "Payload?",
+         "FLAG":"https://i.ibb.co/0nk9L7j/IMG-20240702-171050-841.png",
+         "Info":"Proxy",
+         "Name":"TIM EXPIRADO",
+         "Payload":"HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]#HTTP/1.1 80[crlf]Host:netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com[crlf][crlf]CONNECT http://netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com HTTP/1.1 80[crlf]Host:netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com[crlf]X-Online-Host:netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com[crlf]User-Agent:[ua][crlf]Connection:Keep-Alive[crlf]Proxy-Connection:Keep-Alive[crlf]X-Forwarded-For:[host][crlf]X-Forwarded-Host:netflix.com; facebook.com; wikipedia.com; amazon.com; alibaba.com; tiktok.com; YouTube.com; google.com;Joel.org.com[crlf]Content-Type:Application/Octet-Stream[crlf][crlf]#HTTP/1.1 8080[crlf]Host: http://https://cacerts.digicert.com;http://crt.rootg2.amazontrust.com;https://www.wikipedia.org;http://chats.viber.com;https://www.dailymotion.com;https://www.ebay.com[crlf]Connection: keep-alive[crlf]User-Agent: Dalvik/2.1.0 (Linux; U; Android 7.1.2; DM-01K Build/N2G47H)[crlf]X-Online-Host: https://cacerts.digicert.com;http://crt.rootg2.amazontrust.com;https://www.wikipedia.org;http://chats.viber.com;https://www.dailymotion.com;https://www.ebay.com[crlf]X-Forwarded-For: https://cacerts.digicert.com;http://crt.rootg2.amazontrust.com;https://www.wikipedia.org;http://chats.viber.com;https://www.dailymotion.com;https://www.ebay.com[crlf][crlf]#HTTP/1.1 200[crlf]Host: vimeo.com[crlf][crlf][netData][crlf]@mip [crlf][crlf]http://uber.com/ HTTP/1.1 200[crlf]mip[crlf][crlf] [crlf][crlf]http://udemy.com/ HTTP/1.1 200[crlf]Host@mip[crlf][crlf] [crlf][crlf] http://aliyuncs.com/ HTTP/1.1 200[crlf]Host fastly.net/[crlf][crlf][netData][crlf] [crlf][crlf] http://pornhub.com/ HTTP/1.1[crlf] [crlf][crlf][netData][crlf] [crlf][crlf] http://google.com/ HTTP/1.1[cr][lf] [crlf][crlf][netData][cr][lf] [crlf][crlf]CONNECT mip:22@http://youtube.com/ HTTP/1.1[crlf] [crlf][crlf][netData][crlf] [crlf][crlf]#HTTP/1.1 200 OK [crlf]Host:www.google.com[crlf]host:www.youtube.com[crlf]Host:www.facebook.com[crlf] Host:www.amazon.com[crlf]host:www.twitter.com[crlf]host:www.instagram.com[crlf]Host:www.linkedin.com[crlf]Host:www.wikipedia.org[crlf]Host:www.netflix.com[crlf]Host:www.reddit.com[crlf][crlf]#HTTP/1.1 200 ok[crlf]Host:Soundcloud.com;Instagram.com; www.Bittorrent.com;www.utorrent.com[crlf]#HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]#portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;glink.net.br-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n#ACL HTTP/ \nhost: www.google.com[lf]#ACL http://1.1.1.1rotate= buzzfeed.com ; mobile.adobe.com ;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate= buzzfeed.com ; myspace .com ; mobile.google.com ;1.0.0.5[crlf]#PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net [crlf]#PROPPATCH http://mercadolivre.com.br HTTP/2[crlf]Host: http://mercadolivre.com.br[crlf]#ACL http://1.1.1.1rotate= buzzfeed.com;mobile.adobe.com ;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate= buzzfeed.com; myspace.com;mobile.google.com ;1.0.0.5[crlf]#ACL HTTP/1.1[crlf]Host: community-dashbird.buzzfeed.com[crlf]X-Online-Host: [app_host][crlf]Connection:l llbj  Keep-Alive[crlf]User-Agent: [ua][crlf]#HTTP/ [crlf][crlf]|[crlf]]]#HTTP/ [crlf][crlf]|[crlf]]]@#HTTP/ [crlf][crlf]|[crlf]#HTTP/ [crlf][crlf]|[crlf]•#ACL HTTP/1.1[lf]Host: google.es[lf]#MERGE ok.ru HTTP/1.1[crlf]Host: ok.ru[crlf]Connection: upgrade, Keep-Alive[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+ http://www.google.com/bot.html)[crlf]Referenciador : http://www.google.com [crlf]",
+         "ProxyIP":"164.152.243.184",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
+         "Color": "#298A08",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "vivo facil",
+         "FLAG":"https://i.ibb.co/VqdKWg8/6e4e74468a4a.png",
+         "Info":"Proxy",
+         "Name":"VIVO PRÉ 01",
+         "Payload":"GET / HTTP/1.1[crlf]Host: rx1.shop[crlf]Upgrade: Websocket[crlf]Connection: Upgrade[crlf][crlf]#[split]\nCONNECT [host_port]@portalrecarga.vivo.com.br/recarga/home/[protocol]\nGET  http://sdp.vivo.com.br/ HTTP/1.1\nHost: portalrecarga.vivo.com.br/recarga/home/produto[crlf]X-Forwarded-For: portalrecarga.vivo.com.br/recarga/home/\n\n\n#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#[split][rotate=MERGE;PROPPATCH;PATCH;ACL;ACL;PUT;SEARCH;UPDATE;PATCH;POST;HEAD;CONNECT] /chat HTTP/1.1
+Host: [rotate=vivo.com.br;sdi.vivo.com.br;global-4-lvs-colossus-10.opera-mini.net;p.adsymptotic.com]
+Connection: Keep-Alive, Upgrade
+Upgrade: websocket
+Keep-Alive: timeout=864000000000000000000
+User-Agent: WhatsApp/2.16.259 Mozilla/5.0 (Linux; Unix 10.0; MHA-L29 Build/HUAWEIMHA-L29) AppleWebKit/537.36 (KHTML, like Gecko) Safari/537.36\nX-Status-Id: openvpn[crlf]\nGET 127.0.0.1:80 HTTP/1.0[crlf][crlf][crlf]#ACL http://1.1.1.1rotate=buzzfeed.com;mobile.adobe.com;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate=buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5[crlf] https://1.1.1rotate=portalrecarga.vivo.com.br;1.0.0.5recarga/home/;recarga.claro.com.br/no-credit][crlf]X-Forwarded-For: [rotate=portalrecarga.vivo.com.br/recarga/home/;recarga.claro.com.br/no-credit][crlf]Connection: Keep-Alive[crlf]Upgrade: websocket[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: portal.vivo.com.br[lf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split] ACL / HTTP/1.1[crlf]Host:[random= 104.18.6.80;104.18.7.80;162.159.138.6;162.159.128.7;104.17.70.206;104.17.71.206;104.17.72.206;104.17.73.206;104.17.74.206;172.64.144.109;104.18.43.147;104.18.7.41][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]#[delay_split]PUT / Cache-Control: private: 13.33.131.6[crlf]",
+         "ProxyIP":"uol.alfalemos.shop#auth.vivo.com.br#vivo.com.br#uol.alfalemos.shop#uol.alfalemos.shop",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      },
+      {
+         "Color": "#298A08",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "VIVO ",
+         "FLAG":"https://i.ibb.co/VqdKWg8/6e4e74468a4a.png",
+         "Info":"Proxy",
+         "Name":"VIVO PRÉ 02",
+         "Payload":"delay_split][lf][rotate=PATCH;ACL;PROPPATCH;MKCOL;COPY;MOVE;LOCK;UNLOCK;ORDERPATCH;SEARCH] HTTP/1.1[lf]Host: [rotate=portal.vivo.com.br;portalrecarga.vivo.com.br/recarga/home/;meuplano.tim.com.br;www.vivo.com.br;buzzfeed.com;mobile.adobe.com;1.0.0.5;1.1.1.1;buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5;spotify.com;pagamentonline.emis.co.ao;playwaze.com;wazer.com;soundwaze.com;escolas.playwaze.com;www.wazeunlimited.com;bucs.playwaze.com;ftp.chillwaze.com;unpkg.com;c6bank.com.br;helpypro.stoodi.com.br;atendimento.lojadointer.com.br;creatorsupport.deezer.com:80;itsupport.surveymonkey.com;linefriendshelp.zendesk.com;vivo.interflashplusvpnpro.cloud;m2.interflashplusvpnpro.cloud][crlf][crlf][crlf]#[delay_split]ACL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: Websocket[lf][split][lf]#ACL http://1.1.1.1rotate=buzzfeed.com;mobile.adobe.com;1.0.0.5 HTTP/1.1 zDt: http://1.1.1.1rotate=buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5 zDtps://1.1.1rotate=portalrecarga.vivo.com.br;1.0.0.5recarga/home/;recarga.claro.com.br/no-credit] zDorwarded-For: [rotate=portalrecarga.vivo.com.br/recarga/home/;recarga.claro.com.br/no-credit] zDonnection: Keep-Alive[crlf]Upgrade: websocket[crlf][crlf]#delay_split][lf][rotate=PATCH;ACL;PROPPATCH;MKCOL;COPY;MOVE;LOCK;UNLOCK;ORDERPATCH;SEARCH] HTTP/1.1[lf]Host: [rotate=portal.vivo.com.br;portalrecarga.vivo.com.br/recarga/home/;meuplano.tim.com.br;www.vivo.com.br;buzzfeed.com;mobile.adobe.com;1.0.0.5;1.1.1.1;buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5;spotify.com;pagamentonline.emis.co.ao;playwaze.com;wazer.com;soundwaze.com;escolas.playwaze.com;www.wazeunlimited.com;bucs.playwaze.com;ftp.chillwaze.com;unpkg.com;c6bank.com.br;helpypro.stoodi.com.br;atendimento.lojadointer.com.br;creatorsupport.deezer.com:80;itsupport.surveymonkey.com;linefriendshelp.zendesk.com;vivo.interflashplusvpnpro.cloud;m2.interflashplusvpnpro.cloud][crlf][crlf][crlf]#[delay_split][lf][rotate=ACL;BMOVE;PUT;CONNECT;HEAD;DEBELETE;DELETE;PROPATCH;PATCH;TRACE;POST] / HTTP/1.2[lf]Host: [host_port][lf]HTTP/1.1[lf]Host: [host_port][lf]ACL / [protocol][lf]Host: [host_port][lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf][lf]#[delay_split] ACL / HTTP/1.1[crlf]Host:[random=vivoproxy.gdmnet.pro][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]#[delay_split] ACL / HTTP/1.1[crlf]Host:[random= 104.18.11.248;104.18.37.248;104.18.6.80;104.18.7.80;162.159.138.6;162.159.128.7;104.17.70.206;104.17.71.206;104.17.72.206;104.17.73.206;104.17.74.206;172.64.144.109;104.18.43.147;104.18.7.41][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf#PATCH /ssh-ws HTTP/1.1[crlf]Host: [app_host][crlf]Host: quiz.int.vidio.com[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf][crlf]#[delay_split][lf][rotate=ACL;BMOVE;PUT;CONNECT;HEAD;DEBELETE;DELETE;PROPATCH;PATCH;TRACE;POST] / HTTP/1.2[lf]Host: [host_port][lf]HTTP/1.1[lf]Host: [host_port][lf]ACL / [protocol][lf]Host: [host_port][lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf][lf]#HTTP/1.0/1.1 [lf]Host: vivo.com.br[crlf][crlf][#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#[split]\nCONNECT [host_port]@portalrecarga.vivo.com.br/recarga/home/[protocol]\nGET  http://sdp.vivo.com.br/ HTTP/1.1\nHost: portalrecarga.vivo.com.br/recarga/home/produto[crlf]X-Forwarded-For: portalrecarga.vivo.com.br/recarga/home/\n\n\n#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]",
+         "ProxyIP":"104.26.12.205#uol.alfalemos.shop#172.67.74.152#104.26.12.205#104.18.28.181#104.16.239.166#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25# 104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.6.80#104.18.7.80 #104.18.6.41",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""     
+      },
+      {
+         "Color": "#610B4B",
+         "ColorDescription": "#ffffff",
+         "ColorName": "#ffffff",
+         "Description": "VIVO",
+         "FLAG":"https://i.ibb.co/C2N4jbX/photo-2024-10-07-17-25-29-removebg-preview.png",
+         "Info":"Proxy",
+         "Name":"VIVO CONTROLE E EASY",
+         "Payload":"GET / HTTP/1.1
+Host: seuflare.com
+Connection: Upgrade
+Upgrade: websocket
+User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][split][crlf]#GET / HTTP/1.1[crlf]Host: [app_host][crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]#GET / HTTP/1.1[crlf]Host: [app_host][crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]",
+         "ProxyIP":"legado.vivo.com.br#uvp.elections.govt.nz#portaldeassinaturas.vivo.com.#portaljud.vivo.com.br#vigia.vivo.com.br# vivo360.vivo.com.br#vivomusica.vivo.com.br#compre.vivo.com.br#extranet.vivo.com.br#joguejunto.vivo.com.br#141.193.213.10#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#104.26.12.205#uol.alfalemos.shop#172.67.74.152#104.26.12.205#104.18.28.181#104.16.239.166#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25# 104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.6.80#104.18.7.80 #104.18.6.41",
+         "ProxyPort":"80",
+         "SNI":"",
+         "TlsIP":""
+      }
+  ]
 }
