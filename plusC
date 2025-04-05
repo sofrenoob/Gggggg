@@ -1,5 +1,5 @@
 {
- "Version": "55",
+ "Version": "56",
  "Update": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/plusC",
  "UdpPort": "7300",
  "Sms": "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/sms",
@@ -130,8 +130,8 @@
    "FLAG": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
    "Info": "Proxy",
    "Name": "  TIM  01  🇧🇷  ",
-   "Payload": "PROPPATCH http://mercadolivre.com.br HTTP/2[crlf]Host: http://mercadolivre.com.br[crlf]",
-   "ProxyIP": "185.194.205.50#cdn.alfalemos.xyz#uol.alfalemos.shop",
+   "Payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
+   "ProxyIP": "104.18.5.18",
    "ProxyPort": "80",
    "SNI": "",
    "TlsIP": ""
