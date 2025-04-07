@@ -386,7 +386,7 @@
             "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
-        "id": 67066,
+        "id": 67067,
         "mode": "SSH_PROXY",
         "name": "🔴 CLARO 🔴",
         "proxy": {
