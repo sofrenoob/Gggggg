@@ -388,7 +388,7 @@
         "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
         "id": 67067,
         "mode": "SSH_PROXY",
-        "name": "🔴 CLARO 🔴",
+        "name": "🔴  CLARO  🔴",
         "proxy": {
             "host": "m.claro.com.br",
             "port": 80
