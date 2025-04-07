@@ -1,8 +1,8 @@
 [
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -52,8 +52,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -82,7 +82,7 @@
         "icon": "https://raw.githubusercontent.com/TelksBr/SSH-T-PROJECT-VPN/main/IC/CLARO_P.png",
         "id": 50446,
         "mode": "SSH_PROXY",
-        "name": "✅ FRONT",
+        "name": "✅.    🔴 FRONT",
         "proxy": {
             "host": "m.claro.com.br",
             "port": 80
@@ -103,8 +103,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -313,8 +313,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -470,8 +470,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -627,8 +627,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -731,8 +731,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -835,8 +835,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -886,8 +886,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -937,8 +937,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -1041,8 +1041,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -1198,8 +1198,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -1302,8 +1302,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
@@ -1353,8 +1353,8 @@
     },
     {
         "auth": {
-            "password": "ssht",
-            "username": "ssht",
+            "password": "",
+            "username": "",
             "v2ray_uuid": null
         },
         "category": {
