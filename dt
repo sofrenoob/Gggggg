@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.75    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -60,7 +60,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.75    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -69,7 +69,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random=google.com.br;141.193.213.11;104.17.70.206;104.26.13.206;104.17.71.206;104.26.14.206;104.17.72.206;104.26.15.206;104.17.73.206;8.8.8.8;104.17.74.206;185.194.205.50][crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@alfalemos[crlf]Referer: http://www.google.com[crlf][crlf]",
+            "payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random=google.com.br;141.193.213.11;104.17.70.206;104.26.13.206;104.17.71.206;104.26.14.206;104.17.72.206;104.26.15.206;104.17.73.206;8.8.8.8;104.17.74.206;185.194.205.50][crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@alfalemos[crlf]Referer: http://www.google.com[crlf][crlf]#GET / HTTP/1.1 [crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET wss://uol.alfalemos.shop/ HTTP/1.1 Host: uol.alfalemos.shop Upgrade: Websocket Connection:Upgrade Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ== Sec-WebSocket-Version: 13 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.94 Safari/537.36[lf][lf]#[rotate=ACL;PATCH;GET;PUT;HEAD;DELETE;POST;CONNECT;OPTIONS;TRACE;MOVE;COPY;PROPFIND;MKCOL;LOCK;UNLOCK] / [split]HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Connection: Upgrade[lf]Upgrade: websocket[lf]X-Forwarded-For: 127.0.0.1[lf]X-Real-IP: 10.0.0.1[lf]User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)[lf]Accept-Encoding: gzip, deflate[lf][lf]#[rotate=ACL;PATCH;GET;PUT;HEAD;DELETE;POST;CONNECT;OPTIONS;TRACE;MOVE;COPY;PROPFIND;MKCOL;LOCK;UNLOCK;SEARCH;LINK;UNLINK;BIND;REBIND;UNBIND] / [split]HTTP/1.1[lf] Host: subdomínioaqui[lf] Connection: keep-alive, Upgrade[lf] Upgrade: websocket[lf] X-Forwarded-For: 127.0.0.1, 10.0.0.2, 192.168.1.1[lf] X-Real-IP: 10.0.0.1[lf] X-Client-IP: 127.0.0.1[lf] X-Originating-IP: 127.0.0.1[lf] X-Remote-IP: 127.0.0.1[lf] X-Remote-Addr: 127.0.0.1[lf] X-Custom-IP-Authorization: 127.0.0.1[lf] X-Forwarded-Host: evil.com[lf] X-Original-URL: /admin[lf] X-Rewrite-URL: /admin[lf] X-HTTP-Method-Override: DELETE[lf] Referer: https://google.com[lf] Origin: null[lf] Forwarded: for=127.0.0.1;proto=http;by=evil[lf] User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:110.0) Gecko/20100101 Firefox/110.0[lf] Accept-Encoding: gzip, deflate, br[lf] Accept-Language: en-US,en;q=0.5[lf] TE: trailers[lf] Via: 1.1 localhost (squid/3.5.27)[lf] Cache-Control: no-cache[lf] Pragma: no-cache[lf]#[delay_split][crlf]PATCH wss://[app_host]/ HTTP/1.0[crlf]Host: [rotate=static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.co][crlf]Upgrade: Websocket[crlf]Proxy-Connection: Keep-Alive; Upgrade[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]@TSTOPSPEED[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -84,11 +84,11 @@
         "mode": "SSH_PROXY",
         "name": "VIVO 02 ",
         "proxy": {
-            "host": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
+            "host": "104.18.6.41#172.64.150.8#104.26.5.32#104.17.70.206#104.19.240.25#104.19.240.93#104.19.241.93#104.18.33.113#104.18.28.182#104.18.29.182#104.19.239.25#104.19.241.25#104.19.242.25#104.16.184.241#104.16.0.1#104.16.0.2#104.16.1.1#104.17.0.1#104.18.1.1#104.19.1.1#108.162.192.1#108.162.193.1#141.101.64.1#141.101.65.1#172.64.0.1#172.65.0.1#173.245.48.1#173.245.49.1#188.114.96.1#188.114.97.1#198.41.128.1#198.41.129.1#104.16.0.0/12#108.162.192.0/18#131.0.72.0/22#141.101.64.0/18#162.158.0.0/15#172.64.0.0/13#173.245.48.0/20#188.114.96.0/20#190.93.240.0/20#197.234.240.0/22#198.41.128.0/17#185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -111,7 +111,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.75    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -120,8 +120,8 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "[delay_split]ACL / HTTP/1.1[crlf]Host: static.r4you.co[crlf]Upgrade: websocket[crlf][crlf]",
-            "sni": null
+            "payload": "GET / HTTP/1.1 [crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET wss://uol.alfalemos.shop/ HTTP/1.1 Host: uol.alfalemos.shop Upgrade: Websocket Connection:Upgrade Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ== Sec-WebSocket-Version: 13 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.94 Safari/537.36[lf][lf]#[rotate=ACL;PATCH;GET;PUT;HEAD;DELETE;POST;CONNECT;OPTIONS;TRACE;MOVE;COPY;PROPFIND;MKCOL;LOCK;UNLOCK] / [split]HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Connection: Upgrade[lf]Upgrade: websocket[lf]X-Forwarded-For: 127.0.0.1[lf]X-Real-IP: 10.0.0.1[lf]User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)[lf]Accept-Encoding: gzip, deflate[lf][lf]#[rotate=ACL;PATCH;GET;PUT;HEAD;DELETE;POST;CONNECT;OPTIONS;TRACE;MOVE;COPY;PROPFIND;MKCOL;LOCK;UNLOCK;SEARCH;LINK;UNLINK;BIND;REBIND;UNBIND] / [split]HTTP/1.1[lf] Host: subdomínioaqui[lf] Connection: keep-alive, Upgrade[lf] Upgrade: websocket[lf] X-Forwarded-For: 127.0.0.1, 10.0.0.2, 192.168.1.1[lf] X-Real-IP: 10.0.0.1[lf] X-Client-IP: 127.0.0.1[lf] X-Originating-IP: 127.0.0.1[lf] X-Remote-IP: 127.0.0.1[lf] X-Remote-Addr: 127.0.0.1[lf] X-Custom-IP-Authorization: 127.0.0.1[lf] X-Forwarded-Host: evil.com[lf] X-Original-URL: /admin[lf] X-Rewrite-URL: /admin[lf] X-HTTP-Method-Override: DELETE[lf] Referer: https://google.com[lf] Origin: null[lf] Forwarded: for=127.0.0.1;proto=http;by=evil[lf] User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:110.0) Gecko/20100101 Firefox/110.0[lf] Accept-Encoding: gzip, deflate, br[lf] Accept-Language: en-US,en;q=0.5[lf] TE: trailers[lf] Via: 1.1 localhost (squid/3.5.27)[lf] Cache-Control: no-cache[lf] Pragma: no-cache[lf]#[delay_split][crlf]PATCH wss://[app_host]/ HTTP/1.0[crlf]Host: [rotate=static.whatsapp.com;m.waze.com;business.whatsapp.com;web.whatsapp.com;dns.web.whatsapp.com;m.twitter.com;m.waze.com;waze.com;www.waze.com;www.icanhazip.co][crlf]Upgrade: Websocket[crlf]Proxy-Connection: Keep-Alive; Upgrade[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]@TSTOPSPEED[crlf][crlf]",
+            "sni": "uol.alfalemos.shop"
         },
         "config_v2ray": null,
         "created_at": "2023-07-24 17:51:24",
@@ -132,14 +132,14 @@
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67062,
-        "mode": "SSH_PROXY",
+        "mode": "SSL_PROXY",
         "name": "VIVO 03 ",
         "proxy": {
-            "host": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
+            "host": "104.18.6.41#172.64.150.8#104.26.5.32#104.17.70.206#104.19.240.25#104.19.240.93#104.19.241.93#104.18.33.113#104.18.28.182#104.18.29.182#104.19.239.25#104.19.241.25#104.19.242.25#104.16.184.241#104.16.0.1#104.16.0.2#104.16.1.1#104.17.0.1#104.18.1.1#104.19.1.1#108.162.192.1#108.162.193.1#141.101.64.1#141.101.65.1#172.64.0.1#172.65.0.1#173.245.48.1#173.245.49.1#188.114.96.1#188.114.97.1#198.41.128.1#198.41.129.1#104.16.0.0/12#108.162.192.0/18#131.0.72.0/22#141.101.64.0/18#162.158.0.0/15#172.64.0.0/13#173.245.48.0/20#188.114.96.0/20#190.93.240.0/20#197.234.240.0/22#198.41.128.0/17",
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -162,7 +162,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.75    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -213,7 +213,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.75    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -264,7 +264,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.75    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -315,7 +315,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.75    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -366,7 +366,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.75    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -409,15 +409,14 @@
     },
     {
         "auth": {
-            "password": "free",
             "username": "free",
-            "v2ray_uuid": null
+            "password": "free"
         },
         "category": {
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.75    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -460,15 +459,14 @@
     },
     {
         "auth": {
-            "password": "free",
             "username": "free",
-            "v2ray_uuid": null
+            "password": "free"
         },
         "category": {
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.75    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -511,15 +509,14 @@
     },
     {
         "auth": {
-            "password": "free",
             "username": "free",
-            "v2ray_uuid": null
+            "password": "free"
         },
         "category": {
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.75    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -562,15 +559,14 @@
     },
     {
         "auth": {
-            "password": "free",
             "username": "free",
-            "v2ray_uuid": null
+            "password": "free"
         },
         "category": {
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.75    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -613,15 +609,14 @@
     },
     {
         "auth": {
-            "password": "free",
             "username": "free",
-            "v2ray_uuid": null
+            "password": "free"
         },
         "category": {
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.75    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -664,15 +659,14 @@
     },
     {
         "auth": {
-            "password": "free",
             "username": "free",
-            "v2ray_uuid": null
+            "password": "free"
         },
         "category": {
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.75    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -715,15 +709,14 @@
     },
     {
         "auth": {
-            "password": "free",
             "username": "free",
-            "v2ray_uuid": null
+            "password": "free"
         },
         "category": {
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.75    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -766,15 +759,14 @@
     },
     {
         "auth": {
-            "password": "free",
             "username": "free",
-            "v2ray_uuid": null
+            "password": "free"
         },
         "category": {
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.75    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
