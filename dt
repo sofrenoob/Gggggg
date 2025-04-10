@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -60,7 +60,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -111,7 +111,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -162,7 +162,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -213,7 +213,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -264,7 +264,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -315,7 +315,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -366,7 +366,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.73    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -417,7 +417,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -426,7 +426,7 @@
         "category_id": 5466,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "PATCH / HTTP/1.1[crlf][split]MERGE Https://www.vivo.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#MERGE / aws.alfalemos.shop[protocol][crlf][split]PATCH Https://www.vivo.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#PATCH / [protocol][crlf][split]PATCH http://www.vivo.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1Host: aws.alfalemos.shop Connection: Upgrade Upgrade: websocket User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][split][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]",
+            "payload": "PATCH / HTTP/1.1[crlf][split]MERGE Https://www.vivo.com.br/ HTTP/1.1[crlf]Host: F][alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#MERGE / cdn.alfalemos.shop[protocol][crlf][split]PATCH Https://www.vivo.com.br/ HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#PATCH / [protocol][crlf][split]PATCH http://www.vivo.com.br/ HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1Host: cdn.alfalemos.shop Connection: Upgrade Upgrade: websocket User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][split][crlf]#GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]#GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]#GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -441,11 +441,11 @@
         "mode": "SSH_PROXY",
         "name": "VIVO 01 ",
         "proxy": {
-            "host": "104.26.12.206#104.16.0.0#legado.vivo.com.br#uvp.elections.govt.nz#portaldeassinaturas.vivo.com.#portaljud.vivo.com.br#vigia.vivo.com.br#VIVO360.vivo.com.br#vivomusica.vivo.com.br#compre.vivo.com.br#extranet.vivo.com.br#joguejunto.vivo.com.br#141.193.213.10#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#104.26.12.205#aws.alfalemos.shop#172.67.74.152#104.26.12.205#104.18.28.181#104.16.239.166#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25# 104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.6.80#104.18.7.80 #104.18.6.41",
+            "host": "104.26.12.206#104.16.0.0#legado.vivo.com.br#uvp.elections.govt.nz#portaldeassinaturas.vivo.com.#portaljud.vivo.com.br#vigia.vivo.com.br#VIVO360.vivo.com.br#vivomusica.vivo.com.br#compre.vivo.com.br#extranet.vivo.com.br#joguejunto.vivo.com.br#141.193.213.10#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#104.26.12.205#cdn.alfalemos.shop#172.67.74.152#104.26.12.205#104.18.28.181#104.16.239.166#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25# 104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.6.80#104.18.7.80 #104.18.6.41",
             "port": 80
         },
         "server": {
-            "host": "aws.alfalemos.shop",
+            "host": "cdn.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -468,7 +468,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -492,11 +492,11 @@
         "mode": "SSH_PROXY",
         "name": "VIVO 02 ",
         "proxy": {
-            "host": "3.96.200.105#dns.alfalemos.xyz#aws.alfalemos.shop",
+            "host": "3.96.200.105#dns.alfalemos.xyz#cdn.alfalemos.shop",
             "port": 80
         },
         "server": {
-            "host": "3.96.200.105#dns.alfalemos.xyz#aws.alfalemos.shop",
+            "host": "3.96.200.105#dns.alfalemos.xyz#cdn.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -519,7 +519,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -543,11 +543,11 @@
         "mode": "SSH_PROXY",
         "name": "VIVO 03 ",
         "proxy": {
-            "host": "3.96.200.105#dns.alfalemos.xyz#aws.alfalemos.shop",
+            "host": "3.96.200.105#dns.alfalemos.xyz#cdn.alfalemos.shop",
             "port": 80
         },
         "server": {
-            "host": "3.96.200.105#dns.alfalemos.xyz#aws.alfalemos.shop",
+            "host": "3.96.200.105#dns.alfalemos.xyz#cdn.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -570,7 +570,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -579,7 +579,7 @@
         "category_id": 5466,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "PATCH / HTTP/1.1[crlf][split]MERGE Https://ayabooks.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#MERGE / aws.alfalemos.shop[protocol][crlf][split]PATCH Https://vs.timrecompensas.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#PATCH / [protocol][crlf][split]PATCH http://ayabooks.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: ayabooks.com.br[crlf][crlf][split]- /app13 HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf]@ALNETWORK[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
+            "payload": "PATCH / HTTP/1.1[crlf][split]MERGE Https://ayabooks.com.br/ HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#MERGE / cdn.alfalemos.shop[protocol][crlf][split]PATCH Https://vs.timrecompensas.com.br/ HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#PATCH / [protocol][crlf][split]PATCH http://ayabooks.com.br/ HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: ayabooks.com.br[crlf][crlf][split]- /app13 HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf]@ALNETWORK[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -598,7 +598,7 @@
             "port": 80
         },
         "server": {
-            "host": "aws.alfalemos.shop",
+            "host": "cdn.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -621,7 +621,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -630,7 +630,7 @@
         "category_id": 5466,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "OPTIONS /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#HEAD /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#POST /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
+            "payload": "OPTIONS /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#HEAD /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#POST /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -649,7 +649,7 @@
             "port": 80
         },
         "server": {
-            "host": "aws.alfalemos.shop",
+            "host": "cdn.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -672,7 +672,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -681,7 +681,7 @@
         "category_id": 5466,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: aws.alfalemos.shop[lf]Upgrade: websocket[lf][lf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
+            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: cdn.alfalemos.shop[lf]Upgrade: websocket[lf][lf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -700,7 +700,7 @@
             "port": 80
         },
         "server": {
-            "host": "aws.alfalemos.shop",
+            "host": "cdn.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -723,7 +723,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -732,7 +732,7 @@
         "category_id": 5466,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT / HTTP/1.9[crlf]host: timofertas.com[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: [host][crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[crlf][crlf]GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[crlf][crlf]GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]",
+            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT / HTTP/1.9[crlf]host: timofertas.com[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: [host][crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[crlf][crlf]GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[crlf][crlf]GET / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -751,7 +751,7 @@
             "port": 80
         },
         "server": {
-            "host": "aws.alfalemos.shop",
+            "host": "cdn.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -774,7 +774,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
+            "name": "🇨🇦    Conexões VERSÃO : 0.73    🇨🇦",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
