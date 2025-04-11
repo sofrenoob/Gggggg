@@ -1,810 +1,262 @@
 [
     {
-        "auth": {
-            "password": null,
-            "username": null,
-            "v2ray_uuid": null
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 70  🇧🇷",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5465,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "PATCH / HTTP/1.1[crlf][split]MERGE Https://www.vivo.com.br/ HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#MERGE / uol.alfalemos.shop[protocol][crlf][split]PATCH Https://www.vivo.com.br/ HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#PATCH / [protocol][crlf][split]PATCH http://www.vivo.com.br/ HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1Host: uol.alfalemos.shop Connection: Upgrade Upgrade: websocket User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][split][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]#GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:24",
-        "description": "Servidor VIP : 🇧🇷",
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
-        "id": 67060,
-        "mode": "SSH_PROXY",
-        "name": "VIVO 01 ",
-        "proxy": {
-            "host": "104.26.12.206#104.16.0.0#legado.vivo.com.br#uvp.elections.govt.nz#portaldeassinaturas.vivo.com.#portaljud.vivo.com.br#vigia.vivo.com.br#VIVO360.vivo.com.br#vivomusica.vivo.com.br#compre.vivo.com.br#extranet.vivo.com.br#joguejunto.vivo.com.br#141.193.213.10#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#104.26.12.205#uol.alfalemos.shop#172.67.74.152#104.26.12.205#104.18.28.181#104.16.239.166#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25# 104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.6.80#104.18.7.80 #104.18.6.41",
-            "port": 80
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            7300
-        ],
-        "updated_at": "2023-09-07 00:12:21",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Logo do app",
+        "name": "APP_LOGO",
+        "value": "",
+        "type": "IMAGE"
     },
     {
-        "auth": {
-            "password": null,
-            "username": null,
-            "v2ray_uuid": null
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5465,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random=google.com.br;141.193.213.11;104.17.70.206;104.26.13.206;104.17.71.206;104.26.14.206;104.17.72.206;104.26.15.206;104.17.73.206;8.8.8.8;104.17.74.206;185.194.205.50][crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@alfalemos[crlf]Referer: http://www.google.com[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:24",
-        "description": "Servidor VIP : 🇧🇷",
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
-        "id": 67061,
-        "mode": "SSH_PROXY",
-        "name": "VIVO 02 ",
-        "proxy": {
-            "host": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
-            "port": 80
-        },
-        "server": {
-            "host": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            7300
-        ],
-        "updated_at": "2023-09-07 00:12:21",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Imagem de fundo",
+        "name": "APP_BACKGROUND_IMAGE",
+        "value": "https://i.postimg.cc/0QhyHtSz/Screenshot-20250310-174327-1.png",
+        "type": "IMAGE"
     },
     {
-        "auth": {
-            "password": null,
-            "username": null,
-            "v2ray_uuid": null
+        "label": "Tipo do fundo do app",
+        "name": "APP_BACKGROUND_TYPE",
+        "value": {
+            "options": [
+                {
+                    "label": "Imagem",
+                    "value": "IMAGE"
+                },
+                {
+                    "label": "Cor",
+                    "value": "COLOR"
+                }
+            ],
+            "selected": "IMAGE"
         },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5465,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "[delay_split]ACL / HTTP/1.1[crlf]Host: static.r4you.co[crlf]Upgrade: websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:24",
-        "description": "Servidor VIP : 🇧🇷",
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
-        "id": 67062,
-        "mode": "SSH_PROXY",
-        "name": "VIVO 03 ",
-        "proxy": {
-            "host": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
-            "port": 80
-        },
-        "server": {
-            "host": "185.194.205.50#dns.alfalemos.xyz#uol.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            7300
-        ],
-        "updated_at": "2023-09-07 00:12:21",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "type": "SELECT"
     },
     {
-        "auth": {
-            "password": null,
-            "username": null,
-            "v2ray_uuid": null
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5465,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "PATCH / HTTP/1.1[crlf][split]MERGE Https://ayabooks.com.br/ HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#MERGE / uol.alfalemos.shop[protocol][crlf][split]PATCH Https://vs.timrecompensas.com.br/ HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#PATCH / [protocol][crlf][split]PATCH http://ayabooks.com.br/ HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: ayabooks.com.br[crlf][crlf][split]- /app13 HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]@ALNETWORK[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor VIP : 🇧🇷",
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "id": 67063,
-        "mode": "SSH_PROXY",
-        "name": "TIM 01 ",
-        "proxy": {
-            "host": "104.26.12.206#104.16.0.0#revive.timrecompensas.com.br#104.18.5.18#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
-            "port": 80
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            7300
-        ],
-        "updated_at": "2023-09-07 03:26:30",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor de fundo",
+        "name": "APP_BACKGROUND_COLOR",
+        "value": "#ffffff3a",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": null,
-            "username": null,
-            "v2ray_uuid": null
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5465,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "OPTIONS /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#HEAD /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#POST /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor VIP : 🇧🇷",
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "id": 67064,
-        "mode": "SSH_PROXY",
-        "name": "TIM 02 ",
-        "proxy": {
-            "host": "104.18.5.18#apf.maisvantagenstim.com.br#172.64.154.143#172.66.0.157#162.159.140.159#162.159.153.238#162.159.152.26#104#revive.timrecompensas.com.br#104.18.5.18#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
-            "port": 80
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            7300
-        ],
-        "updated_at": "2023-09-07 03:26:30",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor do card inicial",
+        "name": "APP_CARD_COLOR",
+        "value": "#a1a1a15b",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": null,
-            "username": null,
-            "v2ray_uuid": null
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5465,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Upgrade: websocket[lf][lf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor VIP : 🇧🇷",
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "id": 67065,
-        "mode": "SSH_PROXY",
-        "name": "TIM 03 ",
-        "proxy": {
-            "host": "164.152.243.184#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#revive.timrecompensas.com.br#104.18.5.18#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
-            "port": 80
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            7300
-        ],
-        "updated_at": "2023-09-07 03:26:30",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Raio do card inicial",
+        "name": "APP_CARD_RADIUS",
+        "value": 20,
+        "type": "INTEGER"
     },
     {
-        "auth": {
-            "password": null,
-            "username": null,
-            "v2ray_uuid": null
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5465,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT / HTTP/1.9[crlf]host: timofertas.com[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: [host][crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[crlf][crlf]GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[crlf][crlf]GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor VIP : 🇧🇷",
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "id": 67066,
-        "mode": "SSH_PROXY",
-        "name": "TIM 04 ",
-        "proxy": {
-            "host": "104.21.2.132#172.66.0.157#apf.maisvantagenstim.com.br#162.159.140.159#revive.timrecompensas.com.br#portal.timrecompensas.com.br#vs.timrecompensas.com.br#revive.timrecompensas.com.br#104.18.5.18#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#185.194.205.50#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#185.194.205.50#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
-            "port": 80
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            7300
-        ],
-        "updated_at": "2023-09-07 03:26:30",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor do card de status",
+        "name": "APP_CARD_STATUS_COLOR",
+        "value": "#99999956",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": null,
-            "username": null,
-            "v2ray_uuid": null
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.69    🇧🇷",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5465,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor VIP : 🇧🇷",
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
-        "id": 67067,
-        "mode": "SSH_PROXY",
-        "name": "CLARO  01  ",
-        "proxy": {
-            "host": "m.claro.com.br",
-            "port": 80
-        },
-        "server": {
-            "host": "dp4oz9twukxrn.cloudfront.net",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            7300
-        ],
-        "updated_at": "2023-09-06 02:43:27",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Raio do card de status",
+        "name": "APP_CARD_STATUS_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
     },
     {
-        "auth": {
-            "password": "free",
-            "username": "free"
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5466,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "PATCH / HTTP/1.1[crlf][split]MERGE Https://www.vivo.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#MERGE / aws.alfalemos.shop[protocol][crlf][split]PATCH Https://www.vivo.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#PATCH / [protocol][crlf][split]PATCH http://www.vivo.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1Host: aws.alfalemos.shop Connection: Upgrade Upgrade: websocket User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][split][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#SERVICE-BASELINE / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: portalrecarga.vivo.com.br/recarga/[lf]#GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@@veraszk[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:24",
-        "description": "Servidor Free lento : 🇨🇦",
-        "dns_server": {
-            "dns1": "",
-            "dns2": ""
-        },
-        "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
-        "id": 67100,
-        "mode": "SSH_PROXY",
-        "name": "VIVO 01 ",
-        "proxy": {
-            "host": "104.26.12.206#104.16.0.0#legado.vivo.com.br#uvp.elections.govt.nz#portaldeassinaturas.vivo.com.#portaljud.vivo.com.br#vigia.vivo.com.br#VIVO360.vivo.com.br#vivomusica.vivo.com.br#compre.vivo.com.br#extranet.vivo.com.br#joguejunto.vivo.com.br#141.193.213.10#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#104.26.12.205#aws.alfalemos.shop#172.67.74.152#104.26.12.205#104.18.28.181#104.16.239.166#104.18.7.80#104.18.6.80#104.18.7.41#104.18.6.41#104.16.51.111#104.18.33.113#104.18.33.113#104.16.239.166#104.17.64.225#104.19.240.25# 104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.26.5.32#104.18.6.80#104.18.7.80 #104.18.6.41",
-            "port": 80
-        },
-        "server": {
-            "host": "aws.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            
-        ],
-        "updated_at": "2023-09-07 00:12:21",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor do card de configurações",
+        "name": "APP_CARD_CONFIG_COLOR",
+        "value": "#080e127f",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": "free",
-            "username": "free"
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5466,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "[delay_split] ACL / HTTP/1.1[crlf]Host:[random=google.com.br;141.193.213.11;104.17.70.206;104.26.13.206;104.17.71.206;104.26.14.206;104.17.72.206;104.26.15.206;104.17.73.206;8.8.8.8;104.17.74.206;3.96.200.105][crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@alfalemos[crlf]Referer: http://www.google.com[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:24",
-        "description": "Servidor Free lento : 🇨🇦",
-        "dns_server": {
-            "dns1": "",
-            "dns2": ""
-        },
-        "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
-        "id": 67101,
-        "mode": "SSH_PROXY",
-        "name": "VIVO 02 ",
-        "proxy": {
-            "host": "3.96.200.105#dns.alfalemos.xyz#aws.alfalemos.shop",
-            "port": 80
-        },
-        "server": {
-            "host": "3.96.200.105#dns.alfalemos.xyz#aws.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            
-        ],
-        "updated_at": "2023-09-07 00:12:21",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor do fundo dos dialogs",
+        "name": "APP_DIALOG_BACKGROUND_COLOR",
+        "value": "#2e000266",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": "free",
-            "username": "free"
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5466,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "[delay_split]ACL / HTTP/1.1[crlf]Host: static.r4you.co[crlf]Upgrade: websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:24",
-        "description": "Servidor Free lento : 🇨🇦",
-        "dns_server": {
-            "dns1": "",
-            "dns2": ""
-        },
-        "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
-        "id": 67102,
-        "mode": "SSH_PROXY",
-        "name": "VIVO 03 ",
-        "proxy": {
-            "host": "3.96.200.105#dns.alfalemos.xyz#aws.alfalemos.shop",
-            "port": 80
-        },
-        "server": {
-            "host": "3.96.200.105#dns.alfalemos.xyz#aws.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            
-        ],
-        "updated_at": "2023-09-07 00:12:21",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor do fundo do dialog de log",
+        "name": "APP_DIALOG_LOGGER_COLOR",
+        "value": "#080e16c7",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": "free",
-            "username": "free"
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5466,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "PATCH / HTTP/1.1[crlf][split]MERGE Https://ayabooks.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#MERGE / aws.alfalemos.shop[protocol][crlf][split]PATCH Https://vs.timrecompensas.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#PATCH / [protocol][crlf][split]PATCH http://ayabooks.com.br/ HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: ayabooks.com.br[crlf][crlf][split]- /app13 HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf]@ALNETWORK[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor Free lento : 🇨🇦",
-        "dns_server": {
-            "dns1": "",
-            "dns2": ""
-        },
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "id": 67103,
-        "mode": "SSH_PROXY",
-        "name": "TIM 01 ",
-        "proxy": {
-            "host": "104.26.12.206#104.16.0.0#revive.timrecompensas.com.br#104.18.5.18#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#3.96.200.105#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#3.96.200.105#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
-            "port": 80
-        },
-        "server": {
-            "host": "aws.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            
-        ],
-        "updated_at": "2023-09-07 03:26:30",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor das bordas",
+        "name": "APP_BORDER_COLOR",
+        "value": "#2930ffed",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": "free",
-            "username": "free"
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5466,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "OPTIONS /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#HEAD /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#POST /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=dl.maisvantagenstim.com.br;www.maisvantagenstim.com.br;convencao.maisvantagenstim.com.br;apf.maisvantagenstim.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor Free lento : 🇨🇦",
-        "dns_server": {
-            "dns1": "",
-            "dns2": ""
-        },
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "id": 67104,
-        "mode": "SSH_PROXY",
-        "name": "TIM 02 ",
-        "proxy": {
-            "host": "104.18.5.18#apf.maisvantagenstim.com.br#172.64.154.143#172.66.0.157#162.159.140.159#162.159.153.238#162.159.152.26#104#revive.timrecompensas.com.br#104.18.5.18#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#3.96.200.105#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#3.96.200.105#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
-            "port": 80
-        },
-        "server": {
-            "host": "aws.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            
-        ],
-        "updated_at": "2023-09-07 03:26:30",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor dos inputs",
+        "name": "APP_INPUT_COLOR",
+        "value": "#0d020051",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": "free",
-            "username": "free"
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5466,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: aws.alfalemos.shop[lf]Upgrade: websocket[lf][lf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor Free lento : 🇨🇦",
-        "dns_server": {
-            "dns1": "",
-            "dns2": ""
-        },
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "id": 67105,
-        "mode": "SSH_PROXY",
-        "name": "TIM 03 ",
-        "proxy": {
-            "host": "164.152.243.184#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#revive.timrecompensas.com.br#104.18.5.18#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#3.96.200.105#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#3.96.200.105#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
-            "port": 80
-        },
-        "server": {
-            "host": "aws.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            
-        ],
-        "updated_at": "2023-09-07 03:26:30",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Raio dos inputs",
+        "name": "APP_INPUT_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
     },
     {
-        "auth": {
-            "password": "free",
-            "username": "free"
-        },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5466,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop [crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#CONNECT / HTTP/1.9[crlf]host: timofertas.com[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: [host][crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]#ACL /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[crlf][crlf]GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[crlf][crlf]GET / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Websocket[crlf][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor Free lento : 🇨🇦",
-        "dns_server": {
-            "dns1": "",
-            "dns2": ""
-        },
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "id": 67106,
-        "mode": "SSH_PROXY",
-        "name": "TIM 04 ",
-        "proxy": {
-            "host": "104.21.2.132#172.66.0.157#apf.maisvantagenstim.com.br#162.159.140.159#revive.timrecompensas.com.br#portal.timrecompensas.com.br#vs.timrecompensas.com.br#revive.timrecompensas.com.br#104.18.5.18#104.18.4.18#104.18.5.18#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#assistentetim.com.br#162.159.140.159#104.18.10.207#apps.anatel.gov.br#188.114.97.7#104.21.96.1#104.21.80.1#104.21.84.1#134.65.19.83#timofertas.com#apf.maisvantagenstim.com.br#www.terra.com#m.operamini.com#api.sandbox.c6bank.com.br#app.sandbox.c6bank.com.br#3.96.200.105#timltimmy.carrd.co#googleindickeyboard.app#www.zoukmix.com#sofidelspa.zendesk.com#cardinalcommerce.c#172.67.1.225#tinyurl.com#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.18.28.182#104.19.241.93#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.18.33.113#104.17.64.225#104.19.239.25#104.18.28.182#10419.241.93#104.19.239.25#172.67.188.168#104.18.99.70#mtls.sandbox.c6bank.com.br#141.193.213.21#141.193.213.20#104.26.12.205#104.18.7.80#104.18.6.80#isp.edu.kw.com#support.deezer.com#104.21.2.132#whm.systimtechnologypartners.com#www.upnjatimtechnovation.id#systimtechnologypartners.com#timtechdigital.com#ftp.justimtech.com#justimtech.com#localhost.systimtechnologypartners.com#jatimtech.com#www.timtech-it.ru#www.optimtechservices.com#iletimtech.com#cpanel.systimtechnologypartners.com#3.96.200.105#isp.edu.kw.com#104.21.2.132#support.deezer.com#104.17.72.206#216.198.54.1#216.198.53.1#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.17.70.206#104.26.5.32#104.26.4.32#141.193.213.10#141.193.213.11#104.26.12.205#108.162.194.0#108.162.192.02#104.26.12.205#www.w3.org#104.17.70.206",
-            "port": 80
-        },
-        "server": {
-            "host": "aws.alfalemos.shop",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            
-        ],
-        "updated_at": "2023-09-07 03:26:30",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "label": "Cor dos textos",
+        "name": "APP_TEXT_COLOR",
+        "value": "#fff1e8ff",
+        "type": "COLOR"
     },
     {
-        "auth": {
-            "password": "free",
-            "username": "free"
+        "label": "Cor dos botões",
+        "name": "APP_BUTTON_COLOR",
+        "value": "#352effe5",
+        "type": "COLOR"
+    },
+    {
+        "label": "Raio dos botões",
+        "name": "APP_BUTTON_RADIUS",
+        "value": 25,
+        "type": "INTEGER"
+    },
+    {
+        "label": "Cor dos icones",
+        "name": "APP_ICON_COLOR",
+        "value": "#edffebff",
+        "type": "COLOR"
+    },
+    {
+        "label": "Exibir modo de conexão",
+        "name": "APP_SHOW_CONNECTION_MODE",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Atualizar automaticamente as configurações ao lançar uma atualização.",
+        "name": "APP_CONFIG_AUTO_UPDATE",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar limiter de conexão",
+        "name": "APP_CONNECTION_LIMITER",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de atualizações",
+        "name": "APP_BTN_UPDATE_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de registros",
+        "name": "APP_BTN_LOGGER_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar botão de pagina webview",
+        "name": "APP_BTN_PAGE_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar dialog de erros",
+        "name": "APP_DIALOG_ERROR_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar dialog de checkuser",
+        "name": "APP_CHECKUSER_DIALOG_ENABLED",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar toast de sucesso",
+        "name": "APP_SUCCESS_TOAST_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar toast de erro",
+        "name": "APP_ERROR_TOAST_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar IP local no layout nativo",
+        "name": "APP_LOCAL_IP_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Filtrar configurações pelo nome da rede",
+        "name": "APP_CONFIG_FILTER_ENABLED",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar serviço de ping",
+        "name": "APP_PING_SERVICE_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Ativar alertas sonoros",
+        "name": "APP_ALERT_SOUND_ENABLED",
+        "value": true,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Usar layout webview",
+        "name": "APP_LAYOUT_WEBVIEW_ENABLED",
+        "value": false,
+        "type": "BOOLEAN"
+    },
+    {
+        "label": "Mensagem",
+        "name": "APP_MESSAGE",
+        "value": "Nova Atualização Disponível 🦸🏻 \\n\\n MANTENHA O APLICATIVO \\n SEMPRE ATUALIZANDO 📱\\n •••••••••••••••••••••••••••••••••••••••••••••••••\\n🆚 Versão: 1.0.1\\n•••••••••••••••••••••••••••••••••••••••••••••••••\\n🔰Funcionando VIVO💜  💚Fluke 🔵TIM EXPIRADO  E NA VALIDADE \\n===============================\\n🗣️ Uma Dica, Recomendo Ter Dois Chip\\n🤖 Caso uma Rede Caia VC Tem a outra\\n🤖 Para se conectar Tranquilamente✔️\\n===============================\\n🧑🏻‍💻 Qualquer dificuldade para se\\n📱 Conectar entre em contato\\n🙋🏻‍♂️ Com Suporte\\n🤔 Para Ele Te Orientar 👍🏻…",
+        "type": "TEXT"
+    },
+    {
+        "label": "Tipo de mensagem",
+        "name": "APP_MESSAGE_TYPE",
+        "value": {
+            "options": [
+                {
+                    "label": "Alerta",
+                    "value": "ALERT"
+                },
+                {
+                    "label": "Informação",
+                    "value": "INFO"
+                },
+                {
+                    "label": "Boas vindas",
+                    "value": "WELCOME"
+                },
+                {
+                    "label": "Sem mensagem",
+                    "value": "NONE"
+                }
+            ],
+            "selected": "NONE"
         },
-        "category": {
-            "color": "#800006FF",
-            "created_at": "2023-07-24 16:37:27",
-            "id": 5466,
-            "name": "🇨🇦    Conexões VERSÃO : 0.69    🇨🇦",
-            "sorter": 1,
-            "status": "ACTIVE",
-            "updated_at": "2023-07-24 16:37:27",
-            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
-        },
-        "category_id": 5466,
-        "config_openvpn": null,
-        "config_payload": {
-            "payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
-            "sni": null
-        },
-        "config_v2ray": null,
-        "created_at": "2023-07-24 17:51:33",
-        "description": "Servidor Free lento : 🇨🇦",
-        "dns_server": {
-            "dns1": "",
-            "dns2": ""
-        },
-        "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
-        "id": 67107,
-        "mode": "SSH_PROXY",
-        "name": "CLARO  01  ",
-        "proxy": {
-            "host": "m.claro.com.br",
-            "port": 80
-        },
-        "server": {
-            "host": "dp4oz9twukxrn.cloudfront.net",
-            "port": 80
-        },
-        "sorter": 1,
-        "status": "ACTIVE",
-        "tls_version": "TLSv1.2",
-        "udp_ports": [
-            
-        ],
-        "updated_at": "2023-09-06 02:43:27",
-        "url_check_user": "",
-        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        "type": "SELECT"
+    },
+    {
+        "label": "LAYOUT WEBVIEW (POR SUA CONTA E RISCO)",
+        "name": "APP_LAYOUT_WEBVIEW",
+        "value": null,
+        "type": "HTML"
+    },
+    {
+        "label": "ANDROID WEBVIEW (POR SUA CONTA E RISCO)",
+        "name": "APP_SUPPORT_BUTTON",
+        "value": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\n    <title>1429503272 - @Tauros_projectVPN | design by @alexdsgmoura</title>\n\n    <style>\n      :root {\n        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;\n        line-height: 1.5;\n        font-weight: 400;\n        font-synthesis: none;\n        text-rendering: optimizeLegibility;\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        text-size-adjust: 100%;\n        -webkit-text-size-adjust: 100%;\n\n        --space-status-bar: 10px;\n        --space-android-nav-bar: 33px;\n      }\n\n      @-webkit-keyframes onePulse {\n        0% {\n          box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.5);\n        }\n        50% {\n          box-shadow: 0px 0px 4px 8px rgba(255, 255, 255, 0.1);\n        }\n        100% {\n          box-shadow: 0px 0px 4px 4px rgba(255, 255, 255, 0.5);\n        }\n      }\n\n      @keyframes onePulse {\n        0% {\n          box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.5);\n        }\n        50% {\n          box-shadow: 0px 0px 4px 8px rgba(255, 255, 255, 0.1);\n        }\n        100% {\n          box-shadow: 0px 0px 4px 4px rgba(255, 255, 255, 0.5);\n        }\n      }\n\n      * {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n      }\n\n      html,\n      body,\n      main {\n        width: 100%;\n        height: 100%;\n      }\n\n      body {\n        background: transparent;\n      }\n\n      section.home {\n        width: 100%;\n        height: 100%;\n\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: space-between;\n\n        padding: var(--space-status-bar) 10px var(--space-android-nav-bar) 10px;\n      }\n\n      section.home header {\n        width: 100%;\n        height: auto;\n\n        display: flex;\n        flex-direction: column;\n        gap: 5px;\n      }\n\n      section.home header div.row {\n        width: auto;\n        height: auto;\n\n        display: flex;\n        gap: 10px;\n\n        margin: 0px 0px 0px auto;\n      }\n\n      section.home header div.row button {\n        width: 40px;\n        height: 40px;\n\n        display: flex;\n        justify-content: center;\n        align-items: center;\n\n        border: 1px solid #ffffff;\n        border-radius: 50%;\n\n        box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5);\n\n        background: transparent;\n      }\n\n      section.home header div.row button svg {\n        color: #000;\n      }\n\n      /* ICONE DE NOVO VIDEO */\n      section.home header div.row button:nth-child(1) {\n        border: 1px solid #00FF57;\n\n        box-shadow: 0px 0px 10px 0px rgb(0, 255, 87, 0.5);\n      }\n\n      section.home header div.row button:nth-child(1) svg {\n        color: #00FF57;\n      }\n\n      /* ICONE DE MUSICA */\n      section.home header div.row button:nth-child(2) {\n        border: 1px solid #00ECFF;\n\n        box-shadow: 0px 0px 10px 0px rgb(0, 236, 255, 0.5);\n      }\n\n      section.home header div.row button:nth-child(2) svg {\n        color: #00ECFF;\n      }\n\n      /* ICONE DO YOUTUBE */\n      section.home header div.row button:nth-child(3) {\n        border: 1px solid #d50000;\n\n        box-shadow: 0px 0px 10px 0px rgb(213, 0, 0, 0.5);\n      }\n\n      section.home header div.row button:nth-child(3) svg {\n        color: #d50000;\n      }\n\n      /* ICONE DE RENOVAR */\n      section.home header div.row button:nth-child(4) {\n        border: 1px solid #FFF201;\n\n        box-shadow: 0px 0px 10px 0px rgb(255, 242, 1, 0.5);\n      }\n\n      section.home header div.row button:nth-child(4) svg {\n        color: #FFF201;\n      }\n\n      /* ICONE DE ADMINISTRADOR */\n      section.home header div.row button:nth-child(5) {\n        border: 1px solid #FF00D9;\n\n        box-shadow: 0px 0px 10px 0px rgba(49, 27, 146, 0.5);\n      }\n\n      section.home header div.row button:nth-child(5) svg {\n        color: #FF00D9;\n      }\n\n      section.home section {\n        width: 100%;\n        height: auto;\n\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        gap: 1rem;\n      }\n\n      section.home section div.container-local-ip {\n        width: auto;\n        height: auto;\n\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        gap: 10px;\n\n        padding: 10px 10%;\n\n        border-radius: 25px;\n\n        background: rgba(0, 0, 0, 0.5);\n\n        transition: all 0.3s ease 0.1s;\n      }\n\n      section.home section div.container-local-ip span {\n        color: #ffffff;\n      }\n\n      section.home section div.container-tools {\n        width: 100%;\n        height: auto;\n\n        display: flex;\n        justify-content: center;\n\n        position: relative;\n      }\n\n      section.home section div.container-tools button {\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        gap: 8px;\n\n        margin: auto 0px 0px 0px;\n        padding: 10px 8%;\n\n        border: 0;\n        border-radius: 50px;\n\n        box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.5);\n\n        color: #ffffff;\n\n        background: rgba(0, 0, 0, 0.5);\n\n        transition: all linear;\n      }\n\n      section.home section div.container-tools button svg {\n        color: #9e9e9e;\n      }\n\n      section.home section div.container-tools ul {\n        width: 90%;\n        max-width: 300px;\n        height: 55px;\n\n        display: flex;\n        align-items: center;\n        justify-content: space-around;\n        gap: 5px;\n\n        position: absolute;\n        top: -190%;\n\n        padding: 0 5px;\n\n        border-radius: 50px;\n        box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.5);\n\n        opacity: 0;\n        transform: scale(0);\n        transform-origin: bottom center;\n\n        transition: all 0.3s ease 0.1s;\n\n        background: rgba(0, 0, 0, 0.5);\n      }\n\n      section.home section div.container-tools ul li {\n        width: 40px;\n        height: 40px;\n\n        display: flex;\n        justify-content: center;\n        align-items: center;\n\n        border: 1px solid #ffffff;\n        border-radius: 50%;\n\n        box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5);\n\n        background: transparent;\n      }\n\n      @media (max-width: 320px) {\n        section.home section div.container-tools ul li {\n          width: 30px;\n          height: 30px;\n\n          display: flex;\n          justify-content: center;\n          align-items: center;\n\n          border: 1px solid #ffffff;\n          border-radius: 50%;\n\n          box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5);\n\n          background: transparent;\n        }\n\n        section.home section div.container-tools ul li svg {\n          transform: scale(0.9);\n        }\n      }\n\n      section.home section div.container-tools ul li svg {\n        color: #ffffff;\n      }\n\n      /* ICONE DO CHECKUSER */\n      section.home section div.container-tools ul li:nth-child(1) {\n        border-color: #fff176;\n\n        box-shadow: 0px 0px 10px 0px rgba(255, 241, 118, 0.5);\n      }\n\n      section.home section div.container-tools ul li:nth-child(1) svg {\n        color: #fff176;\n      }\n\n      /* ICONE DE BATERIA */\n      section.home section div.container-tools ul li:nth-child(2) {\n        border-color: #8bc34a;\n\n        box-shadow: 0px 0px 10px 0px rgba(139, 195, 74, 0.5);\n      }\n\n      section.home section div.container-tools ul li:nth-child(2) svg {\n        color: #8bc34a;\n      }\n\n      /* ICONE DE APN */\n      section.home section div.container-tools ul li:nth-child(3) {\n        border-color: #F2FF00;\n\n        box-shadow: 0px 0px 10px 0px rgba(148, 143, 168, 0.5);\n      }\n\n      section.home section div.container-tools ul li:nth-child(3) svg {\n        color: #F2FF00;\n      }\n\n      /* ICONE DE LIMPAR DADOS */\n      section.home section div.container-tools ul li:nth-child(4) {\n        border-color: #847ea7;\n\n        box-shadow: 0px 0px 10px 0px rgba(132, 126, 167, 0.5);\n      }\n\n      section.home section div.container-tools ul li:nth-child(4) svg {\n        color: #847ea7;\n      }\n\n      /* ICONE DE SPEEDTEST */\n      section.home section div.container-tools ul li:nth-child(5) {\n        border-color: #1a237e;\n        border-radius: 50%;\n\n        box-shadow: 0px 0px 10px 0px rgba(26, 35, 126, 0.5);\n      }\n\n      section.home section div.container-tools ul li:nth-child(5) svg {\n        color: #1a237e;\n      }\n\n      /* ICONE DE HOTSPOT */\n      section.home section div.container-tools ul li:nth-child(6) {\n        border-color: #00FF3F;\n        border-radius: 50%;\n\n        box-shadow: 0px 0px 10px 0px rgba(26, 35, 126, 0.5);\n      }\n\n      section.home section div.container-tools ul li:nth-child(6) svg {\n        color: #FFFFFF;\n      }\n\n      section.home section div.container-tools.active button {\n        -webkit-animation: onePulse 0.6s forwards linear;\n        animation: onePulse 0.6s forwards linear;\n      }\n\n      section.home section div.container-tools.active ul {\n        opacity: 1;\n        transform: scale(1);\n      }\n\n      .hidden {\n        opacity: 0;\n        visibility: hidden;\n      }\n\n      .display-none {\n        display: none;\n      }\n    </style>\n  </head>\n\n  <body>\n    <main>\n      <section class=\"home\">\n        <header>\n          <div class=\"row\">\n            <button type=\"button\" title=\"Vídeo novo\" id=\"new-video\">\n              <svg\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"16\"\n                height=\"16\"\n                fill=\"currentColor\"\n                class=\"bi bi-whatsapp\"\n                viewBox=\"0 0 16 16\"\n              >\n                <path\n                  d=\"M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232\"\n                />\n              </svg>\n            </button>\n\n            <button type=\"button\" title=\"musica\" id=\"music\">\n              <svg\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"16\"\n                height=\"16\"\n                fill=\"currentColor\"\n                class=\"bi bi-telegram\"\n                viewBox=\"0 0 16 16\"\n              >\n                <path\n                  d=\"M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09\"\n                />\n              </svg>\n            </button>\n\n            <button type=\"button\" title=\"renovação\" id=\"renew\">\n              <svg\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"16\"\n                height=\"16\"\n                fill=\"currentColor\"\n                class=\"bi bi-people\"\n                viewBox=\"0 0 16 16\"\n              >              \t\n                <path\n                  fill-rule=\"evenodd\"\n                  d=\"M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4\"\n                />\n              </svg>\n            </button>\n\n            <button type=\"button\" title=\"admin\" id=\"admin-acess\">\n              <svg\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"16\"\n                height=\"16\"\n                fill=\"currentColor\"\n                class=\"bi bi-person-fill-up\"\n                viewBox=\"0 0 16 16\"\n              >\n              \t\n                <path\n                  d=\"M16 8a8 8 0 0 1-7.022 7.94l1.902-7.098a3 3 0 0 0 .05-1.492A3 3 0 0 0 10.237 6h5.511A8 8 0 0 1 16 8M0 8a8 8 0 0 0 7.927 8l1.426-5.321a3 3 0 0 1-.723.255 3 3 0 0 1-1.743-.147 3 3 0 0 1-1.043-.7L.633 4.876A8 8 0 0 0 0 8m5.004-.167L1.108 3.936A8.003 8.003 0 0 1 15.418 5H8.066a3 3 0 0 0-1.252.243 2.99 2.99 0 0 0-1.81 2.59M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4\"\n                />\n              </svg>\n            </button>\n          </div>\n        </header>\n\n        <section>\n\n          <div class=\"container-tools\">\n            <button type=\"button\" title=\"ferramentas\">\n              <svg\n                xmlns=\"http://www.w3.org/2000/svg\"\n                width=\"16\"\n                height=\"16\"\n                fill=\"currentColor\"\n                class=\"bi bi-nut-fill\"\n                viewBox=\"0 0 16 16\"\n              >\n                <path\n                  d=\"M4.58 1a1 1 0 0 0-.868.504l-3.428 6a1 1 0 0 0 0 .992l3.428 6A1 1 0 0 0 4.58 15h6.84a1 1 0 0 0 .868-.504l3.429-6a1 1 0 0 0 0-.992l-3.429-6A1 1 0 0 0 11.42 1H4.58zm5.018 9.696a3 3 0 1 1-3-5.196 3 3 0 0 1 3 5.196z\"\n                />\n              </svg>\n\n              <span>Ferramentas</span>\n            </button>\n\n            <ul>              \n              <li id=\"checkuser\" title=\"Perfil\">\n                <svg\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                  width=\"16\"\n                  height=\"16\"\n                  fill=\"currentColor\"\n                  class=\"bi bi-person-fill\"\n                  viewBox=\"0 0 16 16\"\n                >\n                  <path\n                    d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z\"\n                  />\n                </svg>\n              </li>\n\n              <li id=\"battery\" title=\"Bateria\">\n                <svg\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                  width=\"16\"\n                  height=\"16\"\n                  fill=\"currentColor\"\n                  class=\"bi bi-battery-half\"\n                  viewBox=\"0 0 16 16\"\n                >\n                  <path d=\"M2 6h5v4H2V6z\" />\n                  <path\n                    d=\"M2 4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2zm10 1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h10zm4 3a1.5 1.5 0 0 1-1.5 1.5v-3A1.5 1.5 0 0 1 16 8z\"\n                  />\n                </svg>\n              </li>\n\n              <li id=\"apn\" title=\"Configuração de nome de ponto de acesso (APN)\">\n                <svg\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                  width=\"16\"\n                  height=\"16\"\n                  fill=\"currentColor\"\n                  class=\"bi bi-wrench\"\n                  viewBox=\"0 0 16 16\"\n                >\n                  <path\n                    d=\"M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z\"\n                  />\n                </svg>\n              </li>\n\n              <li id=\"clean-data-app\" title=\"Limpar dados do app\">\n                <svg\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                  width=\"16\"\n                  height=\"16\"\n                  fill=\"currentColor\"\n                  class=\"bi bi-trash-fill\"\n                  viewBox=\"0 0 16 16\"\n                >\n                  <path\n                    d=\"M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z\"\n                  />\n                </svg>\n              </li>\n\n              <li id=\"speedtest\" title=\"teste de velocidade de internet\">\n                <svg\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                  width=\"16\"\n                  height=\"16\"\n                  fill=\"currentColor\"\n                  class=\"bi bi-speedometer2\"\n                  viewBox=\"0 0 16 16\"\n                >\n                  <path\n                    d=\"M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z\"\n                  />\n                  <path\n                    fill-rule=\"evenodd\"\n                    d=\"M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z\"\n                  />\n                </svg>\n              </li>\n\n              <li id=\"hotspot\" title=\"Hotspot\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" id=\"hotspot-on\" class=\"bi bi-wifi\" viewBox=\"0 0 16 16\">\n                  <path d=\"M15.384 6.115a.485.485 0 0 0-.047-.736A12.444 12.444 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049z\"/>\n                  <path d=\"M13.229 8.271a.482.482 0 0 0-.063-.745A9.455 9.455 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091l.016-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z\"/>\n                </svg>\n\n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" id=\"hotspot-off\" class=\"bi bi-wifi-off display-none\" viewBox=\"0 0 16 16\">\n                  <path d=\"M10.706 3.294A12.545 12.545 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c.63 0 1.249.05 1.852.148l.854-.854zM8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065 8.448 8.448 0 0 1 3.51-1.27L8 6zm2.596 1.404.785-.785c.63.24 1.227.545 1.785.907a.482.482 0 0 1 .063.745.525.525 0 0 1-.652.065 8.462 8.462 0 0 0-1.98-.932zM8 10l.933-.933a6.455 6.455 0 0 1 2.013.637c.285.145.326.524.1.75l-.015.015a.532.532 0 0 1-.611.09A5.478 5.478 0 0 0 8 10zm4.905-4.905.747-.747c.59.3 1.153.645 1.685 1.03a.485.485 0 0 1 .047.737.518.518 0 0 1-.668.05 11.493 11.493 0 0 0-1.811-1.07zM9.02 11.78c.238.14.236.464.04.66l-.707.706a.5.5 0 0 1-.707 0l-.707-.707c-.195-.195-.197-.518.04-.66A1.99 1.99 0 0 1 8 11.5c.374 0 .723.102 1.021.28zm4.355-9.905a.53.53 0 0 1 .75.75l-10.75 10.75a.53.53 0 0 1-.75-.75l10.75-10.75z\"/>\n                </svg>\n              </li>\n            </ul>\n          </div>\n        </section>\n      </section>\n    </main>\n\n    <!-- FUNÇÕES DO APP -->\n    <script>\n      const appStatusBar = () => DtGetStatusBarHeight.execute()\n      const appNavBar = () => DtGetNavigationBarHeight.execute()\n\n      const appCarrier = () => Android.getNetworkName()\n      const appLocalIp = () => Android.getLocalIP()\n\n      const appBattery = () => DtIgnoreBatteryOptimizations.execute()\n      const appApn = () => DtStartApnActivity.execute()\n      const appLink = (value) => DtStartWebViewActivity.execute(value)\n      const appClean = () => DtCleanApp.execute()\n      const appCheckUser = () => DtStartCheckUser.execute()\n\n      const appGetStatusHotspot = () => DtGetStatusHotSpotService.execute()\n      const appStartHotspot = () => DtStartHotSpotService.execute()\n      const appStopHotspot = () => DtStopHotSpotService.execute()\n    </script>\n\n    <!-- DOM WRAPPER -->\n    <script>\n      const Dom = (selector) => {\n        const _elements = document.querySelectorAll(selector)\n\n        const wrapper = {\n          on(listeners) {\n            for (const [event, listener] of Object.entries(listeners)) {\n              _elements.forEach((element) => {\n                element.addEventListener(event, listener)\n              })\n            }\n\n            return wrapper\n          },\n          toggleClass: (token, force) => {\n            _elements.forEach((element) => {\n              element.classList.toggle(token, force)\n            })\n\n            return wrapper\n          },\n          html(value) {\n            _elements.forEach((element) => (element.innerHTML = value))\n            return wrapper\n          },\n        }\n\n        return wrapper\n      }\n    </script>\n\n    <!-- VÁRIAVEIS -->\n    <script>\n      const video = Dom('#new-video')\n      const music = Dom('#music')\n      const youtube = Dom('#youtube')\n      const renew = Dom('#renew')\n      const adminAcess = Dom('#admin-acess')\n\n      const containerLocalIp = Dom('section.home section div.container-local-ip')\n      const localIp = Dom('section.home section div.container-local-ip span')\n\n      const containerTools = Dom('section.home section div.container-tools')\n      const toolsButton = Dom('section.home section div.container-tools button')\n      const tools = Dom('section.home section div.container-tools ul')\n\n      const hotspot = Dom('#hotspot')\n      const checkuser = Dom('#checkuser')\n      const battery = Dom('#battery')\n      const apn = Dom('#apn')\n      const CleanDataApp = Dom('#clean-data-app')\n      const speedtest = Dom('#speedtest')\n\n      const hotspotIconOn = Dom('#hotspot-on')\n      const hotspotIconOff = Dom('#hotspot-off')\n    </script>\n\n    <!-- FUNÇÕES -->\n    <script>\n      document.documentElement.style.setProperty('--space-status-bar', `${appStatusBar() + 10}px`)\n\n      document.documentElement.style.setProperty('--space-android-nav-bar', `${appNavBar() + 10}px`)\n\n      const toggleTools = () => {\n        containerLocalIp.toggleClass('hidden')\n        containerTools.toggleClass('active')\n      }\n\n      const carrierNameAndLocalIp = () => {\n        setInterval(() => {\n          const carrierName = appCarrier()\n          const carrierLocalIp = appLocalIp()\n\n          if (!carrierName || !carrierLocalIp) {\n            localIp.html('IP: 0.0.0.0')\n          } else {\n            localIp.html(`${carrierName}: ${carrierLocalIp}`)\n          }\n        }, 500)\n      }\n\n      carrierNameAndLocalIp()\n\n      const startHotspot = () => {\n        appStartHotspot()\n\n        hotspotIconOff.toggleClass('display-none')\n        hotspotIconOn.toggleClass('display-none')\n      }\n\n      const stopHotspot = () => {\n        appStopHotspot()\n\n        hotspotIconOn.toggleClass('display-none')\n        hotspotIconOff.toggleClass('display-none')\n      }\n\n      const toggleHotspot = () => {\n        appGetStatusHotspot() === 'STOPPED' ? startHotspot() : stopHotspot()\n      }\n    </script>\n\n    <!-- AÇÕES -->\n    <script>\n      video.on({ click: () => appLink('https://wa.me/5521997721573') })\n      music.on({ click: () => appLink('https://t.me/alfalemos') })\n      youtube.on({ click: () => appLink('https://whatsapp.com/channel/0029Vb2Fb0pHQbRw1ZjjTy0i') })\n      renew.on({ click: () => appLink('https://whatsapp.com/channel/0029Vb2Fb0pHQbRw1ZjjTy0i') })\n      adminAcess.on({ click: () => appLink('https://google.com') })\n\n      toolsButton.on({ click: () => toggleTools() })\n\n      hotspot.on({click: () => toggleHotspot()})\n      checkuser.on({ click: () => appCheckUser() })\n      battery.on({ click: () => appBattery() })\n      apn.on({ click: () => appApn() })\n      CleanDataApp.on({ click: () => appClean() })\n      speedtest.on({ click: () => appLink('http://speedtest.sercomtel.com.br/') })\n    </script>\n  </body>\n</html>\n",
+        "type": "HTML"
+    },
+    {
+        "label": "PAGINA WEBVIEW (POR SUA CONTA E RISCO)",
+        "name": "APP_WEB_VIEW",
+        "value": null,
+        "type": "HTML"
     }
 ]
