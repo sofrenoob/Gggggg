@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -60,7 +60,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -111,7 +111,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -162,7 +162,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -213,7 +213,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -264,7 +264,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -315,7 +315,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -366,7 +366,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -417,7 +417,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -468,7 +468,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷     Conexões VERSÃO : 0.81    🇧🇷",
+            "name": "🇧🇷     Conexões VERSÃO : 0.82    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -519,7 +519,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -554,7 +554,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-07 00:12:21",
         "url_check_user": "",
@@ -570,7 +570,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -605,7 +605,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-07 00:12:21",
         "url_check_user": "",
@@ -621,7 +621,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -656,7 +656,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-07 00:12:21",
         "url_check_user": "",
@@ -672,7 +672,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -707,7 +707,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-07 03:26:30",
         "url_check_user": "",
@@ -723,7 +723,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -758,7 +758,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-07 03:26:30",
         "url_check_user": "",
@@ -774,7 +774,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -809,7 +809,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-07 03:26:30",
         "url_check_user": "",
@@ -825,7 +825,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -860,7 +860,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-07 03:26:30",
         "url_check_user": "",
@@ -876,7 +876,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -911,7 +911,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-06 02:43:27",
         "url_check_user": "",
@@ -927,7 +927,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲    Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -962,7 +962,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-06 02:43:27",
         "url_check_user": "",
@@ -978,7 +978,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲     Conexões VERSÃO : 0.81    🇺🇲",
+            "name": "🇺🇲     Conexões VERSÃO : 0.82    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -1013,7 +1013,7 @@
         "status": "ACTIVE",
         "tls_version": "TLSv1.2",
         "udp_ports": [
-            7300
+            0000
         ],
         "updated_at": "2023-09-07 00:12:21",
         "url_check_user": "",
