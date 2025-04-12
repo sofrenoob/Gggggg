@@ -409,8 +409,8 @@
     },
     {
         "auth": {
-            "password": null,
-            "username": null,
+            "password": "3333",
+            "username": "alfa",
             "v2ray_uuid": null
         },
         "category": {
