@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -60,7 +60,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -111,7 +111,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -162,7 +162,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -213,7 +213,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -264,7 +264,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -315,7 +315,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -366,7 +366,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -417,7 +417,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷    Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -468,7 +468,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷     Conexões VERSÃO : 0.87    🇧🇷",
+            "name": "🇧🇷     Conexões VERSÃO : 0.88    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -516,10 +516,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -535,8 +535,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67070,
@@ -567,10 +567,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -586,8 +586,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67071,
@@ -618,10 +618,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -637,8 +637,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67072,
@@ -669,10 +669,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -688,8 +688,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67073,
@@ -720,10 +720,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -739,8 +739,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67074,
@@ -771,10 +771,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -790,8 +790,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67075,
@@ -822,10 +822,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -841,8 +841,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67076,
@@ -873,10 +873,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -892,8 +892,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
         "id": 67077,
@@ -924,10 +924,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲    Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -943,8 +943,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
         "id": 67078,
@@ -975,10 +975,10 @@
             "v2ray_uuid": null
         },
         "category": {
-            "color": "#800006FF",
+            "color": "#873006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5466,
-            "name": "🇺🇲     Conexões VERSÃO : 0.87    🇺🇲",
+            "name": "🇺🇲    Conexões Free VERÃO : 0.88    🇺🇲",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -994,8 +994,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Free dados básicos : 🇺🇲",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "0.0.0.0",
+            "dns2": "0.0.0.0"
         },
         "icon": "https://i.postimg.cc/3Jcm7kjD/Picsart-23-06-29-05-06-57-855.png",
         "id": 67079,
