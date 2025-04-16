@@ -31,7 +31,7 @@
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67060,
         "mode": "SSH_PROXY",
-        "name": "VIVO 01 ",
+        "name": "VIVO 01 nova 🟢",
         "proxy": {
             "host": "185.194.205.50",
             "port": 8080
