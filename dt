@@ -681,7 +681,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: dp4oz9twukxrn.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
+            "payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf][split]GET- / HTTP/1.1[crlf]Host: d3tb67mk5n9ql8.cloudfront.net[crlf] [crlf]GET /top HTTP/1.1[crlf]Host: d3tb67mk5n9ql8.cloudfront.net[crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf]@TSTOPEPEED[crlf][split][crlf]",
             "sni": null
         },
         "config_v2ray": null,
