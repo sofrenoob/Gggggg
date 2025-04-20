@@ -285,7 +285,7 @@
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67067,
-        "mode": "SSL_PROXY",
+        "mode": "SSH_PROXY",
         "name": "VIVO 06 ",
         "proxy": {
             "host": "185.194.205.50",
