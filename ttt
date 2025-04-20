@@ -184,7 +184,7 @@
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67064,
         "mode": "SSH_PROXY",
-        "name": "VIVO 04 nova 🔥🟣",
+        "name": "VIVO 04 🔥",
         "proxy": {
             "host": "104.244.75.128#104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#141.193.213.10#104.17.70.206#188.114.99.229#188.114.98.229#104.26.12.205#104.26.13.205#172.67.74.152#104.26.12.205#172.67.74.152",
             "port": 8080
@@ -235,7 +235,7 @@
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67065,
         "mode": "SSH_PROXY",
-        "name": "VIVO 05 🔥🟣",
+        "name": "VIVO 05 🔥",
         "proxy": {
             "host": "104.26.12.205#172.67.74.152#64:ff9b::ac43:4a98#64:ff9b::681a:ccd",
             "port": 80
@@ -286,7 +286,7 @@
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67067,
         "mode": "SSH_PROXY",
-        "name": "VIVO 06 ",
+        "name": "VIVO 06 🔥",
         "proxy": {
             "host": "185.194.205.50",
             "port": 80
