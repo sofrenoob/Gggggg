@@ -331,8 +331,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67064,
@@ -433,8 +433,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67067,
@@ -484,8 +484,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67068,
@@ -535,8 +535,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67069,
@@ -586,8 +586,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67070,
@@ -637,8 +637,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67071,
@@ -688,8 +688,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67072,
@@ -739,8 +739,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67073,
@@ -790,8 +790,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67074,
@@ -841,8 +841,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
         "id": 67075,
@@ -892,8 +892,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
         "id": 67076,
@@ -943,8 +943,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns1": "1.1.1.1",
+            "dns2": "2606:4700:4700::1001"
         },
         "icon": "https://i.postimg.cc/3Jcm7kjD/Picsart-23-06-29-05-06-57-855.png",
         "id": 67077,
