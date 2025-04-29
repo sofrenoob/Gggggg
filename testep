@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Testando rota até 8.8.8.8..."
+traceroute 8.8.8.8
+
+echo ""
+echo "Seu IP externo:"
+curl -s https://api.ipify.org
