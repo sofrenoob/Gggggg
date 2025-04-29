@@ -6,50 +6,52 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-# Atualiza o sistema e instala o Dante
-echo "Atualizando o sistema e instalando o Dante SOCKS5..."
+echo "Atualizando sistema..."
 apt update && apt upgrade -y
+
+echo "Instalando o Dante SOCKS5..."
 apt install dante-server -y
 
-# Cria o arquivo de configuração do Dante SOCKS5
-echo "Configurando o Dante SOCKS5 na porta 80..."
+# Detecta a interface de rede automaticamente
+INTERFACE=$(ip route | grep default | awk '{print $5}')
+
+# Detecta o IP da VPS
+IPVPS=$(ip -4 addr show $INTERFACE | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+
+echo "Criando arquivo de configuração em /etc/danted.conf"
+
 cat > /etc/danted.conf << EOF
 logoutput: /var/log/danted.log
 
 internal: 0.0.0.0 port = 80
-external: $(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+external: $IPVPS
 
 method: none
 user.notprivileged: nobody
 
 client pass {
-        from: 0.0.0.0/0 to: 0.0.0.0/0
-        log: connect disconnect error
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    log: connect disconnect error
 }
 
 pass {
-        from: 0.0.0.0/0 to: 0.0.0.0/0
-        protocol: tcp udp
-        log: connect disconnect error
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    protocol: tcp udp
+    log: connect disconnect error
 }
 EOF
 
-# Habilita o serviço no boot
-echo "Ativando o serviço Dante no boot..."
+echo "Habilitando e iniciando serviço do Dante..."
 systemctl enable danted
-
-# Reinicia o Dante para aplicar a nova configuração
-echo "Reiniciando o Dante SOCKS5..."
 systemctl restart danted
 
-# Libera a porta 80 no UFW (caso o firewall esteja ativado)
+# Libera a porta no firewall (se UFW estiver instalado)
 if command -v ufw &> /dev/null
 then
-    echo "Liberando porta 80 no firewall (UFW)..."
+    echo "Liberando porta 80 no firewall..."
     ufw allow 80/tcp
+    ufw reload
 fi
 
-# Exibe informações de finalização
-echo "Instalação concluída!"
-echo "SOCKS5 agora rodando na porta 80."
-echo "Para testar: curl --proxy socks5h://IP_DA_VPS:80 http://www.google.com"
+echo "Pronto! SOCKS5 rodando na porta 80."
+echo "Para testar: curl --proxy socks5h://$IPVPS:80 http://www.google.com"
