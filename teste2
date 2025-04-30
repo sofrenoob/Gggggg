@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Testando rota até 8.8.8.8 e listando hosts da Vivo..."
+
+traceroute 8.8.8.8 | grep "vivo.com.br"
