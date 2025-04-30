@@ -1,1 +1,54 @@
-bash <(echo 'IyEvYmluL2Jhc2gKCltbICIkKHdob2FtaSkiICE9ICJyb290IiBdXSAmJiB7CiAgICBlY2hvOyBlY2hvICJJbnN0YWxlIGNvbSB1c3VhcmlvIHJvb3QhIjsgZWNobzsgZXhpdCAwCn0KW1sgLWUgL2V0Yy9tZWdhaGJvdC9pbmRleC5qcyBdXSAmJiB7CmVjaG87IGVjaG8gIkF0dWFsaXphbmRvIGJvdCwgYWd1YXJkZS4uLiI7IGVjaG87IHdnZXQgaHR0cHM6Ly9naXRodWIuY29tL2VuZGJsYWNrL1dhQm90LVZlbmRhc1NTSC9yYXcvbWFpbi9tdWx0L2luZGV4LmpzID4gL2Rldi9udWxsIDI+JjE7IHdnZXQgaHR0cHM6Ly9naXRodWIuY29tL2VuZGJsYWNrL1dhQm90LVZlbmRhc1NTSC9yYXcvbWFpbi9tdWx0L3ZlcmkuanMgPiAvZGV2L251bGwgMj4mMTsgd2dldCBodHRwczovL2dpdGh1Yi5jb20vZW5kYmxhY2svV2FCb3QtVmVuZGFzU1NIL3Jhdy9tYWluL211bHQvZ2VyYXIuanMgPiAvZGV2L251bGwgMj4mMTsgd2dldCBodHRwczovL2dpdGh1Yi5jb20vZW5kYmxhY2svV2FCb3QtVmVuZGFzU1NIL3Jhdy9tYWluL211bHQvcXJjb2RlID4gL2Rldi9udWxsIDI+JjE7IGNobW9kICt4IHFyY29kZTsgbXYgcXJjb2RlIC9iaW47IG12IGluZGV4LmpzIC9ldGMvbWVnYWhib3Q7IG12IHZlcmkuanMgZ2VyYXIuanMgL2V0Yy9tZWdhaGJvdC9zcmM7IGVjaG87IGVjaG8gIkF0dWFsaXphw6fDo28gdGVybWluYWRhISBkaWdpdGUgb25ib3QgcGFyYSByb2RhciBvIG5vdm8gcHJvZ3JhbWEiOyBlY2hvOyBleGl0IDAKfQphcHQgdXBkYXRlIC15OyBlY2hvOyBlY2hvICJJbnN0YWxhbmRvIGJvdCwgYWd1YXJkZS4uLiI7IGVjaG87IGFwdCBpbnN0YWxsIG5vZGVqcyAteSA+IC9kZXYvbnVsbCAyPiYxOyBhcHQgaW5zdGFsbCB1bnppcCAteSA+IC9kZXYvbnVsbCAyPiYxOyBhcHQgaW5zdGFsbCBzY3JlZW4gLXkgPiAvZGV2L251bGwgMj4mMTsgYXB0IGluc3RhbGwgd2dldCAteSA+IC9kZXYvbnVsbCAyPiYxOyB3Z2V0IGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9lbmRibGFjay9XYUJvdC1WZW5kYXNTU0gvbWFpbi9tdWx0L29uYm90ID4gL2Rldi9udWxsIDI+JjE7IHdnZXQgaHR0cHM6Ly9naXRodWIuY29tL2VuZGJsYWNrL1dhQm90LVZlbmRhc1NTSC9yYXcvbWFpbi9tdWx0L29mZmJvdCA+IC9kZXYvbnVsbCAyPiYxOyB3Z2V0IGh0dHBzOi8vZ2l0aHViLmNvbS9lbmRibGFjay9XYUJvdC1WZW5kYXNTU0gvcmF3L21haW4vbXVsdC9xcmNvZGUgPiAvZGV2L251bGwgMj4mMTsgd2dldCBodHRwczovL2dpdGh1Yi5jb20vc29mcmVub29iL0dnZ2dnZy9yYXcvbWFpbi9jb25maWcuanMgPiAvZGV2L251bGwgMj4mMTsgY2htb2QgK3ggb25ib3Qgb2ZmYm90IHFyY29kZTsgbXYgb25ib3Qgb2ZmYm90IHFyY29kZSAvYmluOyB3Z2V0IGh0dHBzOi8vZ2l0aHViLmNvbS9lbmRibGFjay9XYUJvdC1WZW5kYXNTU0gvcmF3L21haW4vbXVsdC9tZWdhaGJvdC56aXAgLU8gL2V0Yy9tZWdhaGJvdC56aXAgPiAvZGV2L251bGwgMj4mMTsgdW56aXAgL2V0Yy9tZWdhaGJvdC56aXA7IG12IG1lZ2FoYm90IC9ldGM7IGVjaG87IGVjaG8gIkluc3RhbGHDp8OjbyB0ZXJtaW5hZGEhIE7Do28gZXNxdWXDp2EgZGUgZWRpdGFyIHNldXMgZGFkb3Mgbm8gYXJxdWl2byBjb25maWcuanMiOyBlY2hv' | base64 -d )
+#!/bin/bash
+
+# Atualiza o sistema
+apt update && apt upgrade -y
+
+# Instala dependências
+apt install -y python3 python3-pip unzip wget
+
+# Instala Flask via pip
+pip3 install flask
+
+# Cria diretório do painel
+mkdir -p /root/proxy_panel/templates
+mkdir -p /root/proxy_panel/static
+
+# Baixa o arquivo zip do painel (troque o link abaixo pelo seu link real)
+wget -O /root/proxy_panel.zip "https://www.dropbox.com/scl/fi/1xvggoulrfnc317658hs2/proxy_panel.zip?rlkey=b4mf5ru4rgnalpdlb8xgo4lbq&st=l9dexxmj&dl=1"
+
+# Descompacta o zip
+unzip /root/proxy_panel.zip -d /root/
+
+# Move arquivos para os diretórios corretos
+mv /root/app.py /root/proxy_panel/
+mv /root/requirements.txt /root/proxy_panel/
+mv /root/install.sh /root/proxy_panel/
+mv /root/templates/*.html /root/proxy_panel/templates/
+mv /root/static/style.css /root/proxy_panel/static/
+
+# Define permissões
+chmod +x /root/proxy_panel/app.py
+
+# Cria serviço systemd para rodar o painel
+cat <<EOL > /etc/systemd/system/painelproxy.service
+[Unit]
+Description=Painel de Administração de Proxies
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /root/proxy_panel/app.py
+WorkingDirectory=/root/proxy_panel
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+# Habilita e inicia o serviço
+systemctl daemon-reload
+systemctl enable painelproxy
+systemctl start painelproxy
+
+# Finaliza
+echo "Painel instalado e rodando na porta 5000!"
