@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install python3 python3-pip sqlite3 unzip wget -y
 
 # Baixa o painel ZIP (troque o link abaixo pelo seu)
-wget -O proxy_panel.zip "https://seu-servidor.com/proxy_panel.zip"
+wget -O proxy_panel.zip "https://vps80771.cloudpublic.com.br/proxy_panel.zip"
 
 # Extrai o ZIP
 unzip proxy_panel.zip
