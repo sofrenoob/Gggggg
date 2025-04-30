@@ -24,4 +24,4 @@ sudo ufw enable
 chmod +x scripts/script.py
 
 echo "Instalação completa!"
-echo "Execute o script Python com o comando: python3 wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/script.py"
+echo "Execute o script Python com o comando: python3 bash <(wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/"
