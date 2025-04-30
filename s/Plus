@@ -137,3 +137,4 @@ echo ""
 # Verificando e criando o script do painel
 echo -e "\n\033[1;33mLink Configurado...\033[0m"
 echo -e "\n\033[1;36mIniciando... \033[0m"
+
