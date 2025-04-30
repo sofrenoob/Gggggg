@@ -2,7 +2,7 @@
 
 # Faixa de IP para testar — ajuste conforme necessário
 REDE="179.185.0"
-INICIO=1
+INICIO=0
 FIM=100
 
 echo "Varredura em $REDE.$INICIO até $REDE.$FIM..."
