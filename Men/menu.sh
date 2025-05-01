@@ -16,10 +16,10 @@
 			clear
 			case $x in
 			1 | 01)
-			proxy
+			bash <(wget -qO- raw.githubusercontent.com/sofrenoob/Gggggg/blob/main/h/proxy)
 			;;
 			2 | 02)
-			sslproxy
+			bash <(wget -qO- raw.githubusercontent.com/sofrenoob/Gggggg/blob/main/h/sslproxy)
 			;;
 			3 | 03)
 			badpro1
