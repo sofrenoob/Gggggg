@@ -11,7 +11,7 @@ DEST_DIR="/usr/bin"
 
 # Lista de arquivos e seus links de download
 declare -A FILES
-FILES["meuscript1"]="https://exemplo.com/meuscript1.sh"
+FILES["menu.sh"]="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/Men/menu.sh"
 FILES["meuscript2"]="https://exemplo.com/meuscript2.sh"
 
 # Baixar os arquivos e mover para o diretório de destino
