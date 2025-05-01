@@ -1,6 +1,6 @@
 #!/bin/bash
     clear
-    echo -e "\033[01;31m║\033[1;31m\033[5;34;47m                    MENU PROXY                    \033[1;33m \033[0m\033[01;31m║"
+    echo -e "\033[01;31m║\033[1;31m\033[5;34;47m                    MENU BADVPN                    \033[1;33m \033[0m\033[01;31m║"
     echo -e "\033[01;31m║\033[0m"
     echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 01 •\033[1;34m]\033[1;37m ➩  \033[1;33mPROXY $stsu\033[0m"
     echo -e "\033[01;31m║\033[1;31m\033[1;34m[\033[1;37m 02 •\033[1;34m]\033[1;37m ➩  \033[1;33mSSLPROXY 2 \033[0m"
@@ -16,10 +16,10 @@
 			clear
 			case $x in
 			1 | 01)
-			bash <(wget -qO- raw.githubusercontent.com/sofrenoob/Gggggg/blob/main/h/proxy)
+			proxy
 			;;
 			2 | 02)
-			bash <(wget -qO- raw.githubusercontent.com/sofrenoob/Gggggg/blob/main/h/sslproxy)
+			sslproxy
 			;;
 			3 | 03)
 			badpro1
