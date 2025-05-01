@@ -3,8 +3,8 @@
 # Função para exibir o menu
 exibir_menu() {
     echo "Escolha uma opção:"
-    echo "1) Opção 1"
-    echo "2) Opção 2"
+    echo "1) proxy 1"
+    echo "2) sslproxy 2"
     echo "3) Opção 3"
     echo "4) Opção 4"
     echo "5) Opção 5"
@@ -33,12 +33,12 @@ while true; do
 
     case $opcao in
         1)
-            dar_permissao_execucao "./resposta_1.sh"
-            ./resposta_1.sh
+            dar_permissao_execucao "./proxy"
+            ./proxy
             ;;
         2)
-            dar_permissao_execucao "./resposta_2.sh"
-            ./resposta_2.sh
+            dar_permissao_execucao "./sslproxy"
+            ./sslproxy
             ;;
         3)
             dar_permissao_execucao "./resposta_3.sh"
