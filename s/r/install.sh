@@ -15,7 +15,7 @@ fi
 
 # Exemplo de download do projeto como ZIP do GitHub
 # echo "- Baixando pacote do GitHub..."
-# wget https://github.com/sofrenoob/Gggggg/blob/main/s/r/rede_tool.sh -O /tmp/rede_tool.sh
+# wget https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/rede_tool.sh -O /tmp/rede_tool.sh
 # cp /tmp/rede_tool.sh ./
 
 # Copia o script principal para o diretório correto
