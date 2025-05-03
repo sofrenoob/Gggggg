@@ -21,13 +21,13 @@ screen -dmS alfaproxy python3 $DEST/proxy_server.py
 pip3 install websocket-server
 
 # Baixando arquivos do repositório
-wget -O $DEST/proxy_server.py https://raw.githubusercontent.com/Gggggg/main/s/r/o/proxy_server.py
-wget -O $DEST/payloads.txt https://raw.githubusercontent.com/Gggggg/main/s/r/o/payloads.txt
-wget -O $DEST/cert.pem https://raw.githubusercontent.com/Gggggg/main/s/r/o/cert.pem
-wget -O $DEST/key.pem https://raw.githubusercontent.com/Gggggg/main/s/r/o/key.pem
-wget -O $DEST/menuproxy.sh https://raw.githubusercontent.com/Gggggg/main/s/r/o/menuproxy.sh
-wget -O $DEST/config.txt https://raw.githubusercontent.com/Gggggg/main/s/r/o/config.txt
-wget -O $DEST/requirements.txt https://raw.githubusercontent.com/Gggggg/main/s/r/o/requirements.txt
+wget -O $DEST/proxy_server.py https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/o/proxy_server.py
+wget -O $DEST/payloads.txt https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/o/payloads.txt
+wget -O $DEST/cert.pem https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/o/cert.pem
+wget -O $DEST/key.pem https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/o/key.pem
+wget -O $DEST/menuproxy.sh https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/o/menuproxy.sh
+wget -O $DEST/config.txt https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/o/config.txt
+wget -O $DEST/requirements.txt https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/o/requirements.txt
 
 # Configuração padrão de porta
 echo "80" > $DEST/config.txt
