@@ -1,20 +1,37 @@
 #!/bin/bash
 
-# Atualiza o sistema e instala dependências
+# Atualiza pacotes
 pkg update -y && pkg upgrade -y
-pkg install -y curl wget grep sed coreutils tsu
 
-# Solicita permissão de acesso ao armazenamento (se necessário)
-termux-setup-storage
+# Instala dependências
+pkg install -y curl wget python figlet toilet lolcat nc nmap
 
-# Baixa o script do scanner de IP e executa
-cd $HOME
+# Criar pasta de saída se não existir
+mkdir -p output
 
-# Link direto para o script principal (você precisa hospedar esse arquivo em algum servidor ou pastebin)
-SCAN_SCRIPT_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/h/scanner.sh"
-curl -o scanner.sh $SCAN_SCRIPT_URL
+# Banner inicial
+clear
+figlet "ALFALEMOS" | lolcat
+echo -e "\033[1;34mInstalando dependências e atualizações...\033[0m"
+sleep 2
 
+# Simula download de arquivos principais
+echo -e "\033[1;33mBaixando arquivos do projeto...\033[0m"
+wget -O menu.sh https://link_exemplo.com/menu.sh
+wget -O scanner.sh https://link_exemplo.com/scanner.sh
+wget -O checker_proxy.sh https://link_exemplo.com/checker_proxy.sh
+
+# Dar permissões
+chmod +x menu.sh
 chmod +x scanner.sh
+chmod +x checker_proxy.sh
 
-# Executa o scanner
-bash scanner.sh
+# Simula download de outros arquivos
+wget -O output/arquivo1.txt https://arquivo_exemplo_1.com
+
+# Finaliza instalação
+echo -e "\033[1;32mTodos arquivos baixados e permissões aplicadas!\033[0m"
+sleep 1
+
+# Chama menu
+bash menu.sh
