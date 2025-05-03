@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # AlfaMenager Install Script
-# by @alfalemos 👾🥷
+# by Jake 👾🥷
 
 clear
 echo -e "\e[1;36m[+] Instalando dependências e configurando ambiente...\e[0m"
@@ -30,6 +30,7 @@ wget -O dns_custom.sh https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/
 wget -O memory_store.sh https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/memory_store.sh
 wget -O monitor_real_time.sh https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/monitor_real_time.sh
 wget -O alfa_api.py https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/alfa_api.py
+wget -O alfa_api.py https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/start_tunnels.sh
 wget -O README.md https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/r/README.md
 
 # Criar arquivos padrão
