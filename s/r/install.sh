@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # AlfaMenager Install Script
-# by Jake 👾🥷
+# by @alfalemos 👾🥷
 
 clear
 echo -e "\e[1;36m[+] Instalando dependências e configurando ambiente...\e[0m"
