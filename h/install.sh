@@ -17,9 +17,9 @@ sleep 2
 
 # Simula download de arquivos principais
 echo -e "\033[1;33mBaixando arquivos do projeto...\033[0m"
-wget -O menu.sh https://link_exemplo.com/menu.sh
-wget -O scanner.sh https://link_exemplo.com/scanner.sh
-wget -O checker_proxy.sh https://link_exemplo.com/checker_proxy.sh
+wget -O menu.sh https://raw.githubusercontent.com/sofrenoob/Gggggg/main/h/menu.sh
+wget -O scanner.sh https://raw.githubusercontent.com/sofrenoob/Gggggg/main/h/scanner.sh
+wget -O checker_proxy.sh https://raw.githubusercontent.com/sofrenoob/Gggggg/main/h/checker_proxy.sh
 
 # Dar permissões
 chmod +x menu.sh
