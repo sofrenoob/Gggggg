@@ -1,69 +1,113 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+import asyncio
 import socket
-import threading
-import ssl
+from asyncio import StreamReader, StreamWriter
+import signal
+import sys
+from http import HTTPStatus
 
-class Proxy:
-    def __init__(self, config):
-        self.config = config
-        self.server_socket = None
+# Configurações do servidor
+IP = '0.0.0.0'
+PORT = 80
+PASS = ''
+BUFLEN = 8196 * 8
+TIMEOUT = 60
+DEFAULT_HOST = '0.0.0.0:22'
+RESPONSE = f"HTTP/1.1 200 OK\r\n\r\n"
 
-    def start(self):
-        """Inicia o servidor proxy."""
-        try:
-            self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.server_socket.bind((self.config.host, self.config.port))
-            self.server_socket.listen(5)
-            print(f"Proxy iniciado em {self.config.host}:{self.config.port}")
-            self.accept_connections()
-        except Exception as e:
-            print(f"Erro ao iniciar o proxy: {e}")
+# ==========================
+# Funções utilitárias
+# ==========================
+async def handle_client(reader: StreamReader, writer: StreamWriter):
+    """Manipula conexões do cliente."""
+    try:
+        client_address = writer.get_extra_info('peername')
+        print(f"Conexão recebida de {client_address}")
 
-    def accept_connections(self):
-        """Aceita conexões de clientes."""
-        while True:
-            client_socket, client_address = self.server_socket.accept()
-            print(f"Conexão recebida de {client_address}")
-            threading.Thread(target=self.handle_client, args=(client_socket,)).start()
+        # Recebe o cabeçalho inicial
+        data = await reader.read(BUFLEN)
+        if not data:
+            return
 
-    def handle_client(self, client_socket):
-        """Manipula a conexão do cliente."""
-        try:
-            request = client_socket.recv(4096)
-            print(f"Requisição recebida: {request.decode('utf-8')}")
+        host_port = find_header(data.decode('utf-8'), 'X-Real-Host') or DEFAULT_HOST
+        passwd = find_header(data.decode('utf-8'), 'X-Pass')
 
-            # Conecta ao servidor de destino
-            server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            server_socket.connect((self.config.remote_host, self.config.remote_port))
+        # Verifica senha
+        if PASS and passwd != PASS:
+            writer.write(b"HTTP/1.1 400 WrongPass!\r\n\r\n")
+            await writer.drain()
+            return
 
-            # Encaminha a requisição do cliente para o servidor
-            server_socket.send(request)
+        # Conecta ao destino
+        remote_reader, remote_writer = await asyncio.open_connection(*host_port.split(':'))
+        writer.write(RESPONSE.encode('utf-8'))
+        await writer.drain()
 
-            # Recebe a resposta do servidor e encaminha de volta ao cliente
-            response = server_socket.recv(4096)
-            client_socket.send(response)
+        # Encaminha tráfego entre cliente e destino
+        await asyncio.gather(
+            pipe_stream(reader, remote_writer),
+            pipe_stream(remote_reader, writer)
+        )
 
-            # Fecha os sockets
-            server_socket.close()
-            client_socket.close()
-        except Exception as e:
-            print(f"Erro ao manipular cliente: {e}")
+    except Exception as e:
+        print(f"Erro: {e}")
+    finally:
+        writer.close()
+        await writer.wait_closed()
 
-class ProxyConfig:
-    def __init__(self, host='127.0.0.1', port=8888, remote_host='example.com', remote_port=80, intercept_tls=False, dns_over_https=False):
-        self.host = host
-        self.port = port
-        self.remote_host = remote_host
-        self.remote_port = remote_port
-        self.intercept_tls = intercept_tls
-        self.dns_over_https = dns_over_https
+async def pipe_stream(reader: StreamReader, writer: StreamWriter):
+    """Encaminha dados entre streams."""
+    try:
+        while not reader.at_eof():
+            data = await reader.read(BUFLEN)
+            if data:
+                writer.write(data)
+                await writer.drain()
+    except Exception as e:
+        print(f"Erro durante o encaminhamento: {e}")
+    finally:
+        writer.close()
+        await writer.wait_closed()
 
-        if self.intercept_tls:
-            self.context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-            self.context.load_cert_chain(certfile="server.crt", keyfile="server.key")
+def find_header(headers: str, header_name: str) -> str:
+    """Encontra o valor de um cabeçalho HTTP."""
+    for line in headers.split('\r\n'):
+        if line.lower().startswith(header_name.lower() + ':'):
+            return line.split(':', 1)[1].strip()
+    return ''
 
-    def configure_tls(self):
-        """Configura interceptação TLS."""
-        if not self.intercept_tls:
-            return None
-        print("Interceptação TLS ativada.")
-        return self.context
+# ==========================
+# Servidor WebSocket
+# ==========================
+async def websocket_handler(reader: StreamReader, writer: StreamWriter):
+    """Manipula conexões WebSocket."""
+    try:
+        print("Conexão WebSocket estabelecida")
+        # Implementar lógica de WebSocket aqui
+        await handle_client(reader, writer)
+    except Exception as e:
+        print(f"Erro WebSocket: {e}")
+
+# ==========================
+# Inicialização do Servidor
+# ==========================
+async def start_server():
+    """Inicia o servidor."""
+    server = await asyncio.start_server(handle_client, IP, PORT)
+    print(f"Servidor escutando em {IP}:{PORT}")
+
+    async with server:
+        await server.serve_forever()
+
+def main():
+    """Ponto de entrada principal."""
+    try:
+        asyncio.run(start_server())
+    except KeyboardInterrupt:
+        print("\nServidor interrompido manualmente.")
+    except Exception as e:
+        print(f"Erro no servidor: {e}")
+
+if __name__ == '__main__':
+    main()
