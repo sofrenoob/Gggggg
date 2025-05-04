@@ -110,4 +110,4 @@ def main():
         print(f"Erro no servidor: {e}")
 
 if __name__ == '__main__':
-    main()
+    main() 
