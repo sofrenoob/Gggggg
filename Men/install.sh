@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Definições
-PROXY_PY_URL="https://example.com/proxy.py"       # Substitua pelo link real do proxy.py
-PROXY_MENU_URL="https://example.com/proxy_menu.py" # Substitua pelo link real do proxy_menu.py
+PROXY_PY_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/Men/proxy.py"       # Substitua pelo link real do proxy.py
+PROXY_MENU_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/Men/proxy_menu.py" # Substitua pelo link real do proxy_menu.py
 INSTALL_DIR="/opt/proxy-manager"
 LOG_FILE="/var/log/proxy-manager-install.log"
 
