@@ -1,31 +1,15 @@
 #!/bin/bash
 
-# Alfa Proxy Hunter 🚀 Termux Safe
+# Alfa Proxy Hunter 🚀 Termux Safe + Exibição Interativa
 
 TMP_DIR="$HOME/alfa_tools/tmp"
 mkdir -p "$TMP_DIR"
 
-PROXY_LIST="$TMP_DIR/proxies_lista.txt"
 PROXY_VALID="$HOME/storage/downloads/proxies_validos.txt"
 
-# Intervalo de IP para a varredura de 100.10.10.10 até 200.20.20.20 (exemplo)
+# Intervalo de IP para a varredura (exemplo: 100.10.10.10 até 100.10.10.20)
 START_IP="100.10.10.10"
-END_IP="200.20.20.20"
-
-# Função para gerar uma sequência de IPs
-generate_ip_range() {
-  local start_ip=$1
-  local end_ip=$2
-
-  # Converte os IPs para números inteiros
-  local start_num=$(ip_to_int "$start_ip")
-  local end_num=$(ip_to_int "$end_ip")
-
-  # Gera IPs dentro do intervalo
-  for ((i = start_num; i <= end_num; i++)); do
-    echo $(int_to_ip $i)
-  done
-}
+END_IP="100.10.10.20"
 
 # Função para converter IP para número
 ip_to_int() {
@@ -41,37 +25,41 @@ int_to_ip() {
   echo "$((num >> 24 & 255)).$((num >> 16 & 255)).$((num >> 8 & 255)).$((num & 255))"
 }
 
-# Função para testar proxy HTTP/WS
+# Função para testar proxy HTTP
 test_proxy() {
   local proxy=$1
   local port=$2
   local url="http://google.com"
   local code
 
-  # Teste de conexão com payload simples HTTP
-  code=$(curl -x "$proxy" -s --max-time 5 -o /dev/null -w "%{http_code}" --connect-timeout 5 -L "$url:$port")
+  echo -ne "\e[33m[+] Testando $proxy:$port...\e[0m "
+
+  code=$(curl -x "$proxy:$port" -s --max-time 5 -o /dev/null -w "%{http_code}" --connect-timeout 5 -L "$url")
 
   if [[ "$code" == "200" || "$code" == "101" ]]; then
-    echo "✅ Porta $port: Proxy válido"
-    return 0  # Proxy válido
+    echo -e "\e[32m✅ Código $code\e[0m"
+    echo "$proxy:$port" >> "$PROXY_VALID"
   else
-    echo "❌ Porta $port: Proxy inválido"
-    return 1  # Proxy inválido
+    echo -e "\e[31m❌ Código $code\e[0m"
   fi
 }
 
-# Testar proxies nas portas 80, 8080, 443
-echo "[+] Buscando proxies dentro da faixa de IPs..."
-
+# Limpa arquivo de válidos
 > "$PROXY_VALID"
 
-# Gera o intervalo de IPs e testa
-for ip in $(generate_ip_range "$START_IP" "$END_IP"); do
-  echo "Testando IP: $ip"
+# Converte os IPs para números inteiros
+start_num=$(ip_to_int "$START_IP")
+end_num=$(ip_to_int "$END_IP")
+
+echo -e "\n\e[36m==== Alfa Proxy Hunter 🚀 Iniciando varredura de $START_IP até $END_IP ====\e[0m"
+
+# Loop pelos IPs
+for ((i = start_num; i <= end_num; i++)); do
+  ip=$(int_to_ip $i)
   for port in 80 8080 443; do
-    test_proxy "$ip" "$port" && echo "$ip" >> "$PROXY_VALID"
+    test_proxy "$ip" "$port"
   done
 done
 
-echo "[+] Testes finalizados!"
-echo "[+] Proxies válidos salvos em: $PROXY_VALID"
+echo -e "\n\e[36m==== Varredura finalizada! Proxies válidos salvos em:\e[0m $PROXY_VALID"
+echo -e "\e[36m====================================================\e[0m"
