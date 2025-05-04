@@ -1,5 +1,4 @@
 # Atualização do ssh_manager.py com ferramentas avançadas e configuração de VPN
-
 import os
 import platform
 import asyncio
@@ -12,6 +11,9 @@ from http.server import SimpleHTTPRequestHandler, HTTPServer
 import socket
 import threading
 import speedtest  # Biblioteca para teste de velocidade de internet
+
+# Adicionando suporte para proxy
+from proxy import Proxy, ProxyConfig  # Exemplo de integração com proxy.py (instale previamente)
 
 # Criação do console para saída formatada
 console = Console()
@@ -29,38 +31,19 @@ def sistema_info():
     hora_atual = datetime.now().strftime("%H:%M:%S")
     return os_info, ram_total, ram_uso, cpu_nucleos, cpu_uso, hora_atual
 
-def limitar_trafego(usuario, limite):
-    """Limita o tráfego de rede para um usuário específico."""
+# ==========================
+# Funções de Proxy
+# ==========================
+def iniciar_proxy_http():
+    """Inicia um servidor Proxy HTTP/HTTPS."""
     try:
-        console.print(f"[bold cyan]Aplicando limite de tráfego para o usuário: {usuario}[/bold cyan]")
-        os.system(f"sudo wondershaper -a {usuario} -d {limite} -u {limite}")
-        console.print(f"[bold green]Limite de tráfego de {limite} Kbps aplicado com sucesso![/bold green]")
+        console.print("[bold cyan]Iniciando Proxy HTTP/HTTPS...[/bold cyan]")
+        config = ProxyConfig(intercept_tls=True, dns_over_https=True)
+        proxy_server = Proxy(config)
+        proxy_server.start()
+        console.print("[bold green]Proxy HTTP/HTTPS iniciado com sucesso![/bold green]")
     except Exception as e:
-        console.print(f"[bold red]Erro ao aplicar limite de tráfego: {e}[/bold red]")
-
-def executar_speedtest():
-    """Executa um teste de velocidade de internet."""
-    try:
-        console.print("[bold cyan]Executando Speedtest...[/bold cyan]")
-        st = speedtest.Speedtest()
-        st.get_best_server()
-        download = st.download() / 1_000_000  # Convertendo para Mbps
-        upload = st.upload() / 1_000_000  # Convertendo para Mbps
-        ping = st.results.ping
-        console.print(f"[bold green]Download: {download:.2f} Mbps[/bold green]")
-        console.print(f"[bold green]Upload: {upload:.2f} Mbps[/bold green]")
-        console.print(f"[bold green]Ping: {ping} ms[/bold green]")
-    except Exception as e:
-        console.print(f"[bold red]Erro ao executar Speedtest: {e}[/bold red]")
-
-def configurar_vpn(nome_vpn, endereco_vpn):
-    """Configura uma VPN no sistema."""
-    try:
-        console.print(f"[bold cyan]Configurando VPN: {nome_vpn}[/bold cyan]")
-        os.system(f"sudo openvpn --config {endereco_vpn}")
-        console.print(f"[bold green]VPN {nome_vpn} configurada e conectada com sucesso![/bold green]")
-    except Exception as e:
-        console.print(f"[bold red]Erro ao configurar VPN: {e}[/bold red]")
+        console.print(f"[bold red]Erro ao iniciar Proxy: {e}[/bold red]")
 
 # ==========================
 # Interface e Menu
@@ -98,7 +81,7 @@ def exibir_interface():
     menu_opcoes.add_column(style="bold white", justify="left")
 
     opcoes = [
-        ("[01]", "INICIAR PROXY"),
+        ("[01]", "INICIAR PROXY HTTP/HTTPS"),
         ("[02]", "CRIAR USUARIO"),
         ("[03]", "REMOVER USUARIO"),
         ("[04]", "VALIDAR PROXY"),
@@ -122,7 +105,7 @@ def exibir_interface():
 def processar_opcao(opcao):
     """Processa a escolha do menu."""
     if opcao == "01":
-        console.print("[bold yellow]Funcionalidade de Proxy ainda não implementada.[/bold yellow]")
+        iniciar_proxy_http()
     elif opcao == "02":
         nome_usuario = console.input("[bold cyan]Digite o nome do usuário: [/bold cyan]")
         senha = console.input("[bold cyan]Digite a senha para o usuário: [/bold cyan]")
