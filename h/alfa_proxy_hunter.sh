@@ -7,8 +7,8 @@ clear
 echo -e "\e[1;32m==== Alfa Proxy Hunter 🚀 ====\e[0m"
 
 # Defina o range de IPs
-inicio_ip=100.10.10.10
-fim_ip=100.10.10.20
+inicio_ip=100.00.00.00
+fim_ip=200.200.200.200
 portas=(80 8080 443)
 saida="$HOME/storage/downloads/proxies_validos.txt"
 
