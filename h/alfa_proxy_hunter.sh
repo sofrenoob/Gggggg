@@ -1,28 +1,40 @@
 #!/bin/bash
 
-# Alfa Proxy Hunter 🚀
+# Alfa Proxy Hunter 🚀 Termux Safe
 
-API_URL="https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=3000&country=all&ssl=all&anonymity=all"
-OUTPUT="$HOME/Download/proxies_validos.txt"
+TMP_DIR="$HOME/alfa_tools/tmp"
+mkdir -p "$TMP_DIR"
 
-echo "📡 Buscando lista de proxies..."
-curl -s "$API_URL" -o proxies.txt
+PROXY_LIST="$TMP_DIR/proxies_lista.txt"
+PROXY_VALID="$HOME/storage/downloads/proxies_validos.txt"
 
-echo "🎯 Testando proxies válidos..."
+echo "[+] Buscando proxies..."
+curl -s "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=3000&country=all&ssl=all&anonymity=all" -o "$PROXY_LIST"
 
-> "$OUTPUT"  # Limpa o arquivo antes de começar
+# Verifica se baixou algo
+if [ ! -s "$PROXY_LIST" ]; then
+  echo "[!] Nenhum proxy encontrado. Abortando."
+  exit 1
+fi
+
+# Remove linhas vazias e ordena
+grep -v '^$' "$PROXY_LIST" | sort -u > "$PROXY_LIST.clean"
+mv "$PROXY_LIST.clean" "$PROXY_LIST"
+
+echo "[+] Testando proxies para CONNECT na porta 80..."
+
+> "$PROXY_VALID"
 
 while read proxy; do
-  if [ ! -z "$proxy" ]; then
-    echo -n "Testando $proxy ... "
-    code=$(curl -x "$proxy" -s --max-time 5 -o /dev/null -w "%{http_code}" http://google.com)
-    if [[ "$code" == "200" || "$code" == "101" ]]; then
-      echo "$proxy ✅"
-      echo "$proxy" >> "$OUTPUT"
-    else
-      echo "falhou ❌"
-    fi
+  echo -n "Testando $proxy... "
+  code=$(curl -x "$proxy" -s --max-time 5 -o /dev/null -w "%{http_code}" http://google.com)
+  if [[ "$code" == "200" || "$code" == "101" ]]; then
+    echo "✅"
+    echo "$proxy" >> "$PROXY_VALID"
+  else
+    echo "❌"
   fi
-done < proxies.txt
+done < "$PROXY_LIST"
 
-echo "✅ Teste finalizado. Proxies válidos salvos em: $OUTPUT"
+echo "[+] Testes finalizados!"
+echo "[+] Proxies válidos salvos em: $PROXY_VALID"
