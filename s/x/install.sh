@@ -12,7 +12,7 @@ echo "Clonando o repositório proxy.py..."
 git clone https://github.com/abhinavsingh/proxy.py.git /opt/proxy.py
 
 echo "Clonando o repositório adicional..."
-git clone https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/x/admin_panel.py /opt/adm
+git clone https://raw.githubusercontent.com/sofrenoob/Gggggg/main/s/x/admin_panel.py /opt/proxy.py
 
 echo "Instalando dependências do proxy.py..."
 cd /opt/proxy.py
