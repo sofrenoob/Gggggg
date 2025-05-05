@@ -123,3 +123,56 @@ def menu():
 # Inicia menu
 if __name__ == "__main__":
     menu()
+
+
+
+
+
+#!/bin/bash
+
+# Verifica permissão root
+if [[ "$EUID" -ne 0 ]]; then
+  echo "Por favor execute como root."
+  exit
+fi
+
+echo ">>> Instalando GGProxy HackTool Master 🥷"
+
+# Cria diretório de instalação
+mkdir -p /opt/ggproxy
+
+# Faz download do script principal
+echo "Baixando proxy_master_hacktool.py..."
+curl -o /opt/ggproxy/proxy_master_hacktool.py https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/proxy_master_hacktool.py
+
+# Dá permissão de execução
+chmod +x /opt/ggproxy/proxy_master_hacktool.py
+
+# Instala dependências Python se necessário
+echo "Instalando dependências Python..."
+pip3 install --upgrade aiohttp websockets
+
+# Cria service systemd
+echo "Criando serviço systemd para inicialização automática..."
+
+cat <<EOL > /etc/systemd/system/ggproxyhack.service
+[Unit]
+Description=GGProxy HackTool Master Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/ggproxy/proxy_master_hacktool.py
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+# Ativa e inicia o serviço
+systemctl daemon-reload
+systemctl enable ggproxyhack.service
+systemctl start ggproxyhack.service
+
+echo "Instalação concluída."
+echo "Proxy HackTool ativo! Para ver status: systemctl status ggproxyhack"
