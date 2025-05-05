@@ -1,178 +1,127 @@
 #!/usr/bin/env python3
 import asyncio
-import websockets
 import aiohttp
-from aiohttp import web, ClientSession
+from aiohttp import web
+import websockets
 import threading
 import json
 import time
+import os
+import subprocess
 
-# Config
-HTTP_PORT = 8080
-WS_PORT = 8081
-API_PORT = 8082
-TARGET_BACKEND = 'http://127.0.0.1:5000'
-logfile = 'proxy_logs.txt'
+# === CONFIG ===
+CONFIG_FILE = "/opt/ggproxy/config.json"
+with open(CONFIG_FILE) as f:
+    config = json.load(f)
 
-# Plugin exemplo (pode adicionar mais via lista)
-def example_plugin(data):
-    print("[PLUGIN] Interceptado:", data)
+TARGET_BACKEND = config["backend_target"]
+LOG_FILE = config["log_file"]
 
-plugins = [example_plugin]
-
-# Log função
+# === LOG ===
 def log(data):
-    with open(logfile, 'a') as f:
+    with open(LOG_FILE, 'a') as f:
         f.write(f"{time.ctime()} | {data}\n")
 
-# HTTP Proxy Handler
+# === HTTP PROXY ===
 async def handle_http(request):
-    log(f"HTTP {request.method} {request.rel_url}")
-    for plugin in plugins:
-        plugin(f"HTTP Request {request.rel_url}")
-    
-    target_url = str(TARGET_BACKEND) + str(request.rel_url)
-    async with ClientSession() as session:
-        async with session.request(request.method, target_url, headers=request.headers, data=await request.read()) as resp:
-            body = await resp.read()
-            return web.Response(status=resp.status, headers=resp.headers, body=body)
+    target_url = TARGET_BACKEND + str(request.rel_url)
+    method = request.method
+    headers = dict(request.headers)
 
-# WebSocket Proxy Handler
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.request(method, target_url, headers=headers, data=await request.read()) as resp:
+                body = await resp.read()
+                status = resp.status
+                log(f"HTTP {method} {request.rel_url} -> {status}")
+                return web.Response(status=status, headers=resp.headers, body=body)
+    except Exception as e:
+        log(f"HTTP {method} {request.rel_url} -> 500 {e}")
+        return web.Response(status=500, text=f"Proxy Error: {str(e)}")
+
+def start_http_proxy(port):
+    app = web.Application()
+    app.router.add_route('*', '/{path_info:.*}', handle_http)
+    print(f"[+] HTTP Proxy ativo na porta {port}")
+    web.run_app(app, port=port)
+
+def start_multiport_proxy():
+    threads = []
+    for port in config["ports"]:
+        t = threading.Thread(target=start_http_proxy, args=(port,))
+        t.daemon = True
+        t.start()
+        threads.append(t)
+    for t in threads:
+        t.join()
+
+# === WEBSOCKET PROXY ===
 async def ws_handler(websocket, path):
-    log(f"Nova conexão WS: {path}")
+    log(f"WS conexão: {path}")
     async with websockets.connect(f"ws://127.0.0.1:5001{path}") as ws_backend:
         async def client_to_server():
             async for message in websocket:
                 log(f"WS Cliente -> Backend: {message}")
                 await ws_backend.send(message)
-                for plugin in plugins:
-                    plugin(f"WS In: {message}")
-
         async def server_to_client():
             async for message in ws_backend:
                 log(f"WS Backend -> Cliente: {message}")
                 await websocket.send(message)
-
         await asyncio.gather(client_to_server(), server_to_client())
 
-# API Proxy Handler (JWT-aware)
-async def handle_api(request):
-    token = request.headers.get("Authorization")
-    log(f"API {request.method} {request.rel_url} | Token: {token}")
-    for plugin in plugins:
-        plugin(f"API Call {request.rel_url} | Token: {token}")
-
-    target_url = str(TARGET_BACKEND) + str(request.rel_url)
-    async with ClientSession() as session:
-        async with session.request(request.method, target_url, headers=request.headers, data=await request.read()) as resp:
-            body = await resp.read()
-            return web.Response(status=resp.status, headers=resp.headers, body=body)
-
-# Iniciar HTTP Proxy
-def start_http_proxy():
-    app = web.Application()
-    app.router.add_route('*', '/{path_info:.*}', handle_http)
-    web.run_app(app, port=HTTP_PORT)
-
-# Iniciar WS Proxy
 def start_ws_proxy():
-    start_server = websockets.serve(ws_handler, "0.0.0.0", WS_PORT)
+    start_server = websockets.serve(ws_handler, "0.0.0.0", config["ws_port"])
     asyncio.get_event_loop().run_until_complete(start_server)
+    print(f"[+] WebSocket Proxy ativo na porta {config['ws_port']}")
     asyncio.get_event_loop().run_forever()
 
-# Iniciar API Proxy
-def start_api_proxy():
-    app = web.Application()
-    app.router.add_route('*', '/{path_info:.*}', handle_api)
-    web.run_app(app, port=API_PORT)
-
-# Mostrar Logs
+# === LOG VIEWER ===
 def show_logs():
-    with open(logfile) as f:
-        print(f.read())
+    os.system(f"tail -f {LOG_FILE}")
 
-# Menu Interativo
+# === STATUS DE PORTAS ===
+def check_ports():
+    print("\n=== PORTAS ATIVAS ===")
+    subprocess.call("ss -tulpn | grep LISTEN", shell=True)
+
+# === EDIT CONFIG ===
+def edit_config():
+    os.system(f"nano {CONFIG_FILE}")
+
+# === MENU PRINCIPAL ===
 def menu():
     while True:
-        print("""
-===== Proxy VPN HackTool 🥷 =====
-1. Iniciar HTTP Proxy
+        print(f"""
+=== GGProxy HackTool 🥷 v2 ===
+1. Iniciar Multiporta HTTP Proxy
 2. Iniciar WebSocket Proxy
-3. Iniciar API Proxy
-4. Ver logs
-5. Sair
+3. Ver Logs em Tempo Real
+4. Verificar Portas Ativas
+5. Editar config.json
+6. Reiniciar Proxies
+7. Sair
 """)
         choice = input("Escolha: ")
         if choice == '1':
-            threading.Thread(target=start_http_proxy, daemon=True).start()
-            print("[+] HTTP Proxy ativo na porta", HTTP_PORT)
+            threading.Thread(target=start_multiport_proxy, daemon=True).start()
+            print("[+] Multiporta HTTP Proxy iniciado.")
         elif choice == '2':
             threading.Thread(target=start_ws_proxy, daemon=True).start()
-            print("[+] WebSocket Proxy ativo na porta", WS_PORT)
+            print("[+] WebSocket Proxy iniciado.")
         elif choice == '3':
-            threading.Thread(target=start_api_proxy, daemon=True).start()
-            print("[+] API Proxy ativo na porta", API_PORT)
-        elif choice == '4':
             show_logs()
+        elif choice == '4':
+            check_ports()
         elif choice == '5':
+            edit_config()
+        elif choice == '6':
+            os.system("systemctl restart ggproxyhack.service")
+            print("[+] Proxies reiniciados.")
+        elif choice == '7':
             print("Encerrando...")
             exit(0)
         else:
             print("Opção inválida.")
 
-# Inicia menu
 if __name__ == "__main__":
     menu()
-
-
-
-
-
-#!/bin/bash
-
-# Verifica permissão root
-if [[ "$EUID" -ne 0 ]]; then
-  echo "Por favor execute como root."
-  exit
-fi
-
-echo ">>> Instalando GGProxy HackTool Master 🥷"
-
-# Cria diretório de instalação
-mkdir -p /opt/ggproxy
-
-# Faz download do script principal
-echo "Baixando proxy_master_hacktool.py..."
-curl -o /opt/ggproxy/proxy_master_hacktool.py https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/proxy_master_hacktool.py
-
-# Dá permissão de execução
-chmod +x /opt/ggproxy/proxy_master_hacktool.py
-
-# Instala dependências Python se necessário
-echo "Instalando dependências Python..."
-pip3 install --upgrade aiohttp websockets
-
-# Cria service systemd
-echo "Criando serviço systemd para inicialização automática..."
-
-cat <<EOL > /etc/systemd/system/ggproxyhack.service
-[Unit]
-Description=GGProxy HackTool Master Service
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/python3 /opt/ggproxy/proxy_master_hacktool.py
-Restart=always
-User=root
-
-[Install]
-WantedBy=multi-user.target
-EOL
-
-# Ativa e inicia o serviço
-systemctl daemon-reload
-systemctl enable ggproxyhack.service
-systemctl start ggproxyhack.service
-
-echo "Instalação concluída."
-echo "Proxy HackTool ativo! Para ver status: systemctl status ggproxyhack"
