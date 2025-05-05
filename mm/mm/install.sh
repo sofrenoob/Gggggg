@@ -1,54 +1,77 @@
 #!/bin/bash
 
-# Atualização do sistema operacional
-echo "Atualizando o sistema..."
-apt update && apt upgrade -y
+# Verifica permissão root
+if [[ "$EUID" -ne 0 ]]; then
+  echo "Por favor execute como root"
+  exit
+fi
 
-# Instalação de dependências básicas
-echo "Instalando dependências básicas..."
-apt install -y python3 python3-pip curl git unzip
+echo ">>> Instalando VPN Proxy MultiPort GGProxy 🥷"
+echo ">>> Instalando GGProxy HackTool Master 🥷"
 
-# Instalação de bibliotecas Python necessárias
-echo "Instalando bibliotecas Python necessárias..."
-pip3 install requests curses typer
+# Cria diretório de destino
+mkdir -p /opt/ggproxy
+mkdir -p /opt/ggproxy
 
-# Diretório de instalação
-INSTALL_DIR="/opt/proxy_vpn_manager"
-BIN_DIR="/usr/local/bin"
-echo "Criando diretório de instalação em: $INSTALL_DIR"
-mkdir -p $INSTALL_DIR
+# Faz download do script principal
+echo "Baixando proxy_master_hacktool.py..."
+curl -o /opt/ggproxy/proxy_master_hacktool.py https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/proxy_master_hacktool.py
+# Baixa arquivos do seu repositório
+echo "Baixando arquivos do GitHub..."
+curl -o /opt/ggproxy/proxy_server.py https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/proxy_server.py
+curl -o /opt/ggproxy/config.json https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/config.json
+curl -o /opt/ggproxy/start.sh https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/start.sh
 
-# Links para download das ferramentas
-PROXY_PY_URL="https://github.com/abhinavsingh/proxy.py/archive/refs/heads/develop.zip"
-GOPROXY_URL="https://github.com/snail007/goproxy/archive/refs/heads/master.zip"
-MENU_SCRIPT_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/proxy_vpn_manager.py"
+# Baixa proxy_vpn_stealth.py (novo proxy all-in-one)
+curl -o /opt/ggproxy/proxy_vpn_stealth.py https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/proxy_vpn_stealth.py
 
-# Baixando e configurando proxy.py
-echo "Baixando e configurando proxy.py..."
-curl -L $PROXY_PY_URL -o $INSTALL_DIR/proxy.py.zip
-unzip $INSTALL_DIR/proxy.py.zip -d $INSTALL_DIR
-rm $INSTALL_DIR/proxy.py.zip
+# Dá permissão de execução
+chmod +x /opt/ggproxy/proxy_master_hacktool.py
+# Dá permissões de execução
+chmod +x /opt/ggproxy/*.sh
+chmod +x /opt/ggproxy/proxy_server.py
+chmod +x /opt/ggproxy/proxy_vpn_stealth.py
 
-# Baixando e configurando goproxy
-echo "Baixando e configurando goproxy..."
-curl -L $GOPROXY_URL -o $INSTALL_DIR/goproxy.zip
-unzip $INSTALL_DIR/goproxy.zip -d $INSTALL_DIR
-rm $INSTALL_DIR/goproxy.zip
+# Instala dependências Python se necessário
+echo "Instalando dependências Python..."
+pip3 install --upgrade aiohttp websockets
 
-# Baixando o menu principal
-echo "Baixando o menu principal..."
-curl -L $MENU_SCRIPT_URL -o $INSTALL_DIR/proxy_vpn_manager.py
-chmod +x $INSTALL_DIR/proxy_vpn_manager.py
+# Cria serviço systemd
+echo "Criando serviço systemd para inicialização automática..."
 
-# Configurando permissões
-echo "Configurando permissões..."
-chmod -R 755 $INSTALL_DIR
-chown -R root:root $INSTALL_DIR
+cat <<EOL > /etc/systemd/system/ggproxyhack.service
+[Unit]
+Description=GGProxy HackTool Master Service
+After=network.target
 
-# Criando link simbólico para o menu principal
-echo "Criando link simbólico para o menu principal no diretório binário..."
-ln -sf $INSTALL_DIR/proxy_vpn_manager.py $BIN_DIR/proxy_vpn_manager
+cat <<EOL > /etc/systemd/system/ggproxy.service
+[Unit]
+Description=GG Proxy MultiPort Service
+After=network.target
 
-# Configuração final
-echo "Instalação concluída com sucesso!"
-echo "Execute 'proxy_vpn_manager' no terminal para iniciar o menu principal."
+[Service]
+ExecStart=/usr/bin/python3 /opt/ggproxy/proxy_master_hacktool.py
+Restart=always
+User=root
+
+[Service]
+ExecStart=/opt/ggproxy/start.sh
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+# Ativa e inicia o serviço
+systemctl daemon-reload
+systemctl enable ggproxyhack.service
+systemctl start ggproxyhack.service
+systemctl enable ggproxy.service
+systemctl start ggproxy.service
+
+echo "Instalação concluída. Serviço iniciado."
+echo "Para status: systemctl status ggproxy"
+echo "Proxy HackTool ativo! Para ver status: systemctl status ggproxyhack"
+pip3 install aiohttp websockets
+sudo python3 /opt/ggproxy/proxy_master_hacktool.py
