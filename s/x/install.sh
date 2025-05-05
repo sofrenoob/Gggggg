@@ -20,6 +20,7 @@ pip3 install -r requirements.txt
 
 echo "Dando permissões necessárias..."
 chmod +x /opt/proxy.py/proxy.py
+chmod +x /opt/proxy.py/admin_panel.py
 chmod +x /opt/adm/*.sh
 
 echo "Criando alias para o painel administrativo..."
