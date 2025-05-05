@@ -21,7 +21,7 @@ mkdir -p $INSTALL_DIR
 # Links para download das ferramentas
 PROXY_PY_URL="https://github.com/abhinavsingh/proxy.py/archive/refs/heads/develop.zip"
 GOPROXY_URL="https://github.com/snail007/goproxy/archive/refs/heads/master.zip"
-MENU_SCRIPT_URL="https://github.com/projeto/proxy_vpn_manager.py"
+MENU_SCRIPT_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/mm/mm/proxy_vpn_manager.py"
 
 # Baixando e configurando proxy.py
 echo "Baixando e configurando proxy.py..."
