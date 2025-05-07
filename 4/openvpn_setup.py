@@ -79,56 +79,47 @@ iptables-restore < /etc/iptables.rules
     run_command("sudo systemctl enable openvpn@server")
     print("OpenVPN instalado e configurado com sucesso!")
 
-def create_client_config():
+def configure_proxy():
     """
-    Creates a client configuration file and outputs it to the terminal.
+    Configures OpenVPN client to use a proxy.
     """
-    print("Gerando configuração para cliente...")
-    os.chdir("/etc/openvpn/easy-rsa")
-    run_command("./easyrsa gen-req client nopass")
-    run_command("echo 'yes' | ./easyrsa sign-req client client")
-    run_command("mkdir -p /etc/openvpn/client-configs/files")
-    run_command("cp pki/ca.crt pki/issued/client.crt pki/private/client.key /etc/openvpn/client-configs/files/")
-    
-    client_config = """
-client
-dev tun
-proto udp
-remote <SERVER_IP> 1194
-resolv-retry infinite
-nobind
-persist-key
-persist-tun
-remote-cert-tls server
-cipher AES-256-CBC
-auth SHA256
-key-direction 1
-verb 3
-<ca>
-{ca_cert}
-</ca>
-<cert>
-{client_cert}
-</cert>
-<key>
-{client_key}
-</key>
+    proxy_ip = input("Informe o IP do proxy: ")
+    proxy_port = input("Informe a porta do proxy: ")
+    proxy_user = input("Informe o usuário do proxy (ou deixe vazio): ")
+    proxy_pass = input("Informe a senha do proxy (ou deixe vazio): ")
+
+    proxy_config = f"http-proxy {proxy_ip} {proxy_port}"
+    if proxy_user and proxy_pass:
+        proxy_config += f" {proxy_user} {proxy_pass}"
+
+    print("\nAdicione a seguinte linha ao arquivo .ovpn do cliente:")
+    print(proxy_config)
+
+def configure_ssl_tunnel():
     """
-    with open("/etc/openvpn/client-configs/files/ca.crt", "r") as f:
-        ca_cert = f.read()
-    with open("/etc/openvpn/client-configs/files/client.crt", "r") as f:
-        client_cert = f.read()
-    with open("/etc/openvpn/client-configs/files/client.key", "r") as f:
-        client_key = f.read()
+    Configures SSL Tunnel with Stunnel.
+    """
+    print("Instalando e configurando Stunnel...")
+    run_command("sudo apt install -y stunnel4")
     
-    client_config = client_config.format(ca_cert=ca_cert, client_cert=client_cert, client_key=client_key)
-    client_config_path = "/etc/openvpn/client-configs/client.ovpn"
-    with open(client_config_path, "w") as f:
-        f.write(client_config)
+    print("Gerando certificado SSL...")
+    run_command("openssl req -new -x509 -days 365 -nodes -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem")
+    run_command("chmod 600 /etc/stunnel/stunnel.pem")
     
-    print(f"Arquivo de configuração do cliente criado em: {client_config_path}")
-    print("\n=== Conteúdo do arquivo de configuração do cliente ===")
-    print(client_config)
+    print("Criando configuração do Stunnel...")
+    stunnel_config = """
+[openvpn]
+accept = 443
+connect = 127.0.0.1:1194
+cert = /etc/stunnel/stunnel.pem
+    """
+    with open("/etc/stunnel/stunnel.conf", "w") as f:
+        f.write(stunnel_config)
+    
+    print("Iniciando Stunnel...")
+    run_command("systemctl enable stunnel4")
+    run_command("systemctl start stunnel4")
+    print("SSL Tunnel configurado com sucesso!")
 
 def main_menu():
     """
@@ -137,15 +128,18 @@ def main_menu():
     while True:
         print("\n=== Menu de Configuração OpenVPN ===")
         print("1. Instalar e configurar OpenVPN")
-        print("2. Gerar arquivo de configuração do cliente")
-        print("3. Sair")
+        print("2. Configurar Proxy no OpenVPN")
+        print("3. Configurar SSL Tunnel")
+        print("4. Sair")
         
         choice = input("Escolha uma opção: ")
         if choice == "1":
             install_openvpn()
         elif choice == "2":
-            create_client_config()
+            configure_proxy()
         elif choice == "3":
+            configure_ssl_tunnel()
+        elif choice == "4":
             print("Saindo...")
             break
         else:
