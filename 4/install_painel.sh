@@ -52,6 +52,12 @@ fi
 echo "Instalando dependências do Python..."
 pip3 install psutil rich --quiet
 
+# Verificar se as dependências foram instaladas corretamente
+if ! python3 -c "import psutil, rich" &> /dev/null; then
+    echo "Erro ao instalar as dependências do Python. Verifique sua conexão com a Internet e tente novamente."
+    exit 1
+fi
+
 # Baixar o arquivo do script
 echo "Baixando o script do painel..."
 curl -o "$SCRIPT_NAME" "$SCRIPT_URL"
