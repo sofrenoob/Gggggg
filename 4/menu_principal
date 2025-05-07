@@ -51,54 +51,6 @@ sair() {
 
 # Função placeholder para submenus (exemplo)
 menu_criar_usuarios() {
-    echo "Submenu Criar Usuários - ainda não implementado."
-    sleep 2
-    menu_principal
-}
-
-menu_conexoes() {
-    echo "Submenu Conexões - ainda não implementado."
-    sleep 2
-    menu_principal
-}
-
-configurar_badvpn() {
-    echo "Submenu BADVPN - ainda não implementado."
-    sleep 2
-    menu_principal
-}
-
-info_sistema() {
-    echo "Submenu Informações do Sistema - ainda não implementado."
-    sleep 2
-    menu_principal
-}
-
-menu_balanceamento() {
-    echo "Submenu Balanceamento de Carga - ainda não implementado."
-    sleep 2
-    menu_principal
-}
-
-# Início do script
-menu_principal
-
-
-}
-
-#!/bin/bash
-
-# Nome do arquivo de log
-LOG_FILE="/var/log/gerenciador_configuracoes.log"
-
-# Função para registrar ações no log
-log_action() {
-    local mensagem="$1"
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $mensagem" >> "$LOG_FILE"
-}
-
-# Submenu de Criar Usuários
-menu_criar_usuarios() {
     clear
     echo "==============================="
     echo "   GERENCIAR USUÁRIOS"
@@ -230,11 +182,6 @@ menu_principal() {
     exit 0
 }
 
-# Início do script
-menu_criar_usuarios
-
-}
-# Submenu de Conexões
 menu_conexoes() {
     clear
     echo "==============================="
@@ -1121,19 +1068,96 @@ configurar_porta_slowdns() {
     configurar_slowdns
 }
 
-# Função para registrar ações no log
-log_action() {
-    local mensagem="$1"
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $mensagem" >> /var/log/gerenciador_configuracoes.log
+configurar_badvpn() {
+    clear
+    echo "==============================="
+    echo "   CONFIGURAR BADVPN"
+    echo "==============================="
+    echo "1. Iniciar BADVPN"
+    echo "2. Parar BADVPN"
+    echo "3. Configurar Porta do BADVPN"
+    echo "4. Instalar BADVPN (se necessário)"
+    echo "5. Voltar"
+    echo "==============================="
+    read -p "Escolha uma opção: " opcao
+
+    case $opcao in
+        1) iniciar_badvpn ;;
+        2) parar_badvpn ;;
+        3) configurar_porta_badvpn ;;
+        4) instalar_badvpn ;;
+        5) menu_principal ;;
+        *) echo "Opção inválida!"; sleep 2; configurar_badvpn ;;
+    esac
 }
 
-#!/bin/bash
+# Função para iniciar BADVPN
+iniciar_badvpn() {
+    echo "Iniciando BADVPN..."
+    if nohup badvpn-udpgw --listen-addr 127.0.0.1:7300 > /dev/null 2>&1 &; then
+        log_action "BADVPN iniciado na porta 7300."
+        echo "BADVPN iniciado na porta 7300."
+    else
+        log_action "Erro ao iniciar BADVPN."
+        echo "Erro ao iniciar BADVPN. Verifique se está instalado."
+    fi
+    sleep 2
+    configurar_badvpn
+}
 
-# Nome do arquivo de log
-LOG_FILE="/var/log/gerenciador_configuracoes.log"
+# Função para parar BADVPN
+parar_badvpn() {
+    echo "Parando BADVPN..."
+    if pkill -f "badvpn-udpgw"; then
+        log_action "BADVPN foi parado."
+        echo "BADVPN foi parado."
+    else
+        log_action "Erro ao parar BADVPN. Nenhum processo encontrado."
+        echo "Erro ao parar BADVPN. Nenhum processo encontrado."
+    fi
+    sleep 2
+    configurar_badvpn
+}
 
-# Função para configurar BADVPN
-configurar_badvpn() {
+# Função para configurar a porta do BADVPN
+configurar_porta_badvpn() {
+    read -p "Digite a nova porta para o BADVPN: " porta
+    echo "Reiniciando BADVPN com a nova porta $porta..."
+    pkill -f "badvpn-udpgw"
+    sleep 1
+    if nohup badvpn-udpgw --listen-addr 127.0.0.1:$porta > /dev/null 2>&1 &; then
+        log_action "BADVPN reiniciado na porta $porta."
+        echo "BADVPN reiniciado na porta $porta."
+    else
+        log_action "Erro ao reiniciar BADVPN na porta $porta."
+        echo "Erro ao reiniciar BADVPN. Verifique se está instalado."
+    fi
+    sleep 2
+    configurar_badvpn
+}
+
+# Função para instalar BADVPN
+instalar_badvpn() {
+    echo "Instalando BADVPN..."
+    if command -v badvpn-udpgw >/dev/null 2>&1; then
+        log_action "BADVPN já está instalado."
+        echo "BADVPN já está instalado."
+    else
+        sudo apt update
+        sudo apt install -y git build-essential cmake
+        git clone https://github.com/ambrop72/badvpn.git /tmp/badvpn
+        cd /tmp/badvpn || exit
+        cmake . -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
+        make
+        sudo cp badvpn-udpgw /usr/bin/
+        cd || exit
+        sudo rm -rf /tmp/badvpn
+        log_action "BADVPN instalado com sucesso."
+        echo "BADVPN instalado com sucesso."
+    fi
+    sleep 2
+    configurar_badvpn
+}configurar_badvpn() {
     clear
     echo "==============================="
     echo "   CONFIGURAR BADVPN"
@@ -1224,24 +1248,55 @@ instalar_badvpn() {
     configurar_badvpn
 }
 
-# Função para registrar logs
-log_action() {
-    local message="$1"
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $message" >> "$LOG_FILE"
+info_sistema() {
+    clear
+    echo "==============================="
+    echo "   INFORMAÇÕES DO SISTEMA"
+    echo "==============================="
+
+    # Data e Hora
+    echo "Data e Hora: $(date '+%Y-%m-%d %H:%M:%S')"
+
+    # Usuário Atual
+    echo "Usuário Atual: $(whoami)"
+
+    # Sistema Operacional
+    os_name=$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f 2)
+    echo "Sistema Operacional: $os_name"
+
+    # CPU
+    cpu_model=$(lscpu | grep 'Model name' | sed -r 's/Model name:\s+//')
+    cpu_cores=$(lscpu | grep '^CPU(s):' | awk '{print $2}')
+    echo "CPU: $cpu_model ($cpu_cores núcleos)"
+
+    # Memória Total
+    mem_total=$(free -h | grep Mem | awk '{print $2}')
+    echo "Memória Total: $mem_total"
+
+    # Memória Usada
+    mem_used=$(free -h | grep Mem | awk '{print $3}')
+    echo "Memória Usada: $mem_used"
+
+    # Espaço em Disco
+    echo "Espaço em Disco:"
+    df -h --output=source,size,used,avail | grep '^/' | awk '{printf "  %s (Tamanho: %s, Usado: %s, Disponível: %s)\n", $1, $2, $3, $4}'
+
+    # Tempo de Atividade do Sistema
+    uptime_info=$(uptime -p)
+    echo "Tempo de Atividade do Sistema: $uptime_info"
+
+    # Rede (IP e Gateway)
+    ip_address=$(ip -4 addr show | grep inet | grep -v '127.0.0.1' | awk '{print $2}' | cut -d'/' -f1)
+    gateway=$(ip route | grep default | awk '{print $3}')
+    echo "Endereço IP: ${ip_address:-Não detectado}"
+    echo "Gateway: ${gateway:-Não detectado}"
+
+    echo "==============================="
+    echo "Pressione qualquer tecla para voltar ao menu principal..."
+    sleep 2
+    menu_principal
 }
 
-#!/bin/bash
-
-# Nome do arquivo de log
-LOG_FILE="/var/log/gerenciador_configuracoes.log"
-
-# Função para registrar ações no log
-log_action() {
-    local mensagem="$1"
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $mensagem" >> "$LOG_FILE"
-}
-
-# Menu principal para Balanceamento de Carga
 menu_balanceamento() {
     clear
     echo "==============================="
@@ -1379,73 +1434,5 @@ configurar_failover() {
     opcoes_avancadas
 }
 
-menu_principal() {
-    echo "Menu principal - ainda não implementado."
-    exit 0
-}
-
 # Início do script
-menu_balanceamento
-
-#!/bin/bash
-
-# Função para exibir informações do sistema
-info_sistema() {
-    clear
-    echo "==============================="
-    echo "   INFORMAÇÕES DO SISTEMA"
-    echo "==============================="
-
-    # Data e Hora
-    echo "Data e Hora: $(date '+%Y-%m-%d %H:%M:%S')"
-
-    # Usuário Atual
-    echo "Usuário Atual: $(whoami)"
-
-    # Sistema Operacional
-    os_name=$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f 2)
-    echo "Sistema Operacional: $os_name"
-
-    # CPU
-    cpu_model=$(lscpu | grep 'Model name' | sed -r 's/Model name:\s+//')
-    cpu_cores=$(lscpu | grep '^CPU(s):' | awk '{print $2}')
-    echo "CPU: $cpu_model ($cpu_cores núcleos)"
-
-    # Memória Total
-    mem_total=$(free -h | grep Mem | awk '{print $2}')
-    echo "Memória Total: $mem_total"
-
-    # Memória Usada
-    mem_used=$(free -h | grep Mem | awk '{print $3}')
-    echo "Memória Usada: $mem_used"
-
-    # Espaço em Disco
-    echo "Espaço em Disco:"
-    df -h --output=source,size,used,avail | grep '^/' | awk '{printf "  %s (Tamanho: %s, Usado: %s, Disponível: %s)\n", $1, $2, $3, $4}'
-
-    # Tempo de Atividade do Sistema
-    uptime_info=$(uptime -p)
-    echo "Tempo de Atividade do Sistema: $uptime_info"
-
-    # Rede (IP e Gateway)
-    ip_address=$(ip -4 addr show | grep inet | grep -v '127.0.0.1' | awk '{print $2}' | cut -d'/' -f1)
-    gateway=$(ip route | grep default | awk '{print $3}')
-    echo "Endereço IP: ${ip_address:-Não detectado}"
-    echo "Gateway: ${gateway:-Não detectado}"
-
-    echo "==============================="
-    echo "Pressione qualquer tecla para voltar ao menu principal..."
-    read -n 1
-    menu_principal
-}
-
-# Função para sair do sistema
-sair() {
-    echo "Saindo do sistema..."
-    sleep 2
-    clear
-    exit
-}
-
-# Início do menu principal
 menu_principal
