@@ -24,7 +24,7 @@ def install_openvpn():
     run_command("./easyrsa init-pki")
     run_command("./easyrsa build-ca nopass")
     run_command("./easyrsa gen-req server nopass")
-    run_command("./easyrsa sign-req server server")
+    run_command("echo 'yes' | ./easyrsa sign-req server server")
     run_command("./easyrsa gen-dh")
     run_command("./easyrsa gen-crl")
     
@@ -81,12 +81,12 @@ iptables-restore < /etc/iptables.rules
 
 def create_client_config():
     """
-    Creates a client configuration file.
+    Creates a client configuration file and outputs it to the terminal.
     """
     print("Gerando configuração para cliente...")
     os.chdir("/etc/openvpn/easy-rsa")
     run_command("./easyrsa gen-req client nopass")
-    run_command("./easyrsa sign-req client client")
+    run_command("echo 'yes' | ./easyrsa sign-req client client")
     run_command("mkdir -p /etc/openvpn/client-configs/files")
     run_command("cp pki/ca.crt pki/issued/client.crt pki/private/client.key /etc/openvpn/client-configs/files/")
     
@@ -122,10 +122,13 @@ verb 3
         client_key = f.read()
     
     client_config = client_config.format(ca_cert=ca_cert, client_cert=client_cert, client_key=client_key)
-    with open("/etc/openvpn/client-configs/client.ovpn", "w") as f:
+    client_config_path = "/etc/openvpn/client-configs/client.ovpn"
+    with open(client_config_path, "w") as f:
         f.write(client_config)
-    print("Configuração do cliente criada em: /etc/openvpn/client-configs/client.ovpn")
-    print("Substitua <SERVER_IP> no arquivo com o IP do servidor.")
+    
+    print(f"Arquivo de configuração do cliente criado em: {client_config_path}")
+    print("\n=== Conteúdo do arquivo de configuração do cliente ===")
+    print(client_config)
 
 def main_menu():
     """
