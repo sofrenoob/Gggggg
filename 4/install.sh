@@ -2,8 +2,8 @@
 
 # Nome do projeto
 NOME_PROJETO="Gerenciador de Configurações"
-MENU_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/menu.sh" # Link direto para o menu no GitHub
-MENU_LOCAL="/usr/local/bin/gerenciamento"
+MENU_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/menu_principal" # Link direto para o menu_principal no GitHub
+MENU_LOCAL="/usr/local/bin/menu_principal"
 
 # Função para instalar dependências e configurar serviços
 instalar_dependencias() {
@@ -63,31 +63,31 @@ instalar_dependencias() {
 }
 
 # Função para instalar e configurar o menu
-instalar_menu() {
+instalar_menu_principal() {
     echo "==============================="
     echo "   INSTALAÇÃO DO MENU"
     echo "==============================="
 
-    # Fazer download do menu
-    echo "Baixando o menu..."
-    sudo curl -o "$MENU_LOCAL" "$MENU_URL"
-    sudo chmod +x "$MENU_LOCAL"
+    # Fazer download do menu_principal
+    echo "Baixando o menu_principal..."
+    sudo curl -o "$MENU_PRINCIPAL_LOCAL" "$MENU_PRINCIPAL_URL"
+    sudo chmod +x "$MENU_PRINCIPAL_LOCAL"
 
-    echo "Menu instalado com sucesso! Você pode executá-lo com o comando: gerenciamento"
+    echo "menu_principal instalado com sucesso! Você pode executá-lo com o comando: menu_principal"
 }
 
 # Função principal do script
 instalar_tudo() {
     instalar_dependencias
-    instalar_menu
+    instalar_menu_principal
 
     echo "==============================="
     echo "   INSTALAÇÃO CONCLUÍDA"
     echo "==============================="
 
-    # Executar automaticamente o menu
-    echo "Executando o menu..."
-    "$MENU_LOCAL"
+    # Executar automaticamente o menu_principal
+    echo "Executando o menu_principal..."
+    "$MENU_PRINCIPAL_LOCAL"
 }
 
 # Executar a função principal
