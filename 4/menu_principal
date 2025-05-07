@@ -41,6 +41,51 @@ menu_principal() {
     done
 }
 
+# Função para sair do sistema
+sair() {
+    echo "Saindo do sistema..."
+    sleep 2
+    clear
+    exit
+}
+
+# Função placeholder para submenus (exemplo)
+menu_criar_usuarios() {
+    echo "Submenu Criar Usuários - ainda não implementado."
+    sleep 2
+    menu_principal
+}
+
+menu_conexoes() {
+    echo "Submenu Conexões - ainda não implementado."
+    sleep 2
+    menu_principal
+}
+
+configurar_badvpn() {
+    echo "Submenu BADVPN - ainda não implementado."
+    sleep 2
+    menu_principal
+}
+
+info_sistema() {
+    echo "Submenu Informações do Sistema - ainda não implementado."
+    sleep 2
+    menu_principal
+}
+
+menu_balanceamento() {
+    echo "Submenu Balanceamento de Carga - ainda não implementado."
+    sleep 2
+    menu_principal
+}
+
+# Início do script
+menu_principal
+
+
+}
+
 #!/bin/bash
 
 # Nome do arquivo de log
