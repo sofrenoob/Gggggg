@@ -79,47 +79,56 @@ iptables-restore < /etc/iptables.rules
     run_command("sudo systemctl enable openvpn@server")
     print("OpenVPN instalado e configurado com sucesso!")
 
-def configure_proxy():
+def configure_proxy_websocket():
     """
-    Configures OpenVPN client to use a proxy.
+    Configures OpenVPN to work with a WebSocket proxy.
     """
-    proxy_ip = input("Informe o IP do proxy: ")
-    proxy_port = input("Informe a porta do proxy: ")
-    proxy_user = input("Informe o usuário do proxy (ou deixe vazio): ")
-    proxy_pass = input("Informe a senha do proxy (ou deixe vazio): ")
+    print("Configurando WebSocket Proxy para OpenVPN...")
 
-    proxy_config = f"http-proxy {proxy_ip} {proxy_port}"
-    if proxy_user and proxy_pass:
-        proxy_config += f" {proxy_user} {proxy_pass}"
+    # Instalação do WebSocket Proxy (usando WebSocketd como exemplo)
+    print("Instalando websocketd...")
+    run_command("sudo apt install -y websocketd")
 
-    print("\nAdicione a seguinte linha ao arquivo .ovpn do cliente:")
-    print(proxy_config)
+    # Permitir que o usuário escolha a porta do WebSocket
+    websocket_port = input("Digite a porta para o WebSocket Proxy (default: 8080): ") or "8080"
 
-def configure_ssl_tunnel():
+    # Criar um script simples para redirecionar tráfego do WebSocket para o OpenVPN
+    print("Criando script de redirecionamento do WebSocket...")
+    websocket_script = f"""
+#!/bin/bash
+socat -T15 -d -d TCP4-LISTEN:{websocket_port},reuseaddr,fork TCP4:127.0.0.1:1194
     """
-    Configures SSL Tunnel with Stunnel.
+    with open("/usr/local/bin/websocket-vpn.sh", "w") as f:
+        f.write(websocket_script)
+    run_command("chmod +x /usr/local/bin/websocket-vpn.sh")
+
+    # Criar um serviço systemd para o WebSocket Proxy
+    print("Criando serviço systemd para websocketd...")
+    websocket_service = f"""
+[Unit]
+Description=WebSocket Proxy for OpenVPN
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/websocketd --port={websocket_port} --staticdir=/usr/local/bin/ /usr/local/bin/websocket-vpn.sh
+Restart=always
+User=nobody
+Group=nogroup
+
+[Install]
+WantedBy=multi-user.target
     """
-    print("Instalando e configurando Stunnel...")
-    run_command("sudo apt install -y stunnel4")
-    
-    print("Gerando certificado SSL...")
-    run_command("openssl req -new -x509 -days 365 -nodes -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem")
-    run_command("chmod 600 /etc/stunnel/stunnel.pem")
-    
-    print("Criando configuração do Stunnel...")
-    stunnel_config = """
-[openvpn]
-accept = 443
-connect = 127.0.0.1:1194
-cert = /etc/stunnel/stunnel.pem
-    """
-    with open("/etc/stunnel/stunnel.conf", "w") as f:
-        f.write(stunnel_config)
-    
-    print("Iniciando Stunnel...")
-    run_command("systemctl enable stunnel4")
-    run_command("systemctl start stunnel4")
-    print("SSL Tunnel configurado com sucesso!")
+    with open("/etc/systemd/system/websocket-vpn.service", "w") as f:
+        f.write(websocket_service)
+
+    # Iniciar e habilitar o serviço
+    print("Iniciando o serviço WebSocket Proxy...")
+    run_command("sudo systemctl daemon-reload")
+    run_command("sudo systemctl enable websocket-vpn")
+    run_command("sudo systemctl start websocket-vpn")
+
+    print(f"Proxy WebSocket configurado com sucesso na porta {websocket_port}!")
+    print("Certifique-se de configurar o cliente para usar o WebSocket na mesma porta.")
 
 def main_menu():
     """
@@ -130,7 +139,8 @@ def main_menu():
         print("1. Instalar e configurar OpenVPN")
         print("2. Configurar Proxy no OpenVPN")
         print("3. Configurar SSL Tunnel")
-        print("4. Sair")
+        print("4. Configurar Proxy WebSocket")
+        print("5. Sair")
         
         choice = input("Escolha uma opção: ")
         if choice == "1":
@@ -140,6 +150,8 @@ def main_menu():
         elif choice == "3":
             configure_ssl_tunnel()
         elif choice == "4":
+            configure_proxy_websocket()
+        elif choice == "5":
             print("Saindo...")
             break
         else:
