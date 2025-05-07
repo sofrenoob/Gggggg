@@ -1,22 +1,24 @@
 #!/bin/bash
 
 # Configurações iniciais
-SCRIPT_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/painel_com_opcoes.py"
-SCRIPT_NAME="painel_com_opcoes.py"
+SCRIPT_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/painel_supervisor.py"
+SCRIPT_NAME="painel_supervisor.py"
 INSTALL_DIR="/usr/local/bin"
 PYTHON_PATH=$(command -v python3)
 
+echo "Iniciando a instalação do Painel..."
+
 # Verificar se o Python está instalado
 if [ -z "$PYTHON_PATH" ]; then
-    echo "Python3 não está instalado. Instale o Python3 antes de prosseguir."
-    exit 1
+    echo "Python3 não está instalado. Instalando Python3..."
+    sudo apt-get update && sudo apt-get install -y python3
 fi
 
 # Verificar se o pip está instalado
 PIP_PATH=$(command -v pip3)
 if [ -z "$PIP_PATH" ]; then
     echo "pip3 não está instalado. Instalando pip3..."
-    sudo apt-get update && sudo apt-get install -y python3-pip
+    sudo apt-get install -y python3-pip
 fi
 
 # Instalar dependências necessárias
