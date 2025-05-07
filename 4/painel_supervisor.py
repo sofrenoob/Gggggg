@@ -26,8 +26,8 @@ def get_system_info():
         "users_total": len(users),
     }
 
-# Função para criar a tabela de status do sistema
-def create_status_table():
+# Função para criar a tabela de status do sistema (supervisor)
+def create_supervisor_table():
     # Processos que mais consomem CPU e RAM
     processes = sorted(psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent']),
                        key=lambda p: p.info['cpu_percent'], reverse=True)[:5]
@@ -37,14 +37,14 @@ def create_status_table():
     open_ports = [conn.laddr.port for conn in connections if conn.status == 'LISTEN']
 
     # Criação da tabela
-    table = Table(title="Super Visor do Sistema", title_style="bold red")
+    table = Table(title="Supervisor - Status do Sistema", title_style="bold red")
     table.add_column("Categoria", style="bold cyan", no_wrap=True)
     table.add_column("Detalhes", style="bold white")
 
     # Status de portas abertas
     table.add_row("Portas Abertas", ", ".join(map(str, open_ports)) or "Nenhuma")
 
-    # Processos ativos (top 5)
+    # Processos ativos (top 5 CPU)
     table.add_row("Top Processos (CPU)",
                   "\n".join(f"{proc.info['name']} ({proc.info['cpu_percent']}%)"
                             for proc in processes if proc.info['cpu_percent'] > 0))
@@ -56,11 +56,10 @@ def create_status_table():
 
     return table
 
-# Função principal para criar o painel
+# Função para criar o painel principal
 def create_terminal_panel():
     console = Console()
-    system_info = get_system_info()
-
+    
     # Banner no topo
     banner = Panel(
         "[bold white on red] ← ALFALEMOS MANAGER PRO → [/bold white on red]",
@@ -68,41 +67,45 @@ def create_terminal_panel():
         padding=(1, 2),
     )
 
-    # Informações do sistema
-    system_table = Table.grid(expand=True)
-    system_table.add_column(justify="left", style="bold cyan")
-    system_table.add_column(justify="right", style="bold white")
-    system_table.add_row("SISTEMA", f"OS: {system_info['os']}")
-    system_table.add_row("HORA", f"{system_info['time']}")
-    system_table.add_row("", "")
-    system_table.add_row(
-        "MEMORIA RAM", f"Total: {system_info['ram_total']} | Em Uso: {system_info['ram_used']}"
-    )
-    system_table.add_row(
-        "PROCESSADOR", f"Nucleos: {system_info['cpu_cores']} | Em Uso: {system_info['cpu_used']}"
-    )
-    system_table.add_row("", "")
-    system_table.add_row(
-        "Onlines",
-        f"{system_info['users_online']}  | Expirados: {system_info['users_expired']} | Total: {system_info['users_total']}",
-    )
-
     # Menu de opções
     options_table = Table(title="Opções", title_style="bold cyan", border_style="bright_blue")
     for i in range(1, 24):  # Gerar até 23 opções
         options_table.add_row(f"[{i:02}] Opção {i}")
 
-    # Exibição dinâmica no terminal
     with Live(console=console, refresh_per_second=1) as live:
         while True:
-            # Atualizar os painéis
+            # Atualizar informações do sistema
+            system_info = get_system_info()
+
+            # Tabela de informações do sistema
+            system_table = Table.grid(expand=True)
+            system_table.add_column(justify="left", style="bold cyan")
+            system_table.add_column(justify="right", style="bold white")
+            system_table.add_row("SISTEMA", f"OS: {system_info['os']}")
+            system_table.add_row("HORA", f"{system_info['time']}")
+            system_table.add_row("", "")
+            system_table.add_row(
+                "MEMORIA RAM", f"Total: {system_info['ram_total']} | Em Uso: {system_info['ram_used']}"
+            )
+            system_table.add_row(
+                "PROCESSADOR", f"Nucleos: {system_info['cpu_cores']} | Em Uso: {system_info['cpu_used']}"
+            )
+            system_table.add_row("", "")
+            system_table.add_row(
+                "Onlines",
+                f"{system_info['users_online']}  | Expirados: {system_info['users_expired']} | Total: {system_info['users_total']}",
+            )
+
+            # Painel principal com supervisão
             layout = Panel.fit(
-                f"{banner}\n\n{Panel(system_table, border_style='bright_blue')}\n\n"
+                f"{banner}\n\n"
+                f"{Panel(system_table, border_style='bright_blue')}\n\n"
                 f"{Panel(options_table, border_style='bright_blue')}\n\n"
-                f"{create_status_table()}",
+                f"{Panel(create_supervisor_table(), border_style='bright_blue')}",
                 title="Painel Principal",
                 border_style="green",
             )
+
             live.update(layout)
             sleep(1)
 
