@@ -48,14 +48,23 @@ if [ -z "$PIP_PATH" ]; then
     sudo apt-get install -y python3-pip
 fi
 
+# Garantir que o pip está atualizado
+echo "Atualizando o pip..."
+pip3 install --upgrade pip
+
 # Instalar dependências necessárias
 echo "Instalando dependências do Python..."
 pip3 install psutil rich --quiet
 
 # Verificar se as dependências foram instaladas corretamente
+echo "Verificando a instalação das dependências..."
 if ! python3 -c "import psutil, rich" &> /dev/null; then
-    echo "Erro ao instalar as dependências do Python. Verifique sua conexão com a Internet e tente novamente."
-    exit 1
+    echo "Erro ao instalar as dependências do Python. Tentando novamente..."
+    pip3 install psutil rich --force-reinstall --quiet
+    if ! python3 -c "import psutil, rich" &> /dev/null; then
+        echo "As bibliotecas psutil e rich não foram instaladas corretamente. Verifique sua instalação do Python e tente novamente."
+        exit 1
+    fi
 fi
 
 # Baixar o arquivo do script
