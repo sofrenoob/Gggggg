@@ -12,6 +12,17 @@ if [ -z "$PYTHON_PATH" ]; then
     exit 1
 fi
 
+# Verificar se o pip está instalado
+PIP_PATH=$(command -v pip3)
+if [ -z "$PIP_PATH" ]; then
+    echo "pip3 não está instalado. Instalando pip3..."
+    sudo apt-get update && sudo apt-get install -y python3-pip
+fi
+
+# Instalar dependências necessárias
+echo "Instalando dependências do Python..."
+pip3 install psutil rich
+
 # Baixar o arquivo do script
 echo "Baixando o script do painel..."
 curl -o "$SCRIPT_NAME" "$SCRIPT_URL"
