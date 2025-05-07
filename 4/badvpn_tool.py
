@@ -1,0 +1,71 @@
+import os
+
+# Função para instalar o BADVPN
+def install_badvpn():
+    print("Instalando BADVPN...")
+    os.system("sudo apt update && sudo apt install -y cmake build-essential")
+    os.system("git clone https://github.com/ambrop72/badvpn.git")
+    os.chdir("badvpn")
+    os.system("cmake . && make && sudo make install")
+    os.chdir("..")
+    print("BADVPN instalado com sucesso!")
+
+# Função para iniciar o BADVPN
+def start_badvpn(port, max_clients):
+    print(f"Iniciando BADVPN na porta {port} com limite de {max_clients} conexões simultâneas...")
+    os.system(f"badvpn-udpgw --listen-addr 0.0.0.0:{port} --max-clients {max_clients} &")
+    print(f"BADVPN iniciado na porta {port}!")
+
+# Função para parar o BADVPN
+def stop_badvpn():
+    print("Parando BADVPN...")
+    os.system("pkill badvpn-udpgw")
+    print("BADVPN foi parado com sucesso!")
+
+# Função para configurar firewall para abrir portas
+def open_port(port):
+    print(f"Abrindo porta {port} no firewall...")
+    os.system(f"sudo ufw allow {port}/udp")
+    print(f"Porta {port} aberta com sucesso!")
+
+# Função para alterar a quantidade máxima de conexões
+def change_max_clients():
+    max_clients = input("Digite o número máximo de conexões simultâneas (padrão: 1024): ") or "1024"
+    print(f"Limite de conexões simultâneas alterado para {max_clients}.")
+    return max_clients
+
+# Menu interativo
+def menu():
+    port = "7300"  # Porta padrão
+    max_clients = "1024"  # Limite padrão de conexões simultâneas
+
+    while True:
+        print("\n=== Menu BADVPN ===")
+        print("1. Instalar BADVPN")
+        print("2. Iniciar BADVPN")
+        print("3. Parar BADVPN")
+        print("4. Abrir Porta no Firewall")
+        print("5. Alterar Limite de Conexões Simultâneas")
+        print("6. Sair")
+        choice = input("Escolha uma opção: ")
+
+        if choice == "1":
+            install_badvpn()
+        elif choice == "2":
+            port = input(f"Digite a porta para o BADVPN (padrão: {port}): ") or port
+            start_badvpn(port, max_clients)
+        elif choice == "3":
+            stop_badvpn()
+        elif choice == "4":
+            port_to_open = input("Digite a porta que deseja abrir no firewall: ")
+            open_port(port_to_open)
+        elif choice == "5":
+            max_clients = change_max_clients()
+        elif choice == "6":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida! Tente novamente.")
+
+if __name__ == "__main__":
+    menu()
