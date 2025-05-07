@@ -1,12 +1,16 @@
 import os
 import subprocess
 import sys
+import socket
+import ssl
+
 
 def install_dependencies():
     print("Instalando dependências necessárias...")
     os.system("sudo apt update")
     os.system("sudo apt install squid nginx stunnel4 -y")
     print("Dependências instaladas com sucesso!")
+
 
 def configure_squid():
     print("Configurando o Squid Proxy...")
@@ -23,6 +27,7 @@ http_access deny all
         f.write(squid_conf)
     os.system("sudo systemctl restart squid")
     print("Squid configurado e reiniciado com sucesso!")
+
 
 def configure_nginx():
     print("Configurando o Nginx para Proxy WebSocket...")
@@ -51,6 +56,7 @@ server {
     os.system("sudo systemctl restart nginx")
     print("Nginx configurado e reiniciado com sucesso!")
 
+
 def configure_stunnel():
     print("Configurando o SSL Tunnel (stunnel)...")
     stunnel_conf = """
@@ -68,6 +74,7 @@ connect = 127.0.0.1:8080
     os.system("sudo systemctl start stunnel4")
     print("Stunnel configurado e iniciado com sucesso!")
 
+
 def open_ports():
     print("Abrindo portas 80, 8080 e 443 no firewall...")
     os.system("sudo ufw allow 80")
@@ -75,6 +82,36 @@ def open_ports():
     os.system("sudo ufw allow 443")
     os.system("sudo ufw reload")
     print("Portas abertas com sucesso!")
+
+
+def send_payload(host, port, payload, use_ssl=False):
+    try:
+        # Criar um socket
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+        # Envolver o socket em um túnel SSL, se necessário
+        if use_ssl:
+            context = ssl.create_default_context()
+            sock = context.wrap_socket(sock, server_hostname=host)
+
+        # Conectar ao servidor
+        sock.connect((host, port))
+        print(f"Conectado ao servidor {host}:{port}")
+
+        # Enviar a payload
+        print(f"Enviando payload:\n{payload}")
+        sock.sendall(payload.encode())
+
+        # Receber a resposta
+        response = sock.recv(4096)
+        print("Resposta do servidor:")
+        print(response.decode())
+
+        # Fechar a conexão
+        sock.close()
+    except Exception as e:
+        print(f"Erro: {e}")
+
 
 def menu():
     while True:
@@ -84,7 +121,8 @@ def menu():
         print("3. Configurar Nginx para WebSocket Proxy")
         print("4. Configurar SSL Tunnel (stunnel)")
         print("5. Abrir portas (80, 8080, 443)")
-        print("6. Sair")
+        print("6. Enviar payload personalizada")
+        print("7. Sair")
         choice = input("Escolha uma opção: ")
 
         if choice == "1":
@@ -98,10 +136,18 @@ def menu():
         elif choice == "5":
             open_ports()
         elif choice == "6":
+            print("Enviando payload personalizada...")
+            host = input("Digite o host do servidor: ")
+            port = int(input("Digite a porta do servidor: "))
+            use_ssl = input("Usar SSL? (s/n): ").lower() == "s"
+            payload = input("Digite sua payload personalizada: ")
+            send_payload(host, port, payload, use_ssl)
+        elif choice == "7":
             print("Saindo...")
             sys.exit(0)
         else:
             print("Opção inválida. Por favor, tente novamente.")
+
 
 if __name__ == "__main__":
     menu()
