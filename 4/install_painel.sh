@@ -8,6 +8,33 @@ PYTHON_PATH=$(command -v python3)
 
 echo "Iniciando a instalação do Painel..."
 
+# Função para verificar e liberar bloqueios do apt
+check_and_remove_locks() {
+    echo "Verificando bloqueios do gerenciador de pacotes..."
+    LOCK_FILES=("/var/lib/dpkg/lock-frontend" "/var/lib/dpkg/lock" "/var/cache/apt/archives/lock")
+    for LOCK_FILE in "${LOCK_FILES[@]}"; do
+        if [ -f "$LOCK_FILE" ]; then
+            echo "Removendo bloqueio em $LOCK_FILE..."
+            sudo rm -f "$LOCK_FILE"
+        fi
+    done
+
+    # Verificar processos bloqueadores e terminá-los
+    echo "Verificando processos bloqueadores..."
+    BLOCKING_PROCESSES=$(ps aux | grep -iE "apt|dpkg" | grep -v grep | awk '{print $2}')
+    if [ -n "$BLOCKING_PROCESSES" ]; then
+        echo "Encerrando processos bloqueadores..."
+        echo "$BLOCKING_PROCESSES" | xargs sudo kill -9
+    fi
+
+    # Reconfigurando pacotes pendentes
+    echo "Reconfigurando pacotes..."
+    sudo dpkg --configure -a
+}
+
+# Verificar bloqueios e removê-los antes de prosseguir
+check_and_remove_locks
+
 # Verificar se o Python está instalado
 if [ -z "$PYTHON_PATH" ]; then
     echo "Python3 não está instalado. Instalando Python3..."
@@ -23,7 +50,7 @@ fi
 
 # Instalar dependências necessárias
 echo "Instalando dependências do Python..."
-pip3 install psutil rich
+pip3 install psutil rich --quiet
 
 # Baixar o arquivo do script
 echo "Baixando o script do painel..."
@@ -40,7 +67,7 @@ echo "Movendo o script para $INSTALL_DIR..."
 sudo mv "$SCRIPT_NAME" "$INSTALL_DIR/$SCRIPT_NAME"
 
 # Garantir permissões de execução
-echo "Adicionando permissões de execução..."
+echo "Adicionando permissões de execução ao script..."
 sudo chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
 
 # Criar um alias para execução fácil
