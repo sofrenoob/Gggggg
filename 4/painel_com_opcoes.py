@@ -2,47 +2,11 @@ import os
 import platform
 import psutil
 import datetime
+from time import sleep
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
-
-
-# Funções para as opções do painel
-def criar_usuario():
-    print("Opção [01]: Criar Usuário selecionada.")
-    print("Função para criar usuário ainda não implementada.")
-
-
-def criar_teste():
-    print("Opção [02]: Criar Teste selecionada.")
-    print("Função para criar teste ainda não implementada.")
-
-
-def remover_usuario():
-    print("Opção [03]: Remover Usuário selecionada.")
-    print("Função para remover usuário ainda não implementada.")
-
-
-def renovar_usuario():
-    print("Opção [04]: Renovar Usuário selecionada.")
-    print("Função para renovar usuário ainda não implementada.")
-
-
-def usuarios_online():
-    print("Opção [05]: Usuários Online selecionada.")
-    print("Mostrando usuários online (a ser implementado).")
-
-
-# Dicionário de opções
-opcoes = {
-    "01": criar_usuario,
-    "02": criar_teste,
-    "03": remover_usuario,
-    "04": renovar_usuario,
-    "05": usuarios_online,
-    # Adicione mais opções conforme necessário
-}
-
+from rich.live import Live
 
 # Função para obter informações do sistema
 def get_system_info():
@@ -62,10 +26,39 @@ def get_system_info():
         "users_total": len(users),
     }
 
+# Função para criar a tabela de status do sistema
+def create_status_table():
+    # Processos que mais consomem CPU e RAM
+    processes = sorted(psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent']),
+                       key=lambda p: p.info['cpu_percent'], reverse=True)[:5]
+
+    # Portas abertas
+    connections = psutil.net_connections(kind='inet')
+    open_ports = [conn.laddr.port for conn in connections if conn.status == 'LISTEN']
+
+    # Criação da tabela
+    table = Table(title="Super Visor do Sistema", title_style="bold red")
+    table.add_column("Categoria", style="bold cyan", no_wrap=True)
+    table.add_column("Detalhes", style="bold white")
+
+    # Status de portas abertas
+    table.add_row("Portas Abertas", ", ".join(map(str, open_ports)) or "Nenhuma")
+
+    # Processos ativos (top 5)
+    table.add_row("Top Processos (CPU)",
+                  "\n".join(f"{proc.info['name']} ({proc.info['cpu_percent']}%)"
+                            for proc in processes if proc.info['cpu_percent'] > 0))
+
+    # Processos ativos (top 5 RAM)
+    table.add_row("Top Processos (RAM)",
+                  "\n".join(f"{proc.info['name']} ({proc.info['memory_percent']:.1f}%)"
+                            for proc in processes if proc.info['memory_percent'] > 0))
+
+    return table
 
 # Função principal para criar o painel
-def create_terminal_panel(console):
-    # Obter informações do sistema
+def create_terminal_panel():
+    console = Console()
     system_info = get_system_info()
 
     # Banner no topo
@@ -99,23 +92,19 @@ def create_terminal_panel(console):
     for i in range(1, 24):  # Gerar até 23 opções
         options_table.add_row(f"[{i:02}] Opção {i}")
 
-    # Painel final
-    console.print(banner)
-    console.print(Panel(system_table, border_style="bright_blue"))
-    console.print(options_table)
-    console.print("[bold cyan]INFORME UMA OPÇÃO:[/bold cyan] ", end="")
+    # Exibição dinâmica no terminal
+    with Live(console=console, refresh_per_second=1) as live:
+        while True:
+            # Atualizar os painéis
+            layout = Panel.fit(
+                f"{banner}\n\n{Panel(system_table, border_style='bright_blue')}\n\n"
+                f"{Panel(options_table, border_style='bright_blue')}\n\n"
+                f"{create_status_table()}",
+                title="Painel Principal",
+                border_style="green",
+            )
+            live.update(layout)
+            sleep(1)
 
-
-# Execução
 if __name__ == "__main__":
-    console = Console()
-    while True:
-        create_terminal_panel(console)
-        opcao = input("> ").strip()
-        if opcao in opcoes:
-            opcoes[opcao]()
-        elif opcao == "00":
-            print("Saindo do menu...")
-            break
-        else:
-            print("Opção inválida! Tente novamente.")
+    create_terminal_panel()
