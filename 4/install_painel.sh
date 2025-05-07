@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Configurações iniciais
+SCRIPT_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/4/painel_com_opcoes.py"
+SCRIPT_NAME="painel_com_opcoes.py"
+INSTALL_DIR="/usr/local/bin"
+PYTHON_PATH=$(command -v python3)
+
+# Verificar se o Python está instalado
+if [ -z "$PYTHON_PATH" ]; then
+    echo "Python3 não está instalado. Instale o Python3 antes de prosseguir."
+    exit 1
+fi
+
+# Baixar o arquivo do script
+echo "Baixando o script do painel..."
+curl -o "$SCRIPT_NAME" "$SCRIPT_URL"
+
+# Verificar se o download foi bem-sucedido
+if [ $? -ne 0 ]; then
+    echo "Erro ao baixar o script. Verifique o link fornecido."
+    exit 1
+fi
+
+# Mover o script para o diretório de instalação
+echo "Movendo o script para $INSTALL_DIR..."
+sudo mv "$SCRIPT_NAME" "$INSTALL_DIR/$SCRIPT_NAME"
+
+# Garantir permissões de execução
+echo "Adicionando permissões de execução..."
+sudo chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
+
+# Criar um alias para execução fácil
+echo "Criando um alias para facilitar a execução..."
+if ! grep -q "alias painel='sudo python3 $INSTALL_DIR/$SCRIPT_NAME'" ~/.bashrc; then
+    echo "alias painel='sudo python3 $INSTALL_DIR/$SCRIPT_NAME'" >> ~/.bashrc
+    source ~/.bashrc
+fi
+
+# Finalizar
+echo "Instalação concluída!"
+echo "Você pode executar o painel com o comando: painel"
