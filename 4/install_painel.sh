@@ -35,17 +35,23 @@ check_and_remove_locks() {
 # Verificar bloqueios e removê-los antes de prosseguir
 check_and_remove_locks
 
+# Atualizar repositórios
+echo "Atualizando repositórios do apt..."
+sudo sed -i 's/http:\/\/security.ubuntu.com/http:\/\/archive.ubuntu.com/g' /etc/apt/sources.list
+sudo sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirror.kakao.com/g' /etc/apt/sources.list
+sudo apt-get update --fix-missing
+
 # Verificar se o Python está instalado
 if [ -z "$PYTHON_PATH" ]; then
     echo "Python3 não está instalado. Instalando Python3..."
-    sudo apt-get update && sudo apt-get install -y python3
+    sudo apt-get install -y python3 python3-distutils
 fi
 
-# Verificar se o pip está instalado
-PIP_PATH=$(command -v pip3)
-if [ -z "$PIP_PATH" ]; then
-    echo "pip3 não está instalado. Instalando pip3..."
-    sudo apt-get install -y python3-pip
+# Instalar o pip manualmente, caso necessário
+if ! command -v pip3 &> /dev/null; then
+    echo "pip3 não está instalado. Instalando pip3 manualmente..."
+    wget https://bootstrap.pypa.io/get-pip.py
+    sudo python3 get-pip.py
 fi
 
 # Garantir que o pip está atualizado
