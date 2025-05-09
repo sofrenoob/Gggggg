@@ -9,7 +9,7 @@ Sistema backend com Node.js, SQLite, Stunnel e BadVPN, configurado para rodar em
 Clone o repositório e execute o instalador automático:
 
 ```bash
-git clone https://github.com/meu-repositorio/alfa-cloud.git
-cd alfa-cloud
+git clone https://github.com/sofrenoob/Gggggg.git
+cd Gggggg/Men/alfa-cloud
 chmod +x install.sh
 ./install.sh
