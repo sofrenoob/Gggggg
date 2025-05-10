@@ -80,7 +80,6 @@ input=""
 while true; do
     draw_menu
     # Lê um caractere com timeout de 1 segundo
-    if read -n 1 -t 0.01 -r char; then
         # Adiciona caractere à entrada
         input="$input$char"
         # Verifica se a entrada é um Enter (ou seja, entrada completa)
