@@ -30,7 +30,7 @@ draw_empty_line() {
 
 # Função para desenhar o menu
 draw_menu() {
-    clear
+    tput cup 0 0  # Move o cursor para o topo
     get_system_info
     local title="Projeto CyberMenu"
     local width=56  # Largura interna da caixa
@@ -62,22 +62,27 @@ draw_menu() {
     echo -e "\e[96m[\e[95mOPÇÃO\e[96m]: \e[0m\c"
 }
 
+# Inicializa o terminal
+clear
+tput civis  # Esconde o cursor para evitar tremulação
+
 # Loop principal do menu
 while true; do
     draw_menu
-    read option
-
-    case $option in
-        1) echo "Iniciando sistema..."; sleep 2 ;;
-        2) echo "Verificando status..."; sleep 2 ;;
-        3) echo "Escaneando rede..."; sleep 2 ;;
-        4) echo "Realizando backup..."; sleep 2 ;;
-        5) echo "Reiniciando..."; sleep 2 ;;
-        6) echo "Configurando rede..."; sleep 2 ;;
-        7) echo "Atualizando sistema..."; sleep 2 ;;
-        8) echo "Gerenciando usuários..."; sleep 2 ;;
-        9) echo "Monitorando recursos..."; sleep 2 ;;
-        10) echo "Saindo..."; exit 0 ;;
-        *) echo "Opção inválida!"; sleep 2 ;;
-    esac
+    # Lê entrada com timeout de 1 segundo
+    if read -t 1 -r option; then
+        case $option in
+            1) echo -e "\nIniciando sistema..."; sleep 2 ;;
+            2) echo -e "\nVerificando status..."; sleep 2 ;;
+            3) echo -e "\nEscaneando rede..."; sleep 2 ;;
+            4) echo -e "\nRealizando backup..."; sleep 2 ;;
+            5) echo -e "\nReiniciando..."; sleep 2 ;;
+            6) echo -e "\nConfigurando rede..."; sleep 2 ;;
+            7) echo -e "\nAtualizando sistema..."; sleep 2 ;;
+            8) echo -e "\nGerenciando usuários..."; sleep 2 ;;
+            9) echo -e "\nMonitorando recursos..."; sleep 2 ;;
+            10) echo -e "\nSaindo..."; tput cnorm; exit 0 ;;
+            *) echo -e "\nOpção inválida!"; sleep 2 ;;
+        esac
+    fi
 done
