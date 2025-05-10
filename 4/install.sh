@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # Script de instalação para o Turbo Proxy Scanner no Termux
-REPO_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/proxy_scanner.sh"  # Substitua pelo repositório real
+SCRIPT_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/proxy_scanner.sh"
 SCRIPT_NAME="proxy_scanner.sh"
 INSTALL_DIR="$HOME/proxy_scanner"
 LOG_FILE="$HOME/install_log.txt"
@@ -43,29 +43,23 @@ for pkg in curl whois nmap gzip; do
     fi
 done
 
-# 4. Instalar git (para clonar o repositório)
-if ! command -v git >/dev/null; then
-    log "Instalando git..."
-    pkg install git -y || {
-        log "Erro ao instalar git."
-        exit 1
-    }
-fi
-
-# 5. Clonar o repositório
-log "Clonando repositório de $REPO_URL..."
-if [ -d "$INSTALL_DIR" ]; then
-    log "Diretório $INSTALL_DIR já existe. Removendo..."
-    rm -rf "$INSTALL_DIR"
-fi
-git clone "$REPO_URL" "$INSTALL_DIR" || {
-    log "Erro ao clonar repositório. Verifique o URL ou sua conexão."
+# 4. Criar diretório de instalação
+log "Criando diretório $INSTALL_DIR..."
+mkdir -p "$INSTALL_DIR" || {
+    log "Erro ao criar diretório $INSTALL_DIR."
     exit 1
 }
 
-# 6. Verificar se o script principal existe
+# 5. Baixar o script principal
+log "Baixando $SCRIPT_NAME de $SCRIPT_URL..."
+curl -s -L "$SCRIPT_URL" -o "$INSTALL_DIR/$SCRIPT_NAME" || {
+    log "Erro ao baixar $SCRIPT_NAME. Verifique o URL ou sua conexão."
+    exit 1
+}
+
+# 6. Verificar se o script foi baixado
 if [ ! -f "$INSTALL_DIR/$SCRIPT_NAME" ]; then
-    log "Erro: $SCRIPT_NAME não encontrado no repositório."
+    log "Erro: $SCRIPT_NAME não foi baixado."
     exit 1
 fi
 
