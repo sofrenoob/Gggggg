@@ -57,8 +57,8 @@ get_system_info() {
 draw_menu() {
     clear  # Limpa a tela para evitar sobreposição
     get_system_info
-    local title=$(figlet -f standard -w 25 "CyberMenu 3" | sed 's/^/  /')
-    local width=25
+    local title=$(figlet -f standard -w 50 "CyberMenu 4" | sed 's/^/  /')
+    local width=50
     local cpu_percent=$(echo "$CPU_USAGE" | tr -d '%')
     local mem_percent=$(echo "scale=1; $MEM_USED * 100 / $MEM_TOTAL" | bc)
 
