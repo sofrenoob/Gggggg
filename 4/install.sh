@@ -53,7 +53,7 @@ get_system_info() {
 draw_menu() {
     tput cup 0 0
     get_system_info
-    local title=$(figlet -f cyberlarge -w 50 "CyberMenu" | sed 's/^/  /')
+    local title=$(figlet -f standard -w 50 "CyberMenu" | sed 's/^/  /')
     local width=50
     local cpu_percent=$(echo "$CPU_USAGE" | tr -d '%')
     local mem_percent=$(echo "scale=1; $MEM_USED * 100 / $MEM_TOTAL" | bc)
