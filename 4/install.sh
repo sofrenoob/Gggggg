@@ -30,8 +30,8 @@ termux-setup-storage || {
 }
 
 # 3. Instalar dependências
-log "Instalando dependências (curl, whois, nmap, gzip)..."
-for pkg in curl whois nmap gzip; do
+log "Instalando dependências (curl, whois, nmap, gzip, iproute2)..."
+for pkg in curl whois nmap gzip iproute2; do
     if ! command -v "$pkg" >/dev/null; then
         log "Instalando $pkg..."
         pkg install "$pkg" -y || {
