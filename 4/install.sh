@@ -76,31 +76,22 @@ clear
 tput civis  # Esconde o cursor para evitar tremulação
 
 # Loop principal do menu
-input=""
 while true; do
     draw_menu
-    # Lê um caractere com timeout de 1 segundo
-        # Adiciona caractere à entrada
-        input="$input$char"
-        # Verifica se a entrada é um Enter (ou seja, entrada completa)
-        if [[ "$char" == $'\n' ]]; then
-            case $input in
-                1) clear; echo -e "\nIniciando sistema..."; sleep 2 ;;
-                2) clear; echo -e "\nVerificando status..."; sleep 2 ;;
-                3) clear; echo -e "\nEscaneando rede..."; sleep 2 ;;
-                4) clear; echo -e "\nRealizando backup..."; sleep 2 ;;
-                5) clear; echo -e "\nReiniciando..."; sleep 2 ;;
-                6) clear; echo -e "\nConfigurando rede..."; sleep 2 ;;
-                7) clear; echo -e "\nAtualizando sistema..."; sleep 2 ;;
-                8) clear; echo -e "\nGerenciando usuários..."; sleep 2 ;;
-                9) clear; echo -e "\nMonitorando recursos..."; sleep 2 ;;
-                10) clear; echo -e "\nSaindo..."; tput cnorm; exit 0 ;;
-                *) clear; echo -e "\nOpção inválida! Tente novamente."; sleep 2 ;;
-            esac
-            input=""  # Limpa a entrada após processamento
-        fi
-    else
-        # Limpa buffer de entrada residual
-        while read -r -t 0.1 -n 10000; do :; done
+    # Lê entrada com timeout de 1 segundo
+    if read -t 1 -r option; then
+        case $option in
+            1) echo -e "\nIniciando sistema..."; sleep 2 ;;
+            2) echo -e "\nVerificando status..."; sleep 2 ;;
+            3) echo -e "\nEscaneando rede..."; sleep 2 ;;
+            4) echo -e "\nRealizando backup..."; sleep 2 ;;
+            5) echo -e "\nReiniciando..."; sleep 2 ;;
+            6) echo -e "\nConfigurando rede..."; sleep 2 ;;
+            7) echo -e "\nAtualizando sistema..."; sleep 2 ;;
+            8) echo -e "\nGerenciando usuários..."; sleep 2 ;;
+            9) echo -e "\nMonitorando recursos..."; sleep 2 ;;
+            10) echo -e "\nSaindo..."; tput cnorm; exit 0 ;;
+            *) echo -e "\nOpção inválida!"; sleep 2 ;;
+        esac
     fi
 done
