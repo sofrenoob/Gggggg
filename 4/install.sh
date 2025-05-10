@@ -79,7 +79,7 @@ tput civis  # Esconde o cursor para evitar tremulação
 while true; do
     draw_menu
     # Lê entrada com timeout de 1 segundo
-    if read -t 1 -r option; then
+    if read -t 0 -r option; then
         case $option in
             1) echo -e "\nIniciando sistema..."; sleep 2 ;;
             2) echo -e "\nVerificando status..."; sleep 2 ;;
