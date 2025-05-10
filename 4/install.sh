@@ -19,22 +19,6 @@ center_text() {
     printf "%${padding}s%s%${padding}s" "" "$text" ""
 }
 
-# Função para criar barra de progresso
-progress_bar() {
-    local percent=$1
-    local max_bars=10
-    local num_bars=$(echo "$percent / 10" | bc)
-    local bar=""
-    for ((i=0; i<max_bars; i++)); do
-        if [ $i -lt $num_bars ]; then
-            bar="$bar█"
-        else
-            bar="$bar "
-        fi
-    done
-    echo "[$bar $percent%]"
-}
-
 # Função para obter informações do sistema
 get_system_info() {
     OS=$(uname -s)
@@ -44,7 +28,11 @@ get_system_info() {
     TIME=$(date '+%H:%M:%S')
 
     # Uso da CPU (total)
-    CPU_USAGE=$(top -bn1 | grep '%Cpu(s)' | awk '{print 100 - $8}' | xargs printf "%.1f")
+    CPU_USAGE=$(top -bn1 | grep '%Cpu(s)' | awk '{print 100 - $8}' | xargs printf "%.1f%%")
+
+    # Uso por núcleo (limitado a 4 núcleos para caber no layout)
+    CORE_USAGE=$(grep 'cpu[0-9]' /proc/stat | head -n4 | awk '{usage=($2+$4)*100/($2+$4+$5); printf "%.1f%% ", usage}' | xargs)
+    [ -z "$CORE_USAGE" ] && CORE_USAGE="N/A"
 
     # Memória (total, usada, livre em MB)
     MEM_INFO=$(free -m | grep Mem)
@@ -57,43 +45,38 @@ get_system_info() {
 draw_menu() {
     clear  # Limpa a tela para evitar sobreposição
     get_system_info
-    local title=$(figlet -f standard -w 50 "CyberMenu 4" | sed 's/^/  /')
+    local title=$(figlet -f future -w 50 "CyberMenu" | sed 's/^/  /')
     local width=50
-    local cpu_percent=$(echo "$CPU_USAGE" | tr -d '%')
-    local mem_percent=$(echo "scale=1; $MEM_USED * 100 / $MEM_TOTAL" | bc)
 
     # Borda superior
-    echo -e "\e[96m┌════════════════════════════════════════════════════┐\e[0m"
+    echo -e "\e[96m╔════════════════════════════════════════════════════╗\e[0m"
 
     # Título
     while IFS= read -r line; do
-        echo -e "\e[96m│\e[95m$(center_text "$line" $width)\e[96m│\e[0m"
+        echo -e "\e[96m║\e[95m$(center_text "$line" $width)\e[96m║\e[0m"
     done <<< "$title"
 
     # Divisor
-    echo -e "\e[96m├════════════════════════════════════════════════════┤\e[0m"
+    echo -e "\e[96m╠════════════════════════════════════════════════════╣\e[0m"
 
-    # Informações com barras
-    echo -e "\e[96m│\e[94m$(center_text "OS: $OS  Data: $DATE  Hora: $TIME" $width)\e[96m│\e[0m"
-    echo -e "\e[96m│\e[94m$(center_text "CPU: $CPU_USAGE% $(progress_bar $cpu_percent)  Mem: $(progress_bar $mem_percent)" $width)\e[96m│\e[0m"
+    # Informações compactas
+    echo -e "\e[96m║\e[92m$(center_text "OS: $OS  Data: $DATE" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "CPU: ${CPU_MODEL:0:12}  Hora: $TIME" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "CPU Total: $CPU_USAGE  Núcleos (1-4): ${CORE_USAGE:0:20}" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Mem: $MEM_TOTAL/$MEM_USED/$MEM_FREE MB (Total/Usada/Livre)" $width)\e[96m║\e[0m"
 
     # Divisor
-    echo -e "\e[96m├════════════════════════════════════════════════════┤\e[0m"
+    echo -e "\e[96m╠════════════════════════════════════════════════════╣\e[0m"
 
-    # Opções em coluna única
-    echo -e "\e[96m│\e[93m 1. Iniciar Sistema                                \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 2. Verificar Status                               \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 3. Escanear Rede                                  \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 4. Backup Dados                                   \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 5. Reiniciar                                      \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 6. Configurar Rede                                \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 7. Atualizar Sistema                              \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 8. Gerenciar Usuários                             \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 9. Monitorar Recursos                             \e[96m│\e[0m"
-    echo -e "\e[96m│\e[93m 10. Sair                                          \e[96m│\e[0m"
+    # Opções
+    echo -e "\e[96m║\e[93m  \e[1m1\e[0m\e[93m Iniciar Sistema   \e[1m6\e[0m\e[93m Configurar Rede    \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  \e[1m2\e[0m\e[93m Verificar Status  \e[1m7\e[0m\e[93m Atualizar Sistema  \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  \e[1m3\e[0m\e[93m Escanear Rede     \e[1m8\e[0m\e[93m Gerenciar Usuários \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  \e[1m4\e[0m\e[93m Backup Dados      \e[1m9\e[0m\e[93m Monitorar Recursos \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  \e[1m5\e[0m\e[93m Reiniciar        \e[1m10\e[0m\e[93m Sair              \e[96m║\e[0m"
 
     # Borda inferior
-    echo -e "\e[96m└════════════════════════════════════════════════════┘\e[0m"
+    echo -e "\e[96m╩════════════════════════════════════════════════════╩\e[0m"
     echo -e "\e[96m[\e[95mOPÇÃO\e[96m]: \e[0m\c"
 }
 
