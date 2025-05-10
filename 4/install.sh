@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Configura o terminal para backspace
-stty -ixon
-stty erase '^H'  # Mapeia backspace para Ctrl+H
+# Verifica se o figlet está instalado
+if ! command -v figlet &> /dev/null; then
+    echo "Figlet não está instalado. Instale com 'sudo apt install figlet'."
+    exit 1
+fi
 
 # Função para centralizar texto
 center_text() {
@@ -35,39 +37,54 @@ get_system_info() {
     MEM_FREE=$(echo "$MEM_INFO" | awk '{print $4}')
 }
 
+# Função para desenhar a borda superior/inferior
+draw_border() {
+    echo -e "\e[96m╔════════════════════════════════════════════════════════════╗\e[0m"
+}
+
+# Função para desenhar uma linha vazia
+draw_empty_line() {
+    echo -e "\e[96m║                                                            ║\e[0m"
+}
+
 # Função para desenhar o menu
 draw_menu() {
-    clear  # Limpa a tela para evitar sobreposição
+    tput cup 0 0  # Move o cursor para o topo
     get_system_info
-    local width=50
+    local title=$(figlet -f cybermedium -w 60 "CyberMenu" | sed 's/^/  /')  # Gera título com figlet
+    local width=60  # Largura interna da caixa
 
     # Borda superior
-    echo -e "\e[96m╔════════════════════════════════════════════════════╗\e[0m"
+    draw_border
 
-    # Título simples
-    echo -e "\e[96m║\e[95m$(center_text "Menu" $width)\e[96m║\e[0m"
+    # Título (ASCII art do figlet)
+    while IFS= read -r line; do
+        echo -e "\e[96m║\e[95m$(center_text "$line" $width)\e[96m║\e[0m"
+    done <<< "$title"
+    draw_empty_line
 
-    # Divisor
-    echo -e "\e[96m╠════════════════════════════════════════════════════╣\e[0m"
+    # Informações do sistema
+    echo -e "\e[96m║\e[92m$(center_text "Sistema Operacional: $OS" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "CPU: $CPU_MODEL" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Data: $DATE" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Hora: $TIME" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Uso CPU Total: $CPU_USAGE" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Uso por Núcleo (1Day): $CORE_USAGE" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Memória Total: $MEM_TOTAL MB" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Memória Usada: $MEM_USED MB" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Memória Livre: $MEM_FREE MB" $width)\e[96m║\e[0m"
+    draw_empty_line
 
-    # Informações compactas
-    echo -e "\e[96m║\e[92m$(center_text "OS: $OS  Data: $DATE" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "CPU: ${CPU_MODEL:0:12}  Hora: $TIME" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "CPU Total: $CPU_USAGE  Núcleos (1-4): ${CORE_USAGE:0:20}" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "Mem: $MEM_TOTAL/$MEM_USED/$MEM_FREE MB (Total/Usada/Livre)" $width)\e[96m║\e[0m"
+    # Opções do menu (5 de cada lado)
+    echo -e "\e[96m║\e[93m  1. Iniciar Sistema      6. Configurar Rede       \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  2. Verificar Status     7. Atualizar Sistema     \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  3. Escanear Rede       8. Gerenciar Usuários    \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  4. Backup Dados        9. Monitorar Recursos    \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  5. Reiniciar          10. Sair                \e[96m║\e[0m"
+    draw_empty_line
 
-    # Divisor
-    echo -e "\e[96m╠════════════════════════════════════════════════════╣\e[0m"
-
-    # Opções
-    echo -e "\e[96m║\e[93m  \e[1m1\e[0m\e[93m Iniciar Sistema   \e[1m6\e[0m\e[93m Configurar Rede    \e[96m║\e[0m"
-    echo -e "\e[96m║\e[93m  \e[1m2\e[0m\e[93m Verificar Status  \e[1m7\e[0m\e[93m Atualizar Sistema  \e[96m║\e[0m"
-    echo -e "\e[96m║\e[93m  \e[1m3\e[0m\e[93m Escanear Rede     \e[1m8\e[0m\e[93m Gerenciar Usuários \e[96m║\e[0m"
-    echo -e "\e[96m║\e[93m  \e[1m4\e[0m\e[93m Backup Dados      \e[1m9\e[0m\e[93m Monitorar Recursos \e[96m║\e[0m"
-    echo -e "\e[96m║\e[93m  \e[1m5\e[0m\e[93m Reiniciar        \e[1m10\e[0m\e[93m Sair              \e[96m║\e[0m"
-
-    # Borda inferior
-    echo -e "\e[96m╩════════════════════════════════════════════════════╩\e[0m"
+    # Rodapé
+    draw_border
     echo -e "\e[96m[\e[95mOPÇÃO\e[96m]: \e[0m\c"
 }
 
@@ -79,7 +96,7 @@ tput civis  # Esconde o cursor para evitar tremulação
 while true; do
     draw_menu
     # Lê entrada com timeout de 1 segundo
-    if read -t 0 -r option; then
+    if read -t 1 -r option; then
         case $option in
             1) echo -e "\nIniciando sistema..."; sleep 2 ;;
             2) echo -e "\nVerificando status..."; sleep 2 ;;
