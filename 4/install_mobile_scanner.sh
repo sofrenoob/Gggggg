@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # Script de Instalação para Termux - Scanner de IPs Proxy via Dados Móveis
-# Autor: Grok (corrigido para evitar travamento no termux-wifi-enable)
+# Autor:  (corrigido para evitar travamento após termux-api)
 # Data: 10 de maio de 2025
 
 # Cores para mensagens
@@ -21,10 +21,10 @@ award_message() {
     echo -e "${GREEN}${messages[$RANDOM % ${#messages[@]}]}${NC}"
 }
 
-# Função para verificar erros
+# Função para verificar erros (não interrompe a execução)
 check_error() {
     if [ $? -ne 0 ]; then
-        echo -e "${RED}Erro: $1${NC}"
+        echo -e "${RED}Aviso: $1${NC}"
         echo -e "${YELLOW}Continuando, mas verifique o problema acima.${NC}"
     fi
 }
@@ -38,13 +38,10 @@ check_mobile_connectivity() {
         echo -e "${YELLOW}Ative os dados móveis e tente novamente.${NC}"
         exit 1
     fi
-    # Verificar se está usando dados móveis
+    # Verificar status da rede celular
     termux-telephony-deviceinfo > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}Conexão via dados móveis confirmada!${NC}"
-    else
-        echo -e "${YELLOW}Aviso: Não foi possível confirmar dados móveis. Certifique-se de que o Wi-Fi está desativado.${NC}"
-    fi
+    check_error "Não foi possível confirmar dados móveis. Certifique-se de que o Wi-Fi está desativado."
+    echo -e "${GREEN}Conexão OK!${NC}"
 }
 
 # Função para verificar e desativar Wi-Fi
@@ -76,12 +73,12 @@ chmod +x "$0"
 echo -e "${GREEN}Permissões de armazenamento configuradas!${NC}"
 award_message
 
-# Passo 2: Instalar Termux-API
+# Passo 2: Instalar e configurar Termux-API
 echo -e "${YELLOW}[2/8] Instalando Termux-API...${NC}"
-pkg install -y termux-api
-check_error "Falha ao instalar Termux-API."
-# Forçar solicitação de permissões do Termux-API
-termux-toast "Conceda permissões ao Termux-API se solicitado!"
+pkg install -y termux-api --reinstall
+check_error "Falha ao instalar/reinstalar Termux-API."
+# Forçar solicitação de permissões
+termux-toast "Conceda permissões ao Termux-API (Wi-Fi, telefonia) se solicitado!"
 termux-telephony-deviceinfo > /dev/null 2>&1
 check_error "Falha ao verificar permissões do Termux-API."
 award_message
@@ -98,7 +95,7 @@ award_message
 # Passo 5: Atualizar o Termux
 echo -e "${YELLOW}[5/8] Atualizando o Termux...${NC}"
 pkg update -y && pkg upgrade -y
-check_error "Falha ao atualizar o Termux."
+check_error "Falha ao atualizar o Termux. Tente: termux-change-repo."
 award_message
 
 # Passo 6: Instalar pacotes essenciais
@@ -175,7 +172,7 @@ def test_proxy(ip: str, port: int, protocol: str = "http") -> Dict:
 
 def scan_ip(ip: str) -> List[Dict]:
     """Escaneia um IP em várias portas e testa como proxy."""
-Assignment: results = []
+    results = []
     for port in PORTS:
         if is_port_open(ip, port):
             # Testar como proxy HTTP
