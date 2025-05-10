@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Verifica se o figlet está instalado
+if ! command -v figlet &> /dev/null; then
+    echo "Figlet não está instalado. Instale com 'sudo apt install figlet'."
+    exit 1
+fi
+
 # Função para centralizar texto
 center_text() {
     local text="$1"
@@ -7,6 +13,22 @@ center_text() {
     local len=${#text}
     local padding=$(( (width - len) / 2 ))
     printf "%${padding}s%s%${padding}s" "" "$text" ""
+}
+
+# Função para criar barra de progresso
+progress_bar() {
+    local percent=$1
+    local max_bars=10
+    local num_bars=$(echo "$percent / 10" | bc)
+    local bar=""
+    for ((i=0; i<max_bars; i++)); do
+        if [ $i -lt $num_bars ]; then
+            bar="$bar█"
+        else
+            bar="$bar "
+        fi
+    done
+    echo "[$bar $percent%]"
 }
 
 # Função para obter informações do sistema
@@ -18,11 +40,7 @@ get_system_info() {
     TIME=$(date '+%H:%M:%S')
 
     # Uso da CPU (total)
-    CPU_USAGE=$(top -bn1 | grep '%Cpu(s)' | awk '{print 100 - $8}' | xargs printf "%.1f%%")
-
-    # Uso por núcleo (limitado a 4 núcleos para caber no layout)
-    CORE_USAGE=$(grep 'cpu[0-9]' /proc/stat | head -n4 | awk '{usage=($2+$4)*100/($2+$4+$5); printf "%.1f%% ", usage}' | xargs)
-    [ -z "$CORE_USAGE" ] && CORE_USAGE="N/A"
+    CPU_USAGE=$(top -bn1 | grep '%Cpu(s)' | awk '{print 100 - $8}' | xargs printf "%.1f")
 
     # Memória (total, usada, livre em MB)
     MEM_INFO=$(free -m | grep Mem)
@@ -31,52 +49,47 @@ get_system_info() {
     MEM_FREE=$(echo "$MEM_INFO" | awk '{print $4}')
 }
 
-# Função para desenhar a borda superior/inferior
-draw_border() {
-    echo -e "\e[96m╔══════════════════════════════════════════════════════╗\e[0m"
-}
-
-# Função para desenhar uma linha vazia
-draw_empty_line() {
-    echo -e "\e[96m║                                                      ║\e[0m"
-}
-
 # Função para desenhar o menu
 draw_menu() {
-    tput cup 0 0  # Move o cursor para o topo
+    tput cup 0 0
     get_system_info
-    local title="Projeto CyberMenu"
-    local width=56  # Largura interna da caixa
+    local title=$(figlet -f cyberlarge -w 50 "CyberMenu" | sed 's/^/  /')
+    local width=50
+    local cpu_percent=$(echo "$CPU_USAGE" | tr -d '%')
+    local mem_percent=$(echo "scale=1; $MEM_USED * 100 / $MEM_TOTAL" | bc)
 
     # Borda superior
-    draw_border
+    echo -e "\e[96m┌════════════════════════════════════════════════════┐\e[0m"
 
     # Título
-    echo -e "\e[96m║\e[95m$(center_text "$title" $width)\e[96m║\e[0m"
-    draw_empty_line
+    while IFS= read -r line; do
+        echo -e "\e[96m│\e[95m$(center_text "$line" $width)\e[96m│\e[0m"
+    done <<< "$title"
 
-    # Informações do sistema
-    echo -e "\e[96m║\e[92m$(center_text "Sistema Operacional: $OS" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "CPU: $CPU_MODEL" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "Data: $DATE" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "Hora: $TIME" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "Uso CPU Total: $CPU_USAGE" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "Uso por Núcleo (1-4): $CORE_USAGE" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "Memória Total: $MEM_TOTAL MB" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "Memória Usada: $MEM_USED MB" $width)\e[96m║\e[0m"
-    echo -e "\e[96m║\e[92m$(center_text "Memória Livre: $MEM_FREE MB" $width)\e[96m║\e[0m"
-    draw_empty_line
+    # Divisor
+    echo -e "\e[96m├════════════════════════════════════════════════════┤\e[0m"
 
-    # Opções do menu (5 de cada lado)
-    echo -e "\e[96m║\e[93m  1. Iniciar Sistema      6. Configurar Rede     \e[96m║\e[0m"
-    echo -e "\e[96m║\e[93m  2. Verificar Status     7. Atualizar Sistema   \e[96m║\e[0m"
-    echo -e "\e[96m║\e[93m  3. Escanear Rede       8. Gerenciar Usuários  \e[96m║\e[0m"
-    echo -e "\e[96m║\e[93m  4. Backup Dados        9. Monitorar Recursos  \e[96m║\e[0m"
-    echo -e "\e[96m║\e[93m  5. Reiniciar          10. Sair              \e[96m║\e[0m"
-    draw_empty_line
+    # Informações com barras
+    echo -e "\e[96m│\e[94m$(center_text "OS: $OS  Data: $DATE  Hora: $TIME" $width)\e[96m│\e[0m"
+    echo -e "\e[96m│\e[94m$(center_text "CPU: $CPU_USAGE% $(progress_bar $cpu_percent)  Mem: $(progress_bar $mem_percent)" $width)\e[96m│\e[0m"
 
-    # Rodapé
-    draw_border
+    # Divisor
+    echo -e "\e[96m├════════════════════════════════════════════════════┤\e[0m"
+
+    # Opções em coluna única
+    echo -e "\e[96m│\e[93m 1. Iniciar Sistema                                \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 2. Verificar Status                               \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 3. Escanear Rede                                  \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 4. Backup Dados                                   \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 5. Reiniciar                                      \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 6. Configurar Rede                                \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 7. Atualizar Sistema                              \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 8. Gerenciar Usuários                             \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 9. Monitorar Recursos                             \e[96m│\e[0m"
+    echo -e "\e[96m│\e[93m 10. Sair                                          \e[96m│\e[0m"
+
+    # Borda inferior
+    echo -e "\e[96m└════════════════════════════════════════════════════┘\e[0m"
     echo -e "\e[96m[\e[95mOPÇÃO\e[96m]: \e[0m\c"
 }
 
