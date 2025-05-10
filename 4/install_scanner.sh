@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# Script de Instalação para Termux - Scanner de IPs Proxy com Permissões
+# Script de Instalação para Termux - Scanner de IPs Proxy via Dados Móveis
 # Autor: (adaptado para o usuário)
 # Data: 10 de maio de 2025
 
@@ -13,10 +13,10 @@ NC='\033[0m' # No Color
 # Função para exibir mensagens de premiação
 award_message() {
     local messages=(
-        "🎉 Parabéns! Você está pronto para dominar a varredura de proxies!"
-        "🚀 Mestre do Termux! Sua jornada épica começou!"
-        "🏆 Troféu de ouro por configurar o ambiente!"
-        "🌟 Estrela brilhante! Os IPs não têm chance contra você!"
+        "🎉 Parabéns! Você está escaneando como um pro com dados móveis!"
+        "🚀 Mestre do Termux! A rede celular é sua aliada!"
+        "🏆 Troféu de ouro por dominar a varredura mobile!"
+        "🌟 Estrela brilhante! Os proxies não escapam de você!"
     )
     echo -e "${GREEN}${messages[$RANDOM % ${#messages[@]}]}${NC}"
 }
@@ -29,59 +29,29 @@ check_error() {
     fi
 }
 
-# Função para verificar conectividade
-check_connectivity() {
-    echo -e "${YELLOW}Verificando conectividade com a internet...${NC}"
-    ping -c 1 8.8.8.8 > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        echo -e "${RED}Erro: Sem conexão com a internet.${NC}"
-        echo -e "${YELLOW}Conecte-se a uma rede Wi-Fi ou dados móveis e tente novamente.${NC}"
-        exit 1
-    fi
-    echo -e "${GREEN}Conexão OK!${NC}"
-}
-
-# Banner inicial
-clear
-echo -e "${YELLOW}========================================"
-echo -e "   Instalador Termux - Scanner de IPs Proxy"
-echo -e "=======================================${NC}"
-echo -e "${GREEN}Bem-vindo! Vamos configurar e iniciar o scanner!${NC}\n"
-
-# Passo 1: Configurar permissões do Termux
-echo -e "${YELLOW}[1/7] Configurando permissões do Termux...${NC}"
-termux-setup-storage
-check_error "Falha ao configurar permissões de armazenamento."
-# Garantir permissões de execução para scripts
-chmod +x "$0"
-echo -e "${GREEN}Permissões configuradas!${NC}"
-award_message
-
-# Passo 2: Verificar conectividade
-check_connectivity
-award_message
-
-# Passo 3: Atualizar o Termux
-echo -e "${YELLOW}[3/7] Atualizando o Termux...${NC}"
-pkg update -y && pkg upgrade -y
-check_error "Falha ao atualizar o Termux."
+# Função para verificar conectividade via dados móveis
+check_mobile_connectivity() {
+    echo -e "${ janela de erro ao atualizar o Termux, tente mudar o repositório:"
+    echo -e "${YELLOW}Execute: termux-change-repo e escolha uma mirror (ex.: Grimler).${NC}"
+    exit 1
+fi
 award_message
 
 # Passo 4: Instalar pacotes essenciais
-echo -e "${YELLOW}[4/7] Instalando pacotes essenciais...${NC}"
-pkg install -y python wget curl git
+echo -e "${YELLOW}[4/8] Instalando pacotes essenciais...${NC}"
+pkg install -y python wget curl git termux-api
 check_error "Falha ao instalar pacotes."
 award_message
 
 # Passo 5: Instalar dependências Python
-echo -e "${YELLOW}[5/7] Instalando bibliotecas Python...${NC}"
+echo -e "${YELLOW}[5/8] Instalando bibliotecas Python...${NC}"
 pip install --upgrade pip
 pip install requests ipwhois requests[socks]
 check_error "Falha ao instalar bibliotecas Python."
 award_message
 
 # Passo 6: Criar o script do scanner
-echo -e "${YELLOW}[6/7] Configurando o scanner de proxies...${NC}"
+echo -e "${YELLOW}[6/8] Configurando o scanner de proxies...${NC}"
 SCANNER_FILE="/data/data/com.termux/files/home/proxy_scanner.py"
 
 # Escrever o código do scanner no arquivo
@@ -189,20 +159,4 @@ if __name__ == "__main__":
     main(ip_range)
 EOF
 
-# Tornar o script executável
-chmod +x "$SCANNER_FILE"
-check_error "Falha ao configurar o scanner."
-award_message
-
-# Passo 7: Iniciar a varredura
-echo -e "${YELLOW}[7/7] Iniciando a varredura de proxies...${NC}"
-echo -e "${GREEN}A varredura está começando! Verifique o arquivo proxies.csv para os resultados.${NC}"
-python "$SCANNER_FILE"
-check_error "Falha ao executar a varredura."
-
-# Finalização
-echo -e "${GREEN}Varredura concluída com sucesso!${NC}"
-echo -e "${YELLOW}Resultados salvos em: ~/proxies.csv${NC}"
-award_message
-
-exit 0
+# Tornar o
