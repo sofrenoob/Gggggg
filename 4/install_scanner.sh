@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # Script de Instalação para Termux - Scanner de IPs Proxy com Permissões
-# Autor: Grok (adaptado para o usuário)
+# Autor: (adaptado para o usuário)
 # Data: 10 de maio de 2025
 
 # Cores para mensagens
