@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Verifica se o figlet está instalado
-if ! command -v figlet &> /dev/null; then
-    echo "Figlet não está instalado. Instale com 'pkg install figlet' no Termux."
-    exit 1
-fi
-
 # Configura o terminal para backspace
 stty -ixon
 stty erase '^H'  # Mapeia backspace para Ctrl+H
@@ -45,16 +39,13 @@ get_system_info() {
 draw_menu() {
     clear  # Limpa a tela para evitar sobreposição
     get_system_info
-    local title=$(figlet -f standard -w 50 "CyberMenu" | sed 's/^/  /')
     local width=50
 
     # Borda superior
     echo -e "\e[96m╔════════════════════════════════════════════════════╗\e[0m"
 
-    # Título
-    while IFS= read -r line; do
-        echo -e "\e[96m║\e[95m$(center_text "$line" $width)\e[96m║\e[0m"
-    done <<< "$title"
+    # Título simples
+    echo -e "\e[96m║\e[95m$(center_text "Menu" $width)\e[96m║\e[0m"
 
     # Divisor
     echo -e "\e[96m╠════════════════════════════════════════════════════╣\e[0m"
