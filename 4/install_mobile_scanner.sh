@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # Script de Instalação para Termux - Scanner de IPs Proxy via Dados Móveis
-# Autor: (corrigido para evitar erro de sintaxe)
+# Autor: Grok (corrigido para evitar travamento no termux-wifi-enable)
 # Data: 10 de maio de 2025
 
 # Cores para mensagens
@@ -25,7 +25,7 @@ award_message() {
 check_error() {
     if [ $? -ne 0 ]; then
         echo -e "${RED}Erro: $1${NC}"
-        exit 1
+        echo -e "${YELLOW}Continuando, mas verifique o problema acima.${NC}"
     fi
 }
 
@@ -47,6 +47,20 @@ check_mobile_connectivity() {
     fi
 }
 
+# Função para verificar e desativar Wi-Fi
+disable_wifi() {
+    echo -e "${YELLOW}Verificando status do Wi-Fi...${NC}"
+    # Verificar se o Wi-Fi está ativo
+    termux-wifi-connectioninfo | grep -q '"supplicant_state": "COMPLETED"' > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo -e "${YELLOW}Wi-Fi está ativo. Desativando para usar dados móveis...${NC}"
+        timeout 10s termux-wifi-enable false > /dev/null 2>&1
+        check_error "Falha ao desativar o Wi-Fi. Continuando com a rede atual."
+    else
+        echo -e "${GREEN}Wi-Fi já está desativado. Usando dados móveis!${NC}"
+    fi
+}
+
 # Banner inicial
 clear
 echo -e "${YELLOW}========================================"
@@ -54,24 +68,27 @@ echo -e "   Instalador Termux - Scanner de IPs Proxy"
 echo -e "=======================================${NC}"
 echo -e "${GREEN}Bem-vindo! Vamos configurar e iniciar o scanner via dados móveis!${NC}\n"
 
-# Passo 1: Configurar permsissões do Termux
+# Passo 1: Configurar permissões do Termux
 echo -e "${YELLOW}[1/8] Configurando permissões do Termux...${NC}"
 termux-setup-storage
 check_error "Falha ao configurar permissões de armazenamento."
 chmod +x "$0"
-echo -e "${GREEN}Permissões configuradas!${NC}"
+echo -e "${GREEN}Permissões de armazenamento configuradas!${NC}"
 award_message
 
 # Passo 2: Instalar Termux-API
 echo -e "${YELLOW}[2/8] Instalando Termux-API...${NC}"
 pkg install -y termux-api
 check_error "Falha ao instalar Termux-API."
+# Forçar solicitação de permissões do Termux-API
+termux-toast "Conceda permissões ao Termux-API se solicitado!"
+termux-telephony-deviceinfo > /dev/null 2>&1
+check_error "Falha ao verificar permissões do Termux-API."
 award_message
 
 # Passo 3: Desativar Wi-Fi para usar dados móveis
-echo -e "${YELLOW}[3/8] Desativando Wi-Fi para forçar dados móveis...${NC}"
-termux-wifi-enable false
-check_error "Falha ao desativar o Wi-Fi."
+echo -e "${YELLOW}[3/8] Configurando rede para dados móveis...${NC}"
+disable_wifi
 award_message
 
 # Passo 4: Verificar conectividade
@@ -158,7 +175,7 @@ def test_proxy(ip: str, port: int, protocol: str = "http") -> Dict:
 
 def scan_ip(ip: str) -> List[Dict]:
     """Escaneia um IP em várias portas e testa como proxy."""
-    results = []
+Assignment: results = []
     for port in PORTS:
         if is_port_open(ip, port):
             # Testar como proxy HTTP
