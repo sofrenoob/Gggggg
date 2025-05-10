@@ -2,7 +2,7 @@
 
 # Verifica se o figlet está instalado
 if ! command -v figlet &> /dev/null; then
-    echo "Figlet não está instalado. Instale com 'sudo apt install figlet'."
+    echo "Figlet não está instalado. Instale com 'pkg install figlet' no Termux."
     exit 1
 fi
 
@@ -45,7 +45,7 @@ get_system_info() {
 draw_menu() {
     clear  # Limpa a tela para evitar sobreposição
     get_system_info
-    local title=$(figlet -f future -w 50 "CyberMenu" | sed 's/^/  /')
+    local title=$(figlet -f standard -w 50 "CyberMenu" | sed 's/^/  /')
     local width=50
 
     # Borda superior
@@ -85,24 +85,32 @@ clear
 tput civis  # Esconde o cursor para evitar tremulação
 
 # Loop principal do menu
+input=""
 while true; do
     draw_menu
-    # Lê entrada com edição interativa (permite backspace)
-    read -e -r -p "" option
-    # Limpa buffer de entrada
-    while read -r -t 0.1 -n 10000; do :; done
-
-    case $option in
-        1) clear; echo -e "\nIniciando sistema..."; sleep 2 ;;
-        2) clear; echo -e "\nVerificando status..."; sleep 2 ;;
-        3) clear; echo -e "\nEscaneando rede..."; sleep 2 ;;
-        4) clear; echo -e "\nRealizando backup..."; sleep 2 ;;
-        5) clear; echo -e "\nReiniciando..."; sleep 2 ;;
-        6) clear; echo -e "\nConfigurando rede..."; sleep 2 ;;
-        7) clear; echo -e "\nAtualizando sistema..."; sleep 2 ;;
-        8) clear; echo -e "\nGerenciando usuários..."; sleep 2 ;;
-        9) clear; echo -e "\nMonitorando recursos..."; sleep 2 ;;
-        10) clear; echo -e "\nSaindo..."; tput cnorm; exit 0 ;;
-        *) clear; echo -e "\nOpção inválida! Tente novamente."; sleep 2 ;;
-    esac
+    # Lê um caractere com timeout de 1 segundo
+    if read -n 1 -t 1 -r char; then
+        # Adiciona caractere à entrada
+        input="$input$char"
+        # Verifica se a entrada é um Enter (ou seja, entrada completa)
+        if [[ "$char" == $'\n' ]]; then
+            case $input in
+                1) clear; echo -e "\nIniciando sistema..."; sleep 2 ;;
+                2) clear; echo -e "\nVerificando status..."; sleep 2 ;;
+                3) clear; echo -e "\nEscaneando rede..."; sleep 2 ;;
+                4) clear; echo -e "\nRealizando backup..."; sleep 2 ;;
+                5) clear; echo -e "\nReiniciando..."; sleep 2 ;;
+                6) clear; echo -e "\nConfigurando rede..."; sleep 2 ;;
+                7) clear; echo -e "\nAtualizando sistema..."; sleep 2 ;;
+                8) clear; echo -e "\nGerenciando usuários..."; sleep 2 ;;
+                9) clear; echo -e "\nMonitorando recursos..."; sleep 2 ;;
+                10) clear; echo -e "\nSaindo..."; tput cnorm; exit 0 ;;
+                *) clear; echo -e "\nOpção inválida! Tente novamente."; sleep 2 ;;
+            esac
+            input=""  # Limpa a entrada após processamento
+        fi
+    else
+        # Limpa buffer de entrada residual
+        while read -r -t 0.1 -n 10000; do :; done
+    fi
 done
