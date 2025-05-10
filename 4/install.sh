@@ -1,83 +1,83 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/bash
 
-# Script de instalação para o Turbo Proxy Scanner no Termux
-SCRIPT_URL="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/proxy_scanner.sh"
-SCRIPT_NAME="proxy_scanner.sh"
-INSTALL_DIR="$HOME/proxy_scanner"
-LOG_FILE="$HOME/install_log.txt"
-
-# Função para log
-log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
+# Função para centralizar texto
+center_text() {
+    local text="$1"
+    local width="$2"
+    local len=${#text}
+    local padding=$(( (width - len) / 2 ))
+    printf "%${padding}s%s%${padding}s" "" "$text" ""
 }
 
-# Iniciar log
-> "$LOG_FILE"
-log "Iniciando instalação do Turbo Proxy Scanner..."
-
-# 1. Atualizar Termux
-log "Atualizando pacotes do Termux..."
-pkg update -y && pkg upgrade -y || {
-    log "Erro ao atualizar pacotes. Verifique sua conexão."
-    exit 1
+# Função para obter informações do sistema
+get_system_info() {
+    OS=$(uname -s)
+    CPU=$(grep 'model name' /proc/cpuinfo | head -1 | cut -d':' -f2 | xargs)
+    [ -z "$CPU" ] && CPU="Unknown"
+    DATE=$(date '+%Y-%m-%d')
+    TIME=$(date '+%H:%M:%S')
 }
 
-# 2. Configurar permissões de armazenamento
-log "Configurando permissões de armazenamento..."
-termux-setup-storage || {
-    log "Erro ao configurar armazenamento. Execute 'termux-setup-storage' manualmente."
-    exit 1
+# Função para desenhar a borda superior/inferior
+draw_border() {
+    echo -e "\e[96m╔══════════════════════════════════════════════════════╗\e[0m"
 }
 
-# 3. Instalar dependências
-log "Instalando dependências (curl, whois, nmap, gzip, iproute2)..."
-for pkg in curl whois nmap gzip iproute2; do
-    if ! command -v "$pkg" >/dev/null; then
-        log "Instalando $pkg..."
-        pkg install "$pkg" -y || {
-            log "Erro ao instalar $pkg."
-            exit 1
-        }
-    else
-        log "$pkg já está instalado."
-    fi
+# Função para desenhar uma linha vazia
+draw_empty_line() {
+    echo -e "\e[96m║                                                      ║\e[0m"
+}
+
+# Função para desenhar o menu
+draw_menu() {
+    clear
+    get_system_info
+    local title="Projeto CyberMenu"
+    local width=56  # Largura interna da caixa
+
+    # Borda superior
+    draw_border
+
+    # Título
+    echo -e "\e[96m║\e[95m$(center_text "$title" $width)\e[96m║\e[0m"
+    draw_empty_line
+
+    # Informações do sistema
+    echo -e "\e[96m║\e[92m$(center_text "Sistema Operacional: $OS" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "CPU: $CPU" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Data: $DATE" $width)\e[96m║\e[0m"
+    echo -e "\e[96m║\e[92m$(center_text "Hora: $TIME" $width)\e[96m║\e[0m"
+    draw_empty_line
+
+    # Opções do menu (5 de cada lado)
+    echo -e "\e[96m║\e[93m  1. Iniciar Sistema      6. Configurar Rede     \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  2. Verificar Status     7. Atualizar Sistema   \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  3. Escanear Rede       8. Gerenciar Usuários  \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  4. Backup Dados        9. Monitorar Recursos  \e[96m║\e[0m"
+    echo -e "\e[96m║\e[93m  5. Reiniciar          10. Sair              \e[96m║\e[0m"
+    draw_empty_line
+
+    # Rodapé
+    draw_border
+    echo -e "\e[96m[\e[95mOPÇÃO\e[96m]: \e[0m\c"
+}
+
+# Loop principal do menu
+while true; do
+    draw_menu
+    read option
+
+    case $option in
+        1) echo "Iniciando sistema..."; sleep 2 ;;
+        2) echo "Verificando status..."; sleep 2 ;;
+        3) echo "Escaneando rede..."; sleep 2 ;;
+        4) echo "Realizando backup..."; sleep 2 ;;
+        5) echo "Reiniciando..."; sleep 2 ;;
+        6) echo "Configurando rede..."; sleep 2 ;;
+        7) echo "Atualizando sistema..."; sleep 2 ;;
+        8) echo "Gerenciando usuários..."; sleep 2 ;;
+        9) echo "Monitorando recursos..."; sleep 2 ;;
+        10) echo "Saindo..."; exit 0 ;;
+        *) echo "Opção inválida!"; sleep 2 ;;
+    esac
 done
-
-# 4. Criar diretório de instalação
-log "Criando diretório $INSTALL_DIR..."
-mkdir -p "$INSTALL_DIR" || {
-    log "Erro ao criar diretório $INSTALL_DIR."
-    exit 1
-}
-
-# 5. Baixar o script principal
-log "Baixando $SCRIPT_NAME de $SCRIPT_URL..."
-curl -s -L "$SCRIPT_URL" -o "$INSTALL_DIR/$SCRIPT_NAME" || {
-    log "Erro ao baixar $SCRIPT_NAME. Verifique o URL ou sua conexão."
-    exit 1
-}
-
-# 6. Verificar se o script foi baixado
-if [ ! -f "$INSTALL_DIR/$SCRIPT_NAME" ]; then
-    log "Erro: $SCRIPT_NAME não foi baixado."
-    exit 1
-fi
-
-# 7. Configurar permissões de execução
-log "Configurando permissões para $SCRIPT_NAME..."
-chmod +x "$INSTALL_DIR/$SCRIPT_NAME" || {
-    log "Erro ao configurar permissões."
-    exit 1
-}
-
-# 8. Instruções finais
-log "Instalação concluída com sucesso!"
-echo "=====================================" | tee -a "$LOG_FILE"
-echo "Para executar o Turbo Proxy Scanner:" | tee -a "$LOG_FILE"
-echo "1. Ative os dados móveis e desative o Wi-Fi." | tee -a "$LOG_FILE"
-echo "2. Navegue até o diretório:" | tee -a "$LOG_FILE"
-echo "   cd $INSTALL_DIR" | tee -a "$LOG_FILE"
-echo "3. Execute o script:" | tee -a "$LOG_FILE"
-echo "   ./$SCRIPT_NAME" | tee -a "$LOG_FILE"
-echo "=====================================" | tee -a "$LOG_FILE"
-echo "Logs de instalação: $LOG_FILE" | tee -a "$LOG_FILE"
