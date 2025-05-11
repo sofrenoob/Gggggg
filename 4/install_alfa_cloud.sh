@@ -9,6 +9,7 @@ SUBDOMAIN="alfa-cloud.avira.alfalemos.shop"  # Substitua pelo seu subdomínio
 INSTALL_DIR="/var/www/alfa-cloud"
 LOG_FILE="/var/log/alfa-cloud-install.log"
 ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cloud.zip"  # URL do alfa-cloud.zip
+ADMIN_PASSWORD="Admin123!"  # Senha do usuário admin (altere se desejar)
 
 # Verificar se o script está sendo executado como root
 if [ "$EUID" -ne 0 ]; then
@@ -87,7 +88,7 @@ fi
 # 7. Instalar dependências Python
 echo "Instalando dependências Python..." | tee -a "$LOG_FILE"
 cd "$INSTALL_DIR/backend"
-pip3 install flask flask-sqlalchemy gunicorn >> "$LOG_FILE" 2>&1
+pip3 install flask flask-sqlalchemy gunicorn flask-login flask-wtf >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     echo "Erro ao instalar dependências Python. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
     exit 1
@@ -112,7 +113,44 @@ fi
 chown www-data:www-data "$INSTALL_DIR/database/alfa_cloud.db"
 chmod 644 "$INSTALL_DIR/database/alfa_cloud.db"
 
-# 10. Executar scripts de configuração
+# 10. Criar usuário administrador
+echo "Criando usuário administrador..." | tee -a "$LOG_FILE"
+cd "$INSTALL_DIR/backend"
+python3 -c "from app import app, db; from models import User; from datetime import datetime; with app.app_context(): admin = User(username='admin', expiry_date=datetime.strptime('2099-12-31', '%Y-%m-%d'), connection_limit=10, is_admin=True); admin.set_password('$ADMIN_PASSWORD'); db.session.add(admin); db.session.commit()" >> "$LOG_FILE" 2>&1
+if [ $? -ne 0 ]; then
+    echo "Erro ao criar usuário administrador. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
+    exit 1
+fi
+
+# 11. Criar template de login
+echo "Criando template de login..." | tee -a "$LOG_FILE"
+cat <<EOT > "$INSTALL_DIR/backend/templates/login.html"
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h1>Login Administrador</h1>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form method="POST" action="/login">
+    <div class="form-group">
+        <label for="username">Usuário</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+{% endblock %}
+EOT
+
+# 12. Executar scripts de configuração
 echo "Executando scripts de configuração..." | tee -a "$LOG_FILE"
 for script in setup_vpn.sh setup_proxy.sh setup_services.sh setup_firewall.sh; do
     echo "Executando $script..." | tee -a "$LOG_FILE"
@@ -123,7 +161,7 @@ for script in setup_vpn.sh setup_proxy.sh setup_services.sh setup_firewall.sh; d
     fi
 done
 
-# 11. Configurar Nginx
+# 13. Configurar Nginx
 echo "Configurando Nginx..." | tee -a "$LOG_FILE"
 sed -i "s/alfa-cloud.avira.alfalemos.shop/$SUBDOMAIN/" "$INSTALL_DIR/nginx/alfa-cloud.conf"
 ln -s "$INSTALL_DIR/nginx/alfa-cloud.conf" /etc/nginx/sites-enabled/
@@ -133,7 +171,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# 12. Configurar SSL com Certbot
+# 14. Configurar SSL com Certbot
 echo "Configurando SSL com Certbot..." | tee -a "$LOG_FILE"
 certbot --nginx -d "$SUBDOMAIN" --non-interactive --agree-tos --email alfalemos21@gmail.com >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
@@ -142,7 +180,7 @@ if [ $? -ne 0 ]; then
 fi
 systemctl reload nginx >> "$LOG_FILE" 2>&1
 
-# 13. Configurar Gunicorn como serviço
+# 15. Configurar Gunicorn como serviço
 echo "Configurando Gunicorn..." | tee -a "$LOG_FILE"
 cat <<EOT > /etc/systemd/system/gunicorn.service
 [Unit]
@@ -169,7 +207,7 @@ else
     exit 1
 fi
 
-# 14. Verificar serviços
+# 16. Verificar serviços
 echo "Verificando serviços..." | tee -a "$LOG_FILE"
 for service in openvpn squid websocket badvpn slowdns nginx gunicorn; do
     if systemctl is-active --quiet "$service"; then
@@ -180,7 +218,9 @@ for service in openvpn squid websocket badvpn slowdns nginx gunicorn; do
     fi
 done
 
-# 15. Finalizar
+# 17. Finalizar
 echo "Instalação concluída com sucesso!" | tee -a "$LOG_FILE"
 echo "Acesse a aplicação em https://$SUBDOMAIN" | tee -a "$LOG_FILE"
+echo "Acesse o painel de admin em https://$SUBDOMAIN/login" | tee -a "$LOG_FILE"
+echo "Usuário: admin | Senha: $ADMIN_PASSWORD" | tee -a "$LOG_FILE"
 echo "Logs disponíveis em $LOG_FILE"
