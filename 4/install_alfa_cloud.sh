@@ -98,7 +98,7 @@ fi
 # 8. Gerar SECRET_KEY para config.py
 echo "Gerando SECRET_KEY..." | tee -a "$LOG_FILE"
 SECRET_KEY=$(python3 -c "import secrets; print(secrets.token_hex(24))")
-sed -i "s/sua-chave-secreta-aqui-mude-isso/$SECRET_KEY/" "$INSTALL_DIR/backend/config.py"
+sed -i "s/sua-chave-secreta-aqui-mude-isso/$SECRET_KEY/" "$INSTALL_DIR/backend/config.py" 2>/dev/null || echo "Aviso: config.py não encontrado ou sem SECRET_KEY para substituir." | tee -a "$LOG_FILE"
 if [ $? -ne 0 ]; then
     echo "Erro ao configurar SECRET_KEY. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
     exit 1
@@ -108,13 +108,28 @@ fi
 echo "Inicializando banco de dados SQLite..." | tee -a "$LOG_FILE"
 cat <<EOT > /tmp/init_db.py
 import sys
-sys.path.append('$INSTALL_DIR/backend')
-from app import app, db
-with app.app_context():
-    db.create_all()
+import os
+sys.path.append(os.path.abspath('$INSTALL_DIR/backend'))
+try:
+    from app import app, db
+    with app.app_context():
+        db.create_all()
+    print("Banco de dados inicializado com sucesso.")
+except ImportError as e:
+    print(f"Erro de importação: {e}")
+    raise
+except Exception as e:
+    print(f"Erro durante inicialização: {e}")
+    raise
 EOT
 
 cd "$INSTALL_DIR/backend"
+if [ -f "app.py" ]; then
+    echo "Arquivo app.py encontrado em $INSTALL_DIR/backend." | tee -a "$LOG_FILE"
+else
+    echo "Erro: app.py não encontrado em $INSTALL_DIR/backend. Verifique a estrutura do ZIP." | tee -a "$LOG_FILE"
+    exit 1
+fi
 python3 /tmp/init_db.py >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     echo "Erro ao inicializar banco de dados. Verifique $LOG_FILE. Conteúdo do diretório: $(ls -la)" | tee -a "$LOG_FILE"
@@ -128,15 +143,24 @@ chmod 644 "$INSTALL_DIR/database/alfa_cloud.db"
 echo "Criando usuário administrador..." | tee -a "$LOG_FILE"
 cat <<EOT > /tmp/create_admin.py
 import sys
-sys.path.append('$INSTALL_DIR/backend')
-from app import app, db
-from models import User
-from datetime import datetime
-with app.app_context():
-    admin = User(username='admin', expiry_date=datetime.strptime('2099-12-31', '%Y-%m-%d'), connection_limit=10, is_admin=True)
-    admin.set_password('$ADMIN_PASSWORD')
-    db.session.add(admin)
-    db.session.commit()
+import os
+sys.path.append(os.path.abspath('$INSTALL_DIR/backend'))
+try:
+    from app import app, db
+    from models import User
+    from datetime import datetime
+    with app.app_context():
+        admin = User(username='admin', expiry_date=datetime.strptime('2099-12-31', '%Y-%m-%d'), connection_limit=10, is_admin=True)
+        admin.set_password('$ADMIN_PASSWORD')
+        db.session.add(admin)
+        db.session.commit()
+    print("Usuário administrador criado com sucesso.")
+except ImportError as e:
+    print(f"Erro de importação: {e}")
+    raise
+except Exception as e:
+    print(f"Erro durante criação do administrador: {e}")
+    raise
 EOT
 
 cd "$INSTALL_DIR/backend"
