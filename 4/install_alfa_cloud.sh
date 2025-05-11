@@ -5,11 +5,11 @@
 # Baixa alfa-cloud.zip de https://github.com/sofrenoob/Gggggg/main/4/alfa-cloud.zip
 
 # Configurações
-SUBDOMAIN="alfa-cloud.avira.alfalemos.shop"  # Substitua pelo seu subdomínio
+SUBDOMAIN="alfa-cloud.avira.alfalemos.shop"  # Ajustado para o subdomínio real
 INSTALL_DIR="/var/www/alfa-cloud"
 LOG_FILE="/var/log/alfa-cloud-install.log"
-ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cloud.zip"  # URL corrigida do alfa-cloud.zip
-ADMIN_PASSWORD="Admin123!"  # Senha do usuário admin (altere se desejar)
+ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cloud.zip"
+ADMIN_PASSWORD="Admin123!"  # Senha do usuário admin
 
 # Verificar se o script está sendo executado como root
 if [ "$EUID" -ne 0 ]; then
@@ -30,7 +30,7 @@ fi
 
 # 2. Instalar dependências básicas
 echo "Instalando dependências básicas..." | tee -a "$LOG_FILE"
-apt install -y python3 python3-pip nginx sqlite3 git ufw fail2ban curl unzip cmake build-essential nodejs npm certbot python3-certbot-nginx >> "$LOG_FILE" 2>&1
+apt install -y python3 python3-pip nginx sqlite3 git ufw fail2ban curl unzip cmake build-essential nodejs npm certbot python3-certbot-nginx stunnel4 >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     echo "Erro ao instalar dependências. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
     exit 1
@@ -61,7 +61,6 @@ fi
 
 # 5. Copiar arquivos para os diretórios corretos
 echo "Copiando arquivos para $INSTALL_DIR..." | tee -a "$LOG_FILE"
-# Assumindo que o ZIP contém uma pasta 'alfa-cloud' no topo
 cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/*.py "$INSTALL_DIR/backend/" 2>/dev/null || echo "Aviso: Nenhum arquivo .py encontrado no backend." | tee -a "$LOG_FILE"
 cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/routes/*.py "$INSTALL_DIR/backend/routes/" 2>/dev/null || echo "Aviso: Nenhum arquivo .py encontrado em routes." | tee -a "$LOG_FILE"
 cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/templates/*.html "$INSTALL_DIR/backend/templates/" 2>/dev/null || echo "Aviso: Nenhum arquivo .html encontrado em templates." | tee -a "$LOG_FILE"
@@ -293,26 +292,49 @@ cat <<EOT > "$INSTALL_DIR/backend/templates/login.html"
 {% endblock %}
 EOT
 
-# 15. Executar scripts de configuração
-echo "Executando scripts de configuração..." | tee -a "$LOG_FILE"
-for script in setup_vpn.sh setup_proxy.sh setup_services.sh setup_firewall.sh; do
-    echo "Executando $script..." | tee -a "$LOG_FILE"
-    "$INSTALL_DIR/scripts/$script" >> "$LOG_FILE" 2>&1
-    if [ $? -ne 0 ]; then
-        echo "Erro ao executar $script. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
-        exit 1
-    fi
-done
+# 15. Criar template básico index.html
+echo "Criando index.html..." | tee -a "$LOG_FILE"
+cat <<EOT > "$INSTALL_DIR/backend/templates/index.html"
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alfa Cloud</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Alfa Cloud</h1>
+    {% if current_user.is_authenticated %}
+        <p>Olá, {{ current_user.username }}! <a href="{{ url_for('logout') }}">Sair</a></p>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+</body>
+</html>
+EOT
 
 # 16. Configurar Nginx
 echo "Configurando Nginx..." | tee -a "$LOG_FILE"
-sed -i "s/alfa-cloud.avira.alfalemos.shop/$SUBDOMAIN/" "$INSTALL_DIR/nginx/alfa-cloud.conf"
+cat <<EOT > "$INSTALL_DIR/nginx/alfa-cloud.conf"
+server {
+    listen 80;
+    server_name $SUBDOMAIN;
+
+    location / {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+    }
+}
+EOT
+sed -i "s/\$SUBDOMAIN/$SUBDOMAIN/" "$INSTALL_DIR/nginx/alfa-cloud.conf"
 ln -s "$INSTALL_DIR/nginx/alfa-cloud.conf" /etc/nginx/sites-enabled/
 nginx -t >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     echo "Erro na configuração do Nginx. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
     exit 1
 fi
+systemctl reload nginx >> "$LOG_FILE" 2>&1
 
 # 17. Configurar SSL com Certbot
 echo "Configurando SSL com Certbot..." | tee -a "$LOG_FILE"
@@ -352,7 +374,7 @@ fi
 
 # 19. Verificar serviços
 echo "Verificando serviços..." | tee -a "$LOG_FILE"
-for service in openvpn squid websocket badvpn slowdns nginx gunicorn; do
+for service in nginx gunicorn; do
     if systemctl is-active --quiet "$service"; then
         echo "$service está ativo." | tee -a "$LOG_FILE"
     else
