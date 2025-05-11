@@ -2,13 +2,13 @@
 
 # Script de instalação do Alfa Cloud
 # Executar com sudo em um servidor Ubuntu 18.04
-# Baixa alfa-cloud.zip de https://github.com/sofrenoob/Gggggg/main/4
+# Baixa alfa-cloud.zip de https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cloud.zip
 
 # Configurações
 SUBDOMAIN="alfa-cloud.avira.alfalemos.shop"  # Substitua pelo seu subdomínio
 INSTALL_DIR="/var/www/alfa-cloud"
 LOG_FILE="/var/log/alfa-cloud-install.log"
-ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4"  # URL do alfa-cloud.zip
+ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cloud.zip"  # URL do alfa-cloud.zip
 
 # Verificar se o script está sendo executado como root
 if [ "$EUID" -ne 0 ]; then
