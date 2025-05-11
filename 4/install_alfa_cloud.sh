@@ -95,7 +95,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# 8. Criar app.py funcional
+# 8. Criar app.py simplificado
 echo "Criando app.py..." | tee -a "$LOG_FILE"
 cat <<EOT > "$INSTALL_DIR/backend/app.py"
 from flask import Flask, render_template, redirect, url_for, request, flash
@@ -139,7 +139,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.check_password(form.password.data) and user.is_admin:
             login_user(user)
-            return redirect(url_for('admin.index'))
+            return redirect(url_for('index'))
         flash('Usuário ou senha inválidos, ou não é administrador.')
     return render_template('login.html', form=form)
 
@@ -148,17 +148,6 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
-# Registrar blueprints
-from routes.admin import admin_bp
-from routes.users import users_bp
-from routes.connections import connections_bp
-from routes.proxies import proxies_bp
-
-app.register_blueprint(admin_bp, url_prefix='/admin')
-app.register_blueprint(users_bp, url_prefix='/users')
-app.register_blueprint(connections_bp, url_prefix='/connections')
-app.register_blueprint(proxies_bp, url_prefix='/proxies')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
@@ -234,7 +223,7 @@ else
     echo "Erro: app.py não encontrado em $INSTALL_DIR/backend. Verifique a estrutura do ZIP." | tee -a "$LOG_FILE"
     exit 1
 fi
-python3 /tmp/init_db.py >> "$LOG_FILE" 2>&1
+python3 /tmp/init_db.py 2>&1 | tee -a "$LOG_FILE"
 if [ $? -ne 0 ]; then
     echo "Erro ao inicializar banco de dados. Verifique $LOG_FILE. Conteúdo do diretório: $(ls -la)" | tee -a "$LOG_FILE"
     exit 1
@@ -268,7 +257,7 @@ except Exception as e:
 EOT
 
 cd "$INSTALL_DIR/backend"
-python3 /tmp/create_admin.py >> "$LOG_FILE" 2>&1
+python3 /tmp/create_admin.py 2>&1 | tee -a "$LOG_FILE"
 if [ $? -ne 0 ]; then
     echo "Erro ao criar usuário administrador. Verifique $LOG_FILE. Conteúdo do diretório: $(ls -la)" | tee -a "$LOG_FILE"
     exit 1
