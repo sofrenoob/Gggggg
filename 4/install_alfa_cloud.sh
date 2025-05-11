@@ -62,17 +62,17 @@ fi
 # 5. Copiar arquivos para os diretórios corretos
 echo "Copiando arquivos para $INSTALL_DIR..." | tee -a "$LOG_FILE"
 # Assumindo que o ZIP contém uma pasta 'alfa-cloud' no topo
-cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/*.py "$INSTALL_DIR/backend/" 2>/dev/null
-cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/routes/*.py "$INSTALL_DIR/backend/routes/" 2>/dev/null
-cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/templates/*.html "$INSTALL_DIR/backend/templates/" 2>/dev/null
-cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/css/*.css "$INSTALL_DIR/backend/static/css/" 2>/dev/null
-cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/js/*.js "$INSTALL_DIR/backend/static/js/" 2>/dev/null
-cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/images/* "$INSTALL_DIR/backend/static/images/" 2>/dev/null
-cp -r /tmp/alfa-cloud-extracted/alfa-cloud/scripts/*.sh "$INSTALL_DIR/scripts/" 2>/dev/null
-cp -r /tmp/alfa-cloud-extracted/alfa-cloud/nginx/*.conf "$INSTALL_DIR/nginx/" 2>/dev/null
-cp /tmp/alfa-cloud-extracted/alfa-cloud/README.md "$INSTALL_DIR/" 2>/dev/null
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/*.py "$INSTALL_DIR/backend/" 2>/dev/null || echo "Aviso: Nenhum arquivo .py encontrado no backend." | tee -a "$LOG_FILE"
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/routes/*.py "$INSTALL_DIR/backend/routes/" 2>/dev/null || echo "Aviso: Nenhum arquivo .py encontrado em routes." | tee -a "$LOG_FILE"
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/templates/*.html "$INSTALL_DIR/backend/templates/" 2>/dev/null || echo "Aviso: Nenhum arquivo .html encontrado em templates." | tee -a "$LOG_FILE"
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/css/*.css "$INSTALL_DIR/backend/static/css/" 2>/dev/null || echo "Aviso: Nenhum arquivo .css encontrado em static/css." | tee -a "$LOG_FILE"
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/js/*.js "$INSTALL_DIR/backend/static/js/" 2>/dev/null || echo "Aviso: Nenhum arquivo .js encontrado em static/js." | tee -a "$LOG_FILE"
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/images/* "$INSTALL_DIR/backend/static/images/" 2>/dev/null || echo "Aviso: Nenhuma imagem encontrada em static/images." | tee -a "$LOG_FILE"
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/scripts/*.sh "$INSTALL_DIR/scripts/" 2>/dev/null || echo "Aviso: Nenhum script .sh encontrado." | tee -a "$LOG_FILE"
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/nginx/*.conf "$INSTALL_DIR/nginx/" 2>/dev/null || echo "Aviso: Nenhum arquivo .conf encontrado em nginx." | tee -a "$LOG_FILE"
+cp /tmp/alfa-cloud-extracted/alfa-cloud/README.md "$INSTALL_DIR/" 2>/dev/null || echo "Aviso: Nenhum README.md encontrado." | tee -a "$LOG_FILE"
 if [ $? -ne 0 ]; then
-    echo "Erro ao copiar arquivos. Verifique $LOG_FILE. Pode ser necessário ajustar os caminhos se a estrutura do ZIP for diferente." | tee -a "$LOG_FILE"
+    echo "Erro ao copiar arquivos. Verifique $LOG_FILE e a estrutura do ZIP." | tee -a "$LOG_FILE"
     exit 1
 fi
 
@@ -107,6 +107,8 @@ fi
 # 9. Inicializar banco de dados
 echo "Inicializando banco de dados SQLite..." | tee -a "$LOG_FILE"
 cat <<EOT > /tmp/init_db.py
+import sys
+sys.path.append('$INSTALL_DIR/backend')
 from app import app, db
 with app.app_context():
     db.create_all()
@@ -115,7 +117,7 @@ EOT
 cd "$INSTALL_DIR/backend"
 python3 /tmp/init_db.py >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
-    echo "Erro ao inicializar banco de dados. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
+    echo "Erro ao inicializar banco de dados. Verifique $LOG_FILE. Conteúdo do diretório: $(ls -la)" | tee -a "$LOG_FILE"
     exit 1
 fi
 rm /tmp/init_db.py
@@ -125,6 +127,8 @@ chmod 644 "$INSTALL_DIR/database/alfa_cloud.db"
 # 10. Criar usuário administrador
 echo "Criando usuário administrador..." | tee -a "$LOG_FILE"
 cat <<EOT > /tmp/create_admin.py
+import sys
+sys.path.append('$INSTALL_DIR/backend')
 from app import app, db
 from models import User
 from datetime import datetime
@@ -138,7 +142,7 @@ EOT
 cd "$INSTALL_DIR/backend"
 python3 /tmp/create_admin.py >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
-    echo "Erro ao criar usuário administrador. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
+    echo "Erro ao criar usuário administrador. Verifique $LOG_FILE. Conteúdo do diretório: $(ls -la)" | tee -a "$LOG_FILE"
     exit 1
 fi
 rm /tmp/create_admin.py
