@@ -95,16 +95,120 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# 8. Gerar SECRET_KEY para config.py
+# 8. Criar app.py funcional
+echo "Criando app.py..." | tee -a "$LOG_FILE"
+cat <<EOT > "$INSTALL_DIR/backend/app.py"
+from flask import Flask, render_template, redirect, url_for, request, flash
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_sqlalchemy import SQLAlchemy
+from config import Config
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired
+
+app = Flask(__name__)
+app.config.from_object(Config)
+db = SQLAlchemy(app)
+
+# Configurar Flask-Login
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+
+# Importar modelos
+from models import User
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+# Formulário de login
+class LoginForm(FlaskForm):
+    username = StringField('Usuário', validators=[DataRequired()])
+    password = PasswordField('Senha', validators=[DataRequired()])
+    submit = SubmitField('Entrar')
+
+# Rotas
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and user.check_password(form.password.data) and user.is_admin:
+            login_user(user)
+            return redirect(url_for('admin.index'))
+        flash('Usuário ou senha inválidos, ou não é administrador.')
+    return render_template('login.html', form=form)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+# Registrar blueprints
+from routes.admin import admin_bp
+from routes.users import users_bp
+from routes.connections import connections_bp
+from routes.proxies import proxies_bp
+
+app.register_blueprint(admin_bp, url_prefix='/admin')
+app.register_blueprint(users_bp, url_prefix='/users')
+app.register_blueprint(connections_bp, url_prefix='/connections')
+app.register_blueprint(proxies_bp, url_prefix='/proxies')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+EOT
+
+# 9. Criar config.py
+echo "Criando config.py..." | tee -a "$LOG_FILE"
+cat <<EOT > "$INSTALL_DIR/backend/config.py"
+import os
+
+class Config:
+    SECRET_KEY = 'sua-chave-secreta-aqui-mude-isso'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}database/alfa_cloud.db'.format(os.path.dirname(os.path.abspath(__file__)) + '/..')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+EOT
+
+# 10. Criar models.py
+echo "Criando models.py..." | tee -a "$LOG_FILE"
+cat <<EOT > "$INSTALL_DIR/backend/models.py"
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
+
+db = SQLAlchemy()
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128), nullable=False)
+    expiry_date = db.Column(db.DateTime, nullable=False)
+    connection_limit = db.Column(db.Integer, default=1)
+    is_admin = db.Column(db.Boolean, default=False)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+EOT
+
+# 11. Gerar SECRET_KEY para config.py
 echo "Gerando SECRET_KEY..." | tee -a "$LOG_FILE"
 SECRET_KEY=$(python3 -c "import secrets; print(secrets.token_hex(24))")
-sed -i "s/sua-chave-secreta-aqui-mude-isso/$SECRET_KEY/" "$INSTALL_DIR/backend/config.py" 2>/dev/null || echo "Aviso: config.py não encontrado ou sem SECRET_KEY para substituir." | tee -a "$LOG_FILE"
+sed -i "s/sua-chave-secreta-aqui-mude-isso/$SECRET_KEY/" "$INSTALL_DIR/backend/config.py"
 if [ $? -ne 0 ]; then
     echo "Erro ao configurar SECRET_KEY. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
     exit 1
 fi
 
-# 9. Inicializar banco de dados
+# 12. Inicializar banco de dados
 echo "Inicializando banco de dados SQLite..." | tee -a "$LOG_FILE"
 cat <<EOT > /tmp/init_db.py
 import sys
@@ -139,7 +243,7 @@ rm /tmp/init_db.py
 chown www-data:www-data "$INSTALL_DIR/database/alfa_cloud.db"
 chmod 644 "$INSTALL_DIR/database/alfa_cloud.db"
 
-# 10. Criar usuário administrador
+# 13. Criar usuário administrador
 echo "Criando usuário administrador..." | tee -a "$LOG_FILE"
 cat <<EOT > /tmp/create_admin.py
 import sys
@@ -171,7 +275,7 @@ if [ $? -ne 0 ]; then
 fi
 rm /tmp/create_admin.py
 
-# 11. Criar template de login
+# 14. Criar template de login
 echo "Criando template de login..." | tee -a "$LOG_FILE"
 cat <<EOT > "$INSTALL_DIR/backend/templates/login.html"
 {% extends 'base.html' %}
@@ -186,20 +290,21 @@ cat <<EOT > "$INSTALL_DIR/backend/templates/login.html"
     {% endif %}
 {% endwith %}
 <form method="POST" action="/login">
+    {{ form.hidden_tag() }}
     <div class="form-group">
         <label for="username">Usuário</label>
-        <input type="text" class="form-control" id="username" name="username" required>
+        {{ form.username(class="form-control", required=True) }}
     </div>
     <div class="form-group">
         <label for="password">Senha</label>
-        <input type="password" class="form-control" id="password" name="password" required>
+        {{ form.password(class="form-control", required=True) }}
     </div>
-    <button type="submit" class="btn btn-primary">Entrar</button>
+    {{ form.submit(class="btn btn-primary") }}
 </form>
 {% endblock %}
 EOT
 
-# 12. Executar scripts de configuração
+# 15. Executar scripts de configuração
 echo "Executando scripts de configuração..." | tee -a "$LOG_FILE"
 for script in setup_vpn.sh setup_proxy.sh setup_services.sh setup_firewall.sh; do
     echo "Executando $script..." | tee -a "$LOG_FILE"
@@ -210,7 +315,7 @@ for script in setup_vpn.sh setup_proxy.sh setup_services.sh setup_firewall.sh; d
     fi
 done
 
-# 13. Configurar Nginx
+# 16. Configurar Nginx
 echo "Configurando Nginx..." | tee -a "$LOG_FILE"
 sed -i "s/alfa-cloud.avira.alfalemos.shop/$SUBDOMAIN/" "$INSTALL_DIR/nginx/alfa-cloud.conf"
 ln -s "$INSTALL_DIR/nginx/alfa-cloud.conf" /etc/nginx/sites-enabled/
@@ -220,7 +325,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# 14. Configurar SSL com Certbot
+# 17. Configurar SSL com Certbot
 echo "Configurando SSL com Certbot..." | tee -a "$LOG_FILE"
 certbot --nginx -d "$SUBDOMAIN" --non-interactive --agree-tos --email alfalemos21@gmail.com >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
@@ -229,7 +334,7 @@ if [ $? -ne 0 ]; then
 fi
 systemctl reload nginx >> "$LOG_FILE" 2>&1
 
-# 15. Configurar Gunicorn como serviço
+# 18. Configurar Gunicorn como serviço
 echo "Configurando Gunicorn..." | tee -a "$LOG_FILE"
 cat <<EOT > /etc/systemd/system/gunicorn.service
 [Unit]
@@ -256,7 +361,7 @@ else
     exit 1
 fi
 
-# 16. Verificar serviços
+# 19. Verificar serviços
 echo "Verificando serviços..." | tee -a "$LOG_FILE"
 for service in openvpn squid websocket badvpn slowdns nginx gunicorn; do
     if systemctl is-active --quiet "$service"; then
@@ -267,7 +372,7 @@ for service in openvpn squid websocket badvpn slowdns nginx gunicorn; do
     fi
 done
 
-# 17. Finalizar
+# 20. Finalizar
 echo "Instalação concluída com sucesso!" | tee -a "$LOG_FILE"
 echo "Acesse a aplicação em https://$SUBDOMAIN" | tee -a "$LOG_FILE"
 echo "Acesse o painel de admin em https://$SUBDOMAIN/login" | tee -a "$LOG_FILE"
