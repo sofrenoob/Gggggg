@@ -2,13 +2,13 @@
 
 # Script de instalação do Alfa Cloud
 # Executar com sudo em um servidor Ubuntu 18.04
-# Baixa alfa-cloud.zip de https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cloud.zip
+# Baixa alfa-cloud.zip de https://github.com/sofrenoob/Gggggg/main/4/alfa-cloud.zip
 
 # Configurações
 SUBDOMAIN="alfa-cloud.avira.alfalemos.shop"  # Substitua pelo seu subdomínio
 INSTALL_DIR="/var/www/alfa-cloud"
 LOG_FILE="/var/log/alfa-cloud-install.log"
-ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cloud.zip"  # URL do alfa-cloud.zip
+ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cloud.zip"  # URL corrigida do alfa-cloud.zip
 ADMIN_PASSWORD="Admin123!"  # Senha do usuário admin (altere se desejar)
 
 # Verificar se o script está sendo executado como root
@@ -53,7 +53,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Extraindo alfa-cloud.zip..." | tee -a "$LOG_FILE"
-unzip /tmp/alfa-cloud.zip -d /tmp/alfa-cloud >> "$LOG_FILE" 2>&1
+unzip -o /tmp/alfa-cloud.zip -d /tmp/alfa-cloud-extracted >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     echo "Erro ao extrair alfa-cloud.zip. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
     exit 1
@@ -61,17 +61,18 @@ fi
 
 # 5. Copiar arquivos para os diretórios corretos
 echo "Copiando arquivos para $INSTALL_DIR..." | tee -a "$LOG_FILE"
-cp -r /tmp/alfa-cloud/backend/*.py "$INSTALL_DIR/backend/"
-cp -r /tmp/alfa-cloud/backend/routes/*.py "$INSTALL_DIR/backend/routes/"
-cp -r /tmp/alfa-cloud/backend/templates/*.html "$INSTALL_DIR/backend/templates/"
-cp -r /tmp/alfa-cloud/backend/static/css/*.css "$INSTALL_DIR/backend/static/css/"
-cp -r /tmp/alfa-cloud/backend/static/js/*.js "$INSTALL_DIR/backend/static/js/"
-cp -r /tmp/alfa-cloud/backend/static/images/* "$INSTALL_DIR/backend/static/images/" 2>/dev/null
-cp -r /tmp/alfa-cloud/scripts/*.sh "$INSTALL_DIR/scripts/"
-cp -r /tmp/alfa-cloud/nginx/*.conf "$INSTALL_DIR/nginx/"
-cp /tmp/alfa-cloud/README.md "$INSTALL_DIR/" 2>/dev/null
+# Assumindo que o ZIP contém uma pasta 'alfa-cloud' no topo
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/*.py "$INSTALL_DIR/backend/" 2>/dev/null
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/routes/*.py "$INSTALL_DIR/backend/routes/" 2>/dev/null
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/templates/*.html "$INSTALL_DIR/backend/templates/" 2>/dev/null
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/css/*.css "$INSTALL_DIR/backend/static/css/" 2>/dev/null
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/js/*.js "$INSTALL_DIR/backend/static/js/" 2>/dev/null
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/backend/static/images/* "$INSTALL_DIR/backend/static/images/" 2>/dev/null
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/scripts/*.sh "$INSTALL_DIR/scripts/" 2>/dev/null
+cp -r /tmp/alfa-cloud-extracted/alfa-cloud/nginx/*.conf "$INSTALL_DIR/nginx/" 2>/dev/null
+cp /tmp/alfa-cloud-extracted/alfa-cloud/README.md "$INSTALL_DIR/" 2>/dev/null
 if [ $? -ne 0 ]; then
-    echo "Erro ao copiar arquivos. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
+    echo "Erro ao copiar arquivos. Verifique $LOG_FILE. Pode ser necessário ajustar os caminhos se a estrutura do ZIP for diferente." | tee -a "$LOG_FILE"
     exit 1
 fi
 
