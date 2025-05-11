@@ -105,22 +105,42 @@ fi
 
 # 9. Inicializar banco de dados
 echo "Inicializando banco de dados SQLite..." | tee -a "$LOG_FILE"
-python3 -c "from app import app, db; with app.app_context(): db.create_all()" >> "$LOG_FILE" 2>&1
+cat <<EOT > /tmp/init_db.py
+from app import app, db
+with app.app_context():
+    db.create_all()
+EOT
+
+cd "$INSTALL_DIR/backend"
+python3 /tmp/init_db.py >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     echo "Erro ao inicializar banco de dados. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
     exit 1
 fi
+rm /tmp/init_db.py
 chown www-data:www-data "$INSTALL_DIR/database/alfa_cloud.db"
 chmod 644 "$INSTALL_DIR/database/alfa_cloud.db"
 
 # 10. Criar usuário administrador
 echo "Criando usuário administrador..." | tee -a "$LOG_FILE"
+cat <<EOT > /tmp/create_admin.py
+from app import app, db
+from models import User
+from datetime import datetime
+with app.app_context():
+    admin = User(username='admin', expiry_date=datetime.strptime('2099-12-31', '%Y-%m-%d'), connection_limit=10, is_admin=True)
+    admin.set_password('$ADMIN_PASSWORD')
+    db.session.add(admin)
+    db.session.commit()
+EOT
+
 cd "$INSTALL_DIR/backend"
-python3 -c "from app import app, db; from models import User; from datetime import datetime; with app.app_context(): admin = User(username='admin', expiry_date=datetime.strptime('2099-12-31', '%Y-%m-%d'), connection_limit=10, is_admin=True); admin.set_password('$ADMIN_PASSWORD'); db.session.add(admin); db.session.commit()" >> "$LOG_FILE" 2>&1
+python3 /tmp/create_admin.py >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     echo "Erro ao criar usuário administrador. Verifique $LOG_FILE." | tee -a "$LOG_FILE"
     exit 1
 fi
+rm /tmp/create_admin.py
 
 # 11. Criar template de login
 echo "Criando template de login..." | tee -a "$LOG_FILE"
