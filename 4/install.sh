@@ -1,422 +1,352 @@
 
+# vpn_manager.sh - Gerenciador Proxy WebSocket Tunnel, SSL Tunnel e BadVPN
+# Independente menu interativo no terminal
 
-# Vars
-XRAY_CONFIG="/etc/xray/config.json"
-SSL_CERT="/etc/xray/ssl/cert.pem"
-SSL_KEY="/etc/xray/ssl/key.pem"
-BADVPN_UDPGW_PORT=7300
-DB_PATH="/opt/vpnmanager/vpnusers.db"
-XRAY_SERVICE="xray"
+# --- Configurações iniciais ---
+
+USERS_FILE="/opt/vpnmanager/users.json"
+
+PROXY_WS_PORT=8080
+SSL_TUNNEL_PORT=8443
+BADVPN_PORT=7300
+
+WEBSOCAT_BIN="/usr/local/bin/websocat"
+
+# Serviços systemd
+STUNNEL_SERVICE="stunnel4"
 BADVPN_SERVICE="badvpn-udpgw"
+WEBSOCAT_SERVICE="websocat-proxy"
 
-# Instalação e dependências
-install_dependencies(){
-    echo "Atualizando e instalando dependências..."
-    apt update && apt upgrade -y
-    apt install -y curl wget unzip python3 python3-pip python3-venv sqlite3 iptables socat dialog git cmake build-essential
+# --- Funções utilitárias ---
+
+function check_installed() {
+  command -v "$1" >/dev/null 2>&1 || { echo "$1 não instalado. Abortando."; exit 1; }
 }
 
-# Instalar Xray-core
-install_xray(){
-    echo "Instalando Xray-core..."
-    bash <(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)
+function load_users() {
+  if [ ! -f "$USERS_FILE" ]; then
+    echo "[]" > "$USERS_FILE"
+  fi
+  USERS_JSON=$(cat "$USERS_FILE")
 }
 
-# Criar certificado autoassinado
-create_ssl_cert(){
-    echo "Criando certificado SSL autoassinado..."
-    mkdir -p /etc/xray/ssl
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-      -keyout $SSL_KEY -out $SSL_CERT \
-      -subj "/CN=vpn.local"
+function save_users() {
+  echo "$USERS_JSON" > "$USERS_FILE"
 }
 
-# Criar configuração base do Xray
-create_xray_config(){
-    echo "Criando configuração base do Xray..."
-
-    read -p "Digite a porta que deseja usar para todos os protocolos (exemplo: 443): " PORT
-
-    if ! [[ "$PORT" =~ ^[0-9]+$ ]] ; then
-       echo "Porta inválida!"
-       exit 1
-    fi
-
-    cat > $XRAY_CONFIG <<EOF
-{
-  "inbounds": [
-    {
-      "port": $PORT,
-      "protocol": "dokodemo-door",
-      "settings": {
-        "network": "tcp,udp",
-        "timeout": 0,
-        "followRedirect": true
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "none"
-      }
-    },
-    {
-      "port": $PORT,
-      "protocol": "vmess",
-      "settings": {
-        "clients": []
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "certificates": [
-            {
-              "certificateFile": "$SSL_CERT",
-              "keyFile": "$SSL_KEY"
-            }
-          ]
-        },
-        "wsSettings": {
-          "path": "/ws"
-        }
-      }
-    },
-    {
-      "port": $PORT,
-      "protocol": "vless",
-      "settings": {
-        "clients": []
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "certificates": [
-            {
-              "certificateFile": "$SSL_CERT",
-              "keyFile": "$SSL_KEY"
-            }
-          ]
-        },
-        "wsSettings": {
-          "path": "/vless"
-        }
-      }
-    },
-    {
-      "port": $PORT,
-      "protocol": "trojan",
-      "settings": {
-        "clients": []
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-          "certificates": [
-            {
-              "certificateFile": "$SSL_CERT",
-              "keyFile": "$SSL_KEY"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "port": $PORT,
-      "protocol": "shadowsocks",
-      "settings": {
-        "clients": []
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-          "certificates": [
-            {
-              "certificateFile": "$SSL_CERT",
-              "keyFile": "$SSL_KEY"
-            }
-          ]
-        }
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    }
-  ]
-}
-EOF
-
-    echo "Configuração criada na porta $PORT"
+function generate_id() {
+  echo $(date +%s%N | sha256sum | head -c 8)
 }
 
-# Instalar BadVPN UDPGW
-install_badvpn(){
-    echo "Instalando BadVPN UDPGW..."
-    git clone https://github.com/ambrop72/badvpn.git /opt/badvpn
-    cd /opt/badvpn
-    cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
-    make
-    cp badvpn-udpgw /usr/local/bin/
+# --- Funções para gerenciamento usuários ---
 
-    echo "Criando serviço systemd para BadVPN UDPGW..."
-    cat > /etc/systemd/system/badvpn-udpgw.service <<EOF
+function add_user() {
+  local login pass days limit expiry
+  login=$(dialog --inputbox "Login do usuário:" 8 40 3>&1 1>&2 2>&3)
+  pass=$(dialog --inputbox "Senha do usuário:" 8 40 3>&1 1>&2 2>&3)
+  days=$(dialog --inputbox "Validade (dias):" 8 40 30 3>&1 1>&2 2>&3)
+  limit=$(dialog --inputbox "Limite de dados (MB) (0 para ilimitado):" 8 60 0 3>&1 1>&2 2>&3)
+
+  if [ -z "$login" ] || [ -z "$pass" ] || [ -z "$days" ]; then
+    dialog --msgbox "Campos obrigatórios vazios!" 5 40
+    return
+  fi
+
+  expiry=$(date -d "+$days days" +%Y-%m-%d)
+
+  load_users
+
+  if echo "$USERS_JSON" | jq --arg l "$login" '.[] | select(.login==$l)' | grep -q .; then
+    dialog --msgbox "Login já existe!" 5 40
+    return
+  fi
+
+  id=$(generate_id)
+
+  USERS_JSON=$(echo "$USERS_JSON" | jq --argjson newUser \
+    "{\"id\":\"$id\",\"login\":\"$login\",\"password\":\"$pass\",\"expiry\":\"$expiry\",\"limit\":$limit,\"used\":0}" '. += [$newUser]')
+
+  save_users
+
+  dialog --msgbox "Usuário $login criado com sucesso, expira em $expiry." 6 50
+}
+
+function list_users() {
+  load_users
+  local output="ID       | LOGIN    | EXPIRA    | LIMITE(MB) | USADO(MB)\n"
+  output+="---------------------------------------------------------\n"
+  echo "$USERS_JSON" | jq -r '.[] | "\(.id) | \(.login) | \(.expiry) | \(.limit) | \(.used)"' | while read line; do
+    output+="$line\n"
+  done
+  dialog --msgbox "$output" 20 60
+}
+
+function remove_user() {
+  load_users
+  local id=$(dialog --inputbox "Digite o ID do usuário para remover:" 8 40 3>&1 1>&2 2>&3)
+  if [ -z "$id" ]; then return; fi
+
+  if ! echo "$USERS_JSON" | jq --arg i "$id" '.[] | select(.id==$i)' | grep -q .; then
+    dialog --msgbox "Usuário não encontrado!" 5 40
+    return
+  fi
+
+  USERS_JSON=$(echo "$USERS_JSON" | jq --arg i "$id" 'map(select(.id != $i))')
+  save_users
+  dialog --msgbox "Usuário removido com sucesso." 5 40
+}
+
+# --- Gerenciar portas ---
+
+function edit_port() {
+  local service_name=$1
+  local current_port=$2
+  local new_port
+
+  new_port=$(dialog --inputbox "Digite a nova porta para $service_name:" 8 40 "$current_port" 3>&1 1>&2 2>&3)
+  if [ -z "$new_port" ]; then return; fi
+  if ! [[ "$new_port" =~ ^[0-9]+$ ]]; then
+    dialog --msgbox "Porta inválida!" 5 40
+    return
+  fi
+
+  case $service_name in
+    "Proxy WebSocket")
+      PROXY_WS_PORT=$new_port
+      systemctl stop $WEBSOCAT_SERVICE
+      # Criar ou atualizar serviço websocat
+      create_websocat_service
+      systemctl start $WEBSOCAT_SERVICE
+      ;;
+    "SSL Tunnel")
+      SSL_TUNNEL_PORT=$new_port
+      sed -i "s/^accept = .*/accept = $new_port/" /etc/stunnel/stunnel.conf
+      systemctl restart $STUNNEL_SERVICE
+      ;;
+    "BadVPN")
+      BADVPN_PORT=$new_port
+      sed -i "s/--listen-addr 127.0.0.1:.*/--listen-addr 127.0.0.1:$new_port/" /etc/systemd/system/badvpn-udpgw.service
+      systemctl daemon-reload
+      systemctl restart $BADVPN_SERVICE
+      ;;
+  esac
+
+  dialog --msgbox "$service_name porta alterada para $new_port." 5 50
+}
+
+# --- Criar serviço systemd para websocat proxy ---
+
+function create_websocat_service() {
+  cat > /etc/systemd/system/$WEBSOCAT_SERVICE.service <<EOF
 [Unit]
-Description=Badvpn UDPGW Service
+Description=WebSocket Proxy Service
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/badvpn-udpgw --listen-addr 127.0.0.1:$BADVPN_UDPGW_PORT
+ExecStart=$WEBSOCAT_BIN -s -t tcp-listen:$PROXY_WS_PORT
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
 EOF
+  systemctl daemon-reload
+  systemctl enable $WEBSOCAT_SERVICE
+}
 
+# --- Verificar usuários online (simples) ---
+
+function count_online() {
+  # Contar conexões TCP nas portas dos serviços
+  local ws_count ssl_count badvpn_count
+  ws_count=$(ss -tn state established sport = :$PROXY_WS_PORT | wc -l)
+  ssl_count=$(ss -tn state established sport = :$SSL_TUNNEL_PORT | wc -l)
+  badvpn_count=$(ss -tn state established sport = :$BADVPN_PORT | wc -l)
+  echo "$ws_count $ssl_count $badvpn_count"
+}
+
+# --- Status dos serviços ---
+
+function service_status() {
+  local svc=$1
+  if systemctl is-active --quiet $svc; then
+    echo "Ativo"
+  else
+    echo "Inativo"
+  fi
+}
+
+# --- Menu principal ---
+
+function main_menu() {
+  while true; do
+    read ws_online ssl_online badvpn_online < <(count_online)
+    ws_status=$(service_status $WEBSOCAT_SERVICE)
+    ssl_status=$(service_status $STUNNEL_SERVICE)
+    badvpn_status=$(service_status $BADVPN_SERVICE)
+
+    exec 3>&1
+    choice=$(dialog --clear --backtitle "Gerenciador de VPN - Proxy WebSocket, SSL Tunnel e BadVPN" \
+      --title "Menu Principal" \
+      --menu "Serviços Ativos:\n
+Proxy WebSocket: $ws_status | Porta: $PROXY_WS_PORT | Online: $ws_online\n
+SSL Tunnel: $ssl_status | Porta: $SSL_TUNNEL_PORT | Online: $ssl_online\n
+BadVPN UDPGW: $badvpn_status | Porta: $BADVPN_PORT | Online: $badvpn_online\n\nEscolha uma opção:" 20 70 15 \
+      1 "Gerenciar Proxy WebSocket" \
+      2 "Gerenciar SSL Tunnel" \
+      3 "Gerenciar BadVPN UDPGW" \
+      4 "Gerenciar Usuários" \
+      5 "Mostrar Usuários Online" \
+      6 "Sair" \
+      2>&1 1>&3)
+    exec 3>&-
+
+    case $choice in
+      1) proxy_ws_menu ;;
+      2) ssl_tunnel_menu ;;
+      3) badvpn_menu ;;
+      4) user_menu ;;
+      5) show_online_users ;;
+      6) clear; exit 0 ;;
+      *) ;;
+    esac
+  done
+}
+
+# --- Submenus ---
+
+function proxy_ws_menu() {
+  while true; do
+    exec 3>&1
+    choice=$(dialog --clear --backtitle "Proxy WebSocket - Gerenciar" --menu "Escolha uma opção:" 15 50 10 \
+    1 "Editar Porta (Atual: $PROXY_WS_PORT)" \
+    2 "Reiniciar Serviço" \
+    3 "Voltar" 2>&1 1>&3)
+    exec 3>&-
+    case $choice in
+      1) edit_port "Proxy WebSocket" $PROXY_WS_PORT ;;
+      2) systemctl restart $WEBSOCAT_SERVICE; dialog --msgbox "Serviço reiniciado." 5 40 ;;
+      3) break ;;
+      *) ;;
+    esac
+  done
+}
+
+function ssl_tunnel_menu() {
+  while true; do
+    exec 3>&1
+    choice=$(dialog --clear --backtitle "SSL Tunnel (stunnel) - Gerenciar" --menu "Escolha uma opção:" 15 50 10 \
+    1 "Editar Porta (Atual: $SSL_TUNNEL_PORT)" \
+    2 "Reiniciar Serviço" \
+    3 "Voltar" 2>&1 1>&3)
+    exec 3>&-
+    case $choice in
+      1) edit_port "SSL Tunnel" $SSL_TUNNEL_PORT ;;
+      2) systemctl restart $STUNNEL_SERVICE; dialog --msgbox "Serviço reiniciado." 5 40 ;;
+      3) break ;;
+      *) ;;
+    esac
+  done
+}
+
+function badvpn_menu() {
+  while true; do
+    exec 3>&1
+    choice=$(dialog --clear --backtitle "BadVPN UDPGW - Gerenciar" --menu "Escolha uma opção:" 15 50 10 \
+    1 "Editar Porta (Atual: $BADVPN_PORT)" \
+    2 "Reiniciar Serviço" \
+    3 "Voltar" 2>&1 1>&3)
+    exec 3>&-
+    case $choice in
+      1) edit_port "BadVPN" $BADVPN_PORT ;;
+      2) systemctl restart $BADVPN_SERVICE; dialog --msgbox "Serviço reiniciado." 5 40 ;;
+      3) break ;;
+      *) ;;
+    esac
+  done
+}
+
+function user_menu() {
+  while true; do
+    exec 3>&1
+    choice=$(dialog --clear --backtitle "Gerenciar Usuários" --menu "Escolha uma opção:" 20 60 15 \
+    1 "Criar Usuário" \
+    2 "Listar Usuários" \
+    3 "Remover Usuário" \
+    4 "Voltar" 2>&1 1>&3)
+    exec 3>&-
+    case $choice in
+      1) add_user ;;
+      2) list_users ;;
+      3) remove_user ;;
+      4) break ;;
+      *) ;;
+    esac
+  done
+}
+
+# --- Mostrar usuários online ---
+
+function show_online_users() {
+  load_users
+  local ws_conns ssl_conns badvpn_conns
+  ws_conns=$(ss -tn state established sport = :$PROXY_WS_PORT | awk '{print $6}' | sort | uniq -c | sort -nr)
+  ssl_conns=$(ss -tn state established sport = :$SSL_TUNNEL_PORT | awk '{print $6}' | sort | uniq -c | sort -nr)
+  badvpn_conns=$(ss -tn state established sport = :$BADVPN_PORT | awk '{print $6}' | sort | uniq -c | sort -nr)
+
+  local output="Conexões atuais:\n\nProxy WebSocket:\n$ws_conns\n\nSSL Tunnel:\n$ssl_conns\n\nBadVPN UDPGW:\n$badvpn_conns\n\n"
+
+  dialog --msgbox "$output" 20 70
+}
+
+# --- Inicialização ---
+
+function check_dependencies() {
+  for cmd in dialog jq ss stunnel4 systemctl; do
+    check_installed $cmd
+  done
+  if [ ! -x "$WEBSOCAT_BIN" ]; then
+    echo "Websocat não encontrado em $WEBSOCAT_BIN. Baixando..."
+    wget -O $WEBSOCAT_BIN https://github.com/vi/websocat/releases/latest/download/websocat.x86_64-unknown-linux-gnu
+    chmod +x $WEBSOCAT_BIN
+  fi
+}
+
+function setup_services() {
+  # Criar serviço websocat se não existir
+  if ! systemctl list-units --full -all | grep -q $WEBSOCAT_SERVICE.service; then
+    create_websocat_service
+    systemctl enable $WEBSOCAT_SERVICE
+  fi
+
+  # Criar serviço badvpn se não existir
+  if ! systemctl list-units --full -all | grep -q $BADVPN_SERVICE.service; then
+    cat >/etc/systemd/system/$BADVPN_SERVICE.service <<EOF
+[Unit]
+Description=BadVPN UDPGW Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/badvpn-udpgw --listen-addr 127.0.0.1:$BADVPN_PORT
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
     systemctl daemon-reload
-    systemctl enable badvpn-udpgw
-    systemctl start badvpn-udpgw
+    systemctl enable $BADVPN_SERVICE
+  fi
+
+  # Reiniciar serviços para garantir que estão rodando
+  systemctl restart $WEBSOCAT_SERVICE
+  systemctl restart $BADVPN_SERVICE
+  systemctl restart $STUNNEL_SERVICE
 }
 
-# Criar banco de dados SQLite
-create_database(){
-    mkdir -p /opt/vpnmanager
-    python3 - <<EOF
-import sqlite3
-conn = sqlite3.connect("$DB_PATH")
-c = conn.cursor()
-c.execute('''
-CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    login TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
-    uuid TEXT UNIQUE NOT NULL,
-    created_at TEXT NOT NULL,
-    expires_at TEXT NOT NULL,
-    data_limit_mb INTEGER,
-    data_used_mb INTEGER DEFAULT 0
-)
-''')
-conn.commit()
-conn.close()
-EOF
-}
+# --- Script principal ---
 
-# Função para adicionar usuário via Python
-add_user(){
-    python3 - <<EOF
-import sqlite3
-import uuid
-from datetime import datetime, timedelta
-import json
-
-db_path = "$DB_PATH"
-config_path = "$XRAY_CONFIG"
-login = "$1"
-password = "$2"
-days = int("$3")
-limit = "$4"
-
-expires_at = (datetime.utcnow() + timedelta(days=days)).isoformat()
-user_uuid = str(uuid.uuid4())
-data_limit_mb = int(limit) if limit.isdigit() else None
-
-conn = sqlite3.connect(db_path)
-c = conn.cursor()
-
-try:
-    c.execute("INSERT INTO users (login, password, uuid, created_at, expires_at, data_limit_mb) VALUES (?, ?, ?, ?, ?, ?)",
-              (login, password, user_uuid, datetime.utcnow().isoformat(), expires_at, data_limit_mb))
-    conn.commit()
-except Exception as e:
-    print("Erro ao adicionar usuário:", e)
-    exit(1)
-
-# Atualizar configuração Xray
-with open(config_path, "r") as f:
-    config = json.load(f)
-
-clients_keys = ["vmess", "vless", "trojan", "shadowsocks"]
-for proto in clients_keys:
-    clients = []
-    for inbound in config["inbounds"]:
-        if inbound["protocol"] == proto:
-            clients = inbound["settings"]["clients"]
-            break
-
-    new_client = {"id": user_uuid, "email": login}
-    # Para shadowsocks precisa de um campo diferente
-    if proto == "shadowsocks":
-        new_client = {
-            "password": password,
-            "method": "aes-128-gcm",
-            "email": login
-        }
-    elif proto == "trojan":
-        new_client = {
-            "password": password,
-            "email": login
-        }
-
-    clients.append(new_client)
-
-    # Atualiza a lista no config
-    for inbound in config["inbounds"]:
-        if inbound["protocol"] == proto:
-            inbound["settings"]["clients"] = clients
-
-with open(config_path, "w") as f:
-    json.dump(config, f, indent=2)
-
-conn.close()
-EOF
-
-    systemctl restart $XRAY_SERVICE
-    echo "Usuário $1 adicionado e Xray reiniciado."
-}
-
-# Função para listar usuários
-list_users(){
-    python3 - <<EOF
-import sqlite3
-conn = sqlite3.connect("$DB_PATH")
-c = conn.cursor()
-for row in c.execute("SELECT id, login, expires_at, data_limit_mb, data_used_mb FROM users"):
-    print(f"ID: {row[0]} | Login: {row[1]} | Expira: {row[2]} | Limite MB: {row[3]} | Usado MB: {row[4]}")
-conn.close()
-EOF
-}
-
-# Função para deletar usuário
-delete_user(){
-    python3 - <<EOF
-import sqlite3
-import json
-
-db_path = "$DB_PATH"
-config_path = "$XRAY_CONFIG"
-user_id = $1
-
-conn = sqlite3.connect(db_path)
-c = conn.cursor()
-
-c.execute("SELECT uuid, login FROM users WHERE id = ?", (user_id,))
-row = c.fetchone()
-if not row:
-    print("Usuário não encontrado!")
-    exit(1)
-
-user_uuid = row[0]
-
-c.execute("DELETE FROM users WHERE id = ?", (user_id,))
-conn.commit()
-
-# Atualizar config Xray
-with open(config_path, "r") as f:
-    config = json.load(f)
-
-for inbound in config["inbounds"]:
-    clients = inbound["settings"].get("clients", [])
-    inbound["settings"]["clients"] = [c for c in clients if c.get("id") != user_uuid and c.get("password") != user_uuid]
-
-with open(config_path, "w") as f:
-    json.dump(config, f, indent=2)
-
-conn.close()
-print(f"Usuário {row[1]} deletado.")
-EOF
-
-    systemctl restart $XRAY_SERVICE
-}
-
-# Função para abrir porta firewall
-open_port(){
-    PORT=$1
-    iptables -I INPUT -p tcp --dport $PORT -j ACCEPT
-    iptables -I INPUT -p udp --dport $PORT -j ACCEPT
-    echo "Porta $PORT liberada no firewall."
-}
-
-# Função para mostrar portas abertas
-show_ports(){
-    iptables -L -n --line-numbers | grep -E "ACCEPT"
-}
-
-# Menu principal
-menu(){
-    while true; do
-        CHOICE=$(dialog --clear --backtitle "VPN Manager" \
-            --title "Menu Principal" \
-            --menu "Escolha uma opção:" 15 55 8 \
-            1 "Adicionar usuário" \
-            2 "Listar usuários" \
-            3 "Deletar usuário" \
-            4 "Abrir porta no firewall" \
-            5 "Mostrar portas abertas" \
-            6 "Reiniciar serviços" \
-            7 "Sair" 3>&1 1>&2 2>&3)
-
-        clear
-        case $CHOICE in
-            1)
-                read -p "Login: " LOGIN
-                read -p "Senha: " PASS
-                read -p "Dias de validade: " DIAS
-                read -p "Limite de dados (MB, vazio para ilimitado): " LIMIT
-                add_user "$LOGIN" "$PASS" "$DIAS" "$LIMIT"
-                read -p "Pressione Enter para continuar..."
-                ;;
-            2)
-                echo "Usuários cadastrados:"
-                list_users
-                read -p "Pressione Enter para continuar..."
-                ;;
-            3)
-                read -p "ID do usuário para deletar: " UID
-                delete_user "$UID"
-                read -p "Pressione Enter para continuar..."
-                ;;
-            4)
-                read -p "Porta para liberar: " PRT
-                open_port "$PRT"
-                read -p "Pressione Enter para continuar..."
-                ;;
-            5)
-                echo "Portas abertas no firewall:"
-                show_ports
-                read -p "Pressione Enter para continuar..."
-                ;;
-            6)
-                echo "Reiniciando serviços..."
-                systemctl restart $XRAY_SERVICE
-                systemctl restart $BADVPN_SERVICE
-                echo "Serviços reiniciados."
-                read -p "Pressione Enter para continuar..."
-                ;;
-            7)
-                echo "Saindo..."
-                exit 0
-                ;;
-            *)
-                echo "Opção inválida."
-                ;;
-        esac
-    done
-}
-
-# Execução principal
-main(){
-    install_dependencies
-    install_xray
-    create_ssl_cert
-    create_xray_config
-    install_badvpn
-    create_database
-    echo "Setup concluído! Iniciando menu..."
-    menu
-}
-
-main
+check_dependencies
+load_ports
+mkdir -p /opt/vpnmanager
+touch "$USERS_FILE"
+setup_services
+main_menu
