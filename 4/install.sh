@@ -1,58 +1,114 @@
 
-#---------------------------------------------------------
-#  Gerenciador Inteligente de Proxies & Usuários SSH
-#  Autor........: VOCÊ
-#  Data.........: $(date +%d/%m/%Y)
-#  Testado em...: Ubuntu 20.04/22.04 e Debian 11
-#---------------------------------------------------------
+#==============================================================================
+#  PROXY-MANAGER – Painel CLI de Gerenciamento de Conexões
+#  Funcionalidades: sistema info, gestão de portas, WebSocket, SOCKS5, Stunnel,
+#                   SlowDNS, BadVPN, HAProxy, RustyProxy, AnyProxy (node),
+#                   criação/backup de usuários, conexão persistente (autossh)
+#  Autor...: @alfalemos
+#  Última..: 11/05/2025
+#==============================================================================
 
-# === Cores ===
-RED="\e[31m"; GREEN="\e[32m"; YELLOW="\e[33m"; BLUE="\e[34m"; CYAN="\e[36m"; RESET="\e[0m"
+shopt -s nocasematch
+export LC_ALL=C
 
-# === Utilidades ===
-pausa(){ read -rp $'\nPressione <Enter> para continuar...'; }
-linha(){ printf "${CYAN}---------------------------------------------------------${RESET}\n"; }
-msg(){ printf "${GREEN}[✔]${RESET} %s\n" "$1"; }
-erro(){ printf "${RED}[✖] %s${RESET}\n" "$1"; }
+#--- Cores --------------------------------------------------------------------
+R="\e[31m"; G="\e[32m"; Y="\e[33m"; B="\e[34m"; C="\e[36m"; W="\e[97m"; Z="\e[0m"
+tick(){ printf "${G}[✔]${Z} %s\n" "$*"; }
+warn(){ printf "${Y}[!]${Z} %s\n" "$*"; }
+fail(){ printf "${R}[✖]${Z} %s\n" "$*"; }
+pause(){ read -rp $'\nPressione <Enter> para continuar...'; }
 
-# === Pré-requisitos ===
-instalar_prereqs(){
-    linha; echo -e "${BLUE}Instalando dependências básicas...${RESET}"
-    apt update && \
-    apt install -y curl wget git build-essential pkg-config \
-                   software-properties-common coreutils \
-                   lsb-release ca-certificates gnupg
-    msg "Dependências instaladas."
+#--- Variáveis globais --------------------------------------------------------
+BASE_DIR="/opt/proxy-manager"
+KEEPALIVE_LIST="$BASE_DIR/hosts.lst"
+mkdir -p "$BASE_DIR"
+
+#--- Funções utilitárias ------------------------------------------------------
+is_root(){ [[ $EUID -eq 0 ]]; }
+need_root(){ is_root || { fail "Execute como root!"; exit 1; }; }
+
+port_open(){ ss -tulpn | awk '{print $5}' | grep -Eo '[0-9]+$' | sort -u; }
+
+ufw_open(){ local p=$1
+    if command -v ufw &>/dev/null; then ufw allow "$p"/tcp &>/dev/null; fi
+}
+ufw_close(){ local p=$1
+    if command -v ufw &>/dev/null; then ufw delete allow "$p"/tcp &>/dev/null; fi
 }
 
-# === Proxy WebSocket (Websocat) ===
-instalar_websocket(){
-    linha; echo -e "${BLUE}Instalando Websocat (Proxy WebSocket)...${RESET}"
-    local BIN="/usr/local/bin/websocat"
-    if [[ ! -x $BIN ]]; then
-        wget -qO $BIN https://github.com/vi/websocat/releases/latest/download/websocat.x86_64-unknown-linux-musl
-        chmod +x $BIN
-    fi
-    # Exemplo de serviço systemd
-    cat >/etc/systemd/system/websocat.service <<'EOF'
+#--- Informações de sistema ---------------------------------------------------
+sysinfo(){
+    clear
+    echo -e "${C}================  INFO DO SISTEMA  ================${Z}"
+    printf "${B}Host:${Z} %s   ${B}Kernel:${Z} %s   ${B}Uptime:${Z} %s\n" \
+           "$(hostname)" "$(uname -r)" "$(uptime -p)"
+    printf "${B}CPU :${Z} %s núcleos  @ %s MHz\n" \
+           "$(nproc)" "$(awk -F: '/cpu MHz/{print $2;exit}' /proc/cpuinfo)"
+    printf "${B}Mem :${Z} %s MB livres / %s MB\n" \
+           "$(free -m | awk '/Mem:/{print $4}')" \
+           "$(free -m | awk '/Mem:/{print $2}')"
+    printf "${B}Distribuição:${Z} "; lsb_release -d | cut -f2
+    echo -e "${C}----------------------------------------------------${Z}"
+    echo -e "${B}Portas abertas:${Z}"; port_open | xargs echo
+    echo -e "${B}Serviços ativos:${Z}"
+    systemctl --type=service --state=running --no-pager --no-legend | head
+    echo -e "${B}Usuários online:${Z}"; who | awk '{print $1" ("$2")"}'
+}
+
+#--- Dependências básicas -----------------------------------------------------
+install_prereqs(){
+    apt update
+    apt install -y curl wget git build-essential lsb-release \
+       ufw jq net-tools autossh
+}
+
+#--- Gestão de portas ---------------------------------------------------------
+menu_portas(){
+  while true; do
+    clear
+    echo -e "${C}====== GERENCIAR PORTAS (UFW) ======${Z}"
+    echo -e "${G}1${Z} - Abrir porta"
+    echo -e "${G}2${Z} - Fechar porta"
+    echo -e "${G}3${Z} - Listar portas abertas"
+    echo -e "${G}0${Z} - Voltar"
+    read -rp "Opção: " p
+    case $p in
+      1) read -rp "Porta a abrir: " pt; ufw_open "$pt"; tick "Porta $pt aberta"; pause;;
+      2) read -rp "Porta a fechar: " pt; ufw_close "$pt"; tick "Porta $pt fechada"; pause;;
+      3) ufw status numbered; pause;;
+      0) break;;
+      *) ;;
+    esac
+  done
+}
+
+#--- MÓDULOS DE SERVIÇO -------------------------------------------------------
+# Cada módulo tem: instalar, start, stop, status
+
+# WebSocket (Websocat) --------------------------------------------------------
+ws_install(){
+    local BIN=/usr/local/bin/websocat
+    [[ -x $BIN ]] || {
+      wget -qO $BIN https://github.com/vi/websocat/releases/latest/download/websocat.x86_64-unknown-linux-musl
+      chmod +x $BIN
+    }
+    cat >/etc/systemd/system/websocket.service <<EOF
 [Unit]
-Description=WebSocket TCP Tunnel
+Description=WebSocket -> SSH
 After=network.target
-
 [Service]
-ExecStart=/usr/local/bin/websocat -s 0.0.0.0:8080 tcp:127.0.0.1:22
-Restart=on-failure
-
+ExecStart=$BIN -s 0.0.0.0:8080 tcp:127.0.0.1:22
+Restart=always
 [Install]
 WantedBy=multi-user.target
 EOF
-    systemctl daemon-reload && systemctl enable --now websocat
-    msg "Websocat ativo em ws://IP:8080 -> 127.0.0.1:22"
+    systemctl daemon-reload && systemctl enable --now websocket
+    ufw_open 8080
+    tick "WebSocket ativo na porta 8080"
 }
 
-# === Proxy SOCKS5 (Dante) ===
-instalar_socks(){
-    linha; echo -e "${BLUE}Instalando Dante SOCKS5...${RESET}"
+# SOCKS5 (Dante) --------------------------------------------------------------
+socks_install(){
     apt install -y dante-server
     cat >/etc/danted.conf <<'EOF'
 logoutput: /var/log/danted.log
@@ -60,167 +116,273 @@ internal: 0.0.0.0 port = 1080
 external: eth0
 method: username none
 user.notprivileged: nobody
-client pass {
-        from: 0.0.0.0/0 to: 0.0.0.0/0
-        log: connect disconnect
-}
-socks pass {
-        from: 0.0.0.0/0 to: 0.0.0.0/0
-        command: connect bind
-        log: connect disconnect
-}
+client pass{ from: 0.0.0.0/0 to: 0.0.0.0/0 }
+socks pass{ from: 0.0.0.0/0 to: 0.0.0.0/0 }
 EOF
     systemctl restart danted && systemctl enable danted
-    msg "SOCKS5 ativo na porta 1080."
+    ufw_open 1080
+    tick "SOCKS5 na porta 1080"
 }
 
-# === SSL Tunnel (Stunnel) ===
-instalar_stunnel(){
-    linha; echo -e "${BLUE}Instalando Stunnel...${RESET}"
+# Stunnel ---------------------------------------------------------------------
+ssl_install(){
     apt install -y stunnel4
-    # Gerar certificado autoassinado simples
     openssl req -new -x509 -days 365 -nodes \
-        -subj "/CN=$(hostname)" \
-        -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem
+       -subj "/CN=$(hostname)" \
+       -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem
     chmod 600 /etc/stunnel/stunnel.pem
-    cat >/etc/stunnel/stunnel.conf <<'EOF'
-cert = /etc/stunnel/stunnel.pem
+    cat >/etc/stunnel/stunnel.conf <<EOF
+cert=/etc/stunnel/stunnel.pem
 [ssh]
 accept = 443
 connect = 22
 EOF
     sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/stunnel4
     systemctl restart stunnel4 && systemctl enable stunnel4
-    msg "Stunnel ativo na porta 443 -> 22."
+    ufw_open 443
+    tick "SSL Tunnel na porta 443"
 }
 
-# === SlowDNS (iodine) ===
-instalar_slowdns(){
-    linha; echo -e "${BLUE}Instalando Iodine (SlowDNS)...${RESET}"
+# SlowDNS (iodine) ------------------------------------------------------------
+slowdns_install(){
     apt install -y iodine
     systemctl enable --now iodined
-    echo -e "${YELLOW}Ajuste seu domínio NS e configure iodined manualmente.${RESET}"
+    tick "Iodine instalado. Configure domínio NS manualmente."
 }
 
-# === BadVPN UDPGW ===
-instalar_badvpn(){
-    linha; echo -e "${BLUE}Instalando BadVPN UDPGW...${RESET}"
+# BadVPN ----------------------------------------------------------------------
+badvpn_install(){
     apt install -y badvpn
-    # Serviço systemd exemplo
-    cat >/etc/systemd/system/badvpn.service <<'EOF'
+    cat >/etc/systemd/system/badvpn.service <<EOF
 [Unit]
 Description=BadVPN UDPGW
-After=network.target
-
 [Service]
 ExecStart=/usr/bin/badvpn-udpgw --listen-addr 0.0.0.0:7300
 Restart=always
-
 [Install]
 WantedBy=multi-user.target
 EOF
     systemctl daemon-reload && systemctl enable --now badvpn
-    msg "BadVPN em 0.0.0.0:7300."
+    ufw_open 7300
+    tick "BadVPN em 7300"
 }
 
-# === HAProxy ===
-instalar_haproxy(){
-    linha; echo -e "${BLUE}Instalando HAProxy...${RESET}"
+# HAProxy ---------------------------------------------------------------------
+haproxy_install(){
     apt install -y haproxy
-    cat >/etc/haproxy/haproxy.cfg <<'EOF'
+cat >/etc/haproxy/haproxy.cfg <<'EOF'
 global
   log /dev/log local0
   maxconn 4000
 defaults
-  log     global
-  mode    tcp
+  log global
+  mode tcp
   timeout connect 10s
-  timeout client  1m
-  timeout server  1m
-frontend ssh-in
+  timeout client 1m
+  timeout server 1m
+frontend multi
   bind *:2222
-  default_backend ssh-nodes
-backend ssh-nodes
-  server s1 127.0.0.1:22 check
+  tcp-request inspect-delay 5s
+  use_backend ssh if { payload(0,3) -m bin 535348 }     # "SSH" magic
+  default_backend other
+backend ssh
+  server ssh1 127.0.0.1:22
+backend other
+  server ws1 127.0.0.1:8080
+  server ssl1 127.0.0.1:443
 EOF
     systemctl restart haproxy && systemctl enable haproxy
-    msg "HAProxy balanceando SSH na porta 2222."
+    ufw_open 2222
+    tick "HAProxy multiprotocolo na porta 2222"
 }
 
-# === RustyProxy (via cargo) ===
-instalar_rustyproxy(){
-    linha; echo -e "${BLUE}Instalando RustyProxy...${RESET}"
+# RustyProxy ------------------------------------------------------------------
+rustyproxy_install(){
     if ! command -v cargo &>/dev/null; then
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
         source $HOME/.cargo/env
     fi
     cargo install rustyproxy
-    cat >/etc/systemd/system/rustyproxy.service <<'EOF'
+    cat >/etc/systemd/system/rustyproxy.service <<EOF
 [Unit]
 Description=RustyProxy
-After=network.target
-
 [Service]
 ExecStart=/root/.cargo/bin/rustyproxy -l 0.0.0.0:3128
 Restart=always
-
 [Install]
 WantedBy=multi-user.target
 EOF
     systemctl daemon-reload && systemctl enable --now rustyproxy
-    msg "RustyProxy ativo na porta 3128."
+    ufw_open 3128
+    tick "RustyProxy em 3128"
 }
 
-# === Usuário SSH com validade e limite ===
-criar_usuario(){
-    linha; echo -e "${BLUE}Criar novo usuário SSH...${RESET}"
-    read -rp "Login.............: " USR
-    read -rp "Senha.............: " -s PWD; echo
-    read -rp "Dias de validade..: " DIAS
-    read -rp "Máx sessões (pam_limits) [padrão:2]: " LIM
-    LIM=${LIM:-2}
-
-    # Cria usuário expirando em X dias
-    useradd -m -s /bin/bash -e $(date -d "+$DIAS day" +%Y-%m-%d) "$USR"
-    echo "$USR:$PWD" | chpasswd
-    echo "$USR  hard  maxlogins  ${LIM}" >> /etc/security/limits.conf
-    msg "Usuário $USR criado. Expira em $DIAS dia(s). Limite: $LIM sessões."
+# AnyProxy (NodeJS) -----------------------------------------------------------
+anyproxy_install(){
+    apt install -y nodejs npm
+    npm install -g anyproxy
+    cat >/etc/systemd/system/anyproxy.service <<EOF
+[Unit]
+Description=AnyProxy
+[Service]
+ExecStart=/usr/bin/anyproxy --port 8899 --intercept false
+Restart=always
+[Install]
+WantedBy=multi-user.target
+EOF
+    systemctl daemon-reload && systemctl enable --now anyproxy
+    ufw_open 8899
+    tick "AnyProxy em 8899"
 }
 
-# === Menu Interativo ===
-mostrar_menu(){
+#--- Usuários SSH -------------------------------------------------------------
+user_create(){
+    read -rp "Login: " usr
+    read -rsp "Senha: " pwd; echo
+    read -rp "Dias de validade: " dias
+    read -rp "Máx sessões (default 2): " lim; lim=${lim:-2}
+    useradd -m -s /bin/bash -e $(date -d "+$dias days" +%F) "$usr"
+    echo "$usr:$pwd" | chpasswd
+    echo "$usr  hard  maxlogins  $lim" >> /etc/security/limits.conf
+    tick "Usuário $usr criado."
+}
+
+user_info(){
+    read -rp "Usuário: " usr
+    echo "----- $(passwd -S $usr) -----"
+    chage -l "$usr"
+    lastlog -u "$usr"
+}
+
+user_backup(){
+    local file="/root/backup_users_$(date +%F).txt"
+    getent passwd | awk -F: '$3>=1000{print $1":"$3":"$6}' > "$file"
+    tick "Backup salvo em $file"
+}
+
+user_menu(){
+  while true; do
     clear
-    linha
-    echo -e "${YELLOW}GERENCIADOR INTELIGENTE DE PROXIES & SSH${RESET}"
-    linha
-    echo -e "${GREEN}1${RESET} - Instalar dependências básicas"
-    echo -e "${GREEN}2${RESET} - Instalar Proxy WebSocket (Websocat)"
-    echo -e "${GREEN}3${RESET} - Instalar Proxy SOCKS5 (Dante)"
-    echo -e "${GREEN}4${RESET} - Instalar SSL Tunnel (Stunnel)"
-    echo -e "${GREEN}5${RESET} - Instalar SlowDNS (Iodine)"
-    echo -e "${GREEN}6${RESET} - Instalar BadVPN UDPGW"
-    echo -e "${GREEN}7${RESET} - Instalar HAProxy"
-    echo -e "${GREEN}8${RESET} - Instalar RustyProxy"
-    echo -e "${GREEN}9${RESET} - Criar usuário SSH"
-    echo -e "${GREEN}0${RESET} - Sair"
-    linha
-    read -rp "Escolha uma opção: " OP
+    echo -e "${C}======== GERENCIAR USUÁRIOS SSH ========${Z}"
+    echo -e "${G}1${Z} - Criar usuário"
+    echo -e "${G}2${Z} - Informações de usuário"
+    echo -e "${G}3${Z} - Backup de usuários"
+    echo -e "${G}0${Z} - Voltar"
+    read -rp "Opção: " uop
+    case $uop in
+      1) user_create; pause;;
+      2) user_info; pause;;
+      3) user_backup; pause;;
+      0) break;;
+    esac
+  done
 }
 
-# === Loop principal ===
-while true; do
-    mostrar_menu
-    case "$OP" in
-        1) instalar_prereqs; pausa ;;
-        2) instalar_websocket; pausa ;;
-        3) instalar_socks; pausa ;;
-        4) instalar_stunnel; pausa ;;
-        5) instalar_slowdns; pausa ;;
-        6) instalar_badvpn; pausa ;;
-        7) instalar_haproxy; pausa ;;
-        8) instalar_rustyproxy; pausa ;;
-        9) criar_usuario; pausa ;;
-        0) linha; echo -e "${YELLOW}Saindo...${RESET}"; exit 0 ;;
-        *) erro "Opção inválida!" ; sleep 1 ;;
+#--- Conexão Persistente (KeepAlive) -----------------------------------------
+keepalive_add(){
+    read -rp "Host (user@ip:porta): " h
+    echo "$h" >> "$KEEPALIVE_LIST"
+    systemctl restart proxy-keepalive
+}
+
+keepalive_service(){
+cat >/etc/systemd/system/proxy-keepalive.service <<EOF
+[Unit]
+Description=Manter túneis autossh para hosts externos
+After=network.target
+[Service]
+Type=simple
+ExecStart=/bin/bash -c '
+  while read line; do
+    [[ -z \$line ]] && continue
+    user=\${line%@*}; hostport=\${line#*@}
+    host=\${hostport%%:*}; port=\${hostport##*:}
+    autossh -M 0 -f -N -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -p \$port \$user@\$host
+  done < "$KEEPALIVE_LIST"
+  sleep 600
+'
+Restart=always
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl enable --now proxy-keepalive
+}
+
+keepalive_menu(){
+  [[ -f $KEEPALIVE_LIST ]] || touch "$KEEPALIVE_LIST"
+  keepalive_service
+  while true; do
+    clear
+    echo -e "${C}====== CONEXÃO PERSISTENTE (autossh) ======${Z}"
+    echo -e "${G}1${Z} - Adicionar host"
+    echo -e "${G}2${Z} - Listar hosts"
+    echo -e "${G}0${Z} - Voltar"
+    read -rp "Opção: " kop
+    case $kop in
+      1) keepalive_add; pause;;
+      2) cat "$KEEPALIVE_LIST"; pause;;
+      0) break;;
     esac
-done
+  done
+}
+
+#--- Menu de serviços genérico -----------------------------------------------
+generic_service_menu(){
+    local name=$1 install_fn=$2
+    while true; do
+        clear
+        echo -e "${C}====== $name ======${Z}"
+        echo -e "${G}1${Z} - Instalar/Iniciar"
+        echo -e "${G}2${Z} - Parar"
+        echo -e "${G}3${Z} - Status"
+        echo -e "${G}0${Z} - Voltar"
+        read -rp "Opção: " op
+        case $op in
+          1) $install_fn; pause;;
+          2) systemctl stop "$name"; tick "$name parado"; pause;;
+          3) systemctl status "$name" --no-pager; pause;;
+          0) break;;
+        esac
+    done
+}
+
+#--- Menu principal -----------------------------------------------------------
+main_menu(){
+  while true; do
+    sysinfo
+    echo -e "${G}1${Z} - Gerenciar Portas"
+    echo -e "${G}2${Z} - WebSocket"
+    echo -e "${G}3${Z} - SOCKS5"
+    echo -e "${G}4${Z} - SSL Tunnel"
+    echo -e "${G}5${Z} - SlowDNS"
+    echo -e "${G}6${Z} - BadVPN"
+    echo -e "${G}7${Z} - HAProxy"
+    echo -e "${G}8${Z} - RustyProxy"
+    echo -e "${G}9${Z} - AnyProxy"
+    echo -e "${G}10${Z} - Usuários SSH"
+    echo -e "${G}11${Z} - Conexão Persistente"
+    echo -e "${G}99${Z} - Instalar dependências"
+    echo -e "${G}0${Z} - Sair"
+    read -rp "Escolha: " opc
+    case $opc in
+      1) menu_portas;;
+      2) generic_service_menu "websocket" ws_install;;
+      3) generic_service_menu "danted" socks_install;;
+      4) generic_service_menu "stunnel4" ssl_install;;
+      5) generic_service_menu "iodined" slowdns_install;;
+      6) generic_service_menu "badvpn" badvpn_install;;
+      7) generic_service_menu "haproxy" haproxy_install;;
+      8) generic_service_menu "rustyproxy" rustyproxy_install;;
+      9) generic_service_menu "anyproxy" anyproxy_install;;
+      10) user_menu;;
+      11) keepalive_menu;;
+      99) install_prereqs; pause;;
+      0) echo "Saindo..."; exit;;
+    esac
+  done
+}
+
+#--- Execução -----------------------------------------------------------------
+need_root
+main_menu
