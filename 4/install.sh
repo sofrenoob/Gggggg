@@ -1,45 +1,39 @@
 #!/bin/bash
 
-echo "[INFO] Atualizando repositórios e instalando dependências do sistema..."
-apt update
-apt install -y python3 python3-venv python3-pip sqlite3 unzip nginx curl
+set -e
+
+echo "[INFO] Atualizando pacotes e instalando dependências do sistema..."
+sudo apt update && sudo apt install -y python3 python3-venv python3-pip nginx unzip curl sqlite3
 
 echo "[INFO] Criando diretório /alfa_cloud..."
-mkdir -p /alfa_cloud
-cd /alfa_cloud || exit 1
+sudo mkdir -p /alfa_cloud
+sudo chown $USER:$USER /alfa_cloud
 
 echo "[INFO] Baixando e extraindo projeto..."
-curl -o alfa_cloud.zip -L https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/alfa_cloud.zip  # Substitua pelo link correto
-unzip -o alfa_cloud.zip
+curl -L -o alfa_cloud.zip "https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/alfa_cloud.zip"
+unzip -o alfa_cloud.zip -d /alfa_cloud
 rm alfa_cloud.zip
+
+cd /alfa_cloud
 
 echo "[INFO] Criando ambiente virtual e instalando dependências Python..."
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
+deactivate
 
-echo "[INFO] Configurando banco de dados SQLite..."
-if ! command -v sqlite3 &> /dev/null; then
-    echo "[ERRO] sqlite3 não encontrado. A instalação falhou."
-    exit 1
-fi
-sqlite3 db/alfa_cloud.db < db/create_db.sql
+echo "[INFO] Criando banco de dados SQLite..."
+sqlite3 alfa_cloud.db < db/create_db.sql
 
-echo "[INFO] Copiando configuração do nginx..."
-cp nginx.conf /etc/nginx/sites-available/alfa_cloud
-ln -sf /etc/nginx/sites-available/alfa_cloud /etc/nginx/sites-enabled/
-rm -f /etc/nginx/sites-enabled/default
-systemctl restart nginx
-
-echo "[INFO] Criando serviço systemd..."
-cat <<EOF > /etc/systemd/system/alfa_cloud.service
+echo "[INFO] Configurando serviço systemd..."
+sudo tee /etc/systemd/system/alfa_cloud.service > /dev/null <<EOF
 [Unit]
 Description=Alfa Cloud Gunicorn
 After=network.target
 
 [Service]
-User=root
+User=$USER
 WorkingDirectory=/alfa_cloud
 ExecStart=/alfa_cloud/venv/bin/gunicorn -b 127.0.0.1:5000 app.routes:app
 Restart=always
@@ -48,10 +42,15 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 
-echo "[INFO] Habilitando e iniciando o serviço alfa_cloud..."
-systemctl daemon-reexec
-systemctl daemon-reload
-systemctl enable alfa_cloud
-systemctl start alfa_cloud
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable alfa_cloud
+sudo systemctl restart alfa_cloud
+
+echo "[INFO] Configurando Nginx..."
+sudo cp nginx.conf /etc/nginx/sites-available/alfa_cloud
+sudo ln -sf /etc/nginx/sites-available/alfa_cloud /etc/nginx/sites-enabled/
+
+sudo nginx -t && sudo systemctl restart nginx
 
 echo "[SUCESSO] Instalação concluída. Acesse: http://SEU_DOMÍNIO ou http://SEU_IP"
