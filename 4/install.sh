@@ -22,11 +22,8 @@ ADMIN_PASS="$PASS1"
 
 # 2) Instala pré-requisitos no host
 echo -e "${GREEN}Instalando pré-requisitos...${NC}"
-apt update
-apt install -y git unzip sqlite3 \
-   python3-pip \
-   # Docker & Compose V2 plugin
-   ca-certificates curl gnupg lsb-release
+
+apt install -y git unzip sqlite3 python3-pip ca-certificates curl gnupg lsb-release
 
 if ! command -v docker &>/dev/null; then
   curl -fsSL https://get.docker.com | sh
