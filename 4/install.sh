@@ -31,7 +31,7 @@ After=network.target
 [Service]
 User=root
 WorkingDirectory=/alfa_cloud
-ExecStart=/alfa_cloud/venv/bin/gunicorn -b 127.0.0.1:5000 app.routes:app
+ExecStart=/alfa_cloud/venv/bin/gunicorn -w 4 -b 127.0.0.1:5000 app:app
 Restart=always
 
 [Install]
