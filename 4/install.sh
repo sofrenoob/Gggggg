@@ -1,17 +1,17 @@
 
 set -euo pipefail
 
-# ───────────── PARÂMETROS ────────────────
+# ──────── CONFIGURAÇÃO ─────────
 ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa_cloud.zip"
 APP_DIR="/var/www/alfa_cloud"
 PORT=5000
-WSGI_MODULE="app:app"   # módulo:app WSGI do seu projeto
-
+WSGI_MODULE="app:app"      # módule:app para Gunicorn
+PYTHON_IMAGE="python:3.8-slim"
 GREEN='\033[0;32m'; RED='\033[0;31m'; NC='\033[0m'
 
 echo -e "${GREEN}== Deploy Alfa Cloud via Docker ==${NC}"
 
-# 1) Pergunta a senha do admin
+# 1) Interativo: nova senha do admin
 while true; do
   read -s -p "Nova senha para usuário 'admin': " PASS1; echo
   read -s -p "Confirme a senha: " PASS2; echo
@@ -20,30 +20,31 @@ while true; do
 done
 ADMIN_PASS="$PASS1"
 
-# 2) Instala pré-requisitos no host
-echo -e "${GREEN}Instalando pré-requisitos no host…${NC}"
+# 2) Instala dependências de sistema
+echo -e "${GREEN}Instalando dependências de sistema...${NC}"
 apt update -y
-apt install -y git wget unzip sqlite3 python3-pip \
-               ca-certificates curl gnupg lsb-release
+apt install -y \
+  git wget unzip sqlite3 python3-pip \
+  ca-certificates curl gnupg lsb-release
 
-# instala Docker se não houver
+# instala Docker se não estiver presente
 if ! command -v docker &>/dev/null; then
   curl -fsSL https://get.docker.com | sh
 fi
 
-# instala Docker Compose V2 plugin
+# instala Docker Compose plugin V2
 apt install -y docker-compose-plugin
 systemctl enable --now docker
 
-# 3) Baixa e extrai o ZIP
-echo -e "${GREEN}Baixando e extraindo o projeto…${NC}"
+# 3) Baixa e extrai o código
+echo -e "${GREEN}Baixando e extraindo o projeto...${NC}"
 rm -rf "$APP_DIR"
 mkdir -p "$APP_DIR"
 cd "$APP_DIR"
 wget -q "$ZIP_URL" -O app.zip
 unzip -q app.zip && rm app.zip
 
-# Se veio num subdiretório proxy, corrige
+# se houver subdiretório wrapper, mova arquivos pra raiz
 if [[ ! -d app && -d alfa_cloud* ]]; then
   WRAP=$(find . -maxdepth 1 -type d -name "alfa_cloud*" | head -n1)
   mv "$WRAP"/* . && rm -rf "$WRAP"
@@ -52,15 +53,16 @@ fi
 # 4) Cria o DB se não existir
 DBFILE=$(find "$APP_DIR" -type f -iname '*.db' | head -n1 || true)
 if [[ -z "$DBFILE" ]]; then
-  echo -e "${GREEN}Nenhum .db encontrado; criando com db.create_all()…${NC}"
-  docker run --rm -v "$APP_DIR":/app -w /app python:3.8-slim bash -lc "\
-    apt update >/dev/null 2>&1 && apt install -y python3-pip >/dev/null 2>&1 && \
-    pip install --no-cache-dir flask flask-sqlalchemy SQLAlchemy<2.0 Werkzeug<2.1 && \
-    python - <<PYCODE
+  echo -e "${GREEN}Nenhum .db encontrado; criando com db.create_all()...${NC}"
+  docker run --rm -v "$APP_DIR":/app -w /app $PYTHON_IMAGE bash -lc "\
+    apt update -y >/dev/null 2>&1 && \
+    apt install -y python3-pip >/dev/null 2>&1 && \
+    pip install --no-cache-dir flask flask-sqlalchemy 'SQLAlchemy<2.0' 'Werkzeug<2.1' >/dev/null 2>&1 && \
+    python - << 'EOF'
 from app import app, db
 with app.app_context():
     db.create_all()
-PYCODE
+EOF
   "
   DBFILE=$(find "$APP_DIR" -type f -iname '*.db' | head -n1)
   if [[ -z "$DBFILE" ]]; then
@@ -72,19 +74,22 @@ else
   echo -e "${GREEN}Banco encontrado em: $DBFILE${NC}"
 fi
 
-# 5) Atualiza a senha do admin no DB
-echo -e "${GREEN}Gerando hash da senha…${NC}"
-HASH=$(docker run --rm python:3.8-slim bash -lc "\
+# 5) Atualiza senha do admin no DB
+echo -e "${GREEN}Gerando hash da nova senha...${NC}"
+HASH=$(docker run --rm $PYTHON_IMAGE bash -lc "\
   pip install --no-cache-dir Werkzeug >/dev/null 2>&1 && \
-  python -c \"from werkzeug.security import generate_password_hash; print(generate_password_hash('$ADMIN_PASS'))\"\
+  python - << 'EOF'
+from werkzeug.security import generate_password_hash
+print(generate_password_hash('$ADMIN_PASS'))
+EOF
 ")
-echo -e "${GREEN}Atualizando senha no banco…${NC}"
+echo -e "${GREEN}Atualizando senha no banco...${NC}"
 sqlite3 "$DBFILE" "UPDATE users SET password='$HASH' WHERE username='admin';"
 
-# 6) Cria o Dockerfile
-echo -e "${GREEN}Criando Dockerfile…${NC}"
+# 6) Cria Dockerfile
+echo -e "${GREEN}Criando Dockerfile...${NC}"
 cat > Dockerfile <<EOF
-FROM python:3.8-slim
+FROM $PYTHON_IMAGE
 
 RUN apt update && apt install -y \\
     pkg-config libcairo2-dev \\
@@ -96,27 +101,26 @@ COPY . /app
 RUN pip install --upgrade pip setuptools wheel \\
  && pip install -r requirements.txt
 
-EXPOSE ${PORT}
-CMD ["gunicorn","--workers","3","--bind","0.0.0.0:${PORT}","${WSGI_MODULE}"]
+EXPOSE $PORT
+CMD ["gunicorn","--workers","3","--bind","0.0.0.0:$PORT","$WSGI_MODULE"]
 EOF
 
 # 7) Cria docker-compose.yml
-echo -e "${GREEN}Criando docker-compose.yml…${NC}"
+echo -e "${GREEN}Criando docker-compose.yml...${NC}"
 cat > docker-compose.yml <<EOF
 version: "3.8"
 services:
   alfa_cloud:
     build: .
     ports:
-      - "${PORT}:${PORT}"
+      - "$PORT:$PORT"
     restart: unless-stopped
 EOF
 
 # 8) Build e deploy
-echo -e "${GREEN}Buildando e subindo o container…${NC}"
+echo -e "${GREEN}Buildando e subindo o container...${NC}"
 docker compose up -d --build
 
 echo -e "${GREEN}✅ Deploy concluído!${NC}"
-echo -e "   • Acesse: http://<SEU_IP>:${PORT}"
+echo -e "   • Acesse: http://<SEU_IP>:$PORT"
 echo -e "   • Logs: docker compose logs -f"
-exit 0
