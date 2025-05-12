@@ -12,8 +12,7 @@ cd /alfa_cloud
 echo "[INFO] Baixando e extraindo projeto..."
 curl -L https://github.com/sofrenoob/Gggggg/raw/main/4/alfa_cloud.zip -o alfa_cloud.zip
 unzip -o alfa_cloud.zip
-mv alfa_cloud/* .
-rm -rf alfa_cloud.zip alfa_cloud
+rm alfa_cloud.zip
 
 echo "[INFO] Criando ambiente virtual e instalando dependências..."
 python3 -m venv venv
