@@ -1,143 +1,110 @@
 
 ################################################################################
-# Instalador automatizado – Alfa Cloud
+# Alfa Cloud 
 ################################################################################
+set -e
 
-# ---- Cores ---------------------------------------------------------------
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m'
+GREEN='\033[0;32m'; RED='\033[0;31m'; NC='\033[0m'
+echo -e "${GREEN}=== Instalando Alfa Cloud ===${NC}"
 
-echo -e "${GREEN}=== Iniciando a Instalação do Alfa Cloud ===${NC}"
+if [[ $EUID -ne 0 ]]; then
+    echo -e "${RED}Execute como root (sudo).${NC}"; exit 1; fi
 
-# ---- Verifica root -------------------------------------------------------
-if [ "$EUID" -ne 0 ]; then
-    echo -e "${RED}Por favor, rode este script como root (sudo).${NC}"
-    exit 1
-fi
+# ─── parâmetros principais ────────────────────────────────────────────────
+PROJECT="alfa_cloud"
+INSTALL_DIR="/var/www/$PROJECT"
+ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa_cloud.zip"
+GUNI_PORT=5000
+CALLABLE="app:app"                # app/__init__.py → app = Flask(__name__)
 
-# ---- Domínio/IP fixo -----------------------------------------------------
-SERVER_ADDRESS="149.56.205.233"           # <- IP ou domínio do servidor
+# Detecta IP público (pode substituir manualmente se preferir)
+PUBLIC_IP=$(curl -s https://api.ipify.org || echo "_")
+echo -e "${GREEN}IP detectado: $PUBLIC_IP${NC}"
 
-# ---- Variáveis do projeto -----------------------------------------------
-PROJECT_NAME="alfa_cloud"
-INSTALL_DIR="/var/www/${PROJECT_NAME}"
-REPO_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa_cloud.zip"
-GUNICORN_SOCKET_PORT=5000
-GUNICORN_CALLABLE="app:app"                # app/__init__.py deve expor "app"
-
-# ---- Update + dependências ----------------------------------------------
-echo -e "${GREEN}Atualizando o sistema...${NC}"
-apt update && apt upgrade -y
-
+# ─── pacotes do sistema ───────────────────────────────────────────────────
+echo -e "${GREEN}Atualizando sistema...${NC}"
+apt update -y && apt upgrade -y
 echo -e "${GREEN}Instalando dependências...${NC}"
-apt install -y python3 python3-pip python3-venv nginx unzip
+apt install -y python3 python3-venv python3-pip nginx unzip
 
-# ---- Cria diretório do projeto ------------------------------------------
-echo -e "${GREEN}Criando diretório ${INSTALL_DIR} ...${NC}"
+# ─── obtém código ─────────────────────────────────────────────────────────
+echo -e "${GREEN}Baixando código...${NC}"
+rm -rf "$INSTALL_DIR"
 mkdir -p "$INSTALL_DIR"
-cd "$INSTALL_DIR" || { echo -e "${RED}Falha ao entrar em ${INSTALL_DIR}.${NC}"; exit 1; }
+cd "$INSTALL_DIR"
+wget -q "$ZIP_URL" -O "$PROJECT.zip"
+unzip -q "$PROJECT.zip"
+rm "$PROJECT.zip"
 
-# ---- Baixa o projeto -----------------------------------------------------
-echo -e "${GREEN}Baixando projeto...${NC}"
-wget -q "$REPO_URL" -O "${PROJECT_NAME}.zip"
-if [[ $? -ne 0 ]]; then
-    echo -e "${RED}Erro ao baixar o ZIP.${NC}"
-    exit 1
+# Caso o ZIP crie um diretório wrapper, movemos p/ raiz
+if [[ ! -d app ]]; then
+    WRAPPER=$(find . -maxdepth 1 -type d -name "$PROJECT*" | head -n1)
+    [[ -n $WRAPPER ]] && mv "$WRAPPER"/* . && rm -rf "$WRAPPER"
 fi
 
-echo -e "${GREEN}Descompactando...${NC}"
-unzip -q "${PROJECT_NAME}.zip"
-rm -f "${PROJECT_NAME}.zip"
-
-# Se os diretórios (app/, static/) não foram extraídos na raiz,
-# provavelmente estão dentro de uma pasta "alfa_cloud-*". Move tudo pra raiz.
-if [[ ! -d app || ! -d static ]]; then
-    INNER_DIR=$(find . -maxdepth 1 -type d -name "${PROJECT_NAME}*" | head -n 1)
-    if [[ -n "$INNER_DIR" ]]; then
-        shopt -s dotglob
-        mv "${INNER_DIR}/"* .
-        rm -rf "$INNER_DIR"
-    fi
-fi
-
-# ---- Virtualenv + requirements ------------------------------------------
-echo -e "${GREEN}Criando virtualenv...${NC}"
+# ─── virtualenv + requirements ────────────────────────────────────────────
+echo -e "${GREEN}Configurando ambiente Python...${NC}"
 python3 -m venv venv
 source venv/bin/activate
-echo -e "${GREEN}Instalando dependências Python...${NC}"
 pip install --upgrade pip
-if [[ -f requirements.txt ]]; then
-    pip install -r requirements.txt
-else
-    echo -e "${RED}requirements.txt não encontrado!${NC}"
-    deactivate
-    exit 1
-fi
+pip install -r requirements.txt
 deactivate
 
-# ---- Permissões ----------------------------------------------------------
-echo -e "${GREEN}Ajustando permissões...${NC}"
+# ─── permissões ───────────────────────────────────────────────────────────
 chown -R www-data:www-data "$INSTALL_DIR"
 chmod -R 755 "$INSTALL_DIR"
-# Banco SQLite gravável
 chmod 664 db/*.db 2>/dev/null || true
 
-# ---- Nginx ---------------------------------------------------------------
+# ─── nginx ────────────────────────────────────────────────────────────────
 echo -e "${GREEN}Configurando Nginx...${NC}"
-NGINX_CONF="/etc/nginx/sites-available/${PROJECT_NAME}"
+NGCONF="/etc/nginx/sites-available/$PROJECT"
 
-cat > "$NGINX_CONF" <<EOL
+cat > "$NGCONF" <<EOF
 server {
     listen 80;
-    server_name ${SERVER_ADDRESS};
+    server_name $PUBLIC_IP;     # responde pelo IP.  Coloque "_" se preferir.
 
     location / {
-        proxy_pass http://127.0.0.1:${GUNICORN_SOCKET_PORT};
+        proxy_pass http://127.0.0.1:$GUNI_PORT;
         proxy_set_header Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
     }
 
     location /static/ {
-        alias ${INSTALL_DIR}/static/;
+        alias $INSTALL_DIR/static/;
     }
 }
-EOL
+EOF
 
-ln -sf "$NGINX_CONF" /etc/nginx/sites-enabled/
-nginx -t || { echo -e "${RED}Erro na configuração do Nginx.${NC}"; exit 1; }
-systemctl reload nginx
+ln -sf "$NGCONF" /etc/nginx/sites-enabled/
+nginx -t && systemctl reload nginx
 
-# ---- Systemd para Gunicorn ----------------------------------------------
-echo -e "${GREEN}Criando serviço systemd do Gunicorn...${NC}"
-SERVICE_FILE="/etc/systemd/system/${PROJECT_NAME}.service"
+# ─── systemd (gunicorn) ───────────────────────────────────────────────────
+echo -e "${GREEN}Criando serviço systemd...${NC}"
+SERVICE="/etc/systemd/system/$PROJECT.service"
 
-cat > "$SERVICE_FILE" <<EOL
+cat > "$SERVICE" <<EOF
 [Unit]
-Description=Gunicorn instance for ${PROJECT_NAME}
+Description=Gunicorn – $PROJECT
 After=network.target
 
 [Service]
 User=www-data
 Group=www-data
-WorkingDirectory=${INSTALL_DIR}
-Environment="PATH=${INSTALL_DIR}/venv/bin"
-ExecStart=${INSTALL_DIR}/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:${GUNICORN_SOCKET_PORT} ${GUNICORN_CALLABLE}
+WorkingDirectory=$INSTALL_DIR
+Environment="PATH=$INSTALL_DIR/venv/bin"
+ExecStart=$INSTALL_DIR/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:$GUNI_PORT $CALLABLE
 
 [Install]
 WantedBy=multi-user.target
-EOL
+EOF
 
 systemctl daemon-reload
-systemctl enable --now "${PROJECT_NAME}.service"
+systemctl enable --now "$PROJECT"
 
 sleep 2
-if systemctl is-active --quiet "${PROJECT_NAME}.service"; then
-    echo -e "${GREEN}Servidor iniciado com sucesso!${NC}"
-    echo -e "${GREEN}Acesse: http://${SERVER_ADDRESS}${NC}"
+if systemctl is-active --quiet "$PROJECT"; then
+    echo -e "${GREEN}✅ Painel no ar:  http://$PUBLIC_IP${NC}"
 else
-    echo -e "${RED}Falha ao iniciar Gunicorn. Veja: systemctl status ${PROJECT_NAME}${NC}"
-    exit 1
+    echo -e "${RED}❌ Gunicorn não iniciou.  Verifique: systemctl status $PROJECT${NC}"
 fi
-
-echo -e "${GREEN}Instalação concluída com êxito!${NC}"
