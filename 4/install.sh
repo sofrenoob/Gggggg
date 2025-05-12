@@ -43,6 +43,13 @@ cd $INSTALL_DIR || error "Falha ao acessar $INSTALL_DIR."
 log "Baixando o repositório do Alfa Cloud..."
 wget -O alfa_cloud.zip $REPO_URL || error "Falha ao baixar o repositório."
 unzip alfa_cloud.zip -d $INSTALL_DIR || error "Falha ao extrair o repositório."
+
+# Mover arquivos do subdiretório alfa_cloud para $INSTALL_DIR
+log "Reorganizando arquivos extraídos..."
+if [ -d "$INSTALL_DIR/alfa_cloud" ]; then
+    mv $INSTALL_DIR/alfa_cloud/* $INSTALL_DIR/ || error "Falha ao mover arquivos."
+    rm -rf $INSTALL_DIR/alfa_cloud || error "Falha ao remover subdiretório temporário."
+fi
 rm alfa_cloud.zip
 
 # Passo 5: Ajustar permissões
