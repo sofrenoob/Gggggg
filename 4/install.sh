@@ -5,7 +5,7 @@ set -euo pipefail
 ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa_cloud.zip"
 APP_DIR="/var/www/alfa_cloud"
 PORT=5000
-WSGI_MODULE="app:app"
+WSGI_MODULE="app:app"         # módulo:app para Gunicorn
 PYTHON_IMAGE="python:3.8-slim"
 GREEN='\033[0;32m'; RED='\033[0;31m'; NC='\033[0m'
 
@@ -20,45 +20,50 @@ while true; do
 done
 ADMIN_PASS="$PASS1"
 
-# 2) Instala dependências de sistema
+# 2) Instala dependências de SO
 echo -e "${GREEN}Instalando dependências no host...${NC}"
 apt update -y
 apt install -y git wget unzip sqlite3 python3-pip \
                ca-certificates curl gnupg lsb-release
-
-# instala Docker se necessário
 if ! command -v docker &>/dev/null; then
   curl -fsSL https://get.docker.com | sh
 fi
-
-# instala Compose plugin V2
 apt install -y docker-compose-plugin
 systemctl enable --now docker
 
-# 3) Baixa e extrai o ZIP
+# 3) Baixa e extrai o projeto
 echo -e "${GREEN}Baixando e extraindo o projeto...${NC}"
 rm -rf "$APP_DIR"
 mkdir -p "$APP_DIR"
 cd "$APP_DIR"
 wget -q "$ZIP_URL" -O app.zip
 unzip -q app.zip && rm app.zip
-
-# corrige se houve subpasta wrapper
+# ajusta wrapper se necessário
 if [[ ! -d app && -d alfa_cloud* ]]; then
   WRAP=$(find . -maxdepth 1 -type d -name "alfa_cloud*" | head -n1)
   mv "$WRAP"/* . && rm -rf "$WRAP"
 fi
 
-# 4) Cria o DB se não existir, importando app.models
+# 4) Cria o DB se não existir, tentando factory ou instancia simples
 DBFILE=$(find "$APP_DIR" -type f -iname '*.db' | head -n1 || true)
 if [[ -z "$DBFILE" ]]; then
-  echo -e "${GREEN}Nenhum .db encontrado; criando com db.create_all()...${NC}"
+  echo -e "${GREEN}Nenhum .db encontrado; criando com db.create_all()…${NC}"
   docker run --rm -v "$APP_DIR":/app -w /app $PYTHON_IMAGE bash -lc "\
     apt update -y >/dev/null 2>&1 && apt install -y python3-pip >/dev/null 2>&1 && \
     pip install --no-cache-dir flask flask-sqlalchemy 'SQLAlchemy<2.0' 'Werkzeug<2.1' >/dev/null 2>&1 && \
     python - << 'EOF'
-from app import app, db
-import app.models    # garante que suas models sejam registradas
+import sys
+# tenta factory pattern
+try:
+    from app import create_app, db
+    app = create_app()
+except ImportError:
+    from app import app, db
+# garante import de models
+try:
+    import app.models
+except ImportError:
+    pass
 with app.app_context():
     db.create_all()
 EOF
@@ -73,8 +78,8 @@ else
   echo -e "${GREEN}Banco encontrado em: $DBFILE${NC}"
 fi
 
-# 5) Atualiza senha do admin
-echo -e "${GREEN}Gerando hash da senha...${NC}"
+# 5) Atualiza a senha do admin no DB
+echo -e "${GREEN}Gerando hash da nova senha…${NC}"
 HASH=$(docker run --rm $PYTHON_IMAGE bash -lc "\
   pip install --no-cache-dir Werkzeug >/dev/null 2>&1 && \
   python - << 'EOF'
@@ -82,11 +87,11 @@ from werkzeug.security import generate_password_hash
 print(generate_password_hash('$ADMIN_PASS'))
 EOF
 ")
-echo -e "${GREEN}Atualizando senha no banco...${NC}"
+echo -e "${GREEN}Atualizando senha no banco…${NC}"
 sqlite3 "$DBFILE" "UPDATE users SET password='$HASH' WHERE username='admin';"
 
 # 6) Cria Dockerfile
-echo -e "${GREEN}Criando Dockerfile...${NC}"
+echo -e "${GREEN}Criando Dockerfile…${NC}"
 cat > Dockerfile <<EOF
 FROM $PYTHON_IMAGE
 
@@ -105,7 +110,7 @@ CMD ["gunicorn","--workers","3","--bind","0.0.0.0:$PORT","$WSGI_MODULE"]
 EOF
 
 # 7) Cria docker-compose.yml
-echo -e "${GREEN}Criando docker-compose.yml...${NC}"
+echo -e "${GREEN}Criando docker-compose.yml…${NC}"
 cat > docker-compose.yml <<EOF
 version: "3.8"
 services:
@@ -117,7 +122,7 @@ services:
 EOF
 
 # 8) Build e deploy
-echo -e "${GREEN}Buildando e subindo container...${NC}"
+echo -e "${GREEN}Buildando e subindo o container…${NC}"
 docker compose up -d --build
 
 echo -e "${GREEN}✅ Deploy concluído!${NC}"
