@@ -5,13 +5,13 @@ set -euo pipefail
 ZIP_URL="https://github.com/sofrenoob/Gggggg/raw/main/4/alfa_cloud.zip"
 APP_DIR="/var/www/alfa_cloud"
 PORT=5000
-WSGI_MODULE="app:app"      # módule:app para Gunicorn
+WSGI_MODULE="app:app"
 PYTHON_IMAGE="python:3.8-slim"
 GREEN='\033[0;32m'; RED='\033[0;31m'; NC='\033[0m'
 
 echo -e "${GREEN}== Deploy Alfa Cloud via Docker ==${NC}"
 
-# 1) Interativo: nova senha do admin
+# 1) Pede a senha do admin
 while true; do
   read -s -p "Nova senha para usuário 'admin': " PASS1; echo
   read -s -p "Confirme a senha: " PASS2; echo
@@ -21,22 +21,21 @@ done
 ADMIN_PASS="$PASS1"
 
 # 2) Instala dependências de sistema
-echo -e "${GREEN}Instalando dependências de sistema...${NC}"
+echo -e "${GREEN}Instalando dependências no host...${NC}"
 apt update -y
-apt install -y \
-  git wget unzip sqlite3 python3-pip \
-  ca-certificates curl gnupg lsb-release
+apt install -y git wget unzip sqlite3 python3-pip \
+               ca-certificates curl gnupg lsb-release
 
-# instala Docker se não estiver presente
+# instala Docker se necessário
 if ! command -v docker &>/dev/null; then
   curl -fsSL https://get.docker.com | sh
 fi
 
-# instala Docker Compose plugin V2
+# instala Compose plugin V2
 apt install -y docker-compose-plugin
 systemctl enable --now docker
 
-# 3) Baixa e extrai o código
+# 3) Baixa e extrai o ZIP
 echo -e "${GREEN}Baixando e extraindo o projeto...${NC}"
 rm -rf "$APP_DIR"
 mkdir -p "$APP_DIR"
@@ -44,22 +43,22 @@ cd "$APP_DIR"
 wget -q "$ZIP_URL" -O app.zip
 unzip -q app.zip && rm app.zip
 
-# se houver subdiretório wrapper, mova arquivos pra raiz
+# corrige se houve subpasta wrapper
 if [[ ! -d app && -d alfa_cloud* ]]; then
   WRAP=$(find . -maxdepth 1 -type d -name "alfa_cloud*" | head -n1)
   mv "$WRAP"/* . && rm -rf "$WRAP"
 fi
 
-# 4) Cria o DB se não existir
+# 4) Cria o DB se não existir, importando app.models
 DBFILE=$(find "$APP_DIR" -type f -iname '*.db' | head -n1 || true)
 if [[ -z "$DBFILE" ]]; then
   echo -e "${GREEN}Nenhum .db encontrado; criando com db.create_all()...${NC}"
   docker run --rm -v "$APP_DIR":/app -w /app $PYTHON_IMAGE bash -lc "\
-    apt update -y >/dev/null 2>&1 && \
-    apt install -y python3-pip >/dev/null 2>&1 && \
+    apt update -y >/dev/null 2>&1 && apt install -y python3-pip >/dev/null 2>&1 && \
     pip install --no-cache-dir flask flask-sqlalchemy 'SQLAlchemy<2.0' 'Werkzeug<2.1' >/dev/null 2>&1 && \
     python - << 'EOF'
 from app import app, db
+import app.models    # garante que suas models sejam registradas
 with app.app_context():
     db.create_all()
 EOF
@@ -74,8 +73,8 @@ else
   echo -e "${GREEN}Banco encontrado em: $DBFILE${NC}"
 fi
 
-# 5) Atualiza senha do admin no DB
-echo -e "${GREEN}Gerando hash da nova senha...${NC}"
+# 5) Atualiza senha do admin
+echo -e "${GREEN}Gerando hash da senha...${NC}"
 HASH=$(docker run --rm $PYTHON_IMAGE bash -lc "\
   pip install --no-cache-dir Werkzeug >/dev/null 2>&1 && \
   python - << 'EOF'
@@ -118,7 +117,7 @@ services:
 EOF
 
 # 8) Build e deploy
-echo -e "${GREEN}Buildando e subindo o container...${NC}"
+echo -e "${GREEN}Buildando e subindo container...${NC}"
 docker compose up -d --build
 
 echo -e "${GREEN}✅ Deploy concluído!${NC}"
