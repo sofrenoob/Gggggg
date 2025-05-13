@@ -18,7 +18,8 @@ curl -L -o alfa-cloud.zip https://github.com/sofrenoob/Gggggg/raw/main/4/alfa-cl
 
 # Descompactando
 unzip -o alfa-cloud.zip -d /opt/
-mv /opt/alfa-cloud-main /opt/alfa-cloud
+mv /opt/alfa-cloud /opt/alfa-cloud
+rm -f /opt/alfa-cloud.zip
 
 # Permissões
 chmod -R 755 /opt/alfa-cloud
