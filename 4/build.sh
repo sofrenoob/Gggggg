@@ -380,3 +380,15 @@ cat > $PROJ/README.md <<'EOF'
 ## Build rápido
 ```bash
 docker compose up --build
+```
+Depois crie o admin:
+```bash
+docker compose exec web flask shell -c "from app.extensions import db; from app.models import Admin; a=Admin(username='admin'); a.password='senha'; db.session.add(a); db.session.commit()"
+```
+Acesse http://localhost/admin/login
+EOF
+
+# ------------------------------------------------------------------
+echo ">>> Compactando $ZIP"
+zip -rq $ZIP $PROJ
+echo "Pronto! Veja $ZIP"
