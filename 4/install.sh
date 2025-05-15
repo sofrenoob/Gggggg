@@ -181,7 +181,9 @@ server {
 }
 EOF"
 check_error "Falha ao criar arquivo de configuração do Nginx"
-sudo ln -s /etc/nginx/sites-available/anyvpn /etc/nginx/sites-enabled/
+# Remove qualquer link simbólico existente antes de criar um novo
+[ -f /etc/nginx/sites-enabled/anyvpn ] && sudo rm /etc/nginx/sites-enabled/anyvpn
+sudo ln -sf /etc/nginx/sites-available/anyvpn /etc/nginx/sites-enabled/anyvpn
 check_error "Falha ao criar link simbólico para Nginx"
 sudo nginx -t
 check_error "Configuração do Nginx inválida"
