@@ -505,4 +505,96 @@ void mostrarMenu(io_context& io_context) {
              << "5. Sair\n"
              << "Escolha uma opção (1-5): ";
         string opcao;
-        getl
+        getline(cin, opcao);
+
+        if (opcao == "1.1") {
+            string nome, senha; int validade, limite;
+            cout << "Nome: "; getline(cin, nome);
+            cout << "Senha: "; getline(cin, senha);
+            cout << "Validade (dias): "; cin >> validade;
+            cout << "Limite: "; cin >> limite; cin.ignore();
+            criarUsuario(nome, senha, validade, limite);
+        } else if (opcao == "1.2") {
+            string nome; cout << "Nome: "; getline(cin, nome);
+            removerUsuario(nome);
+        } else if (opcao == "1.3") {
+            int minutos; cout << "Minutos: "; cin >> minutos; cin.ignore();
+            testeConexaoSSH(minutos);
+        } else if (opcao == "1.4") {
+            string nome; int limite;
+            cout << "Nome: "; getline(cin, nome);
+            cout << "Limite: "; cin >> limite; cin.ignore();
+            alterarLimite(nome, limite);
+        } else if (opcao == "1.5") {
+            string nome; int dias;
+            cout << "Nome: "; getline(cin, nome);
+            cout << "Dias: "; cin >> dias; cin.ignore();
+            alterarValidade(nome, dias);
+        } else if (opcao == "1.6") {
+            string nome, senha;
+            cout << "Nome: "; getline(cin, nome);
+            cout << "Nova senha: "; getline(cin, senha);
+            alterarSenha(nome, senha);
+        } else if (opcao == "1.7") {
+            cout << listarUsuarios();
+        } else if (opcao == "1.8") {
+            cout << listarExpirados();
+        } else if (opcao == "1.9") {
+            cout << listarOnline();
+        } else if (opcao == "1.10") {
+            string nome; cout << "Nome: "; getline(cin, nome);
+            cout << dadosUsuario(nome);
+        } else if (opcao == "2.1") {
+            verificarStatusProxy();
+        } else if (opcao == "2.2") {
+            reiniciarProxy();
+        } else if (opcao == "2.3") {
+            cout << listarConexoes();
+        } else if (opcao == "2.4") {
+            int porta; cout << "Escolha a porta (80, 443, 8080): "; cin >> porta; cin.ignore();
+            escolherPorta(io_context, porta);
+        } else if (opcao == "2.5") {
+            int porta; cout << "Escolha a porta para fechar (80, 443, 8080): "; cin >> porta; cin.ignore();
+            fecharPorta(porta);
+        } else if (opcao == "2.6") {
+            vector<string> modos = {"Direct", "DirectNoPayload", "WebSocket", "Security", "SOCKS", "SSLDirect", "SSLPay"};
+            modosConexao(modos);
+        } else if (opcao == "3.1") {
+            historicoUDP();
+        } else if (opcao == "3.2") {
+            usoRecursos();
+        } else if (opcao == "3.3") {
+            logsGerais();
+        } else if (opcao == "4.1") {
+            string token, chatId;
+            cout << "Token: "; getline(cin, token);
+            cout << "Chat ID: "; getline(cin, chatId);
+            ativarBot(token, chatId);
+        } else if (opcao == "4.2" || opcao == "4.3") {
+            string token, chatId;
+            cout << "Token: "; getline(cin, token);
+            cout << "Chat ID: "; getline(cin, chatId);
+            ofstream status("bot_status.txt");
+            status << "ativo " << token << " " << chatId;
+            status.close();
+            cout << "Configuração salva!" << endl;
+        } else if (opcao == "5") {
+            break;
+        }
+    }
+}
+
+int main() {
+    io_context io_context;
+    sqlite3 *db;
+    sqlite3_open("udp_history.db", &db);
+    sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS udp_sessions (ip_origem TEXT, ip_destino TEXT, dados TEXT, timestamp TEXT)", nullptr, nullptr, nullptr);
+    sqlite3_close(db);
+
+    thread proxyThread(iniciarProxy, ref(io_context), 8444); // Usa porta interna 8444
+    proxyThread.detach();
+
+    mostrarMenu(io_context);
+
+    return 0;
+}
