@@ -27,6 +27,8 @@ check_error "Falha ao instalar dependências básicas"
 # Instala o badvpn a partir do código-fonte
 echo "Instalando badvpn a partir do código-fonte..."
 cd /tmp
+# Remove o diretório badvpn existente, se houver
+[ -d badvpn ] && rm -rf badvpn
 git clone https://github.com/ambrop72/badvpn.git
 check_error "Falha ao clonar o repositório badvpn"
 cd badvpn
@@ -126,7 +128,7 @@ check_error "Falha ao baixar bot_telegram.py"
 
 # Compila o servidor
 echo "Compilando o servidor..."
-g++ -o server server.cpp -lboost_system -lboost_thread -lsqlite3 -pthread -lcrypto -lssl
+g++ -o server server.cpp -lboost_system -lboost_thread -lsqlite3 - independ -pthread -lcrypto -lssl
 check_error "Falha ao compilar o servidor"
 
 # Cria arquivos de controle
