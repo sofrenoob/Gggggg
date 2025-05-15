@@ -37,7 +37,10 @@ clean_installation() {
 
     # Remove diretórios e arquivos do projeto
     echo "Removendo diretórios e arquivos do projeto..."
-    [ -d ~/anyvpn_system ] && rm -rf ~/anyvpn_system
+    if [ -d ~/anyvpn_system ]; then
+        rm -rf ~/anyvpn_system
+        rm -f ~/anyvpn_system/server.cpp* ~/anyvpn_system/bot_telegram.py*
+    fi
     [ -d /tmp/badvpn ] && rm -rf /tmp/badvpn
     [ -d /tmp/sslh ] && rm -rf /tmp/sslh
 
@@ -214,12 +217,14 @@ fi
 
 # Inicia o Badvpn
 echo "Iniciando o badvpn-udpgw..."
-sudo badvpn-udpgw --listen-addr 127.0.0.1 --listen-port 7300 &
+sudo badvpn-udpgw --listen-addr 127.0.0.1:7300 &
 check_error "Falha ao iniciar o badvpn-udpgw"
 
 # Baixa os arquivos do repositório
 echo "Baixando server.cpp e bot_telegram.py do repositório..."
 cd ~/anyvpn_system
+# Remove arquivos residuais de downloads anteriores
+rm -f server.cpp* bot_telegram.py*
 wget https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/server.cpp
 check_error "Falha ao baixar server.cpp"
 wget https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/bot_telegram.py
