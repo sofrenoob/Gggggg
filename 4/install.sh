@@ -10,9 +10,9 @@ SCRIPT_NAME="proxy_system.py"
 echo "Atualizando o sistema..."
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-# Instala Python3, pip e git se ainda não estiverem instalados
-echo "Instalando Python3, pip e git..."
-sudo apt-get install -y python3 python3-pip git
+# Instala Python3, pip, git e dependências de compilação necessárias
+echo "Instalando Python3, pip, git e dependências de compilação..."
+sudo apt-get install -y python3 python3-pip git build-essential libffi-dev python3-dev
 
 # Atualiza o pip para a última versão
 echo "Atualizando pip..."
