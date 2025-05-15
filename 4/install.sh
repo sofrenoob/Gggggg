@@ -1,9 +1,9 @@
 
 set -euo pipefail
 
-# ───── CONFIG ─────────────────────────────────────────────────────────
+# ───── CONFIGURAÇÃO ───────────────────────────────────────────────────
 PANEL_ROOT=/opt/serverpanel
-REPO_ZIP="https://github.com/sofrenoob/Gggggg/raw/main/4/painel.zip"  # URL do ZIP
+REPO_ZIP="https://github.com/sofrenoob/Gggggg/raw/main/4/painel.zip"
 HTTP_PORT=8080
 
 # ───── 1) Pacotes básicos ─────────────────────────────────────────────
@@ -13,7 +13,7 @@ DEBIAN_FRONTEND=noninteractive apt install -yq \
   python3 python3-venv python3-pip unzip wget curl ufw \
   build-essential cmake gcc libsodium-dev psmisc screen socat stunnel4 squid openvpn
 
-# ───── 2) Download e extração do painel ──────────────────────────────
+# ───── 2) Download e extração do ZIP ──────────────────────────────────
 echo "==> Baixando e extraindo o painel..."
 rm -rf "$PANEL_ROOT"
 mkdir -p /tmp/painel_src
@@ -21,7 +21,7 @@ mkdir -p /tmp/painel_src
 wget -qO /tmp/painel.zip "$REPO_ZIP"
 unzip -q /tmp/painel.zip -d /tmp/painel_src
 
-# Detecta se unzip criou um único subdiretório
+# Se unzip criou um único subdiretório, mova seu conteúdo para PANEL_ROOT
 entries=(/tmp/painel_src/*)
 if [ "${#entries[@]}" -eq 1 ] && [ -d "${entries[0]}" ]; then
   mv "${entries[0]}" "$PANEL_ROOT"
@@ -32,13 +32,18 @@ fi
 
 rm -rf /tmp/painel.zip /tmp/painel_src
 
-# ───── 3) Virtualenv e pip ────────────────────────────────────────────
+# ───── 3) Virtualenv, pip e ajuste de versões ─────────────────────────
 echo "==> Criando virtualenv..."
 python3 -m venv "$PANEL_ROOT/venv"
 source "$PANEL_ROOT/venv/bin/activate"
 
-echo "==> Atualizando pip e instalando dependências..."
+echo "==> Atualizando pip..."
 pip install --upgrade pip
+
+echo "==> Ajustando versão do Flask-SQLAlchemy no requirements.txt..."
+sed -i 's/Flask-SQLAlchemy==3\.0\.7/Flask-SQLAlchemy==3.1.1/' "$PANEL_ROOT/requirements.txt"
+
+echo "==> Instalando dependências do painel..."
 pip install -r "$PANEL_ROOT/requirements.txt"
 
 # ───── 4) Banco de dados e usuário ADMIN ─────────────────────────────
@@ -89,6 +94,6 @@ if ufw status | grep -q active; then
   ufw allow $HTTP_PORT/tcp || true
 fi
 
-# ───── 7) Final ──────────────────────────────────────────────────────
+# ───── 7) Finalização ────────────────────────────────────────────────
 IP=$(hostname -I | awk '{print $1}')
 echo -e "\nPainel instalado e rodando em: http://$IP:$HTTP_PORT\n"
