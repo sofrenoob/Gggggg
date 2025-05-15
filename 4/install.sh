@@ -1,133 +1,118 @@
+#!/bin/bash
 
-# Instalador Alfa VPN – versão corrigida 2025-05-14
-# Requisitos: Linux com systemd, acesso root, curl
-
-set -euo pipefail
-
-# ──────────────────────────────
-# Configuráveis
-# ──────────────────────────────
-INSTALL_DIR="/opt/alfa_vpn"
-PY_FILE="alfa_vpn.py"
-YAML_FILE="services.yml"
-
-# Dois links de download para cada arquivo (edite para os seus)
-PY_URL_1="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/alfa_vpn.py"
-PY_URL_2="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/alfa_vpn.py"
-YAML_URL_1="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/services.yml"
-YAML_URL_2="https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/services.yml"
-
-# ──────────────────────────────
-echo "[1/7] Verificando root..."
-[[ $EUID -eq 0 ]] || { echo "Execute como root."; exit 1; }
-
-# ──────────────────────────────
-echo "[2/7] Detectando gerenciador de pacotes..."
-if command -v apt >/dev/null; then
-    PM_UPDATE="apt update -y"
-    PM_INSTALL="apt install -y"
-elif command -v dnf >/dev/null; then
-    PM_UPDATE="dnf makecache -y"
-    PM_INSTALL="dnf install -y"
-elif command -v yum >/dev/null; then
-    PM_UPDATE="yum makecache -y"
-    PM_INSTALL="yum install -y"
-else
-    echo "Nenhum apt, dnf ou yum encontrado."; exit 1
+# Obtém o IP do servidor
+echo "Obtendo o IP do servidor..."
+SERVER_IP=$(hostname -I | awk '{print $1}')
+if [ -z "$SERVER_IP" ]; then
+    echo "Não foi possível obter o IP. Usando 'localhost' como fallback."
+    SERVER_IP="localhost"
 fi
-eval "$PM_UPDATE"
+echo "IP do servidor: $SERVER_IP"
 
-echo "[3/7] Instalando dependências do sistema..."
-$PM_INSTALL python3 python3-pip curl tmux squid pptpd apache2-utils
+# Atualiza o sistema e instala dependências básicas
+echo "Atualizando o sistema e instalando dependências básicas..."
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential git curl wget nginx sslh badvpn sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid
 
-# ──────────────────────────────
-echo "[4/7] Instalando dependências Python..."
-pip3 install --upgrade --quiet rich psutil pyyaml questionary
+# Instala dependências do Python para o bot Telegram
+echo "Instalando dependências do Python para o bot Telegram..."
+sudo pip3 install python-telegram-bot==20.6
 
-# ──────────────────────────────
-echo "[5/7] Baixando painel..."
-mkdir -p "$INSTALL_DIR"
+# Cria diretórios e arquivos necessários
+echo "Criando diretórios e arquivos de configuração..."
+sudo mkdir -p /etc/ssl/certs
+sudo mkdir -p ~/anyvpn_system
 
-download() {         # $1=url1 $2=url2 $3=dest
-    echo -n "  • $3 ... "
-    if curl -fsSL "$1" -o "$3"; then
-        echo "ok ($1)"
-    elif curl -fsSL "$2" -o "$3"; then
-        echo "ok ($2)"
-    else
-        echo "FALHA"
-        exit 1
-    fi
+# Gera certificados SSL autoassinados
+echo "Gerando certificados SSL..."
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/server.key -out /etc/ssl/certs/server.crt -subj "/C=BR/ST=State/L=City/O=AnyVPN/CN=$SERVER_IP"
+
+# Configura o Nginx
+echo "Configurando o Nginx..."
+sudo bash -c "cat > /etc/nginx/sites-available/anyvpn <<EOF
+server {
+    listen 80;
+    listen 443 ssl;
+    listen 8080 ssl;
+    server_name $SERVER_IP;
+
+    ssl_certificate /etc/ssl/certs/server.crt;
+    ssl_certificate_key /etc/ssl/certs/server.key;
+
+    location /direct {
+        proxy_pass http://localhost:8443;
+    }
+    location /directnopayload {
+        proxy_pass http://localhost:8443;
+    }
+    location /websocket {
+        proxy_pass http://localhost:8080;
+    }
+    location /security {
+        proxy_pass http://localhost:8443;
+    }
+    location /socks {
+        proxy_pass http://localhost:7300; # Porta do Badvpn para SOCKS/UDP
+    }
+    location /ssldirect {
+        proxy_pass https://localhost:8443;
+    }
+    location /sslpay {
+        proxy_pass https://localhost:8443;
+    }
 }
+EOF"
+sudo ln -s /etc/nginx/sites-available/anyvpn /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
 
-download "$PY_URL_1"   "$PY_URL_2"   "$INSTALL_DIR/$PY_FILE"
-download "$YAML_URL_1" "$YAML_URL_2" "$INSTALL_DIR/$YAML_FILE"
-chmod 750 "$INSTALL_DIR/$PY_FILE"
+# Configura o sslh
+echo "Configurando o sslh..."
+sudo bash -c 'cat > /etc/sslh.cfg <<EOF
+port = 8444
+ssl: 0.0.0.0:8444:tcp:localhost:8443
+http: 0.0.0.0:8444:tcp:localhost:8080
+ssh: 0.0.0.0:8444:tcp:localhost:22
+openvpn: 0.0.0.0:8444:tcp:localhost:1194
+proxy: 0.0.0.0:8444:tcp:localhost:3128
+EOF'
+sudo systemctl enable sslh
+sudo systemctl restart sslh
 
-# ───────── PATCH automático caso o código remoto seja antigo ─────────
-echo "[patch] Conferindo se list_user já está corrigida..."
-if ! grep -q "=== Usuários PPTP" "$INSTALL_DIR/$PY_FILE"; then
-    echo "Aplicando patch no alfa_vpn.py"
-    sed -i '/def list_user()/,/^def /c\
-def list_user():\n\
-    console.print("[bold cyan]==\u003d Usuários PPTP (chap-secrets) ==\u003d[/bold cyan]")\n\
-    chap=\"/etc/ppp/chap-secrets\"\n\
-    if os.path.exists(chap):\n\
-        with open(chap) as f:\n\
-            for l in f:\n\
-                if l.strip() and not l.startswith(\"#\"):\n\
-                    console.print(\"• \" + l.split()[0])\n\
-    else:\n\
-        console.print(\"Arquivo não encontrado.\")\n\
-    console.print(\"\\n[bold cyan]==\u003d Usuários Squid (basic auth) ==\u003d[/bold cyan]\")\n\
-    passwd=\"/etc/squid/passwd\"\n\
-    if os.path.exists(passwd):\n\
-        with open(passwd) as f:\n\
-            for l in f:\n\
-                console.print(\"• \" + l.split(\":\")[0])\n\
-    else:\n\
-        console.print(\"Arquivo não encontrado.\")\n\
-    input(\"\\nEnter...\")' "$INSTALL_DIR/$PY_FILE"
-fi
+# Inicia o Badvpn
+echo "Iniciando o Badvpn..."
+badvpn-udpgw --listen-addr 127.0.0.1 --listen-port 7300 &
 
-# ──────────────────────────────
-echo "[6/7] Criando arquivos de autenticação vazios (caso não existam)..."
-install -o root -g root -m 600 /dev/null /etc/ppp/chap-secrets 2>/dev/null || true
-touch /etc/squid/passwd
-chown proxy:proxy /etc/squid/passwd
-chmod 640 /etc/squid/passwd
+# Baixa os arquivos do repositório
+echo "Baixando server.cpp e bot_telegram.py do repositório..."
+cd ~/anyvpn_system
+wget https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/server.cpp
+wget https://raw.githubusercontent.com/sofrenoob/Gggggg/main/4/bot_telegram.py
 
-# ──────────────────────────────
-echo "[7/7] Criando/atualizando serviço systemd..."
-cat > /etc/systemd/system/alfa_vpn.service <<EOF
-[Unit]
-Description=Painel Alfa VPN (TUI em tmux)
-After=network.target
+# Compila o servidor
+echo "Compilando o servidor..."
+g++ -o server server.cpp -lboost_system -lboost_thread -lsqlite3 -pthread -lcrypto -lssl
 
-[Service]
-Type=forking
-User=root
-WorkingDirectory=$INSTALL_DIR
-ExecStart=/usr/bin/tmux new-session -s ALFAVPN -d "/usr/bin/python3 $INSTALL_DIR/$PY_FILE"
-ExecStop=/usr/bin/tmux kill-session -t ALFAVPN
-RemainAfterExit=yes
-KillMode=none
-Restart=on-failure
+# Cria arquivos de controle
+echo "Criando arquivos de controle..."
+touch ~/anyvpn_system/bot_command.txt
+touch ~/anyvpn_system/bot_response.txt
+echo "desativado" > ~/anyvpn_system/bot_status.txt
+touch ~/anyvpn_system/udp_history.db
 
-[Install]
-WantedBy=multi-user.target
-EOF
+# Define permissões
+echo "Definindo permissões..."
+sudo chmod +x ~/anyvpn_system/server
+sudo chmod +x ~/anyvpn_system/bot_telegram.py
+sudo chmod 644 /etc/ssl/certs/server.crt
+sudo chmod 600 /etc/ssl/certs/server.key
+sudo chmod 644 /etc/nginx/sites-available/anyvpn
+sudo chmod 644 /etc/sslh.cfg
+sudo chown -R $USER:$USER ~/anyvpn_system
 
-systemctl daemon-reload
-systemctl enable --now alfa_vpn.service
+# Inicia o servidor
+echo "Iniciando o servidor..."
+cd ~/anyvpn_system
+./server &
 
-# ──────────────────────────────
-echo
-echo "────────────────── INSTALAÇÃO CONCLUÍDA ──────────────────"
-echo "O painel está rodando em uma sessão tmux chamada ALFAVPN."
-echo "Comandos úteis:"
-echo "    tmux attach -t ALFAVPN        # abrir o painel"
-echo "    Ctrl+b  d                     # (dentro do tmux) sair mantendo execução"
-echo "    systemctl restart alfa_vpn    # reiniciar painel"
-echo "    systemctl stop alfa_vpn       # parar painel"
-echo "────────────────────────────────────────────────────────────"
+echo "Instalação concluída! Acesse o bot Telegram com /menu após configurá-lo (opção 4.1 e 4.3)."
