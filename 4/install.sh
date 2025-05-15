@@ -21,7 +21,7 @@ echo "IP do servidor: $SERVER_IP"
 echo "Atualizando o sistema e instalando dependências básicas..."
 sudo apt update && sudo apt upgrade -y
 check_error "Falha ao atualizar o sistema"
-sudo apt install -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake
+sudo apt install -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev
 check_error "Falha ao instalar dependências básicas"
 
 # Instala o badvpn a partir do código-fonte
@@ -131,7 +131,7 @@ check_error "Falha ao compilar o servidor"
 
 # Cria arquivos de controle
 echo "Criando arquivos de controle..."
-touch ~/anyvpn_system bot_command.txt bot_response.txt udp_history.db
+touch ~/anyvpn_system/bot_command.txt ~/anyvpn_system/bot_response.txt ~/anyvpn_system/udp_history.db
 echo "desativado" > ~/anyvpn_system/bot_status.txt
 check_error "Falha ao criar arquivos de controle"
 
