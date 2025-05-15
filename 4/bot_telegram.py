@@ -430,4 +430,12 @@ def main():
     app.add_handler(CommandHandler("fecharporta", fechar_porta))
     app.add_handler(CommandHandler("modosconexao", modos_conexao))
 
-    
+    # Informações do Sistema
+    app.add_handler(CommandHandler("historicoudp", historico_udp))
+    app.add_handler(CommandHandler("usorecursos", uso_recursos))
+    app.add_handler(CommandHandler("logsgerais", logs_gerais))
+
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
