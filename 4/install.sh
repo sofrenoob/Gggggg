@@ -39,20 +39,22 @@ clean_installation() {
     echo "Removendo diretórios e arquivos do projeto..."
     [ -d ~/anyvpn_system ] && rm -rf ~/anyvpn_system
     [ -d /tmp/badvpn ] && rm -rf /tmp/badvpn
+    [ -d /tmp/sslh ] && rm -rf /tmp/sslh
 
     # Desinstala pacotes
     echo "Desinstalando pacotes..."
-    sudo apt purge -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev
+    sudo apt purge -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev sslh
     sudo apt autoremove -y
     check_error "Falha ao desinstalar pacotes"
 
     # Remove dependências do Python
     echo "Removendo dependências do Python..."
-    sudo pip3 uninstall -y python-telegram-bot
+    sudo pip3 uninstall -y python-telegram-bot 2>/dev/null
 
-    # Remove badvpn instalado manualmente
-    echo "Removendo badvpn compilado..."
+    # Remove badvpn e sslh instalados manualmente
+    echo "Removendo badvpn e sslh compilados..."
     sudo rm -f /usr/bin/badvpn-udpgw /usr/bin/badvpn-tun2socks /usr/bin/badvpn-server
+    sudo rm -f /usr/sbin/sslh-fork /usr/sbin/sslh-select
 
     # Recarrega configurações do systemd
     echo "Recarregando configurações do systemd..."
@@ -77,11 +79,31 @@ if [ -z "$SERVER_IP" ]; then
 fi
 echo "IP do servidor: $SERVER_IP"
 
-# Atualiza o sistema e instala dependências básicas
-echo "Atualizando o sistema e instalando dependências básicas..."
+# Atualiza o sistema e habilita repositórios
+echo "Atualizando o sistema e habilitando repositórios..."
+sudo apt update
+sudo add-apt-repository universe -y
 sudo apt update && sudo apt upgrade -y
 check_error "Falha ao atualizar o sistema"
-sudo apt install -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev
+
+# Instala dependências básicas
+echo "Instalando dependências básicas..."
+sudo apt install -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev sslh
+if ! dpkg -l | grep -q sslh; then
+    echo "Pacote sslh não encontrado. Instalando a partir do código-fonte..."
+    cd /tmp
+    [ -d sslh ] && rm -rf sslh
+    git clone https://github.com/yrutschle/sslh.git
+    check_error "Falha ao clonar o repositório sslh"
+    cd sslh
+    make
+    check_error "Falha ao compilar sslh"
+    sudo make install
+    check_error "Falha ao instalar sslh"
+    sudo cp scripts/systemd.sslh.service /etc/systemd/system/sslh.service
+    sudo systemctl daemon-reload
+    cd /tmp && rm -rf sslh
+fi
 check_error "Falha ao instalar dependências básicas"
 
 # Remove pacotes desnecessários
@@ -178,6 +200,7 @@ proxy: 0.0.0.0:8444:tcp:localhost:3128
 EOF'
 check_error "Falha ao criar arquivo de configuração do sslh"
 sudo systemctl enable sslh
+check_error "Falha ao habilitar o sslh"
 sudo systemctl restart sslh
 check_error "Falha ao iniciar o sslh"
 
