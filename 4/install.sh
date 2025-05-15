@@ -8,6 +8,66 @@ check_error() {
     fi
 }
 
+# Função para limpar arquivos, serviços e pacotes instalados
+clean_installation() {
+    echo "Iniciando limpeza de arquivos, serviços e pacotes..."
+
+    # Para serviços em execução
+    echo "Parando serviços..."
+    sudo systemctl stop nginx 2>/dev/null
+    sudo systemctl stop sslh 2>/dev/null
+    sudo systemctl stop badvpn-udpgw 2>/dev/null
+    sudo pkill -f badvpn-udpgw 2>/dev/null
+    sudo pkill -f server 2>/dev/null
+
+    # Desativa serviços
+    echo "Desativando serviços..."
+    sudo systemctl disable nginx 2>/dev/null
+    sudo systemctl disable sslh 2>/dev/null
+    sudo systemctl disable badvpn-udpgw 2>/dev/null
+
+    # Remove arquivos de configuração
+    echo "Removendo arquivos de configuração..."
+    [ -f /etc/nginx/sites-available/anyvpn ] && sudo rm /etc/nginx/sites-available/anyvpn
+    [ -f /etc/nginx/sites-enabled/anyvpn ] && sudo rm /etc/nginx/sites-enabled/anyvpn
+    [ -f /etc/sslh.cfg ] && sudo rm /etc/sslh.cfg
+    [ -f /etc/ssl/certs/server.crt ] && sudo rm /etc/ssl/certs/server.crt
+    [ -f /etc/ssl/certs/server.key ] && sudo rm /etc/ssl/certs/server.key
+    [ -f /etc/systemd/system/badvpn-udpgw.service ] && sudo rm /etc/systemd/system/badvpn-udpgw.service
+
+    # Remove diretórios e arquivos do projeto
+    echo "Removendo diretórios e arquivos do projeto..."
+    [ -d ~/anyvpn_system ] && rm -rf ~/anyvpn_system
+    [ -d /tmp/badvpn ] && rm -rf /tmp/badvpn
+
+    # Desinstala pacotes
+    echo "Desinstalando pacotes..."
+    sudo apt purge -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev
+    sudo apt autoremove -y
+    check_error "Falha ao desinstalar pacotes"
+
+    # Remove dependências do Python
+    echo "Removendo dependências do Python..."
+    sudo pip3 uninstall -y python-telegram-bot
+
+    # Remove badvpn instalado manualmente
+    echo "Removendo badvpn compilado..."
+    sudo rm -f /usr/bin/badvpn-udpgw /usr/bin/badvpn-tun2socks /usr/bin/badvpn-server
+
+    # Recarrega configurações do systemd
+    echo "Recarregando configurações do systemd..."
+    sudo systemctl daemon-reload
+    sudo systemctl reset-failed
+
+    echo "Limpeza concluída!"
+}
+
+# Verifica se o argumento --clean foi passado
+if [ "$1" == "--clean" ]; then
+    clean_installation
+    exit 0
+fi
+
 # Obtém o IP do servidor
 echo "Obtendo o IP do servidor..."
 SERVER_IP=$(hostname -I | awk '{print $1}')
@@ -24,11 +84,19 @@ check_error "Falha ao atualizar o sistema"
 sudo apt install -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev
 check_error "Falha ao instalar dependências básicas"
 
+# Remove pacotes desnecessários
+echo "Removendo pacotes desnecessários..."
+sudo apt autoremove -y
+
 # Instala o badvpn a partir do código-fonte
 echo "Instalando badvpn a partir do código-fonte..."
 cd /tmp
 # Remove o diretório badvpn existente, se houver
-[ -d badvpn ] && rm -rf badvpn
+if [ -d badvpn ]; then
+    echo "Removendo diretório badvpn existente..."
+    rm -rf badvpn
+    sleep 1  # Pequena pausa para garantir que a remoção seja concluída
+fi
 git clone https://github.com/ambrop72/badvpn.git
 check_error "Falha ao clonar o repositório badvpn"
 cd badvpn
@@ -128,7 +196,7 @@ check_error "Falha ao baixar bot_telegram.py"
 
 # Compila o servidor
 echo "Compilando o servidor..."
-g++ -o server server.cpp -lboost_system -lboost_thread -lsqlite3 - independ -pthread -lcrypto -lssl
+g++ -o server server.cpp -lboost_system -lboost_thread -lsqlite3 -pthread -lcrypto -lssl
 check_error "Falha ao compilar o servidor"
 
 # Cria arquivos de controle
