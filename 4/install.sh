@@ -43,7 +43,7 @@ clean_installation() {
 
     # Desinstala pacotes
     echo "Desinstalando pacotes..."
-    sudo apt purge -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev sslh
+    sudo apt purge -y build-essential git curl wget nginx sqlite3 libsqlite3-dev libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev sslh
     sudo apt autoremove -y
     check_error "Falha ao desinstalar pacotes"
 
@@ -88,7 +88,7 @@ check_error "Falha ao atualizar o sistema"
 
 # Instala dependências básicas
 echo "Instalando dependências básicas..."
-sudo apt install -y build-essential git curl wget nginx sqlite3 libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev sslh
+sudo apt install -y build-essential git curl wget nginx sqlite3 libsqlite3-dev libssl-dev libboost-all-dev python3 python3-pip openssh-server openvpn squid cmake libnspr4-dev libnss3-dev sslh
 if ! dpkg -l | grep -q sslh; then
     echo "Pacote sslh não encontrado. Instalando a partir do código-fonte..."
     cd /tmp
@@ -201,10 +201,16 @@ openvpn: 0.0.0.0:8444:tcp:localhost:1194
 proxy: 0.0.0.0:8444:tcp:localhost:3128
 EOF'
 check_error "Falha ao criar arquivo de configuração do sslh"
-sudo systemctl enable sslh
-check_error "Falha ao habilitar o sslh"
-sudo systemctl restart sslh
-check_error "Falha ao iniciar o sslh"
+# Verifica se o serviço sslh existe antes de habilitar
+if systemctl list-units --full -all | grep -q sslh.service; then
+    sudo systemctl enable sslh
+    check_error "Falha ao habilitar o sslh"
+    sudo systemctl restart sslh
+    check_error "Falha ao iniciar o sslh"
+else
+    echo "Serviço sslh não encontrado. Verifique a instalação do sslh."
+    exit 1
+fi
 
 # Inicia o Badvpn
 echo "Iniciando o badvpn-udpgw..."
@@ -221,6 +227,12 @@ check_error "Falha ao baixar bot_telegram.py"
 
 # Compila o servidor
 echo "Compilando o servidor..."
+# Verifica se libsqlite3-dev está instalado
+if ! dpkg -l | grep -q libsqlite3-dev; then
+    echo "libsqlite3-dev não encontrado. Instalando..."
+    sudo apt install -y libsqlite3-dev
+    check_error "Falha ao instalar libsqlite3-dev"
+fi
 g++ -o server server.cpp -lboost_system -lboost_thread -lsqlite3 -pthread -lcrypto -lssl
 check_error "Falha ao compilar o servidor"
 
