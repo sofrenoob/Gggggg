@@ -28,7 +28,37 @@ log() {
 install_dependencies() {
     echo "Instalando dependências..."
     apt-get update || { echo "Falha ao atualizar pacotes"; exit 1; }
-    apt-get install -y jq websocat iptables badvpn anyproxy net-tools || { echo "Falha ao instalar dependências"; exit 1; }
+
+    # Instalar pacotes disponíveis nos repositórios padrão
+    apt-get install -y jq iptables net-tools || { echo "Falha ao instalar dependências"; exit 1; }
+
+    # Instalar websocat (se não estiver disponível nos repositórios)
+    if ! command -v websocat &> /dev/null; then
+        echo "Instalando websocat..."
+        wget https://github.com/vi/websocat/releases/download/v1.10.0/websocat_linux64 -O /usr/local/bin/websocat
+        chmod +x /usr/local/bin/websocat
+    fi
+
+    # Instalar BadVPN (se não estiver disponível nos repositórios)
+    if ! command -v badvpn &> /dev/null; then
+        echo "Instalando BadVPN..."
+        apt-get install -y build-essential cmake git || { echo "Falha ao instalar dependências para BadVPN"; exit 1; }
+        git clone https://github.com/ambrop72/badvpn.git /tmp/badvpn
+        mkdir /tmp/badvpn/build
+        cd /tmp/badvpn/build
+        cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_TUN2SOCKS=1 -DBUILD_UDPGW=1
+        make
+        make install
+        cd ~
+        rm -rf /tmp/badvpn
+    fi
+
+    # Instalar AnyProxy (se não estiver disponível nos repositórios)
+    if ! command -v anyproxy &> /dev/null; then
+        echo "Instalando AnyProxy..."
+        apt-get install -y npm || { echo "Falha ao instalar npm"; exit 1; }
+        npm install -g anyproxy
+    fi
 
     # Criar pasta de logs e configurar permissões
     mkdir -p "$(dirname "$LOG_FILE")"
