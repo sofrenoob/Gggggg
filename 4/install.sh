@@ -1,262 +1,258 @@
 
 
-# Cores para o terminal
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # Sem cor
+CONFIG_FILE="/etc/myapp/config.json"
+LOG_FILE="/var/log/myapp.log"
 
-# Função para exibir o menu
-show_menu() {
-    clear
-    echo -e "${GREEN}===== MENU PRINCIPAL =====${NC}"
-    echo -e "${BLUE}1. Instalar Ferramentas${NC}"
-    echo -e "${BLUE}2. Configurar V2Ray${NC}"
-    echo -e "${BLUE}3. Configurar Shadowsocks${NC}"
-    echo -e "${BLUE}4. Configurar WireGuard${NC}"
-    echo -e "${BLUE}5. Configurar OpenVPN${NC}"
-    echo -e "${BLUE}6. Configurar BadVPN${NC}"
-    echo -e "${BLUE}7. Configurar Domain Fronting${NC}"
-    echo -e "${BLUE}8. Configurar Criptografia Pós-Quântica${NC}"
-    echo -e "${BLUE}9. Configurar Rede Mesh${NC}"
-    echo -e "${BLUE}10. Gerenciar Portas${NC}"
-    echo -e "${BLUE}11. Gerenciar Usuários SSH${NC}"
-    echo -e "${BLUE}12. Monitoramento em Tempo Real${NC}"
-    echo -e "${BLUE}13. Sair${NC}"
-    echo -e "${GREEN}==========================${NC}"
-}
-
-# Função para instalar ferramentas
-install_tools() {
-    echo -e "${YELLOW}Instalando dependências...${NC}"
-    sudo apt update
-    sudo apt install -y curl wget git ufw shadowsocks-libev v2ray wireguard openvpn certbot haproxy prometheus grafana elasticsearch logstash kibana build-essential cmake libssl-dev
-
-    echo -e "${YELLOW}Instalando BadVPN...${NC}"
-    git clone https://github.com/ambrop72/badvpn.git
-    cd badvpn
-    mkdir build
-    cd build
-    cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_TUN2SOCKS=1 -DBUILD_UDPGW=1
-    make
-    sudo make install
-    cd ../..
-
-    echo -e "${YELLOW}Configurando firewall...${NC}"
-    sudo ufw allow 22
-    sudo ufw allow 80
-    sudo ufw allow 443
-    sudo ufw allow 8080
-    sudo ufw allow 7300
-    sudo ufw enable
-
-    echo -e "${GREEN}Ferramentas instaladas e firewall configurado!${NC}"
-}
-
-# Função para configurar V2Ray
-configure_v2ray() {
-    echo -e "${YELLOW}Configurando V2Ray...${NC}"
-    bash <(curl -sL https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
-
-    echo -e "${GREEN}V2Ray configurado com sucesso!${NC}"
-}
-
-# Função para configurar Shadowsocks
-configure_shadowsocks() {
-    echo -e "${YELLOW}Configurando Shadowsocks...${NC}"
-    read -p "Digite a senha para Shadowsocks: " password
-    read -p "Digite a porta para Shadowsocks (padrão: 8388): " port
-    port=${port:-8388}
-
-    cat <<EOF | sudo tee /etc/shadowsocks-libev/config.json
-{
-    "server":"0.0.0.0",
-    "server_port":$port,
-    "password":"$password",
-    "method":"aes-256-gcm"
-}
-EOF
-
-    sudo systemctl restart shadowsocks-libev
-    echo -e "${GREEN}Shadowsocks configurado com sucesso!${NC}"
-}
-
-# Função para configurar WireGuard
-configure_wireguard() {
-    echo -e "${YELLOW}Configurando WireGuard...${NC}"
-    sudo apt install -y wireguard
-    wg genkey | sudo tee /etc/wireguard/private.key
-    sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public.key
-
-    echo -e "${GREEN}WireGuard configurado com sucesso!${NC}"
-}
-
-# Função para configurar OpenVPN
-configure_openvpn() {
-    echo -e "${YELLOW}Configurando OpenVPN...${NC}"
-    wget https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
-    chmod +x openvpn-install.sh
-    sudo ./openvpn-install.sh
-
-    echo -e "${GREEN}OpenVPN configurado com sucesso!${NC}"
-}
-
-# Função para configurar BadVPN
-configure_badvpn() {
-    echo -e "${YELLOW}Configurando BadVPN...${NC}"
-    read -p "Digite a porta para BadVPN (padrão: 7300): " port
-    port=${port:-7300}
-
-    sudo badvpn-udpgw --listen-addr 0.0.0.0:$port &
-    echo -e "${GREEN}BadVPN configurado com sucesso!${NC}"
-}
-
-# Função para configurar Domain Fronting
-configure_domain_fronting() {
-    echo -e "${YELLOW}Configurando Domain Fronting...${NC}"
-    read -p "Digite o domínio fronting (ex: google.com): " domain
-    cat <<EOF | sudo tee /etc/v2ray/config.json
-{
-    "inbounds": [
-        {
-            "port": 443,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "seu-uuid-aqui",
-                        "alterId": 64
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "wsSettings": {
-                    "path": "/caminho-secreto"
-                },
-                "security": "tls",
-                "tlsSettings": {
-                    "serverName": "$domain"
-                }
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "settings": {}
-        }
-    ]
-}
-EOF
-
-    sudo systemctl restart v2ray
-    echo -e "${GREEN}Domain Fronting configurado com sucesso!${NC}"
-}
-
-# Função para configurar Criptografia Pós-Quântica
-configure_post_quantum() {
-    echo -e "${YELLOW}Configurando Criptografia Pós-Quântica...${NC}"
-    sudo apt install -y liboqs-dev
-    git clone https://github.com/open-quantum-safe/openssl.git
-    cd openssl
-    ./Configure
-    make
-    sudo make install
-
-    echo -e "${GREEN}Criptografia Pós-Quântica configurada com sucesso!${NC}"
-}
-
-# Função para configurar Rede Mesh
-configure_mesh_network() {
-    echo -e "${YELLOW}Configurando Rede Mesh...${NC}"
-    sudo apt install -y yggdrasil
-    yggdrasil -genconf > /etc/yggdrasil.conf
-    sudo systemctl enable yggdrasil
-    sudo systemctl start yggdrasil
-
-    echo -e "${GREEN}Rede Mesh configurada com sucesso!${NC}"
-}
-
-# Função para gerenciar portas
-manage_ports() {
-    echo -e "${YELLOW}Gerenciando Portas...${NC}"
-    echo -e "${BLUE}Portas atualmente abertas:${NC}"
-    sudo ufw status
-
-    read -p "Deseja abrir uma nova porta? (s/n): " choice
-    if [[ $choice == "s" ]]; then
-        read -p "Digite o número da porta: " port
-        sudo ufw allow $port
-        echo -e "${GREEN}Porta $port aberta!${NC}"
+# Função para carregar a configuração
+load_config() {
+    if [ ! -f "$CONFIG_FILE" ]; then
+        mkdir -p "$(dirname "$CONFIG_FILE")"
+        echo '{"users":[], "proxy":{}, "firewall":{}, "routing":[], "badvpn":{}, "anyproxy":{}}' > "$CONFIG_FILE"
+        chmod 600 "$CONFIG_FILE" # Restrito ao root
     fi
+    config=$(cat "$CONFIG_FILE")
 }
 
-# Função para gerenciar usuários SSH
-manage_ssh_users() {
-    echo -e "${YELLOW}Gerenciando Usuários SSH...${NC}"
-    echo -e "${BLUE}1. Adicionar Usuário${NC}"
-    echo -e "${BLUE}2. Remover Usuário${NC}"
-    echo -e "${BLUE}3. Voltar${NC}"
-    read -p "Escolha uma opção: " option
+# Função para salvar a configuração
+save_config() {
+    echo "$config" | jq . > "$CONFIG_FILE"
+    chmod 600 "$CONFIG_FILE" # Restrito ao root
+}
 
-    case $option in
+# Função para log de ações
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+}
+
+# Função para instalar dependências
+install_dependencies() {
+    echo "Instalando dependências..."
+    apt-get update || { echo "Falha ao atualizar pacotes"; exit 1; }
+    apt-get install -y jq websocat iptables badvpn anyproxy net-tools || { echo "Falha ao instalar dependências"; exit 1; }
+
+    # Criar pasta de logs e configurar permissões
+    mkdir -p "$(dirname "$LOG_FILE")"
+    touch "$LOG_FILE"
+    chmod 644 "$LOG_FILE" # Leitura para todos, escrita apenas para root
+
+    # Criar pasta de configurações
+    mkdir -p "$(dirname "$CONFIG_FILE")"
+    chmod 700 "$(dirname "$CONFIG_FILE")" # Apenas root pode acessar
+
+    echo "Dependências instaladas e pastas configuradas com sucesso!"
+    log "Dependências instaladas"
+}
+
+# Menu interativo
+menu() {
+    clear
+    echo "Menu de Gerenciamento"
+    echo "1. Gerenciar Usuários SSH"
+    echo "2. Gerenciar Proxy WebSocket Reverso"
+    echo "3. Monitorar Conexões"
+    echo "4. Configurar Firewall"
+    echo "5. Configurar BadVPN"
+    echo "6. Configurar AnyProxy"
+    echo "7. Instalar Dependências"
+    echo "8. Sair"
+    read -p "Escolha uma opção: " choice
+    case $choice in
+        1) manage_ssh_users ;;
+        2) manage_websocket_proxy ;;
+        3) monitor_connections ;;
+        4) manage_firewall ;;
+        5) configure_badvpn ;;
+        6) configure_anyproxy ;;
+        7) install_dependencies ;;
+        8) exit 0 ;;
+        *) echo "Opção inválida"; sleep 1; menu ;;
+    esac
+}
+
+# Gerenciamento de Usuários SSH
+manage_ssh_users() {
+    echo "Gerenciamento de Usuários SSH"
+    echo "1. Adicionar Usuário"
+    echo "2. Remover Usuário"
+    echo "3. Listar Usuários"
+    echo "4. Ver Usuários Online"
+    echo "5. Voltar"
+    read -p "Escolha uma opção: " ssh_choice
+    case $ssh_choice in
         1)
-            read -p "Digite o nome do usuário: " username
-            read -p "Digite a senha do usuário: " password
-            sudo useradd -m -s /bin/bash $username
-            echo "$username:$password" | sudo chpasswd
-            echo -e "${GREEN}Usuário $username adicionado!${NC}"
+            read -p "Nome do usuário: " username
+            read -p "Data de expiração (YYYY-MM-DD): " expiry_date
+            config=$(echo "$config" | jq --arg user "$username" --arg date "$expiry_date" '.users += [{"username": $user, "expiry_date": $date}]')
+            save_config
+            useradd -m -s /bin/bash "$username"
+            passwd "$username"
+            log "Usuário SSH adicionado: $username"
             ;;
         2)
-            read -p "Digite o nome do usuário: " username
-            sudo userdel -r $username
-            echo -e "${RED}Usuário $username removido!${NC}"
+            read -p "Nome do usuário: " username
+            config=$(echo "$config" | jq --arg user "$username" 'del(.users[] | select(.username == $user))')
+            save_config
+            userdel -r "$username"
+            log "Usuário SSH removido: $username"
             ;;
         3)
-            return
+            echo "Usuários SSH:"
+            echo "$config" | jq -r '.users[] | "\(.username) (Expira: \(.expiry_date))"'
             ;;
-        *)
-            echo -e "${RED}Opção inválida!${NC}"
+        4)
+            echo "Usuários Online:"
+            who
             ;;
+        5) menu ;;
+        *) echo "Opção inválida"; sleep 1; manage_ssh_users ;;
     esac
+    menu
 }
 
-# Função para monitoramento em tempo real
-configure_monitoring() {
-    echo -e "${YELLOW}Configurando Monitoramento em Tempo Real...${NC}"
-    sudo systemctl enable prometheus
-    sudo systemctl start prometheus
-    sudo systemctl enable grafana-server
-    sudo systemctl start grafana-server
-
-    echo -e "${GREEN}Monitoramento configurado com sucesso!${NC}"
+# Gerenciamento de Proxy WebSocket Reverso
+manage_websocket_proxy() {
+    echo "Gerenciamento de Proxy WebSocket Reverso"
+    echo "1. Iniciar Proxy"
+    echo "2. Parar Proxy"
+    echo "3. Escolher Porta"
+    echo "4. Voltar"
+    read -p "Escolha uma opção: " proxy_choice
+    case $proxy_choice in
+        1)
+            port=$(echo "$config" | jq -r '.proxy.port')
+            if [ -z "$port" ]; then
+                read -p "Escolha a porta: " port
+                config=$(echo "$config" | jq --argjson port "$port" '.proxy.port = $port')
+                save_config
+            fi
+            websocat -s 0.0.0.0:$port &>> "$LOG_FILE" &
+            log "Proxy WebSocket iniciado na porta $port"
+            ;;
+        2)
+            pkill websocat
+            log "Proxy WebSocket parado"
+            ;;
+        3)
+            read -p "Escolha a porta: " port
+            config=$(echo "$config" | jq --argjson port "$port" '.proxy.port = $port')
+            save_config
+            log "Porta do proxy WebSocket alterada para $port"
+            ;;
+        4) menu ;;
+        *) echo "Opção inválida"; sleep 1; manage_websocket_proxy ;;
+    esac
+    menu
 }
 
-# Loop do menu
-while true; do
-    show_menu
-    read -p "Escolha uma opção: " choice
-
-    case $choice in
-        1) install_tools ;;
-        2) configure_v2ray ;;
-        3) configure_shadowsocks ;;
-        4) configure_wireguard ;;
-        5) configure_openvpn ;;
-        6) configure_badvpn ;;
-        7) configure_domain_fronting ;;
-        8) configure_post_quantum ;;
-        9) configure_mesh_network ;;
-        10) manage_ports ;;
-        11) manage_ssh_users ;;
-        12) configure_monitoring ;;
-        13) break ;;
-        *) echo -e "${RED}Opção inválida!${NC}" ;;
+# Monitoramento de Conexões
+monitor_connections() {
+    echo "Monitoramento de Conexões"
+    echo "1. Ver Conexões Ativas"
+    echo "2. Ver Logs"
+    echo "3. Voltar"
+    read -p "Escolha uma opção: " monitor_choice
+    case $monitor_choice in
+        1)
+            netstat -tuln
+            ;;
+        2)
+            tail -n 20 "$LOG_FILE"
+            ;;
+        3) menu ;;
+        *) echo "Opção inválida"; sleep 1; monitor_connections ;;
     esac
+    menu
+}
 
-    read -p "Pressione Enter para continuar..."
-done
+# Gerenciamento de Firewall
+manage_firewall() {
+    echo "Gerenciamento de Firewall"
+    echo "1. Abrir Porta"
+    echo "2. Fechar Porta"
+    echo "3. Listar Regras"
+    echo "4. Voltar"
+    read -p "Escolha uma opção: " firewall_choice
+    case $firewall_choice in
+        1)
+            read -p "Porta: " port
+            iptables -A INPUT -p tcp --dport "$port" -j ACCEPT
+            log "Porta $port aberta no firewall"
+            ;;
+        2)
+            read -p "Porta: " port
+            iptables -D INPUT -p tcp --dport "$port" -j ACCEPT
+            log "Porta $port fechada no firewall"
+            ;;
+        3)
+            iptables -L -n -v
+            ;;
+        4) menu ;;
+        *) echo "Opção inválida"; sleep 1; manage_firewall ;;
+    esac
+    menu
+}
 
-echo -e "${GREEN}Programa finalizado.${NC}"
+# Configuração de BadVPN
+configure_badvpn() {
+    echo "Configuração de BadVPN"
+    echo "1. Iniciar BadVPN"
+    echo "2. Parar BadVPN"
+    echo "3. Voltar"
+    read -p "Escolha uma opção: " badvpn_choice
+    case $badvpn_choice in
+        1)
+            badvpn &>> "$LOG_FILE" &
+            log "BadVPN iniciado"
+            ;;
+        2)
+            pkill badvpn
+            log "BadVPN parado"
+            ;;
+        3) menu ;;
+        *) echo "Opção inválida"; sleep 1; configure_badvpn ;;
+    esac
+    menu
+}
+
+# Configuração de AnyProxy
+configure_anyproxy() {
+    echo "Configuração de AnyProxy"
+    echo "1. Iniciar AnyProxy"
+    echo "2. Parar AnyProxy"
+    echo "3. Escolher Porta"
+    echo "4. Voltar"
+    read -p "Escolha uma opção: " anyproxy_choice
+    case $anyproxy_choice in
+        1)
+            port=$(echo "$config" | jq -r '.anyproxy.port')
+            if [ -z "$port" ]; then
+                read -p "Escolha a porta: " port
+                config=$(echo "$config" | jq --argjson port "$port" '.anyproxy.port = $port')
+                save_config
+            fi
+            anyproxy --port "$port" &>> "$LOG_FILE" &
+            log "AnyProxy iniciado na porta $port"
+            ;;
+        2)
+            pkill anyproxy
+            log "AnyProxy parado"
+            ;;
+        3)
+            read -p "Escolha a porta: " port
+            config=$(echo "$config" | jq --argjson port "$port" '.anyproxy.port = $port')
+            save_config
+            log "Porta do AnyProxy alterada para $port"
+            ;;
+        4) menu ;;
+        *) echo "Opção inválida"; sleep 1; configure_anyproxy ;;
+    esac
+    menu
+}
+
+# Inicialização
+if [ "$EUID" -ne 0 ]; then
+    echo "Por favor, execute como root."
+    exit 1
+fi
+load_config
+menu
