@@ -12,7 +12,7 @@ apt update && apt upgrade -y
 
 # ---------- Instalando dependências ----------
 echo "Instalando dependências..."
-apt install -y socat openssl vim-common coreutils sha1sum
+apt install -y socat openssl vim-common coreutils
 
 # ---------- Criando o script do proxy ----------
 cat << 'EOF' > /usr/local/bin/ws_proxy.sh
