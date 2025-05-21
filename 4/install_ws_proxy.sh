@@ -24,7 +24,7 @@ set -euo pipefail
 
 # ---------- valores-padrão ----------
 TLS=true
-PROXY_PORT="0.0.0.0:80"
+PROXY_PORT="0.0.0.0:8080"
 MSG="WebSocket"
 MULTI_PROTO=true
 CERT="cert.pem"
