@@ -128,7 +128,7 @@ echo "Iniciando o proxy WebSocket..."
 # ---------- Teste de Conexão ----------
 echo "Executando teste de conexão..."
 sleep 2
-if wscat -c ws://localhost:80; then
+if wscat -c ws://localhost:8080; then
     echo "Proxy WebSocket está funcionando corretamente!"
 else
     echo "Falha ao conectar ao proxy WebSocket."
