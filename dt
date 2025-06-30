@@ -9,7 +9,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -25,8 +25,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67058,
@@ -60,7 +60,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -76,8 +76,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67059,
@@ -111,7 +111,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -127,8 +127,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67060,
@@ -162,7 +162,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -178,8 +178,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67061,
@@ -213,7 +213,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -229,8 +229,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67062,
@@ -264,7 +264,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -280,8 +280,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67063,
@@ -315,7 +315,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -331,8 +331,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67064,
@@ -366,7 +366,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -382,8 +382,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67065,
@@ -417,7 +417,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -433,8 +433,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67067,
@@ -468,7 +468,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -484,8 +484,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67068,
@@ -519,7 +519,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -535,8 +535,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67069,
@@ -570,7 +570,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -586,8 +586,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67070,
@@ -621,7 +621,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -637,8 +637,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67071,
@@ -672,7 +672,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -688,8 +688,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67072,
@@ -723,7 +723,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -739,8 +739,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67073,
@@ -774,7 +774,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -790,8 +790,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67074,
@@ -825,7 +825,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -841,8 +841,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
         "id": 67075,
@@ -876,7 +876,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷    Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -892,8 +892,8 @@
         "created_at": "2023-07-24 17:51:33",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/pLzBL7CB/claro.png",
         "id": 67076,
@@ -927,7 +927,7 @@
             "color": "#800006FF",
             "created_at": "2023-07-24 16:37:27",
             "id": 5465,
-            "name": "🇧🇷     Conexões ViP VERSÃO : 1.15    🇧🇷",
+            "name": "🇧🇷     Conexões ViP VERSÃO : 1.20    🇧🇷",
             "sorter": 1,
             "status": "ACTIVE",
             "updated_at": "2023-07-24 16:37:27",
@@ -943,8 +943,8 @@
         "created_at": "2023-07-24 17:51:24",
         "description": "Servidor VIP : 🇧🇷",
         "dns_server": {
-            "dns1": "1.1.1.1",
-            "dns2": "2606:4700:4700::1001"
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "icon": "https://i.postimg.cc/3Jcm7kjD/Picsart-23-06-29-05-06-57-855.png",
         "id": 67077,
