@@ -1,13 +1,23 @@
 [
     {
-        "id":211636,
-        "user_id":"165fb9f4-3e37-4465-9c73-1cd931015d89",
-        "category_id":13668,
-        "name":"VIVO SECURITY 01",
-        "description":"VIVO TURBO.",
-        "cdns":null,
-        "config_payload":
-        {
+        "auth": {
+            "password": null,
+            "username": null,
+            "v2ray_uuid": null
+        },
+        "category": {
+            "color": "#800006FF",
+            "created_at": "2023-07-24 16:37:27",
+            "id": 5465,
+            "name": "🇧🇷    Conexões ViP VERSÃO : 1.30   🇧🇷",
+            "sorter": 1,
+            "status": "ACTIVE",
+            "updated_at": "2023-07-24 16:37:27",
+            "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
+        },
+        "category_id": 5465,
+        "config_openvpn": null,
+        "config_payload": {
             "payload":"[split][lf]ACL / HTTP/1.1[crlf]Host: vigia.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: Upgrade[crlf][crlf]",
             "sni":""
         },
@@ -5388,7 +5398,8 @@
             "sorter":0,
             "color":"",
             "created_at":"",
-            "updated_at":""
-        }
+            "updated_at": "2023-09-07 00:12:21",
+        "url_check_user": "",
+        "user_id": "d37036c7-833d-4246-8b45-c0ce6e8daaa2"
     }
 ]
