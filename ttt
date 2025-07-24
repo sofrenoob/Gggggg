@@ -955,7 +955,7 @@
             "port": 80
         },
         "server": {
-            "host": "uol.alfalemos.shop#cdn.alfalemos.shop",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
