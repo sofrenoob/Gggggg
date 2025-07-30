@@ -477,7 +477,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "[split]HTTP/ [lf][lf]#[split]HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf] [lf]#[instant_split]HTTP/ 2 HTTP/1.1 PURGE HTTP/1.1[lf][lf]#CONNECT HTTP/ 2 \\\\r\\\\n\\\\r\\\\n#\\n\\rGET wss://[app_host]/ [split]HTTP/1.1 [lf]Expect:100-continue[lf]Host: [app_host][crlf]Connection: Upgrade[crlf]Speed-100: [crlf]Upgrade: elonmusk[crlf][crlf]#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n#HTTP/ [crlf][crlf]|[crlf]#[rotate=ACL;GET;PATCH;HEAD] wss://[rotate=185.194.205.50]/ HTTP/1.0[crlf]Host: [rotate=web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;m.waze.com;m.twitter.com;twitter.com;c.whatsapp.net;media.whatsapp.net;web.whatsapp.com;m.waze.com;web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;m.waze.com;m.twitter.com;twitter.com;web.whatsapp.com;media.whatsapp.net;c.whatsapp.net;musicaclaro.com.br][crlf]Upgrade: Websocket[crlf]Proxy-Connection: Keep-Alive; Upgrade[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]tl[crlf][crlf]#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n#HTTP/ [crlf][crlf]|[crlf]#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n#HTTP/ [crlf][crlf]|[crlf]",
+            "payload": "HTTP/1.1 200 OK[lf][lf]#[delay_split]HTTP/ 2 \\\\\\\\r\\\\\\\\n\\\\\\\\r\\\\\\\\n#[delay_split]HTTP/1.1[crlf] 200 Connection established\\\\\\\\r\\\\\\\\nHost: GET /? HTTP/2.0\\\\\\\\r\\\\\\\\nHost: youtube.com\\\\\\\\r\\\\\\\\n200 Connection established\\\\\\\\r\\\\\\\\nProxy-Connection: close\\\\\\\\r\\\\\\\\nConnection-Keep-true\\\\\\\\r\\\\\\\\nControl-Cache: no-cache\\\\\\\\r\\\\\\\\nContent-Length: 9999999999999999999\\\\\\\\r\\\\\\\\nUser-Agent: Yes \\\\\\\\r\\\\\\\\nContent-Encoding: 88888888\\\\\\\\r\\\\\\\\nContent-Language: 00000000\\\\\\\\r\\\\\\\\nContent-Length: 55555555\\\\\\\\r\\\\\\\\nContent-Location:33333333[crlf][crlf]#[delay_split]HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]#[delay_split] CONNECT / HTTP\\\\\\\\2.0 [lf][lf][lf]CONNECT 127.0.0.1:80[lf][lf]#[delay_split] LOCK / [protocol][host_port][crlf][crlf]#[delay_split]PATCH / Cache-Control: private: rustyproxy[lf]host: www.veek.com.br[lf][lf]#[rotate=ACL;UNLOCK;LOCK;PATCH] /Allow/ HTTP/1.1[crlf]Host: uol.alfalemos.shop[lf][lf][split][lf]GET-CONTROL / HTTP/1.1[lf]Host: uol.alfalemos.shop[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]#[delay_split]HTTP/ 2[lf]Host: vivo.com#[delay_split]MOVE / HTTP/1.1[crlf]Host: @ssh_t_project[crlf]Upgrade: websocket[crlf][crlf]#[delay_split]HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\\\\\\\n\\\\\\\\n\\\\\\\\n \\\\\\\\n#[delay_split]ACL HTTP/1.1[lf]Host: google.es[lf]#[delay_split]ACL buzzfeed.com HTTP/1.1[lf]Host:buzzfeed.com[lf]#[delay_split]ACL / HTTP/1.1[crlf][crlf]#[delay_split]PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net[crlf]#[delay_split]HTTP/1.1 200[crlf]Host: vimeo.com[crlf][crlf][netData][crlf]@mip [crlf][crlf]http://uber.com/ HTTP/1.1 200[crlf]mip[crlf][crlf] [crlf][crlf]http://udemy.com/ HTTP/1.1 200[crlf]Host@mip[crlf][crlf] [crlf][crlf] http://aliyuncs.com/ HTTP/1.1 200[crlf]Host fastly.net/[crlf][crlf][netData][crlf] [crlf][crlf] http://pornhub.com/ HTTP/1.1[crlf] [crlf][crlf][netData][crlf] [crlf][crlf] http://google.com/ HTTP/1.1[cr][lf] [crlf][crlf][netData][cr][lf] [crlf][crlf]CONNECT mip:22@http://youtube.com/ HTTP/1.1[crlf] [crlf][crlf][netData][crlf] [crlf][crlf#[delay_split]PATCH / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -489,14 +489,14 @@
         },
         "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "id": 67068,
-        "mode": "SSH_PROXY",
+        "mode": "SSH_DIRECT",
         "name": "TIM 01 ",
         "proxy": {
-            "host": "185.194.205.50",
-            "port": 80
+            "host": "",
+            "port": 0
         },
         "server": {
-            "host": "uol.alfalemos.shop",
+            "host": "185.194.205.50",
             "port": 80
         },
         "sorter": 1,
