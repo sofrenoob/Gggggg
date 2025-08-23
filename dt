@@ -37,7 +37,7 @@
             "port": 80
         },
         "server": {
-            host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -139,7 +139,7 @@
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -190,7 +190,7 @@
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -241,7 +241,7 @@
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -292,7 +292,7 @@
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -343,7 +343,7 @@
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -492,11 +492,11 @@
         "mode": "SSH_PROXY",
         "name": "TIM EXPIRADO 🌍 01 ",
         "proxy": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -547,7 +547,7 @@
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
@@ -936,7 +936,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Admcloudfront[crlf][split][crlf]",
+            "payload": "[split][lf][rotate=OPTIONS;DELETE;GET;PUT;POST] / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf]Expect: 100-continue[crlf]@JNET-VPN[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Admcloudfront[crlf][split][crlf]",
             "sni": null
         },
         "config_v2ray": null,
@@ -955,7 +955,7 @@
             "port": 80
         },
         "server": {
-            "host": "185.194.205.50",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "sorter": 1,
