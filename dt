@@ -936,7 +936,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "[split][lf][rotate=OPTIONS;DELETE;GET;PUT;POST] / HTTP/1.1[crlf]Host: cdn.alfalemos.shop[crlf]Upgrade: websocket[crlf]Expect: 100-continue[crlf]@JNET-VPN[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Admcloudfront[crlf][split][crlf]",
+            "payload": "ACL / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Upgrade: Websocket[crlf]Admcloudfront[crlf][split][crlf]",
             "sni": null
         },
         "config_v2ray": null,
