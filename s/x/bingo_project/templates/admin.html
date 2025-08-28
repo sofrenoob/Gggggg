@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Painel Admin</h1>
+<h2>Editar Preço da Aposta</h2>
+<form method="post">
+    Preço: <input type="number" name="bet_price" value="{{ config.bet_price }}" step="0.01">
+    <input type="submit" value="Salvar">
+</form>
+
+<h2>Editar Saldos de Usuários</h2>
+{% for u in users %}
+    <form method="post">
+        CPF: {{ u.cpf }} | Saldo Atual: {{ u.balance }}
+        Novo Saldo: <input type="number" name="new_balance" step="0.01">
+        <input type="hidden" name="cpf" value="{{ u.cpf }}">
+        <input type="hidden" name="edit_balance" value="1">
+        <input type="submit" value="Atualizar">
+    </form>
+{% endfor %}
+{% endblock %}
