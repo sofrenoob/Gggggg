@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Bem-vindo, CPF: {{ user.cpf }} | Saldo: R$ {{ user.balance }}</h1>
+<a href="{{ url_for('logout') }}">Sair</a> | <a href="{{ url_for('recharge') }}">Recarregar Saldo</a> | <a href="{{ url_for('withdraw') }}">Sacar</a>
+{% if user.is_admin %}<a href="{{ url_for('admin') }}">Admin</a>{% endif %}
+
+<h2>Rodada Atual: ID {{ current_round.id }} - Status: {{ current_round.status }}</h2>
+<div id="countdown">Tempo restante: <span id="timer">{{ countdown }}</span> segundos</div>
+
+<h3>Números Disponíveis (Verde) / Comprados (Cinza)</h3>
+{% for i in range(1, 100) %}
+    <div class="number {% if i in bought_numbers %}bought{% else %}available{% endif %}">{{ i }}</div>
+{% endfor %}
+
+<h3>Seus Números: {{ user_bets }}</h3>
+<form method="post" action="{{ url_for('add_to_cart') }}">
+    Adicionar Número: <input type="number" name="number" min="1" max="99">
+    <input type="submit" value="Adicionar ao Carrinho">
+</form>
+<form method="post" action="{{ url_for('checkout') }}">
+    <input type="submit" value="Finalizar Compra (Carrinho)">
+</form>
+
+<h3>Participantes (Últimos 6 dígitos CPF)</h3>
+<ul>
+{% for p in participants %}
+    <li>CPF: ...{{ p.cpf_last6 }} - Número: {{ p.numbers }}</li>
+{% endfor %}
+</ul>
+
+<h3>Ganhadores Última Rodada</h3>
+<ul>
+{% for w in winners %}
+    <li>{{ w.place }}º Lugar - CPF: ...{{ w.cpf_last6 }} - Prêmio: R$ {{ w.prize }}</li>
+{% endfor %}
+</ul>
+
+<script>
+    let time = {{ countdown }};
+    const timer = document.getElementById('timer');
+    setInterval(() => {
+        time--;
+        timer.innerText = time;
+        if (time <= 0) location.reload();
+    }, 1000);
+</script>
+{% endblock %}
