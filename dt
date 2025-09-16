@@ -944,7 +944,7 @@
         "description": "23/08/2025 📝",
         "dns_server": {
             "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
+            "dns2": "1.1.1.1"
         },
         "icon": "https://i.postimg.cc/3Jcm7kjD/Picsart-23-06-29-05-06-57-855.png",
         "id": 67077,
