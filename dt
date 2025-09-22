@@ -18,7 +18,7 @@
         "category_id": 5465,
         "config_openvpn": null,
         "config_payload": {
-            "payload": "ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]#ACL / HTTP/1.1[lf]Host: [host][lf]Upgrade: Websocket[lf][instant_split][lf]#ACL / HTTP/1.1[lf]Host: [host][lf]Upgrade: Websocket[lf][lf]",
+            "payload": "[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]PATCH / HTTP/1.1[crlf]Host: [host][crlf]Host: ws.revservers.online[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[lf]Host: [app_host][lf]Upgrade: Websocket[lf][split][lf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: meuplano.tim.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split]GET /HTTP 1.2#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]",
             "sni": ""
         },
         "config_v2ray": null,
@@ -31,9 +31,9 @@
         "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
         "id": 67058,
         "mode": "SSH_DIRECT",
-        "name": "VIVO     [ 01 ]          🛡️",
+        "name": "VIVO     [ 01 ]   v1       🛡️",
         "proxy": {
-            "host": "162.159.140.159#172.66.0.157#172.67.74.152#104.26.12.205#188.114.99.229#188.114.98.229#104.26.13.205#172.64.150.8#lexiruffell.com#104.16.184.241#216.198.54.2#104.26.13.249#104.18.37.248#172.64.150.8#104.18.51.111#23.227.60.200",
+            "host": "185.194.204.142",
             "port": 80
         },
         "server": {
