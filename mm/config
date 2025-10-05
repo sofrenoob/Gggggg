@@ -48,7 +48,7 @@
         "status": "ACTIVE",
         "url_check_user": "http://check-user.duckdns.org:2052",
         "icon": "https://br.png",
-        "sorter": 2
+        "sorter": 3
     },
     {
         "id": 818609,
