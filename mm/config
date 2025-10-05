@@ -1,1 +1,776 @@
-hxjxvxixvzjzvzb
+[
+    {
+        "id": 541043,
+        "category_id": 32537,
+        "name": "Test update VOX PY",
+        "description": "ILIMITADO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[crlf]Host: unpkg.com[crlf][crlf]CF-RAY / HTTP/1.1[crlf]Host: argentina.uol.alfalemos.shop[crlf]Upgrade: websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [uat][crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "unpkg.com#www.ding.com#twitter.com#creativecommons.org#s10.histats.com",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://check-user.duckdns.org:2052",
+        "icon": "https://static.wikia.nocookie.net/logopedia/images/9/98/Logo_de_Vox_%282009%29.png/revision/latest?cb=20230425144230&path-prefix=es",
+        "sorter": 7
+    },
+    {
+        "id": 678671,
+        "category_id": 32537,
+        "name": "CLARO AR 1",
+        "description": "ROAMING | ILIMITADO | IP 🇦🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "OPTIONS / HTTP/1.1[crlf]Host: identidad.claro.com.ar[crlf][crlf][split]GET /dakar HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade:  [crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "identidad.claro.com.ar",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://check-user.duckdns.org:2052",
+        "icon": "https://i.ibb.co/NLWfvQp/png-transparent-claro-hd-logo-modified.png",
+        "sorter": 2
+    },
+    {
+        "id": 706100,
+        "category_id": 32537,
+        "name": "TIGO PY 1",
+        "description": "MODO AVION |USAR CON PACK WHATSAPP | IP 🇦🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[crlf]Host: internet.tigo.com.py[crlf][crlf][split]X / HTTP/1.1[crlf]Host: internet.tigo.com.py[crlf][crlf]GET /dakar HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]#HEAD / HTTP/1.1[crlf]Host: internet.tigo.com.py[crlf][crlf][split][crlf][crlf]GET- / HTTP/1.1[crlf]Host: internet.tigo.com.py[lf][lf]GET /dakar HTTP/1.1[crlf]Host: [host][lf]Connection:  Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googl/ebot/2.1 (+http://www.google.com/bot.html)[lf][lf][split]#GET / HTTP/1.1[crlf]Host: internet.tigo.com.py[crlf][crlf][split]\\\\nOPTION / HTTP/1.1[crlf]Host: internet.tigo.com.py[crlf][crlf]GET /dakar HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "108.139.166.71#108.158.122.70#3.163.63.17#3.160.90.18#3.163.63.66#3.163.63.117#3.163.63.17#3.163.63.91#108.139.182.42#13.227.83.77#3.160.119.30#3.160.119.92#3.160.119.72#3.160.119.118#65.8.248.45#65.8.248.128#65.8.248.77#65.8.248.71#13.227.83.97#3.163.63.17#13.227.83.77#3.160.90.71#3.160.119.69#3.160.90.58",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://check-user.duckdns.org:2052",
+        "icon": "https://i.ibb.co/RgKywxt/ic-tim.png",
+        "sorter": 1
+    },
+    {
+        "id": 756938,
+        "category_id": 32537,
+        "name": "PERSONAL AR 1",
+        "description": "ROAMING | ILIMITADO | IP 🇦🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=GET;POST;PUT;OPTIONS;HEAD;COPY;ACL] / HTTP/1.1[crlf]Host: www.personal.com.ar[crlf][crlf][split]X / HTTP/1.1[crlf]Host: www.personal.com.ar[crlf][crlf]GET /dakar HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "tienda.personal.com.ar#recarga.personal.com.ar#ayudaysoporte.personal.com.ar#recargas.personal.com.ar#mipersonaluat.personal.com.ar#tienda-test.personal.com.ar#alta2.personal.com.ar#agresources-test.personal.com.ar#mipersonaltest.personal.com.ar#mipersonaltest2.personal.com.ar#recarga-test.personal.com.ar#www.tienda.personal.com.ar#mipersonaluat2.personal.com.ar#tienda-dev.personal.com.ar#recargasuat.personal.com.ar#ayudaysoporte2.personal.com.ar#mipersonalstaging.personal.com.ar#recarga-dev.personal.com.ar#agresources-dev.personal.com.ar#mipersonal2.personal.com.ar#www.person.com.ar#emailmarketing.personal.com.ar",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://check-user.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/Njj5sjVS/image.png",
+        "sorter": 5
+    },
+    {
+        "id": 629423,
+        "category_id": 32538,
+        "name": "PERSONAL 3",
+        "description": "PREPAGO | ABONO | CONGELA MEGAS | IP 🇧🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "COPY / HTTP/1.1[crlf]Host: emailmarketing.personal.com.ar[crlf][crlf]\n[lf][lf][instant_split][lf][lf]\nX / HTTP/1.2[crlf]Host: emailmarketing.personal.com.ar[crlf][lf][crlf]GET / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]#HEAD / HTTP/1.1[crlf]Host: www.personal.com.ar[crlf][lf][crlf][split]\nX / HTTP/1.2[crlf]Host: www.personal.com.ar[crlf][lf][crlf]GET /.rar HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "emailmarketing.personal.com.ar",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "https://check-user-2.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/Njj5sjVS/image.png",
+        "sorter": 3
+    },
+    {
+        "id": 737367,
+        "category_id": 32538,
+        "name": "PERSONAL 4",
+        "description": "PREPAGO | ABONO | CONGELA MEGAS | IP 🇧🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": "misconsumos.page.link"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "misconsumos.page.link",
+            "port": 443
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "https://check-user-2.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/Njj5sjVS/image.png",
+        "sorter": 4
+    },
+    {
+        "id": 785029,
+        "category_id": 32538,
+        "name": "MOVISTAR 2",
+        "description": "ABONO | prueba",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL / HTTP/1.1[crlf]Host: [rotate=coronadash.argentina.gob.ar;www.unpkg.com;www.linkedin.com;cdnjs.cloudflare.com;cdn.jsdelivr.net;www.w3.org;twitter.com;stackoverflow.com;wa.link;api.retargetly.com;cdn.id5-sync.com;ads01.groovinads.com;www.speedtest.net;www.argentina.gob.ar][crlf][crlf][split]GET /ws HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: [ua][crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=coronadash.argentina.gob.ar;www.unpkg.com;www.linkedin.com;cdnjs.cloudflare.com;cdn.jsdelivr.net;www.w3.org;twitter.com;stackoverflow.com;wa.link;api.retargetly.com;cdn.id5-sync.com;ads01.groovinads.com;www.speedtest.net;www.argentina.gob.ar][crlf][crlf]CF-RAY / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]Connection: Keep-Alive[crlf]User-Agent: [uat][crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=coronadash.argentina.gob.ar;www.unpkg.com;www.linkedin.com;cdnjs.cloudflare.com;cdn.jsdelivr.net;www.w3.org;twitter.com;stackoverflow.com;wa.link;api.retargetly.com;cdn.id5-sync.com;ads01.groovinads.com;www.speedtest.net;www.argentina.gob.ar][crlf]Expect: 100-continue[lf][lf][split][lf][lf]GET- / HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf]Referer: [host][lf][lf]#ACL / [split]HTTP/1.1 [lf]Host: [host][lf]Upgrade: Websocket[lf][lf]#ACL / HTTP/1.1[crlf]Host: [rotate=coronadash.argentina.gob.ar;www.unpkg.com;www.linkedin.com;cdnjs.cloudflare.com;cdn.jsdelivr.net;www.w3.org;twitter.com;stackoverflow.com;wa.link;api.retargetly.com;cdn.id5-sync.com;ads01.groovinads.com;www.speedtest.net;www.argentina.gob.ar][crlf][crlf][instant_split][crlf]ACL- / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][instant_split][crlf]#[delay_split][lf]ACL HTTP/1.1[lf]Host: [rotate=coronadash.argentina.gob.ar;www.unpkg.com;www.linkedin.com;cdnjs.cloudflare.com;cdn.jsdelivr.net;www.w3.org;twitter.com;stackoverflow.com;wa.link;api.retargetly.com;cdn.id5-sync.com;ads01.groovinads.com;www.speedtest.net;www.argentina.gob.ar][crlf][crlf][crlf]#[delay_split]GET /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=coronadash.argentina.gob.ar;www.unpkg.com;www.linkedin.com;cdnjs.cloudflare.com;cdn.jsdelivr.net;www.w3.org;twitter.com;stackoverflow.com;wa.link;api.retargetly.com;cdn.id5-sync.com;ads01.groovinads.com;www.speedtest.net;www.argentina.gob.ar][crlf][crlf]GET-RAY / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "coronadash.argentina.gob.ar#www.unpkg.com#www.linkedin.com#cdnjs.cloudflare.com#cdn.jsdelivr.net#www.w3.org#twitter.com#stackoverflow.com#wa.link#api.retargetly.com#cdn.id5-sync.com#ads01.groovinads.com#www.speedtest.net#www.argentina.gob.ar",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "https://0af528808a.dtunnel.pp.ua:2053",
+        "icon": "https://i.postimg.cc/6p0wQW9P/image.png",
+        "sorter": 8
+    },
+    {
+        "id": 803678,
+        "category_id": 32538,
+        "name": "MOVISTAR 1",
+        "description": "ABONO | PRUEBA",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[delay_split]HTTP/3 3[lf][lf]#[split]HTTP/3 0[lf][lf]#[delay_split]HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]#[delay_split]ACL /Set-Cookie: sessionID=fbafa6258966f49f252b404ab9e5c219; path=/admin; domain= [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net]; secure; HttpOnly; SameSite=strict HTTP/1.1][lf]#[delay_split]ACL /[rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1][lf]#[delay_split]CONNECT [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] \nHTTP/1.1[lf][lf]#[split] [method] [host_port]GET [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] [protocol][crlf]Proxy-Authorization: [auth]Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net][crlf][crlf]MOVE [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1[crlf][crlf]#[delay_split]CONNECT [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1[lf][lf]#[delay_split]GET [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1 Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net]\nUser-Agent: Yes\nConnection: close\nProxy-Connection: Keep-Alive\n[crlf][crlf][netData][crlf] [crlf][crlf]#[delay_split]GET [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1\\n\\r\\n\\r\\nCONNECT 127.0.0.1:443HTTP/1.0X-Online-Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] \\r\\n\\r\\n#[delay_split]CONNECT [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1[crlf][split]#[delay_split]CONNECT [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.0[crlf]<font color=\"black\">[split]#[delay_split]CONNECT [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1[crlf]<font color=\"yes\">[split]#[delay_split]CONNECT [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1[lf]#[split]\\nCONNECT [host_port]@[rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net][protocol]\\nGET  [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1\\nHost: portalrecarga.vivo.com.br/recarga/home/produto[crlf]X-Forwarded-For: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net]\\n\\n\\n#[delay_split]CONNECT [host_port]<font color=\"yelp\"> GET [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] [protocol][lf][split]CONNECT 187.8.166.33 CONNECT [host_port] [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1[crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net][lf]#[delay_split] ACL / HTTP/1.1[crlf]Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]#[delay_split]ACL [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net] HTTP/1.1[crlf]Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net][crlf]#[delay_split]ACL HTTP/1.1[crlf]Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net][crlf]X-Online-Host: [app_host][crlf]Connection:l llbj  Keep-Alive[crlf]User-Agent: [ua][crlf]#[delay_split][lf]ACL / HTTP/1.1[lf]Host: hmg-[rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net]\\n\\n\\n#[delay_split][lf]ACL / HTTP/1.1[lf]Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net][lf]#[delay_split][lf]ACL / HTTP/1.1[lf]Host: [rotate=unpkg.com;www.argentina.gob.ar;coronadash.argentina.gob.ar;www.speedtest.net][lf]#[delay_split][lf]ACL / HTTP/1.1][lf]Host: [host][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "coronadash.argentina.gob.ar#www.unpkg.com#www.linkedin.com#cdnjs.cloudflare.com#cdn.jsdelivr.net#www.w3.org#twitter.com#stackoverflow.com#wa.link#api.retargetly.com#cdn.id5-sync.com#ads01.groovinads.com#www.speedtest.net#www.argentina.gob.ar",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "https://b33cc3f7fb.dtunnel.pp.ua:2053",
+        "icon": "https://i.postimg.cc/6p0wQW9P/image.png",
+        "sorter": 7
+    },
+    {
+        "id": 807941,
+        "category_id": 32538,
+        "name": "PERSONAL 1",
+        "description": "PREPAGO | ABONO | IP 🇦🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=HEAD;COPY;ACL] / HTTP/1.1[crlf]Host: www.personal.com.ar[crlf][crlf][split]X / HTTP/1.1[crlf]Host: www.personal.com.ar[crlf][crlf]GET /dakar HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "academiadigitalers.telecom.com.ar#identityvalidationd.telecom.com.ar#identityvalidationt.telecom.com.ar#idpauthappdev.test.telecom.com.ar#keyrec.telecom.com.ar#keyrecd.telecom.com.ar#keyrect.telecom.com.ar#pagosdev.telecom.com.ar#pagosv2.telecom.com.ar#prestacion.telecom.com.ar#prestaciondev.telecom.com.ar#prestaciontest.telecom.com.ar#regbf.telecom.com.ar#regbft.telecom.com.ar#teamaws.telecom.com.ar#unifiedsignup.telecom.com.ar#unifiedsignupt.telecom.com.ar#userrec.telecom.com.ar",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://check-user.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/Njj5sjVS/image.png",
+        "sorter": 1
+    },
+    {
+        "id": 818469,
+        "category_id": 32538,
+        "name": "PERSONAL 2",
+        "description": "PREPAGO | ABONO | IP 🇦🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=HEAD;COPY;ACL] / HTTP/1.1[crlf]Host: www.personal.com.ar[crlf][crlf][split][crlf][crlf]GET- / HTTP/1.1[crlf]Host: www.personal.com.ar[lf][lf]GET /dakar HTTP/1.1[crlf]Host: [host][lf]Connection:  Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googl/ebot/2.1 (+http://www.google.com/bot.html)[lf][lf][split]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "tienda.personal.com.ar#recarga.personal.com.ar#ayudaysoporte.personal.com.ar#recargas.personal.com.ar#mipersonaluat.personal.com.ar#tienda-test.personal.com.ar#alta2.personal.com.ar#agresources-test.personal.com.ar#mipersonaltest.personal.com.ar#mipersonaltest2.personal.com.ar#recarga-test.personal.com.ar#www.tienda.personal.com.ar#mipersonaluat2.personal.com.ar#tienda-dev.personal.com.ar#recargasuat.personal.com.ar#ayudaysoporte2.personal.com.ar#mipersonalstaging.personal.com.ar#recarga-dev.personal.com.ar#agresources-dev.personal.com.ar#mipersonal2.personal.com.ar#www.person.com.ar#emailmarketing.personal.com.ar",
+            "port": 80
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://check-user.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/Njj5sjVS/image.png",
+        "sorter": 2
+    },
+    {
+        "id": 818683,
+        "category_id": 47663,
+        "name": "VIVO 1",
+        "description": "TESTE",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": "claroideas.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "fonts.gstatic.com",
+            "port": 443
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "https://check-user-2.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/Njj5sjVS/image.png",
+        "sorter": 1
+    },
+    {
+        "id": 818684,
+        "category_id": 47663,
+        "name": "VIVO 2",
+        "description": "TESTE",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": "ar.claroideas.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "youtube.com",
+            "port": 443
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "https://check-user-2.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/Njj5sjVS/image.png",
+        "sorter": 2
+    },
+    {
+        "id": 818685,
+        "category_id": 47663,
+        "name": "VIVO 3",
+        "description": "TESTE",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": "claroideas.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "www.googletagmanager.com",
+            "port": 443
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "https://check-user-2.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/Njj5sjVS/image.png",
+        "sorter": 3
+    },
+    {
+        "id": 818609,
+        "category_id": 52572,
+        "name": "VIVA 2",
+        "description": "SIN SALDO | FULL",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": "toolbar.google.com.bo"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "142.251.1.84#pubsub.googleapis.com#www.googletagmanager.com#142.251.1.84",
+            "port": 443
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://check-user.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/SskTgY5f/image.png",
+        "sorter": 2
+    },
+    {
+        "id": 818611,
+        "category_id": 52572,
+        "name": "VIVA 1",
+        "description": "SIN SALDO | FULL",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": "www.google.cd"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "www.google.cd",
+            "port": 443
+        },
+        "server": {
+            "host": "uol.alfalemos.shop",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://check-user.duckdns.org:2052",
+        "icon": "https://i.postimg.cc/SskTgY5f/image.png",
+        "sorter": 1
+    }
+]
