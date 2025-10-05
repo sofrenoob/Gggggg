@@ -3,11 +3,11 @@
         "id": 818608,
         "category_id": 52572,
         "name": "TIM",
-        "description": "EXPIRADO",
+        "description": "EXPIRADO SSH",
         "cdns": null,
         "config_payload": {
-            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "sni": "toolbar.google.com.bo"
+            "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
+            "sni": ""
         },
         "config_openvpn": "",
         "config_v2ray": "",
@@ -18,12 +18,12 @@
             "v2ray_uuid": null
         },
         "proxy": {
-            "host": "142.251.1.84#pubsub.googleapis.com#www.googletagmanager.com#142.251.1.84",
-            "port": 443
+            "host": "bancah.com.br",
+            "port": 80
         },
         "server": {
             "host": "uol.alfalemos.shop",
-            "port": 443
+            "port": 80
         },
         "dnstt_key": "",
         "dnstt_name_server": "",
@@ -44,7 +44,7 @@
             7300,
             7400
         ],
-        "mode": "SSL_PROXY",
+        "mode": "SSH_PROXY",
         "status": "ACTIVE",
         "url_check_user": "http://check-user.duckdns.org:2052",
         "icon": "https://br.png",
