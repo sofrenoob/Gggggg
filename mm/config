@@ -18,7 +18,7 @@
             "v2ray_uuid": null
         },
         "proxy": {
-            "host": "bancah.com.br",
+            "host": "uol.alfalemos.shop",
             "port": 80
         },
         "server": {
@@ -54,11 +54,11 @@
         "id": 818609,
         "category_id": 52572,
         "name": "CLARO",
-        "description": "FLEX | FULL",
+        "description": "FLEX | FULL SSH",
         "cdns": null,
         "config_payload": {
             "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
-            "sni": "toolbar.google.com.bo"
+            "sni": ""
         },
         "config_openvpn": "",
         "config_v2ray": "",
@@ -69,12 +69,12 @@
             "v2ray_uuid": null
         },
         "proxy": {
-            "host": "142.251.1.84#pubsub.googleapis.com#www.googletagmanager.com#142.251.1.84",
-            "port": 443
+            "host": "uol.alfalemos.shop",
+            "port": 80
         },
         "server": {
             "host": "uol.alfalemos.shop",
-            "port": 443
+            "port": 80
         },
         "dnstt_key": "",
         "dnstt_name_server": "",
@@ -95,7 +95,7 @@
             7300,
             7400
         ],
-        "mode": "SSL_PROXY",
+        "mode": "SSH_PROXY",
         "status": "ACTIVE",
         "url_check_user": "http://check-user.duckdns.org:2052",
         "icon": "https://i.ibb.co/NLWfvQp/png-transparent-claro-hd-logo-modified.png",
@@ -105,11 +105,11 @@
         "id": 818611,
         "category_id": 52572,
         "name": "VIVA 1",
-        "description": "SIN SALDO | FULL",
+        "description": "SIN SALDO | FULL SSH",
         "cdns": null,
         "config_payload": {
             "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]",
-            "sni": "www.google.cd"
+            "sni": ""
         },
         "config_openvpn": "",
         "config_v2ray": "",
@@ -120,12 +120,12 @@
             "v2ray_uuid": null
         },
         "proxy": {
-            "host": "www.google.cd",
-            "port": 443
+            "host": "uol.alfalemos.shop",
+            "port": 80
         },
         "server": {
             "host": "uol.alfalemos.shop",
-            "port": 443
+            "port": 80
         },
         "dnstt_key": "",
         "dnstt_name_server": "",
@@ -146,7 +146,7 @@
             7300,
             7400
         ],
-        "mode": "SSL_PROXY",
+        "mode": "SSH_PROXY",
         "status": "ACTIVE",
         "url_check_user": "http://check-user.duckdns.org:2052",
         "icon": "https://i.postimg.cc/SskTgY5f/image.png",
