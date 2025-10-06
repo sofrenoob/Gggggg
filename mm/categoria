@@ -1,21 +1,21 @@
 {
     "content": [
         {
-            "id": 41070,
+            "id": 32855,
             "name": "Group 1",
             "status": "ACTIVE",
             "sorter": 1,
             "color": "#FF5733"
         },
         {
-            "id": 32855,
+            "id": 23144,
             "name": "Group 2",
             "status": "ACTIVE",
             "sorter": 2,
             "color": "#33FF57"
         },
         {
-            "id": 23144,
+            "id": 41070,
             "name": "Group 3",
             "status": "ACTIVE",
             "sorter": 3,
