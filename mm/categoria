@@ -1,1 +1,25 @@
-{"content":[{"id":52572,"name":"CONEXÕES  VERSÃO: 2.0  🌎","status":"ACTIVE","sorter":4,"color":"#80000000"}]}
+{
+    "content": [
+        {
+            "id": 41070,
+            "name": "Group 1",
+            "status": "ACTIVE",
+            "sorter": 1,
+            "color": "#FF5733"
+        },
+        {
+            "id": 32855,
+            "name": "Group 2",
+            "status": "ACTIVE",
+            "sorter": 2,
+            "color": "#33FF57"
+        },
+        {
+            "id": 23144,
+            "name": "Group 3",
+            "status": "ACTIVE",
+            "sorter": 3,
+            "color": "#3357FF"
+        }
+    ]
+}
