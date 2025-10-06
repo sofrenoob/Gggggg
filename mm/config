@@ -43,7 +43,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://uol.alfalemos.shop:2052",
+  "url_check_user": "http://nnn.alfalemos.shop:2052",
   "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
   "sorter": 1
  },
@@ -91,7 +91,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://uol.alfalemos.shop:2052",
+  "url_check_user": "http://nnn.alfalemos.shop:2052",
   "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
   "sorter": 2
  },
@@ -102,7 +102,7 @@
   "description": "Flex",
   "cdns": null,
   "config_payload": {
-   "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
+   "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
    "sni": ""
   },
   "config_openvpn": "",
@@ -118,7 +118,7 @@
    "port": 80
   },
   "server": {
-   "host": "uol.alfalemos.shop",
+   "host": "nnn.alfalemos.shop",
    "port": 80
   },
   "dnstt_key": "",
@@ -139,7 +139,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://uol.alfalemos.shop:2052",
+  "url_check_user": "http://nnn.alfalemos.shop:2052",
   "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
   "sorter": 3
  },
@@ -187,7 +187,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://uol.alfalemos.shop:2052",
+  "url_check_user": "http://nnn.alfalemos.shop:2052",
   "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
   "sorter": 4
  },
@@ -198,7 +198,7 @@
   "description": "Planos ativos!",
   "cdns": null,
   "config_payload": {
-   "payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Content-Length:9999999999999[crlf][crlf]",
+   "payload": "GET / HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Content-Length:9999999999999[crlf][crlf]",
    "sni": ""
   },
   "config_openvpn": "",
@@ -235,7 +235,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://uol.alfalemos.shop:2052",
+  "url_check_user": "http://nnn.alfalemos.shop:2052",
   "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
   "sorter": 5
  },
@@ -246,7 +246,7 @@
   "description": "Planos ativos!",
   "cdns": null,
   "config_payload": {
-   "payload": "GET / HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Content-Length:9999999999999[crlf][crlf]",
+   "payload": "GET / HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Content-Length:9999999999999[crlf][crlf]",
    "sni": ""
   },
   "config_openvpn": "",
@@ -262,7 +262,7 @@
    "port": 80
   },
   "server": {
-   "host": "uol.alfalemos.shop",
+   "host": "nnn.alfalemos.shop",
    "port": 80
   },
   "dnstt_key": "",
@@ -283,7 +283,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://uol.alfalemos.shop:2052",
+  "url_check_user": "http://nnn.alfalemos.shop:2052",
   "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
   "sorter": 6
  }
