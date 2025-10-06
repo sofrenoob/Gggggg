@@ -22,7 +22,7 @@
             "port": 0
         },
         "server": {
-            "host": "asxtronet.shop",
+            "host": "uol.alfalemos.shop",
             "port": 443
         },
         "dnstt_key": "",
@@ -70,7 +70,7 @@
             "port": 0
         },
         "server": {
-            "host": "asxtronet.shop",
+            "host": "uol.alfalemos.shop",
             "port": 443
         },
         "dnstt_key": "",
@@ -118,7 +118,7 @@
             "port": 0
         },
         "server": {
-            "host": "asxtronet.shop",
+            "host": "uol.alfalemos.shop",
             "port": 443
         },
         "dnstt_key": "",
@@ -166,7 +166,7 @@
             "port": 0
         },
         "server": {
-            "host": "asxtronet.shop",
+            "host": "uol.alfalemos.shop",
             "port": 443
         },
         "dnstt_key": "",
@@ -188,7 +188,7 @@
         "mode": "SSL_DIRECT",
         "status": "ACTIVE",
         "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
+        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "sorter": 4
     },
     {
@@ -262,7 +262,7 @@
             "port": 0
         },
         "server": {
-            "host": "asxtronet.shop",
+            "host": "uol.alfalemos.shop",
             "port": 443
         },
         "dnstt_key": "",
