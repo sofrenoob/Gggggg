@@ -1,290 +1,290 @@
 [
-    {
-        "id": 378411,
-        "category_id": 23176,
-        "name": "VIVO -➔ 01",
-        "description": "Flex & controle!",
-        "cdns": null,
-        "config_payload": {
-            "payload": "",
-            "sni": "beacons.gcp.gvt2.com#m.twitter.com#twitter.com#web.whatsapp.com#api.whatsapp.com#c.whatsapp.net#m.waze.com#social-row.waze.com#waze.com#m.waze.com#m.twitter.com#c.whatsapp.net#dns.web.whatsapp.com"
-        },
-        "config_openvpn": "",
-        "config_v2ray": "",
-        "tls_version": "TLSv1.3",
-        "auth": {
-            "username": null,
-            "password": null,
-            "v2ray_uuid": null
-        },
-        "proxy": {
-            "host": "",
-            "port": 0
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 443
-        },
-        "dnstt_key": "",
-        "dnstt_name_server": "",
-        "dnstt_server": "",
-        "hy_obfs": "",
-        "hy_up_mbps": 100,
-        "hy_down_mbps": 150,
-        "hy_insecure": true,
-        "hy_port": "13375",
-        "hy_version": 1,
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "udp_ports": [
-            7300
-        ],
-        "mode": "SSL_DIRECT",
-        "status": "ACTIVE",
-        "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
-        "sorter": 1
-    },
-    {
-        "id": 378528,
-        "category_id": 23176,
-        "name": "VIVO -➔ 02",
-        "description": "Flex & controle!",
-        "cdns": null,
-        "config_payload": {
-            "payload": "",
-            "sni": "api.whatsapp.com"
-        },
-        "config_openvpn": "",
-        "config_v2ray": "",
-        "tls_version": "TLSv1.2",
-        "auth": {
-            "username": null,
-            "password": null,
-            "v2ray_uuid": null
-        },
-        "proxy": {
-            "host": "",
-            "port": 0
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 443
-        },
-        "dnstt_key": "",
-        "dnstt_name_server": "",
-        "dnstt_server": "",
-        "hy_obfs": "",
-        "hy_up_mbps": 100,
-        "hy_down_mbps": 150,
-        "hy_insecure": true,
-        "hy_port": "13375",
-        "hy_version": 1,
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "udp_ports": [
-            7300
-        ],
-        "mode": "SSL_DIRECT",
-        "status": "ACTIVE",
-        "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
-        "sorter": 2
-    },
-    {
-        "id": 378529,
-        "category_id": 23176,
-        "name": "TIM PLANOS -➔ 01",
-        "description": "Flex & controle!",
-        "cdns": null,
-        "config_payload": {
-            "payload": "",
-            "sni": "m.waze.com#m.twitter.com#media.whatsapp.net#web.whatsapp.com"
-        },
-        "config_openvpn": "",
-        "config_v2ray": "",
-        "tls_version": "TLSv1.2",
-        "auth": {
-            "username": null,
-            "password": null,
-            "v2ray_uuid": null
-        },
-        "proxy": {
-            "host": "",
-            "port": 0
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 443
-        },
-        "dnstt_key": "",
-        "dnstt_name_server": "",
-        "dnstt_server": "",
-        "hy_obfs": "",
-        "hy_up_mbps": 100,
-        "hy_down_mbps": 150,
-        "hy_insecure": true,
-        "hy_port": "13375",
-        "hy_version": 1,
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "udp_ports": [
-            7300
-        ],
-        "mode": "SSL_DIRECT",
-        "status": "ACTIVE",
-        "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "sorter": 3
-    },
-    {
-        "id": 378530,
-        "category_id": 23176,
-        "name": "TIM PLANOS -➔ 02",
-        "description": "Flex & controle!",
-        "cdns": null,
-        "config_payload": {
-            "payload": "",
-            "sni": "whatsapp.com#web-login.waze.com"
-        },
-        "config_openvpn": "",
-        "config_v2ray": "",
-        "tls_version": "TLSv1.2",
-        "auth": {
-            "username": null,
-            "password": null,
-            "v2ray_uuid": null
-        },
-        "proxy": {
-            "host": "",
-            "port": 0
-        },
-        "server": {
-            "host": "uol.alfalemos.shop",
-            "port": 443
-        },
-        "dnstt_key": "",
-        "dnstt_name_server": "",
-        "dnstt_server": "",
-        "hy_obfs": "",
-        "hy_up_mbps": 100,
-        "hy_down_mbps": 150,
-        "hy_insecure": true,
-        "hy_port": "13375",
-        "hy_version": 1,
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "udp_ports": [
-            7300
-        ],
-        "mode": "SSL_DIRECT",
-        "status": "ACTIVE",
-        "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-        "sorter": 4
-    },
-    {
-        "id": 561830,
-        "category_id": 23176,
-        "name": "CLARO -➔ EXPIRADO -➔  01",
-        "description": "Planos ativos!",
-        "cdns": null,
-        "config_payload": {
-            "payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf]\nX / HTTP/1.1[crlf]Host: [host][crlf][crlf]GET / HTTP/1.1[crlf]Host: d37h914gptyvh2.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
-            "sni": ""
-        },
-        "config_openvpn": "",
-        "config_v2ray": "",
-        "tls_version": "TLSv1.2",
-        "auth": {
-            "username": null,
-            "password": null,
-            "v2ray_uuid": null
-        },
-        "proxy": {
-            "host": "m.claro.com.br#combo-mult-net.cdn.prismic.io#www.combomultinet.com#telefoneclaro.cdn.prismic.io#telefoneclaro.com.br#vendas-claro.cdn.prismic.io#vendasclaro.com.br#mondrian.claro.com.br#qa-minhaclaro.claro.com.br#dev-minhaclaro.claro.com.br#hmg-statics-recarga.claro.com.br#statics-recarga.claro.com.br#m.claro.com.br",
-            "port": 80
-        },
-        "server": {
-            "host": "d37h914gptyvh2.cloudfront.net",
-            "port": 80
-        },
-        "dnstt_key": "",
-        "dnstt_name_server": "",
-        "dnstt_server": "",
-        "hy_obfs": "",
-        "hy_up_mbps": 100,
-        "hy_down_mbps": 150,
-        "hy_insecure": true,
-        "hy_port": "13375",
-        "hy_version": 1,
-        "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "8.8.4.4"
-        },
-        "udp_ports": [
-            7300
-        ],
-        "mode": "SSH_PROXY",
-        "status": "ACTIVE",
-        "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
-        "sorter": 5
-    },
-    {
-        "id": 702766,
-        "category_id": 23176,
-        "name": "SLOW | VIVO",
-    "description": "Lenta",
-    "cdns": null,
-    "config_payload": {
-      "payload": "",
-      "sni": ""
-    },
-    "config_openvpn": "",
-    "config_v2ray": "",
-    "tls_version": "TLSv1.2",
-    "auth": {
-      "username": null,
-      "password": null,
-      "v2ray_uuid": null
-    },
-    "proxy": {
-      "host": "",
-      "port": 0
-    },
-    "server": {
-      "host": "127.0.0.1",
-      "port": 2222
-    },
-    "dnstt_key": "401c47d885c18cd2eae3ea592406fe1fb0b42be2e077e45a06c80363028fd363",
-    "dnstt_name_server": "slow.snowssh.com",
-    "dnstt_server": "187.50.250.115",
-    "hy_obfs": "",
-    "hy_up_mbps": 100,
-    "hy_down_mbps": 150,
-    "hy_insecure": true,
-    "hy_port": "13375",
-    "hy_version": 1,
-    "dns_server": {
-      "dns1": "8.8.8.8",
-      "dns2": "8.8.4.4"
-    },
-    "udp_ports": [
-      7300
-    ],
-    "mode": "SSH_DNSTT",
-    "status": "ACTIVE",
-    "url_check_user": "https://snowssh.net/checkuser/dtunnel.php?user=",
-        "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
-        "sorter": 6
-    }
+ {
+  "id": 378411,
+  "category_id": 23176,
+  "name": "VIVO -➔ 01",
+  "description": "Flex & controle!",
+  "cdns": null,
+  "config_payload": {
+   "payload": "",
+   "sni": "beacons.gcp.gvt2.com#m.twitter.com#twitter.com#web.whatsapp.com#api.whatsapp.com#c.whatsapp.net#m.waze.com#social-row.waze.com#waze.com#m.waze.com#m.twitter.com#c.whatsapp.net#dns.web.whatsapp.com"
+  },
+  "config_openvpn": "",
+  "config_v2ray": "",
+  "tls_version": "TLSv1.3",
+  "auth": {
+   "username": null,
+   "password": null,
+   "v2ray_uuid": null
+  },
+  "proxy": {
+   "host": "",
+   "port": 0
+  },
+  "server": {
+   "host": "uol.alfalemos.shop",
+   "port": 443
+  },
+  "dnstt_key": "",
+  "dnstt_name_server": "",
+  "dnstt_server": "",
+  "hy_obfs": "",
+  "hy_up_mbps": 100,
+  "hy_down_mbps": 150,
+  "hy_insecure": true,
+  "hy_port": "13375",
+  "hy_version": 1,
+  "dns_server": {
+   "dns1": "8.8.8.8",
+   "dns2": "8.8.4.4"
+  },
+  "udp_ports": [
+   7300
+  ],
+  "mode": "SSL_DIRECT",
+  "status": "ACTIVE",
+  "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
+  "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
+  "sorter": 1
+ },
+ {
+  "id": 378528,
+  "category_id": 23176,
+  "name": "VIVO -➔ 02",
+  "description": "Flex & controle!",
+  "cdns": null,
+  "config_payload": {
+   "payload": "",
+   "sni": "api.whatsapp.com"
+  },
+  "config_openvpn": "",
+  "config_v2ray": "",
+  "tls_version": "TLSv1.2",
+  "auth": {
+   "username": null,
+   "password": null,
+   "v2ray_uuid": null
+  },
+  "proxy": {
+   "host": "",
+   "port": 0
+  },
+  "server": {
+   "host": "uol.alfalemos.shop",
+   "port": 443
+  },
+  "dnstt_key": "",
+  "dnstt_name_server": "",
+  "dnstt_server": "",
+  "hy_obfs": "",
+  "hy_up_mbps": 100,
+  "hy_down_mbps": 150,
+  "hy_insecure": true,
+  "hy_port": "13375",
+  "hy_version": 1,
+  "dns_server": {
+   "dns1": "8.8.8.8",
+   "dns2": "8.8.4.4"
+  },
+  "udp_ports": [
+   7300
+  ],
+  "mode": "SSL_DIRECT",
+  "status": "ACTIVE",
+  "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
+  "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
+  "sorter": 2
+ },
+ {
+  "id": 378529,
+  "category_id": 23176,
+  "name": "TIM PLANOS -➔ 01",
+  "description": "Flex & controle!",
+  "cdns": null,
+  "config_payload": {
+   "payload": "",
+   "sni": "m.waze.com#m.twitter.com#media.whatsapp.net#web.whatsapp.com"
+  },
+  "config_openvpn": "",
+  "config_v2ray": "",
+  "tls_version": "TLSv1.2",
+  "auth": {
+   "username": null,
+   "password": null,
+   "v2ray_uuid": null
+  },
+  "proxy": {
+   "host": "",
+   "port": 0
+  },
+  "server": {
+   "host": "uol.alfalemos.shop",
+   "port": 443
+  },
+  "dnstt_key": "",
+  "dnstt_name_server": "",
+  "dnstt_server": "",
+  "hy_obfs": "",
+  "hy_up_mbps": 100,
+  "hy_down_mbps": 150,
+  "hy_insecure": true,
+  "hy_port": "13375",
+  "hy_version": 1,
+  "dns_server": {
+   "dns1": "8.8.8.8",
+   "dns2": "8.8.4.4"
+  },
+  "udp_ports": [
+   7300
+  ],
+  "mode": "SSL_DIRECT",
+  "status": "ACTIVE",
+  "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
+  "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+  "sorter": 3
+ },
+ {
+  "id": 378530,
+  "category_id": 23176,
+  "name": "TIM PLANOS -➔ 02",
+  "description": "Flex & controle!",
+  "cdns": null,
+  "config_payload": {
+   "payload": "",
+   "sni": "whatsapp.com#web-login.waze.com"
+  },
+  "config_openvpn": "",
+  "config_v2ray": "",
+  "tls_version": "TLSv1.2",
+  "auth": {
+   "username": null,
+   "password": null,
+   "v2ray_uuid": null
+  },
+  "proxy": {
+   "host": "",
+   "port": 0
+  },
+  "server": {
+   "host": "uol.alfalemos.shop",
+   "port": 443
+  },
+  "dnstt_key": "",
+  "dnstt_name_server": "",
+  "dnstt_server": "",
+  "hy_obfs": "",
+  "hy_up_mbps": 100,
+  "hy_down_mbps": 150,
+  "hy_insecure": true,
+  "hy_port": "13375",
+  "hy_version": 1,
+  "dns_server": {
+   "dns1": "8.8.8.8",
+   "dns2": "8.8.4.4"
+  },
+  "udp_ports": [
+   7300
+  ],
+  "mode": "SSL_DIRECT",
+  "status": "ACTIVE",
+  "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
+  "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+  "sorter": 4
+ },
+ {
+  "id": 561830,
+  "category_id": 23176,
+  "name": "CLARO -➔ EXPIRADO -➔  01",
+  "description": "Planos ativos!",
+  "cdns": null,
+  "config_payload": {
+   "payload": "GET / HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf]\nX / HTTP/1.1[crlf]Host: [host][crlf][crlf]GET / HTTP/1.1[crlf]Host: d37h914gptyvh2.cloudfront.net [crlf]Upgrade: websocket[crlf]Connection: Upgrade[crlf][crlf]",
+   "sni": ""
+  },
+  "config_openvpn": "",
+  "config_v2ray": "",
+  "tls_version": "TLSv1.2",
+  "auth": {
+   "username": null,
+   "password": null,
+   "v2ray_uuid": null
+  },
+  "proxy": {
+   "host": "m.claro.com.br#combo-mult-net.cdn.prismic.io#www.combomultinet.com#telefoneclaro.cdn.prismic.io#telefoneclaro.com.br#vendas-claro.cdn.prismic.io#vendasclaro.com.br#mondrian.claro.com.br#qa-minhaclaro.claro.com.br#dev-minhaclaro.claro.com.br#hmg-statics-recarga.claro.com.br#statics-recarga.claro.com.br#m.claro.com.br",
+   "port": 80
+  },
+  "server": {
+   "host": "d37h914gptyvh2.cloudfront.net",
+   "port": 80
+  },
+  "dnstt_key": "",
+  "dnstt_name_server": "",
+  "dnstt_server": "",
+  "hy_obfs": "",
+  "hy_up_mbps": 100,
+  "hy_down_mbps": 150,
+  "hy_insecure": true,
+  "hy_port": "13375",
+  "hy_version": 1,
+  "dns_server": {
+   "dns1": "8.8.8.8",
+   "dns2": "8.8.4.4"
+  },
+  "udp_ports": [
+   7300
+  ],
+  "mode": "SSH_PROXY",
+  "status": "ACTIVE",
+  "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
+  "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+  "sorter": 5
+ },
+ {
+  "id": 702766,
+  "category_id": 23176,
+  "name": "SLOW | VIVO",
+  "description": "Lenta",
+  "cdns": null,
+  "config_payload": {
+   "payload": "",
+   "sni": ""
+  },
+  "config_openvpn": "",
+  "config_v2ray": "",
+  "tls_version": "TLSv1.2",
+  "auth": {
+   "username": null,
+   "password": null,
+   "v2ray_uuid": null
+  },
+  "proxy": {
+   "host": "",
+   "port": 0
+  },
+  "server": {
+   "host": "127.0.0.1",
+   "port": 2222
+  },
+  "dnstt_key": "401c47d885c18cd2eae3ea592406fe1fb0b42be2e077e45a06c80363028fd363",
+  "dnstt_name_server": "slow.snowssh.com",
+  "dnstt_server": "187.50.250.115",
+  "hy_obfs": "",
+  "hy_up_mbps": 100,
+  "hy_down_mbps": 150,
+  "hy_insecure": true,
+  "hy_port": "13375",
+  "hy_version": 1,
+  "dns_server": {
+   "dns1": "8.8.8.8",
+   "dns2": "8.8.4.4"
+  },
+  "udp_ports": [
+   7300
+  ],
+  "mode": "SSH_DNSTT",
+  "status": "ACTIVE",
+  "url_check_user": "https://snowssh.net/checkuser/dtunnel.php?user=",
+  "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+  "sorter": 6
+ }
 ]
