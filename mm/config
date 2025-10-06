@@ -1,6 +1,6 @@
 [
     {
-        "id": 818608,
+        "id": 01,
         "category_id": 52572,
         "name": "TIM",
         "description": "EXPIRADO SSH",
@@ -48,10 +48,10 @@
         "status": "ACTIVE",
         "url_check_user": "http://check-user.duckdns.org:2052",
         "icon": "https://br.png",
-        "sorter": 3
+        "sorter": 1
     },
     {
-        "id": 818609,
+        "id": 02,
         "category_id": 52572,
         "name": "CLARO",
         "description": "FLEX | FULL SSH",
@@ -102,7 +102,7 @@
         "sorter": 2
     },
     {
-        "id": 818611,
+        "id": 03,
         "category_id": 52572,
         "name": "VIVA 1",
         "description": "SIN SALDO | FULL SSH",
@@ -150,6 +150,102 @@
         "status": "ACTIVE",
         "url_check_user": "http://check-user.duckdns.org:2052",
         "icon": "https://i.postimg.cc/SskTgY5f/image.png",
-        "sorter": 1
+        "sorter": 3
+    },
+    {
+        "id": 04,
+        "category_id": 52572,
+        "name": "CLARO SLOW 01",
+        "description": "31,35,75,81,89,91,93,96,98",
+        "cdns": null,
+        "config_payload": {
+            "payload": "",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "127.0.0.1",
+            "port": 2222
+        },
+        "dnstt_key": "f1e8ecf9b231b06179a96c740efdd760bfc95081217ad8a309d5f5fcd0e98668",
+        "dnstt_name_server": "ns1.skalassh.store",
+        "dnstt_server": "200.169.117.221",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_DNSTT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 4
+    },
+    {
+        "id": 05,
+        "category_id": 52572,
+        "name": "CLARO SLOW 02",
+        "description": "31,35,75,81,89,91,93,96,98 etc",
+        "cdns": null,
+        "config_payload": {
+            "payload": "",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "127.0.0.1",
+            "port": 2222
+        },
+        "dnstt_key": "f1e8ecf9b231b06179a96c740efdd760bfc95081217ad8a309d5f5fcd0e98668",
+        "dnstt_name_server": "ns1.skalassh.store",
+        "dnstt_server": "208.67.222.222",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_DNSTT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 5
     }
 ]
