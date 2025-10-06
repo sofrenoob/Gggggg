@@ -1,12 +1,12 @@
 [
     {
-        "id": 818608,
-        "category_id": 52572,
-        "name": "TIM",
-        "description": "EXPIRADO SSH",
+        "id": 211636,
+        "category_id": 13668,
+        "name": "VIVO SECURITY 01",
+        "description": "VIVO TURBO",
         "cdns": null,
         "config_payload": {
-            "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
+            "payload": "[split][lf]ACL / HTTP/1.1[crlf]Host: vigia.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: Upgrade[crlf][crlf]",
             "sni": ""
         },
         "config_openvpn": "",
@@ -18,11 +18,11 @@
             "v2ray_uuid": null
         },
         "proxy": {
-            "host": "uol.alfalemos.shop",
-            "port": 80
+            "host": "209.14.70.47",
+            "port": 8080
         },
         "server": {
-            "host": "uol.alfalemos.shop",
+            "host": "163.176.166.78",
             "port": 80
         },
         "dnstt_key": "",
@@ -35,29 +35,34 @@
         "hy_port": "13375",
         "hy_version": 1,
         "dns_server": {
-            "dns1": "8.8.8.8",
-            "dns2": "1.1.1.1"
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
         },
         "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
             7100,
             7200,
             7300,
-            7400
+            7400,
+            7500
         ],
-        "mode": "SSH_PROXY",
+        "mode": "SSH_DIRECT",
         "status": "ACTIVE",
-        "url_check_user": "http://check-user.duckdns.org:2052",
-        "icon": "https://br.png",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
         "sorter": 1
     },
     {
-        "id": 818609,
-        "category_id": 52572,
-        "name": "CLARO",
-        "description": "FLEX | FULL SSH",
+        "id": 211641,
+        "category_id": 13668,
+        "name": "VIVO SECURITY 02",
+        "description": "VIVO TURBO PRÉ PAGO",
         "cdns": null,
         "config_payload": {
-            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "payload": "[split]HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]",
             "sni": ""
         },
         "config_openvpn": "",
@@ -69,11 +74,11 @@
             "v2ray_uuid": null
         },
         "proxy": {
-            "host": "uol.alfalemos.shop",
+            "host": "204.216.170.39",
             "port": 80
         },
         "server": {
-            "host": "uol.alfalemos.shop",
+            "host": "163.176.166.78",
             "port": 80
         },
         "dnstt_key": "",
@@ -86,29 +91,34 @@
         "hy_port": "13375",
         "hy_version": 1,
         "dns_server": {
-            "dns1": "8.8.8.8",
+            "dns1": "1.1.1.1",
             "dns2": "1.1.1.1"
         },
         "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
             7100,
             7200,
             7300,
-            7400
+            7400,
+            7500
         ],
-        "mode": "SSH_PROXY",
+        "mode": "SSH_DIRECT",
         "status": "ACTIVE",
-        "url_check_user": "http://check-user.duckdns.org:2052",
-        "icon": "https://i.ibb.co/NLWfvQp/png-transparent-claro-hd-logo-modified.png",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
         "sorter": 2
     },
     {
-        "id": 818611,
-        "category_id": 52572,
-        "name": "VIVA 1",
-        "description": "SIN SALDO | FULL SSH",
+        "id": 212286,
+        "category_id": 13714,
+        "name": "TIM EXPIRADO 01",
+        "description": "SEM CRÉDITO ok ddd 21 91",
         "cdns": null,
         "config_payload": {
-            "payload": "GET /app119 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]",
+            "payload": "HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]",
             "sni": ""
         },
         "config_openvpn": "",
@@ -120,11 +130,11 @@
             "v2ray_uuid": null
         },
         "proxy": {
-            "host": "uol.alfalemos.shop",
-            "port": 80
+            "host": "",
+            "port": 0
         },
         "server": {
-            "host": "uol.alfalemos.shop",
+            "host": "163.176.166.78",
             "port": 80
         },
         "dnstt_key": "",
@@ -138,23 +148,4112 @@
         "hy_version": 1,
         "dns_server": {
             "dns1": "8.8.8.8",
-            "dns2": "1.1.1.1"
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 1
+    },
+    {
+        "id": 212287,
+        "category_id": 13714,
+        "name": "TIM EXPIRADO 2",
+        "description": "SEM CRÉDITO DDD 21ok",
+        "cdns": null,
+        "config_payload": {
+            "payload": "HTTP/1.1 200[crlf]Host: vimeo.com[crlf][crlf][netData][crlf]@mip [crlf][crlf]http://uber.com/ HTTP/1.1 200[crlf]mip[crlf][crlf] [crlf][crlf]http://udemy.com/ HTTP/1.1 200[crlf]Host@mip[crlf][crlf] [crlf][crlf] http://aliyuncs.com/ HTTP/1.1 200[crlf]Host fastly.net/[crlf][crlf][netData][crlf] [crlf][crlf] http://pornhub.com/ HTTP/1.1[crlf] [crlf][crlf][netData][crlf] [crlf][crlf] http://google.com/ HTTP/1.1[cr][lf] [crlf][crlf][netData][cr][lf] [crlf][crlf]CONNECT mip:22@http://youtube.com/ HTTP/1.1[crlf] [crlf][crlf][netData][crlf] [crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "141.193.213.20#141.193.213.21",
+            "port": 80
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 2
+    },
+    {
+        "id": 212289,
+        "category_id": 13714,
+        "name": "TIM EXPIRADO 03",
+        "description": "TIM DDD 21 EXPIRADO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[delay_split]HTTP/1.1 200 WebSocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 3
+    },
+    {
+        "id": 212290,
+        "category_id": 13714,
+        "name": "TIM EXPIRADO 04",
+        "description": "TIM EXPIRADO SECURITY att okok",
+        "cdns": null,
+        "config_payload": {
+            "payload": "HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;[ServerIPWS]-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\\\n\\\\n\\\\n \\\\n",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.16.239.166",
+            "port": 80
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 4
+    },
+    {
+        "id": 212537,
+        "category_id": 13729,
+        "name": "VIVO EASY 01",
+        "description": "VIVO EASY PLANO CONTROLE 🇧🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=ACL;PUSH;PUTA;REBOOT;POST;DELETE;TLS;PATCH;GET;OPTIONS;PUT;HEAD;DELETE;NOTIFY;POLL;MKCOL;MOVE;SEARCH;LOCK;BCOPY;BMOVE;UNLOCK;BDELETE;SUBSCRIBE;BPROPFIND] / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: Websocket[lf][split][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "vivo360.vivo.com.br#104.18.37.248#api.vivo.com.br#172.64.150.8#vivomusica.vivo.com.br#aceitedigital.vivo.com.br.cdn.cloudflare.net",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "sorter": 1
+    },
+    {
+        "id": 212538,
+        "category_id": 13729,
+        "name": "VIVO EASY 02.",
+        "description": "VIVO EASY ATIVO ATT 14/07",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL / HTTP/1.1[lf]Host: [host][lf]Upgrade: Websocket Upgrade: [lf][split][lf]#ACL / HTTP/1.1[crlf]Host: [rotate=cdnjs.cloudflare.com;aceitedigital.vivo.com.br;api.vivo.com.br;gateway.ipfs.cloudflare.com][crlf][split]ACL / HTTP/1.1[crlf]Host: topspeed.c6bank.app[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@talkera[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@RevTunnel[crlf][crlf]@@@PATCH / HTTP/1.3[crlf]Host: mtls.sandbox.c6bank.com.br[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: [app_host][crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.21.215#104.20.139.65#104.18.99.70#104.18.99.70#172.64.154.143#104.18.33.113#104.17.70.206#104.18.6.41#172.64.150.8#104.24.10.16#104.18.37.248#104.26.5.32#104.17.64.225#104.19.240.25#104.18.27.160#104.16.239.166#104.18.28.181#104.16.237.16#104.18.33.113#141.193.213.11#104.18.37.84#104.18.6.80#172.64.153.247#172.64.144.96#104.18.7.41#104.18.7.80",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "sorter": 2
+    },
+    {
+        "id": 212539,
+        "category_id": 13729,
+        "name": "VIVO EASY 03.",
+        "description": "EASY OU PLANO CONTROLE  att",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: Websocket[lf][split][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "vivo360.vivo.com.br#104.18.37.24#api.vivo.com.br#172.64.150.8#vivomusica.vivo.com.br#aceitedigital.vivo.com.br.cdn.cloudflare.net",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "sorter": 3
+    },
+    {
+        "id": 212540,
+        "category_id": 13729,
+        "name": "VIVO EASY 04 ",
+        "description": "NOVA ATT ",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=CONNECT ;PUT ;POLL ;UNLOCK ;UPDATE ;ACL ;DELETE]/ HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf]User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-gb) AppleWebKit/534.35 (KHTML, like Gecko) Chrome/11.0.696.65 Safari/534.35 Puffin/2.9174AP[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.7.41#172.64.150.8#104.18.6.41#104.18.37.248#172.64.150.8#104.26.5.32#104.17.70.206",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "sorter": 4
+    },
+    {
+        "id": 212541,
+        "category_id": 13729,
+        "name": "VIVO EASY 05",
+        "description": "NOVA ATT",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=ACL;PUT;CONNECT;PATCH;GET;HEAD] / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf]User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-gb) AppleWebKit/534.35 (KHTML, like Gecko) Chrome/11.0.696.65 Safari/534.35 Puffin/2.9174AP[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.7.41#172.64.150.8#104.18.6.41#104.18.37.248",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "sorter": 5
+    },
+    {
+        "id": 214993,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 01.",
+        "description": "SALDO VALIDO é Expirado ",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[lf][lf][split][lf]GET- / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: ws[lf]User-Agent: yes[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "172.66.0.157",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
         },
         "udp_ports": [
             7100,
             7200,
             7300,
-            7400
+            7400,
+            7500,
+            7600,
+            7700,
+            7800,
+            7900
         ],
         "mode": "SSH_PROXY",
         "status": "ACTIVE",
-        "url_check_user": "http://check-user.duckdns.org:2052",
-        "icon": "https://i.postimg.cc/SskTgY5f/image.png",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 1
+    },
+    {
+        "id": 214994,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 02 ",
+        "description": "SALDO VALIDO DDDs 🇧🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "CONNECT / HTTP/1.9[crlf]host: timofertas.com[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: [host][crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.21.2.132",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 2
+    },
+    {
+        "id": 214995,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 03",
+        "description": "TIM SALDO VÁLIDO VARIOS DDDS",
+        "cdns": null,
+        "config_payload": {
+            "payload": "CONNECT / HTTP/1.9[crlf]host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: [host][crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "apf.maisvantagenstim.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
         "sorter": 3
     },
     {
-        "id": 818620,
-        "category_id": 52572,
+        "id": 214996,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 04",
+        "description": "TIM DDD 91 JOGUETE ✈️",
+        "cdns": null,
+        "config_payload": {
+            "payload": "PATCH /cdn-cgi/trace HTTP/1.1[crlf]Host: [random=breadbox.app;c6bank.zendesk.com;cdn.navdmp.com;mobile.hom.c6bank.app][crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Expect: 100-continue[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.16.239.166",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 4
+    },
+    {
+        "id": 214999,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 05",
+        "description": "ALGUNS DDDS ON",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL / HTTP/1.1[crlf]Host: [rotate=mtls.sandbox.c6bank.com.br;www.c6bank.com.br;celular.c6bank.app;blog.c6bank.com.br;app.sandbox.c6bank.com.br;creatorsupport.deezer.com;pre-onboarding-p.c6bank.app][crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf]Connection: Upgrade[crlf][crlf] ",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.99.70",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 5
+    },
+    {
+        "id": 215000,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 07",
+        "description": "DDD 21 MODO AVIÃO PRA ESTABILIZAR O SINAL ",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL /wss.hlp HTTP/1.3[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf]Connection: Keep-Alive[crlf]Atualização[crlf]Cache-Control: no-cache[crlf]@SSHTPROJECT[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.19.241.93",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 7
+    },
+    {
+        "id": 215001,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 06",
+        "description": "TIM ROTATE 🇧🇷 nova",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[lf][lf][split][lf]GET- / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: ws[lf]User-Agent: yes[lf][lf]#CONNECT / HTTP/1.1[lf]Host: apf.maisvantagenstim.com.br[lf][lf][split][lf]GET- / HTTP/1.1[lf]Host: ks.skalavendas.shop[lf]Upgrade: ws[lf]User-Agent: yes[lf][lf]#ACL /cdn-cgi/trace HTTP/1.1[lf]Host: maisvantagenstim.com.br[lf][lf][split][lf]GET- / HTTP/1.1[lf]Host: ks.skalavendas.shop[lf]Upgrade: ws[lf]User-Agent: yes[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "apf.maisvantagenstim.com.br#172.66.0.157#162.159.140.159",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 6
+    },
+    {
+        "id": 215002,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 08.",
+        "description": "DDDs ",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: Websocket[lf][split][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113#104.16.239.166#172.64.154.143#104.19.239.25#104.18.33.113#104.19.241.93#104.19.239.25#104.16.53.111#104.18.27.160#104.27.478.05#104.19.242.25#104.19.239.25#104.16.53.111#104.16.51.111#104.16.53.111",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 8
+    },
+    {
+        "id": 215003,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 09",
+        "description": "TIM DDD 48 MODO AVIÃO 🛬",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][split][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.33.113#172.64.154.143#172.67.188.168#104.17.64.225",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 9
+    },
+    {
+        "id": 215004,
+        "category_id": 13844,
+        "name": "TIM SALDO VÁLIDO 10",
+        "description": "TIM ROTATE VÁRIAS PAYLOUDS ",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL wss://sk.skalassh.store HTTP/1.1[lf]Host: [rotate=google.es;www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net][lf]Upgrade: Websocket[lf][split][lf]#ACL / HTTP/1.3[crlf]Host: mtls.sandbox.c6bank.com.br[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL- // HTTP/1.3[crlf]Host: skalavpn.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]#ACL / HTTP/1.1[crlf]host: details-page-api-docs.altmetric.com[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.1[crlf]host: skalavpn.shop[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]#ACL / HTTP/1.2[crlf]Host: www.hostingadvice.com[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]GET- // HTTP/1.1[crlf]Host: skalavpn.shop[crlf]Expect: 100-continue[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/3.1 (+http://www.google.com/bot.html)[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: [rotate=mtls.sandbox.c6bank.com.br;www.c6bank.com.br;celular.c6bank.app;blog.c6bank.com.br;app.sandbox.c6bank.com.br;creatorsupport.deezer.com;pre-onboarding-p.c6bank.app][crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: skalavpn.shop[crlf]Upgrade: Websocket[crlf]Connection: Upgrade[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: skalavpn.shop[crlf]Upgrade: websocket[crlf][crlf]#[split]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf][split]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: skalavpn.shop[crlf]Upgrade: websocket[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]@TSTOPSPEED[crlf][crlf]#ACL / HTTP/1.1[crlf]Host: creatorsupport.deezer.com[split][crlf][crlf]POLL / HTTP/1.1[crlf]Host: skalavpn.shop[crlf]Upgrade: websocket[crlf]User-Agent: [crlf][crlf]#ACL /wss.html HTTP/1.1[crlf]Host: landing.stoodi.com.br[crlf]Expect: 100-continue[crlf][crlf][split][crlf][crlf]ACL / HTTP/1.1[crlf]Host: skalavpn.shop[crlf]Upgrade: Websocket[crlf]Referer:@TMYCOMNECTVPN[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.28.182#104.16.51.111#104.19.240.25#104.18.29.182#104.16.53.111#104.19.239.25#104.19.242.25#104.19.241.93#104.18.26.160#104.19.240.93#104.16.237.16#104.19.243.25#104.18.28.181#104.19.237.25#104.17.64.225#172.64.154.143#104.16.239.166#104.18.33.113#unpkg.com#104.16.18.94#104.16.51.100#104.16.239.0#104.16.239.1#104.16.239.2#104.16.239.3#104.16.239.4#use.fontawesome.com#104.18.99.70#172.64.154.14#www.altmetric.com#cdn.cookielaw.org3#104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.64.225#104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://ks.skalavendas.shop:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 10
+    },
+    {
+        "id": 215017,
+        "category_id": 13845,
+        "name": "TIM SALDO VALIDO E EXPIRADO 01.",
+        "description": "SALDO VALIDO E EXPIRADO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.64.225",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 1
+    },
+    {
+        "id": 215018,
+        "category_id": 13845,
+        "name": "TIM SALDO VALIDO E EXPIRADO 02 .",
+        "description": "SALDO VALIDO E EXPIRADO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: mtls.sandbox.c6bank.com.br[lf][lf][split][lf][lf]PCVPN / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 2
+    },
+    {
+        "id": 215022,
+        "category_id": 13845,
+        "name": "TIM SALDO VALIDO E EXPIRADO 03",
+        "description": "SALDO VALIDO E EXPIRADO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL wss://sk.skalassh.store HTTP/1.1[lf]Host: [rotate=google.es;www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net][lf]Upgrade: Websocket[lf][split][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.19.241.93#104.18.28.182#104.19.239.25#104.18.33.113#172.64.154.143#104.18.99.70#104.16.53.111#172.67.188.168#104.17.64.225",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 3
+    },
+    {
+        "id": 215023,
+        "category_id": 13845,
+        "name": "TIM SALDO VALIDO E EXPIRADO 04.",
+        "description": "SALDO VALIDO E EXPIRADO  VARIOS DDDS",
+        "cdns": null,
+        "config_payload": {
+            "payload": "CONNECT / HTTP/1.9[crlf]host: apf.maisvantagenstim.com.br[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: [host][crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "apf.maisvantagenstim.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 4
+    },
+    {
+        "id": 215026,
+        "category_id": 13846,
+        "name": "CLARO FLEX 1",
+        "description": "plano flex",
+        "cdns": null,
+        "config_payload": {
+            "payload": "",
+            "sni": "m.waze.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSL_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 1
+    },
+    {
+        "id": 215027,
+        "category_id": 13846,
+        "name": "CLARO FLEX 2.",
+        "description": "plano flex",
+        "cdns": null,
+        "config_payload": {
+            "payload": "",
+            "sni": "twitter.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 2
+    },
+    {
+        "id": 215029,
+        "category_id": 13846,
+        "name": "CLARO PREZAO 01",
+        "description": "NOVA ATT",
+        "cdns": null,
+        "config_payload": {
+            "payload": "",
+            "sni": "www.whatsapp.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSL_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 4
+    },
+    {
+        "id": 215031,
+        "category_id": 13846,
+        "name": "CLARO PREZAO 02",
+        "description": "Nova att",
+        "cdns": null,
+        "config_payload": {
+            "payload": "",
+            "sni": "media.whatsapp.net"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSL_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 5
+    },
+    {
+        "id": 215032,
+        "category_id": 13846,
+        "name": "CLARO PLANOS 01",
+        "description": "PLANO ATIVO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "",
+            "sni": "v.whatsapp.net"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSL_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 7
+    },
+    {
+        "id": 215033,
+        "category_id": 13846,
+        "name": "CLARO PLANOS  02",
+        "description": "PLANO ATIVO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "",
+            "sni": "whatsapp.com#web-login.waze.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSL_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 8
+    },
+    {
+        "id": 215039,
+        "category_id": 13729,
+        "name": "VIVO PLANO CONTROLE 06.",
+        "description": "PLANO ATIVO okok",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf]Connection: Upgrade[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.6.41#104.18.7.41#104.18.7.80#104.18.4.161#172.64.150.8#104.16.51.111#104.16.53.111#104.18.37.248#141.193.213.11",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/iodlVR6.png",
+        "sorter": 6
+    },
+    {
+        "id": 215040,
+        "category_id": 13729,
+        "name": "VIVO PLANO CONTROLE 07",
+        "description": "NOVA ATT att",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1\nHost: sk.skalassh.store\nConnection: Upgrade\nUpgrade: websocket\nUser-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#141.193.213.10",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/iodlVR6.png",
+        "sorter": 7
+    },
+    {
+        "id": 215041,
+        "category_id": 13729,
+        "name": "VIVO PLANO CONTROLE 08",
+        "description": "PLANO ATIVO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: ws[lf][lf]         \n",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.6.41#104.18.7.41#104.18.7.80#104.18.4.161#172.64.150.8#104.16.51.111#104.16.53.111#104.18.37.248#141.193.213.11",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/iodlVR6.png",
+        "sorter": 8
+    },
+    {
+        "id": 215297,
+        "category_id": 13845,
+        "name": "TIM SALDO VÁLIDO E EXPIRADO 05",
+        "description": "DDDs",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL /wss.html HTTP/1.1[lf]Host: sk.skalassh.store[lf]Expect: 100-tmyvpn[lf]Connection: Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.16.239.166#104.17.64.225#104.16.239.166#104.16.239.166#104.18.33.113",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 5
+    },
+    {
+        "id": 230943,
+        "category_id": 13714,
+        "name": "TIM EXPIRADO 05",
+        "description": "TIM EXPIRADO SECURITY",
+        "cdns": null,
+        "config_payload": {
+            "payload": "MOVE / HTTP/1.1[crlf]Host: @shaka_news[crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.16.239.166",
+            "port": 80
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 5
+    },
+    {
+        "id": 230944,
+        "category_id": 13714,
+        "name": "TIM EXPIRADO 06",
+        "description": "TIM EXPIRADO SECURITY",
+        "cdns": null,
+        "config_payload": {
+            "payload": "HTTP/1.1 200 OK [crlf]Host:www.google.com[crlf]host:www.youtube.com[crlf]Host:www.facebook.com[crlf]#Host:www.amazon.com[crlf]host:www.twitter.com[crlf]host:www.instagram.com[crlf]Host:www.linkedin.com[crlf]Host:www.wikipedia.org[crlf]Host:www.netflix.com[crlf]Host:www.reddit.com[crlf][crlf]#HTTP/1.1 8080[crlf]Host: http://https://cacerts.digicert.com;http://crt.rootg2.amazontrust.com;https://www.wikipedia.org;http://chats.viber.com;https://www.dailymotion.com;https://www.ebay.com[crlf]#HTTP/3 200 [crlf]Host:www.speedtest.net[crlf]HTTP/2.9 200[lf]Host:[rotate=speedtest.net\\\\nHost:[rotate;myetisalat-app.speedtestcustom.com.ph\\\\#HTTP/1.1 200[crlf]Host: swcdn.apple.com[crlf]Connection: keep-alive[crlf]#HTTP/1.1 200 ok[crlf]Host:Soundcloud.com;Instagram.com; www.Bittorrent.com;www.utorrent.com[crlf]#HTTP/1.1 200 [crlf]Host: [rotate=teams.microsoft.com;kh.google.com;zoom.us;mobilemaps.googleapis.com][crlf]#HTTP/1.1 200 [crlf]Host:reddit.com[crlf]Connection:Keep-Alive[crlf]Proxy-Connection:Keep-Alive[crlf]#HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]#[delay_split]HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]#[delay_split]HTTP/ 2 \\\\\\\\\\\\\\\\r\\\\\\\\\\\\\\\\n\\\\\\\\\\\\\\\\r\\\\\\\\\\\\\\\\n#[split]HTTP/ [lf][lf]#[instant_split]HTTP/ 2 HTTP/1.1 [rotate=GET;POST;PUT;HEAD;OPTIONS;PATCH;DELETE;CONNECT;PROPFIND;PROPPATCH;MKCOL;COPY;MOVE;LOCK;UNLOCK;UPDATE;SEARCH] /Allow/HTTP/1.1[lf]host: cloudflare.com;twitter.comPATCH / Cache-Control: private: Web-security[lf]host: www.veek.com.br[lf]User-Agent: Rustproxy\\\\\\\\nProxy-Authorization: Basic base64(usuario:senha)\\\\\\\\nKeep-Alive: timeout=120, max=300\\\\\\\\nCONNECT 209.14.88.124:80 HTTP/1.1\\\\\\\\nConnection: keep-alive[lf]Keep-Alive: timeout=120, max=300[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 6
+    },
+    {
+        "id": 230946,
+        "category_id": 13714,
+        "name": "TIM EXPIRADO 07",
+        "description": "TIM EXPIRADO Socks att",
+        "cdns": null,
+        "config_payload": {
+            "payload": "HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\\\n\\\\n\\\\n \\\\n",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "152.70.220.31",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 7
+    },
+    {
+        "id": 249444,
+        "category_id": 13729,
+        "name": "VIVO PLANO CONTROLE 09",
+        "description": "PLANO ATIVO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1\nHost: sk.skalassh.store\nConnection: Upgrade\nUpgrade: websocket\nUser-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.17.72.206#104.17.70.206#104.17.73.206#104.17.71.206#escolas.playwaze.com#ftp.chillwaze.com#bucs.playwaze.com#141.193.213.10",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7400,
+            7300,
+            7600,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/iodlVR6.png",
+        "sorter": 9
+    },
+    {
+        "id": 254422,
+        "category_id": 15735,
+        "name": "VIVO FLARE 01",
+        "description": "VIVO TURBO 🇧🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Upgrade: Websocket[lf][split][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.16.239.166#104.17.64.225#104.18.33.113#104.26.5.32#::ffff:6810:356f#104.16.53.111#104.16.51.111#104.17.70.206#104.24.24.34#104.24.25.34",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500,
+            7600,
+            7700,
+            7800,
+            7900
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
+        "sorter": 1
+    },
+    {
+        "id": 270208,
+        "category_id": 15735,
+        "name": "VIVO FLARE 02",
+        "description": "Nova atualização att",
+        "cdns": null,
+        "config_payload": {
+            "payload": "DELETE / [split]HTTP/1.1 [lf]Host: sk.skalassh.store[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.17.72.206",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
+        "sorter": 4
+    },
+    {
+        "id": 297650,
+        "category_id": 13845,
+        "name": "TIM SALDO VÁLIDO E EXPIRADO 06",
+        "description": "DDDs",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[split]ACL / HTTP/1.9[crlf]host: www.c6bank.com.br[crlf][crlf][split][crlf]OPTIONS- // HTTP/1.9[crlf]host: sk.skalassh.store[crlf]Expect: 200-continue[crlf]Proxy-Connection: Keep-Alive[crlf]Keep-Alive: timeout=5, max=1000[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf]Sec WebSocketExtensions: superspeed[crlf]Last-Modified: Fri, 17 March 2022 04:32:39 GMT[crlf]Server: Qnax[crlf]User-Agent: Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "172.67.74.152#dashboards.lpu.in#admit.lpu.in#xdxd.decrypt-chupa-penes.info#api.ipify.org",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/c2AwkAv.png",
+        "sorter": 6
+    },
+    {
+        "id": 298139,
+        "category_id": 18250,
+        "name": "TIM FRONT 01",
+        "description": "TIM SALDO VÁLIDO ON NOVA ATT 11/07",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=GET;POST;PUT;HEAD;OPTIONS;PATCH;DELETE;CONNECT;PROPFIND;PROPPATCH;MKCOL;COPY;MOVE;Lock;UNLOCK;UPDATE;SEARCH] /app682489 HTTP/1.1[crlf]Host: tim.com.br[crlf][crlf][split][crlf][crlf]GET- /app682489 HTTP/1.1[crlf]Host: tim.com.br[lf][lf]GET /app682489 HTTP/1.1[crlf]Host: [rotate=centraldacdn-1.dns-theromshost.com;centraldacdn-2.dns-theromshost.com;centraldacdn-3.dns-theromshost.com;centraldacdn-4.dns-theromshost.com][lf]Connection: Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googl/ebot/2.1 (+http://www.google.com/bot.html)[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "cdn-segment.dzcdn.net#tim-myplan.plat-m4u.io#launches.appsflyer.com#tim-myplan.plat-m4u.io#13.227.126.40#13.227.126.91#99.84.31.8#13.227.126.40#13.227.126.91#99.84.31.8#13.227.126.91#13.227.126.39#99.84.31.114#65.8.178.74#65.8.178.65#65.8.178.51#99.84.31.97#99.84.31.8#99.84.31.80#13.227.126.40#18.64.174.128#premier.sonos.dzcdn.net#13.227.126.91#13.227.126.39#99.84.31.114#65.8.178.74#65.8.178.65#65.8.178.51#99.84.31.97#99.84.31.8#99.84.31.80#13.227.126.40#108.139.113.107#108.139.113.60#108.139.113.110#108.139.113.91#18.64.174.128",
+            "port": 80
+        },
+        "server": {
+            "host": "Recargas",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500,
+            7600
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 10
+    },
+    {
+        "id": 298141,
+        "category_id": 18250,
+        "name": "TIM FRONT 02.",
+        "description": "Tim DDDs",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET wss://www.timlive.tim.com.br/ HTTP/1.1[crlf]Host: www.timlive.tim.com.br[crlf][crlf][instant_split][crlf][crlf]GET- /app682489 HTTP/1.1[crlf]Host: [host][crlf][crlf]GET /app682489 HTTP/1.1[crlf]Host: [rotate=centraldacdn-1.dns-theromshost.com;centraldacdn-2.dns-theromshost.com;centraldacdn-3.dns-theromshost.com;centraldacdn-4.dns-theromshost.com][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "cdn-segment.dzcdn.net#tim-myplan.plat-m4u.io#launches.appsflyer.com#tim-myplan.plat-m4u.io#13.227.126.40#13.227.126.91#99.84.31.8#13.227.126.40#13.227.126.91#99.84.31.8#13.227.126.91#13.227.126.39#99.84.31.114#65.8.178.74#65.8.178.65#65.8.178.51#99.84.31.97#99.84.31.8#99.84.31.80#13.227.126.40#18.64.174.128#premier.sonos.dzcdn.net#13.227.126.91#13.227.126.39#99.84.31.114#65.8.178.74#65.8.178.65#65.8.178.51#99.84.31.97#99.84.31.8#99.84.31.80#13.227.126.40#108.139.113.107#108.139.113.60#108.139.113.110#108.139.113.91#18.64.174.128#108.158.137.102#99.84.31.8#108.139.113.110#99.84.31.80#13.227.126.91#108.158.137.43#108.139.113.100#108.139.113.110#108.139.113.114#108.139.113.127#108.139.113.60#108.139.95.5#108.158.137.102#13.227.126.39#13.227.126.40#13.227.126.91",
+            "port": 80
+        },
+        "server": {
+            "host": "RECARGAS",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 11
+    },
+    {
+        "id": 299502,
+        "category_id": 18250,
+        "name": "TIM FRONT 03.",
+        "description": "Nova atualização DDD 11ok",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[lf]Host: [rotate=seu.timpromos.com.br;www.timpromos.com.br;timpromos.com.br;auth.tim.com.br;migracaodeplanos.tim.com.br;meutim.tim.com.br;meutim.com.br;auth1.tim.com.br][lf][lf][split][lf]GET- / HTTP/1.1[lf]Host: timpromos.com.br[lf][lf]GET /app000 HTTP/1.1[lf]Host: [host][lf]Backend: app682489[lf]Connection: Upgrade[crlf]Upgrade: Websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "108.158.186.66#13.35.116.127#13.226.52.81#3.166.160.57#108.158.122.5#108.158.186.94#13.226.52.51#18.64.174.48#18.64.207.121#18.64.207.113#99.84.252.66#108.158.122.45#108.156.83.40",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-1.dns-theromshost.com#centraldacdn-2.dns-theromshost.com#centraldacdn-3.dns-theromshost.com#centraldacdn-4.dns-theromshost.com",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 13
+    },
+    {
+        "id": 326678,
+        "category_id": 18250,
+        "name": "TIM FRONT 04",
+        "description": "DDDs 21 ok 07/08",
+        "cdns": null,
+        "config_payload": {
+            "payload": "CONNECT / HTTP/1.1[crlf]Host: web.digipay.m4u.com.br[crlf][crlf][split][crlf][crlf]GET- / HTTP/1.1[crlf]Host: web.digipay.m4u.com.br[lf][lf]GET / HTTP/1.1[crlf]Host: [rotate=centraldacdn-2.dns-theromshost.com;centraldacdn-3.dns-theromshost.com;centraldacdn-4.dns-theromshost.com][lf]Backend: app682489[lf]Connection:  Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googl/ebot/2.1 (+http://www.google.com/bot.html)[lf][lf][split]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "web.digipay.m4u.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-1.dns-theromshost.com#centraldacdn-2.dns-theromshost.com#centraldacdn-3.dns-theromshost.com#centraldacdn-4.dns-theromshost.com",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 15
+    },
+    {
+        "id": 329530,
+        "category_id": 18250,
+        "name": "TIM FRONT 05.",
+        "description": "TIM VALIDADO DDD",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=GET;POST;PUT;HEAD;OPTIONS;PATCH;DELETE;CONNECT] / HTTP/1.1[lf]Host: [rotate=wrs1.clouduc.tim.com.br;wrs2.clouduc.tim.com.br;timjogueeganhe.tim.com.br;web1.clouduc.tim.com.br;web2.clouduc.tim.com.br;webrtc.clouduc.tim.com.br][lf] [lf]GET / HTTP/1.1[lf]Host: [host][lf]Backend: app682489[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]#[split]GET wss://bounce.mail.planos.tim.com.br/ HTTP/1.1[crlf]Host: bounce.mail.planos.tim.com.br[split][crlf] [crlf]GET / HTTP/1.1[crlf]Host:  [host][crlf]Backend: app682489[crlf]Connection: Upgrade; Keep-Alive[crlf]Upgrade: Websocket[crlf][split][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "108.139.113.45#108.139.113.89#108.139.95.104#13.227.126.39#13.227.126.40#13.227.126.58#13.227.126.91#13.227.97.28#13.227.97.49#13.227.97.69#13.33.123.107#18.67.129.10#18.67.129.103#18.67.129.119#18.67.129.91#52.85.213.112#52.85.213.121#52.85.213.74#52.85.213.77#99.84.31.114#99.84.31.8#99.84.31.80#99.84.31.97#asistencia.claro.com.ar#bounce.mail.planos.tim.com.br#cdn-segment.dzcdn.net#checkout.descomplica.com.br#conversions.appsflyer.com#dex.descomplica.com.br#glassbox.timrecarga.m4u.com.br#internet.vivo.com.br#io.descomplica.com.br#iret.media#onerpm.com#portais.ehtl.com.br#premier.sonos.dzcdn.net#smartu.smartsheet.com#timlive.tim.com.br#www.claro.com.uy#www.expressvpn.com#www.spencerstuart.com#www.themoviedb.org#www.ventoecia.com.br#www.vivo.com",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-2.dns-theromshost.com#centraldacdn-3.dns-theromshost.com#centraldacdn-4.dns-theromshost.com",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 16
+    },
+    {
+        "id": 361210,
+        "category_id": 18250,
+        "name": "TIM FRONT 06",
+        "description": "NOVA ATT oko",
+        "cdns": null,
+        "config_payload": {
+            "payload": "OPTIONS /app682489 HTTP/1.1[crlf]Host: dashboard.timlive.tim.com.br[crlf][crlf]X / HTTP/1.1[crlf]Host: @ADMrecargas[crlf][crlf]GET /app682489 HTTP/1.1[crlf]Host: [rotate=centraldacdn-3.dns-theromshost.com;centraldacdn-2.dns-theromshost.com;centraldacdn-4.dns-theromshost.com][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "13.227.126.91#13.227.126.39#99.84.31.8#cdn-segment.dzcdn.net#tim-myplan.plat-m4u.io#launches.appsflyer.com#tim-myplan.plat-m4u.io#trocadecartao.timcontrole.m4u.com.br#13.227.126.40#13.227.126.91#99.84.31.8#13.227.126.40#13.227.126.91#99.84.31.8#13.227.126.91#13.227.126.39#99.84.31.114#65.8.178.74#65.8.178.65#65.8.178.51#99.84.31.97#99.84.31.8#99.84.31.80#13.227.126.40#18.64.174.128#premier.sonos.dzcdn.net#13.227.126.91#13.227.126.39#99.84.31.114#65.8.178.74#65.8.178.65#65.8.178.51#99.84.31.97#99.84.31.8#99.84.31.80#13.227.126.40#108.139.113.107#108.139.113.60#108.139.113.110#108.139.113.91#18.64.174.128",
+            "port": 80
+        },
+        "server": {
+            "host": "RECARGAS",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 17
+    },
+    {
+        "id": 372987,
+        "category_id": 15735,
+        "name": "VIVO FLARE 03",
+        "description": "VIVO TURBO 30 DIAS ",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL / [split]HTTP/1.1 [lf]Host: sk.skalassh.store[lf]Upgrade: Websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.18.7.80",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
+        "sorter": 5
+    },
+    {
+        "id": 419962,
+        "category_id": 13668,
+        "name": "VIVO SECURITY 03",
+        "description": "VIVO TURBO 30 DIAS",
+        "cdns": null,
+        "config_payload": {
+            "payload": "UMLOCK HTTP/n\\\\n",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "152.67.33.44",
+            "port": 80
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
+        "sorter": 3
+    },
+    {
+        "id": 419963,
+        "category_id": 13668,
+        "name": "VIVO SECURITY 04",
+        "description": "VIVO TURBO 30 DIAS NOVA ATUALIZAÇÃO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "HTTP/ 2\\nHost: m.opera.com\\n\\n",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "163.176.166.78",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.1.1.1"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
+        "sorter": 4
+    },
+    {
+        "id": 431511,
+        "category_id": 33146,
+        "name": "VIVO Gcloud 01.",
+        "description": "PRÉ PAGO GERANDO DADOs",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1[crlf]Host: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kikoru-986235522250.southamerica-east1.run.app;grandnet-16464680209.southamerica-east1.run.app;reno-986235522250.southamerica-east1.run.app;vpnnomi-16464680209.southamerica-east1.run.app;mina-986235522250.southamerica-east1.run.app;sunnytunnel-16464680209.southamerica-east1.run.app][crlf]Connection: Upgrade[crlf]User-Agent: Mobile Safari/9 OPR/9[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": "youtube.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "youtube.com",
+            "port": 443
+        },
+        "server": {
+            "host": "[cdn]",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "sorter": 1
+    },
+    {
+        "id": 432694,
+        "category_id": 33146,
+        "name": "VIVO Gcloud 03.",
+        "description": "NOVA ATUALIZAÇÃO 16/09",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1\nHost: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kafta-986235522250.southamerica-east1.run.app#redlinevpn-16464680209.southamerica-east1.run.app#kikoru-986235522250.southamerica-east1.run.app#grandnet-16464680209.southamerica-east1.run.app#reno-986235522250.southamerica-east1.run.app#vpnnomi-16464680209.southamerica-east1.run.app#mina-986235522250.southamerica-east1.run.app#sunnytunnel-16464680209.southamerica-east1.run.app]\nConnection: Upgrade\nUpgrade: websocket\nUser-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]#GET / HTTP/1.1[crlf]Host: turbo-800045675155.southamerica-east1.run.app[crlf]Connection: Upgrade[crlf]User-Agent: Mobile Safari/9 OPR/9[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": "grow.google"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "grow.google",
+            "port": 443
+        },
+        "server": {
+            "host": "[cdn]",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "sorter": 3
+    },
+    {
+        "id": 472723,
+        "category_id": 31625,
+        "name": "VIVO FRONT 01",
+        "description": "VIVO PLANO É EXPIRADO",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[lf]GET /app682489 [split]HTTP/1.1 [lf]Host: [rotate=centraldacdn-3.dns-theromshost.com;centraldacdn-2.dns-theromshost.com;centraldacdn-4.dns-theromshost.com][lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]#[lf]GET /app23 [split]HTTP/1.1 [lf]Host: 2.gestao.site[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]#[lf]GET /app23 [split]HTTP/1.1 [lf]Host: 7.gestao.site[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]#[lf]GET /app23 [split]HTTP/1.1 [lf]Host: 4.gestao.site[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]#[lf]GET /app23 [split]HTTP/1.1 [lf]Host: 5.gestao.site[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]#[lf]GET /app23 [split]HTTP/1.1 [lf]Host: d3tkpkpkgvphus.cloudfront.net[lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "frontend-tim-recarga-client.m4u.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "[host]",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/bXRpyQt/file.png",
+        "sorter": 1
+    },
+    {
+        "id": 472729,
+        "category_id": 31625,
+        "name": "VIVO FRONT 02",
+        "description": "VIVO PRÉ TURBO 🇧🇷",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[lf]GET /app682489 [split]HTTP/1.1 [lf]Host: [rotate=centraldacdn-3.dns-theromshost.com;centraldacdn-2.dns-theromshost.com;centraldacdn-4.dns-theromshost.com][lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "conversions.appsflyer.com",
+            "port": 80
+        },
+        "server": {
+            "host": "d1qb7wbys7wnjl.cloudfront.net",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/bXRpyQt/file.png",
+        "sorter": 2
+    },
+    {
+        "id": 481720,
+        "category_id": 15735,
+        "name": "VIVO FLARE 04",
+        "description": "VIVO TURBO 30 DIAS ",
+        "cdns": null,
+        "config_payload": {
+            "payload": "ACL / [split]HTTP/1.1 [lf]Host: sk.skalassh.store[lf]Upgrade: Websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.3",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.26.12.205#172.67.74.152",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
+        "sorter": 6
+    },
+    {
+        "id": 491353,
+        "category_id": 33146,
+        "name": "VIVO Gcloud 02.",
+        "description": "TODOS OS DDDS ON ok",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1[crlf]Host: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kikoru-986235522250.southamerica-east1.run.app;grandnet-16464680209.southamerica-east1.run.app;reno-986235522250.southamerica-east1.run.app;vpnnomi-16464680209.southamerica-east1.run.app;mina-986235522250.southamerica-east1.run.app;sunnytunnel-16464680209.southamerica-east1.run.app][crlf]Connection: Upgrade[crlf]User-Agent: Mobile Safari/9 OPR/9[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": "www.googletagmanager.com#pubsub.googleapis.com#rs-in-f149.1e100.net#lax17s55-in-f2.1e100.net#lj-in-f155.1e100.net#ord37s18-in-f14.1e100.net#mil07s07-in-f14.1e100.net#fra24s05-in-f8.1e100.net#fra24s01-in-f8.1e100.net#lj-in-f155.1e100.net#fra02s19-in-f2.1e100.net#gru09s19-in-f98.1e100.net#lhr25s26-in-f2.1e100.net#mx2.appex.ovh#ftp.photos.app.goo.gl#vfurrrfc2sle5eo7iks2bmk9e5jmd2l9.a.blogger.gmodules.com#gadgetsheet.com#rs-in-f149.1e100.net#lax17s55-in-f2.1e100.net#qx7bu.app.goo.gl#lj-in-f155.1e100.net#optimize.withgoogle.com#domains.google.com#partnersevents.withgoogle.com#ord37s18-in-f14.1e100.net#k6u9j.app.goo.gl#abt72.app.goo.gl#meebominibar.com#k8992.app.goo.gl#o-o.preferred.softbankbb-hnd1.v14.lscache7.c.youtube.com#thrivewithadwords.withgoogle.com#cse.google.com.by#widеvinetechnologies.org#maps-c.app.goo.gl#iot.google.com#mil07s07-in-f14.1e100.net#c35c5.app.goo.gl#fra24s05-in-f8.1e100.net#fra24s01-in-f8.1e100.net#adwords.com.tr#lga25s77-in-f8.1e100.net#cse.google.ml#admob.no#kjj2s.app.goo.gl#cse.google.gl#tabel.withgoogle.com#adwords.net#yyz08s09-in-f14.1e100.net#b3cq9.app.goo.gl#youtube.me#gseacnw61z.com#r7xzj.app.goo.gl#gru09s19-in-f98.1e100.net#digitalewerkplaatsvoorstudenten.withgoogle.com#java-iphone.com#media.ampproject.org#zcj75.app.goo.gl#db.withgoogle.com#cse.google.tk#fra02s19-in-f2.1e100.net#se8g4.app.goo.gl#9im6jjs425770o267f7u4gprd0l4tbn2.a.blogger.gmodules.com#5481512.fls.doubleclick.net#bumptop.ca#get.google.com#wxnm4j.app.goo.gl#aa4ev.app.goo.gl#acse.google.com.pa#afonts.google.com#a-o.o.preferred.mena-bah1.v20.lscache6.c.youtube.com#a-get.duo.google.com#a-thinkwithgoogle.fr#a-ck3q5.app.goo.gl#a-lhr25s26-in-f2.1e100.net#a-apx6u.app.goo.gl#a-n5sbc.app.goo.gl#a-o.o.preferred.sn-o097zne7.v24.lscache3.c.android.clients.google.com#a-byq6z.app.goo.gl#a-khms.l.google.com#a-thousandgoing.com#a-music2015.withgoogle.com#a-mad41s11-in-f6.1e100.net#a-experiments.withgoogle.com#a-ampcid.google.com.tw#a-test.withgoogle.com#a-xpa.app.goo.gl#a-xaqg2.app.goo.gl#a-rio07s07-in-f8.1e100.net#a-lga34s39-in-f6.1e100.net#a-qne8y.app.goo.gl#a-rio07s03-in-f6.1e100.net#a-ec44m.app.goo.gl#a-zrkndnzp7k.com#a-yaxf6.app.goo.gl#a-dn66q.app.goo.gl#a-notablewomen.withgoogle.com#a-static.withyoutube.com#a-v3.lscache3.c.bigcache.googleapis.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "www.googletagmanager.com#pubsub.googleapis.com#rs-in-f149.1e100.net#lax17s55-in-f2.1e100.net#lj-in-f155.1e100.net#ord37s18-in-f14.1e100.net#mil07s07-in-f14.1e100.net#fra24s05-in-f8.1e100.net#fra24s01-in-f8.1e100.net#lj-in-f155.1e100.net#fra02s19-in-f2.1e100.net#gru09s19-in-f98.1e100.net#lhr25s26-in-f2.1e100.net#mx2.appex.ovh#ftp.photos.app.goo.gl#vfurrrfc2sle5eo7iks2bmk9e5jmd2l9.a.blogger.gmodules.com#gadgetsheet.com#rs-in-f149.1e100.net#lax17s55-in-f2.1e100.net#qx7bu.app.goo.gl#lj-in-f155.1e100.net#optimize.withgoogle.com#domains.google.com#partnersevents.withgoogle.com#ord37s18-in-f14.1e100.net#k6u9j.app.goo.gl#abt72.app.goo.gl#meebominibar.com#k8992.app.goo.gl#o-o.preferred.softbankbb-hnd1.v14.lscache7.c.youtube.com#thrivewithadwords.withgoogle.com#cse.google.com.by#widеvinetechnologies.org#maps-c.app.goo.gl#iot.google.com#mil07s07-in-f14.1e100.net#c35c5.app.goo.gl#fra24s05-in-f8.1e100.net#fra24s01-in-f8.1e100.net#adwords.com.tr#lga25s77-in-f8.1e100.net#cse.google.ml#admob.no#kjj2s.app.goo.gl#cse.google.gl#tabel.withgoogle.com#adwords.net#yyz08s09-in-f14.1e100.net#b3cq9.app.goo.gl#youtube.me#gseacnw61z.com#r7xzj.app.goo.gl#gru09s19-in-f98.1e100.net#digitalewerkplaatsvoorstudenten.withgoogle.com#java-iphone.com#media.ampproject.org#zcj75.app.goo.gl#db.withgoogle.com#cse.google.tk#fra02s19-in-f2.1e100.net#se8g4.app.goo.gl#9im6jjs425770o267f7u4gprd0l4tbn2.a.blogger.gmodules.com#5481512.fls.doubleclick.net#bumptop.ca#get.google.com#wxnm4j.app.goo.gl#aa4ev.app.goo.gl#acse.google.com.pa#afonts.google.com#a-o.o.preferred.mena-bah1.v20.lscache6.c.youtube.com#a-get.duo.google.com#a-thinkwithgoogle.fr#a-ck3q5.app.goo.gl#a-lhr25s26-in-f2.1e100.net#a-apx6u.app.goo.gl#a-n5sbc.app.goo.gl#a-o.o.preferred.sn-o097zne7.v24.lscache3.c.android.clients.google.com#a-byq6z.app.goo.gl#a-khms.l.google.com#a-thousandgoing.com#a-music2015.withgoogle.com#a-mad41s11-in-f6.1e100.net#a-experiments.withgoogle.com#a-ampcid.google.com.tw#a-test.withgoogle.com#a-xpa.app.goo.gl#a-xaqg2.app.goo.gl#a-rio07s07-in-f8.1e100.net#a-lga34s39-in-f6.1e100.net#a-qne8y.app.goo.gl#a-rio07s03-in-f6.1e100.net#a-ec44m.app.goo.gl#a-zrkndnzp7k.com#a-yaxf6.app.goo.gl#a-dn66q.app.goo.gl#a-notablewomen.withgoogle.com#a-static.withyoutube.com#a-v3.lscache3.c.bigcache.googleapis.com",
+            "port": 443
+        },
+        "server": {
+            "host": "adm-221181913414.us-central1.run.app",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/g2KtH179/ic-vivo.png",
+        "sorter": 2
+    },
+    {
+        "id": 498431,
+        "category_id": 33146,
+        "name": "TIM GCP 01",
+        "description": "TODOS OS DDDS ON 02/09",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1[crlf]Host: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kikoru-986235522250.southamerica-east1.run.app;grandnet-16464680209.southamerica-east1.run.app;reno-986235522250.southamerica-east1.run.app;vpnnomi-16464680209.southamerica-east1.run.app;mina-986235522250.southamerica-east1.run.app;sunnytunnel-16464680209.southamerica-east1.run.app][crlf]Connection: Upgrade[crlf]User-Agent: Mobile Safari/9 OPR/9[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": "pubsub.googleapis.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "pubsub.googleapis.com",
+            "port": 443
+        },
+        "server": {
+            "host": "turbo-747462542509.southamerica-east1.run.app",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 6
+    },
+    {
+        "id": 504930,
+        "category_id": 15735,
+        "name": "VIVO FLARE 05",
+        "description": "VIVO TURBO 30 DIAS att",
+        "cdns": null,
+        "config_payload": {
+            "payload": "DELETE / [split]HTTP/1.1 [lf]Host: sk.skalassh.store[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.3",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "shop.kaspersky.com.br#cart.kaspersky.com.br#www.fs.com.br#s-homol.fs.com.br#s.fs.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
+        "sorter": 7
+    },
+    {
+        "id": 507007,
+        "category_id": 33146,
+        "name": "TIM GCP 02",
+        "description": "TIM EXPIRADO 🇧🇷 ok DDD 92 03/09",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1[crlf]Host: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kikoru-986235522250.southamerica-east1.run.app;grandnet-16464680209.southamerica-east1.run.app;reno-986235522250.southamerica-east1.run.app;vpnnomi-16464680209.southamerica-east1.run.app;mina-986235522250.southamerica-east1.run.app;sunnytunnel-16464680209.southamerica-east1.run.app][crlf]Connection: Upgrade[crlf]User-Agent: Mobile Safari/9 OPR/9[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": "www.googletagmanager.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "www.googletagmanager.com",
+            "port": 443
+        },
+        "server": {
+            "host": "RECARGAS",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 8
+    },
+    {
+        "id": 516324,
+        "category_id": 31625,
+        "name": "VIVO FRONT 03",
+        "description": "Promoção vivo turbo 30 dias renovada",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[lf]GET /app682489 [split]HTTP/1.1 [lf]Host: [rotate=centraldacdn-2.dns-theromshost.com;centraldacdn-3.dns-theromshost.com;centraldacdn-4.dns-theromshost.com][lf]Connection: Upgrade[lf]Upgrade: Websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "livechat.vivo.com.br#parceiros.vivo.com.br#plataforma.portal.vivo.com.br#quartou.vivo.com.br#resgate.portal.vivo.com.br#cloud.vivo.com.br#empresas.vivo.com.br#gestaodemaquinario.vivo.com.br#internet.vivo.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "Recargas",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/bXRpyQt/file.png",
+        "sorter": 3
+    },
+    {
+        "id": 531322,
+        "category_id": 36770,
+        "name": "CLARO GCLOUD 01",
+        "description": "Claro flex controle",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1\nHost: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app]\nConnection: Upgrade\nUpgrade: Websocket[crlf][crlf]",
+            "sni": "m.waze.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "www.google.com.br",
+            "port": 443
+        },
+        "server": {
+            "host": "turbo-40339745957.southamerica-east1.run.app",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 2
+    },
+    {
+        "id": 532300,
+        "category_id": 36770,
+        "name": "CLARO FRONT 01",
+        "description": "Alguns ddds atualização 08/08",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[crlf]Host: www.net.com.br[crlf][crlf]X /app682489 HTTP/1.1[crlf]Host: m.claro.com.br[crlf][crlf]GET /app682489 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "www.net.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-1.dns-theromshost.com#centraldacdn-2.dns-theromshost.com#centraldacdn-3.dns-theromshost.com#centraldacdn-4.dns-theromshost.com",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 1
+    },
+    {
+        "id": 560548,
+        "category_id": 36770,
+        "name": "CLARO SECURITY 01",
+        "description": "Alguns ddds",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[crlf]Host: whatsapp.com[rotate=support.twitter.com;help.twitter.com] [lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "163.176.166.78",
+            "port": 80
+        },
+        "server": {
+            "host": "152.70.220.31",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 4
+    },
+    {
+        "id": 578298,
+        "category_id": 18250,
+        "name": "TIM FRONT 07",
+        "description": "Cloudfront nova att",
+        "cdns": null,
+        "config_payload": {
+            "payload": "HEAD / HTTP/1.1[crlf]Host: dashboard.timlive.tim.com.br[crlf][crlf][split][crlf][crlf]GET- / HTTP/1.1[crlf]Host: dashboard.timlive.tim.com.br[lf][lf]GET /app682489 HTTP/1.1[crlf]Host: [rotate=centraldacdn-2.dns-theromshost.com;centraldacdn-3.dns-theromshost.com;centraldacdn-4.dns-theromshost.com][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "dashboard.timlive.tim.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "RECARGAS",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 19
+    },
+    {
+        "id": 600613,
+        "category_id": 36770,
+        "name": "CLARO GCLOUD 02",
+        "description": "Alguns ddds",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1\nHost: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app]\nConnection: Upgrade\nUpgrade: websocket\nUser-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": "r5.sn-q4fl6nsr.googlevideo.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "www.google.com",
+            "port": 443
+        },
+        "server": {
+            "host": "turbo-40339745957.southamerica-east1.run.app",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 3
+    },
+    {
+        "id": 603066,
+        "category_id": 35776,
+        "name": "TIM FLARE 01",
+        "description": "Apn em ipv4 modo avião pra estabilizar",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[lf]Host: [rotate=assetshomol.verisoft.com.br;ws.verisoft.com.br;backoffice.verisoft.com.br][lf][lf][instant_split][lf]GET- / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Connection: Upgrade[lf]Upgrade: websocket[lf][lf]#ACL / HTTP/1.1[lf]Host: [rotate=assetshomol.verisoft.com.br;ws.verisoft.com.br;backoffice.verisoft.com.br][lf][lf][instant_split][lf]ACL- / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Connection: Upgrade[lf]Upgrade: websocket[lf][lf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][instant_split][crlf]GET- / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "104.18.4.18#104.18.5.18#revive.timrecompensas.com.br#stage.timofertas.com#c6bank.nextos.com#timofertas.com.cdn.cloudflare.net#104.18.4.18#bancah.com.br#verisoft.com.br#www.bancah.com.br#verisoft.com.br#ftp.verisoft.com.br#business.ayabooks.com.br#kids.ayabooks.com.br#www.ayabooks.com.br",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 1
+    },
+    {
+        "id": 603067,
+        "category_id": 35776,
+        "name": "TIM FLARE 02",
+        "description": "Saldo válido regiões RJ",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET / HTTP/1.1[crlf]Host: ayabooks.com.br[crlf][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "ayabooks.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "ayabooks.com.br",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 2
+    },
+    {
+        "id": 603168,
+        "category_id": 35776,
+        "name": "TIM FLARE 03",
+        "description": "APENAS 3G DDD 47 nova att 25/07",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /cdn-cgi/trace HTTP/1.1[lf]Host: bancah.com.br[lf][lf][split]GET- / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Connection: Upgrade[lf]Upgrade: websocket[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "bancah.com.br",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 3
+    },
+    {
+        "id": 603170,
+        "category_id": 35776,
+        "name": "TIM FLARE 04",
+        "description": "Apn em ipv4 modo avião nova att,",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=POST;PUT;GET;DELETE;OPTIONS] /cdn-cgi/trace HTTP/1.1[lf]Host: [rotate= jobs.deezer.com;orcid.org;gigaom.com;datatracker.ietf.org;cdn4.iconfinder.com;mrisoftware.com;mediafire.com][lf][lf][delay_split][lf][lf]GET- / HTTP/1.1[lf]Host: sk.skalassh.store[lf]Connection: Upgrade[lf]Upgrade: websocket[lf][lf]#[rotate=CONNECT;GET;POST;PUT;HEAD;OPTIONS;PATCH;DELETE;PROPFIND;PROPPATCH;MKCOL;COPY;MOVE;LOCK;UNLOCK;UPDATE;SEARCH] /cdn-cgi/trace/ HTTP/1.1[crlf]Host: ayabooks.com.br;noexempt-api.timrecompensas.com.br;mediafire.com[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace/ HTTP/1.1[crlf]Host: [rotate=ayabooks.com.br;bancah.com.br;verisoft.com.br;noexempt-api.timrecompensas.com.br;mediafire.com][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: vs.timrecompensas.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: sk.skalassh.store[lf]Upgrade: Websocket[crlf][crlf]##PATCH /cdn-cgi/trace HTTP/1.1[lf]Host: timofertas.com[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf]#GET /cdn-cgi/trace HTTP/1.1[lf]Host: timofertas.com[crlf][crlf][split][crlf]ACL / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "",
+            "port": 0
+        },
+        "server": {
+            "host": "noexempt-api.timrecompensas.com.br#jobs.deezer.com#orcid.org#gigaom.com#104.18.18.125#datatracker.ietf.org#cdn4.iconfinder.com#mrisoftware.com#mediafire.com#bio-matrix.net#comcellulardata.ubigi.com#openai.com#twitter.com#vimeo.com#tinyurl.com#kickstarter.com#discord.gg#pixabay.com#onlinelibrary.wiley.com#taylorbank.com#172.67.173.204#whatsappinstalling.com#104.18.5.18#finansial.bisnis.com#io.vtex.com.br#www.w3.org#player.vimeo.com#vs.timrecompensas.com.br#timofertas.com#172.64.147.18#www.timgroup.com#vivoup.telefonica.com.br#agiliza.telefonica.com.br#exa.com.br#216.198.53.1",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_DIRECT",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 4
+    },
+    {
+        "id": 603171,
+        "category_id": 35776,
+        "name": "TIM FLARE 05.",
+        "description": "DDD 21 ok ok",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=revive.timrecompensas.com.br;vs.timrecompensas.com.br;portal.timrecompensas.com.br;timrecompensas.com.br;api.timrecompensas.com.br][crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "noexempt-api.timrecompensas.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 5
+    },
+    {
+        "id": 603172,
+        "category_id": 35776,
+        "name": "TIM FLARE 06",
+        "description": "Tim ddd 11 IP 172.16.0.1",
+        "cdns": null,
+        "config_payload": {
+            "payload": "CONNECT /cdn-cgi/trace HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf]#COPY /cdn-cgi/trace/ HTTP/1.1[crlf]Host: ayabooks.com.br[crlf][crlf][split]- /app13 HTTP/1.1[crlf]Host: sk.skalassh.store[crlf]Upgrade: Websocket[crlf][crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "bancah.com.br#104.18.21.132",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 6
+    },
+    {
+        "id": 604615,
+        "category_id": 33146,
+        "name": "TIM GCP 03.",
+        "description": "NOVA ATUALIZAÇÃO 07/08",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1[crlf]Host: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kikoru-986235522250.southamerica-east1.run.app;grandnet-16464680209.southamerica-east1.run.app;reno-986235522250.southamerica-east1.run.app;vpnnomi-16464680209.southamerica-east1.run.app;mina-986235522250.southamerica-east1.run.app;sunnytunnel-16464680209.southamerica-east1.run.app][crlf]Connection: Upgrade[crlf]User-Agent: Mobile Safari/9 OPR/9[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": "cursos.alura.com.br"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "localhost.gmodules.com#kubernetes.gmodules.com#ipv6.gmodules.com#inventory.gmodules.com#host.gmodules.com#go.gmodules.com#gitlab.gmodules.com#forum.gmodules.com#exchange.gmodules.com#email.gmodules.com#cloud.gmodules.com#93.gmodules.com#101.ig.gmodules.com#www2.gmodules.com#webdisk.gmodules.com#sslvpn.gmodules.com#ssl.gmodules.com#server1.gmodules.com#secure.gmodules.com#sap.gmodules.com#root.gmodules.com#news.gmodules.com#mta-sts.gmodules.com",
+            "port": 443
+        },
+        "server": {
+            "host": "turbo-273297917173.northamerica-south1.run.app",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 13
+    },
+    {
+        "id": 681390,
+        "category_id": 18250,
+        "name": "TIM FRONT 08",
+        "description": "Cloudfront TIM EXPIRY",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app682489 HTTP/1.1[crlf]Host: bounce.mail.planos.tim.com.br[crlf][crlf][instant_split][crlf][crlf]GET- /app682489 HTTP/1.1[crlf]Host: [host][crlf][crlf]GET /app682489 HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][instant_split][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "checkout.timlive.tim.com.br#13.227.126.91#99.84.31.97#108.158.137.102#108.158.137.96#108.139.113.114#108.139.113.127",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-6.dns-theromshost.com#centraldacdn-7.dns-theromshost.com#centraldacdn-8.dns-theromshost.com#d301u3hlm7z1vw.cloudfront.net",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 20
+    },
+    {
+        "id": 682658,
+        "category_id": 18250,
+        "name": "TIM FRONT 09",
+        "description": "Cloudfront att atualização 18/07",
+        "cdns": null,
+        "config_payload": {
+            "payload": "MOV / HTTP/1.8[lf]Host: [rotate=recargapremiada.tim.com.br;meuplano3.tim.com.br;timnoticias.tim.com.br;chat-resolva-seu-problema.tim.com.br;timnoticias.tim.com.br;meuplano3.tim.com.br;apigateway.tim.com.br][lf]Expect: 100-continue[crlf][lf][split]X / HTTP/1.8[lf]Host: tim.com.br[lf][crlf]GET / HTTP/1.4[crlf]Host: [host][lf]Backend: app682489[lf]Connection: Upgrade[crlf]Upgrade: Websocket[lf]Expect: 100-continue[crlf][split][lf]#[rotate=GET;PUT;DELETE;POST;CONNECT;PATCH;ACL;MOVE;BDELETE;COPY;BMOVE] /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=tim.com.br;www.2timlive.tim.com.br;planoscontrole.tim.com.br;www.timlive.tim.com.br;timlive.tim.com.br;checkout.timlive.tim.com.br;bounce.mail.planos.tim.com.br][crlf]X-Online-Host: tim.com.br[crlf]Upgrade: websocket[crlf][crlf]PATCH- / HTTP/1.1[crlf]Host: [host][lf][lf]GET / HTTP/1.4[crlf]Host: [cdn][lf]Backend: app682489[lf]Connection: Upgrade[crlf]Upgrade: Websocket[lf]Expect: 100-continue[split][crlf][lf]#HEAD / HTTP/1.1[lf]Host: bounce.mail.planos.tim.com.br[lf]Expect: 100-continue[crlf][lf]GET-RAY / HTTP/1.1[crlf]Host: tim.com.br[crlf][crlf]GET /app682489 HTTP/1.1[lf]Host: [host][crlf]Backend: app682489[lf]Connection: Upgrade[lf]Connection: close[lf]Upgrade: websocket[lf][lf]#HEAD /cdn-cgi/trace HTTP/1.1[crlf]Host: [rotate=segment.dzcdn.net;premier.sonos.dzcdn.net][crlf]X-Online-Host: timfibra.tim.com.br[crlf]Upgrade: websocket[crlf][crlf][instant_split][crlf]PATCH- / HTTP/1.1[crlf]Host: [host][lf] [lf]GET /app682489 HTTP/1.4[crlf]Host: [host][lf]Backend: app682489[lf]Connection: Upgrade[crlf]Upgrade: Websocket[lf]Expect: 100-continue[crlf][split][lf]#GET / HTTP/1.1[lf]Host: timfibra.tim.com.br[lf]Expect: 100-continue[crlf][crlf][instant_split][lf]GET- / HTTP/1.1[crlf]Host: tim.com.br[crlf][crlf]GET /app682489 HTTP/1.1[lf]Host: [host][crlf]Backend: app682489[lf]Connection: Upgrade[lf]Connection: close[lf]Upgrade: websocket[lf][split][lf]#OPTIONS / HTTP/1.1[crlf]Host: checkout.timlive.tim.com.br[crlf][crlf][split]X / HTTP/1.1[crlf]Host: checkout.timlive.tim.com.br[crlf][crlf]GET /app682489 HTTP/1.1[lf]Host: [host][lf]Connection: Upgrade[lf]Upgrade: Websocket[crlf][split][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "108.139.134.12#52.85.213.33#108.139.113.100#108.139.113.127#108.139.113.82#52.85.213.47#99.84.31.8#108.158.137.54#108.158.137.43#108.158.137.96#108.158.137.102#108.139.113.114#99.84.31.114#108.139.113.60#108.139.113.107#108.158.173.2#108.158.173.95#108.158.173.18",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-1.dns-theromshost.com#centraldacdn-2.dns-theromshost.com#centraldacdn-3.dns-theromshost.com#centraldacdn-4.dns-theromshost.com",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 20
+    },
+    {
+        "id": 698490,
+        "category_id": 33146,
+        "name": "TIM GCP 04",
+        "description": "YOUTUBE 360p",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1\nHost: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app]\nConnection: Upgrade\nUpgrade: Websocket\nUser-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf][crlf]",
+            "sni": "www.googletagmanager.com"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "mtls.clients6.google.com",
+            "port": 443
+        },
+        "server": {
+            "host": "1.1.1.1",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 14
+    },
+    {
+        "id": 698508,
+        "category_id": 33146,
+        "name": "TIM GCP 05",
+        "description": "ATUALIZADO EM /2025 02/09",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1[crlf]Host: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kikoru-986235522250.southamerica-east1.run.app;grandnet-16464680209.southamerica-east1.run.app;reno-986235522250.southamerica-east1.run.app;vpnnomi-16464680209.southamerica-east1.run.app;mina-986235522250.southamerica-east1.run.app;sunnytunnel-16464680209.southamerica-east1.run.app][crlf]Connection: Upgrade[crlf]User-Agent: Mobile Safari/9 OPR/9[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": "s0.2mdn.net"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "s0.2mdn.net",
+            "port": 443
+        },
+        "server": {
+            "host": "1.1.1.1",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 16
+    },
+    {
+        "id": 717823,
+        "category_id": 18250,
+        "name": "TIM FRONT 10",
+        "description": "Cloudfront att atualização 05/09 rpd",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=GET;CONNECT] / HTTP/1.1[crlf]Host: www.carrinho.tim.com.br[crlf][crlf][split][crlf][crlf]GET- / HTTP/1.1[crlf]Host: google.com [crlf][crlf]GET / HTTP/1.1[crlf]Host: [host][crlf]Backend: app682489[crlf]Connection:  Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "www.carrinho.tim.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-2.dns-theromshost.com#centraldacdn-3.dns-theromshost.com#centraldacdn-4.dns-theromshost.com",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 21
+    },
+    {
+        "id": 719254,
+        "category_id": 18250,
+        "name": "TIM FRONT 11",
+        "description": "TIM SALDO VÁLIDO É EXPIRADOok",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=GET;POST;PUT;HEAD;OPTIONS;PATCH;DELETE;CONNECT] / HTTP/1.1[crlf]Host: [rotate=migracaodeplanos.tim.com.br;meutim.tim.com.br;meuplano2.tim.com.br;auth.tim.com.br;meutim.com.br;auth2.tim.com.br;tim.com.br;www.tim.com.br;auth1.tim.com.br;auth3.tim.com.br][crlf][crlf][split][crlf][crlf]GET- / HTTP/1.1[crlf]Host: www.tim.com.br[lf][lf]GET / HTTP/1.1[crlf]Host: [host][lf]Backend: app682489[lf]Connection: Upgrade[lf]Upgrade: websocket[lf]User-Agent: Googl/ebot/2.1 (+http://www.google.com/bot.html)[lf][lf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "108.158.122.33#13.35.116.39#108.157.173.97#108.157.173.77#108.157.173.37#108.157.173.80#3.174.59.65#3.174.59.123#108.158.186.32#3.174.59.9#99.84.252.97#3.174.59.88#3.174.59.24#18.64.207.59#99.84.252.105",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-4.dns-theromshost.com#centraldacdn-2.dns-theromshost.com#centraldacdn-3.dns-theromshost.com",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/6qQS8NKK/1750565215338.png",
+        "sorter": 23
+    },
+    {
+        "id": 743598,
+        "category_id": 35776,
+        "name": "TIM FLARE 07",
+        "description": "Tim att DDD 91 expirado",
+        "cdns": null,
+        "config_payload": {
+            "payload": "HTTP / [split]HTTP/1.1 [lf]Host: sk.skalassh.store[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "104.19.240.93#216.198.53.1#216.198.54.1#104.18.4.18#104.18.5.18#bancah.com.br#104.18.21.132",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 7
+    },
+    {
+        "id": 743599,
+        "category_id": 35776,
+        "name": "TIM FLARE 08",
+        "description": "Tim att ddd11",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[split][lf]ACL / HTTP/1.1[lf]Host: bancah.com.br[crlf][crlf][crlf][crlf]GET- / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: Websocket[split][crlf][crlf]#CONNECT /cdn-cgi/trace HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split][crlf]GET- / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "bancah.com.br#104.18.11.131#104.18.10.131#2606:4700::6812:a83#2606:4700::6812:b83",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 8
+    },
+    {
+        "id": 767660,
+        "category_id": 36770,
+        "name": "CLARO FRONT 02",
+        "description": "Alguns ddds atualização 08/19",
+        "cdns": null,
+        "config_payload": {
+            "payload": "HEAD /app682489 HTTP/1.1[lf]Host: asistencia.claro.com.ar[lf][crlf][split]\nPRI  / HTTP/1.1[lf]Host: ayudaysoporte.personal.com.ar[lf][lf]GET /app682489 HTTP/1.1[lf]Host: [host][lf]Upgrade: websocket[lf]Connection: Upgrade[lf][lf]crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "asistencia.claro.com.ar",
+            "port": 80
+        },
+        "server": {
+            "host": "centraldacdn-1.dns-theromshost.com#centraldacdn-2.dns-theromshost.com#centraldacdn-3.dns-theromshost.com#centraldacdn-4.dns-theromshost.com",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "8.8.8.8",
+            "dns2": "8.8.4.4"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.ibb.co/2YwXqhf/file.png",
+        "sorter": 2
+    },
+    {
+        "id": 769413,
+        "category_id": 43242,
         "name": "CLARO SLOW 01",
         "description": "31,35,75,81,89,91,93,96,98",
         "cdns": null,
@@ -198,11 +4297,11 @@
         "status": "ACTIVE",
         "url_check_user": "http://sk.skalassh.store:2052",
         "icon": "https://i.ibb.co/2YwXqhf/file.png",
-        "sorter": 4
+        "sorter": 1
     },
     {
-        "id": 818621,
-        "category_id": 52572,
+        "id": 769421,
+        "category_id": 43242,
         "name": "CLARO SLOW 02",
         "description": "31,35,75,81,89,91,93,96,98 etc",
         "cdns": null,
@@ -246,6 +4345,110 @@
         "status": "ACTIVE",
         "url_check_user": "http://sk.skalassh.store:2052",
         "icon": "https://i.ibb.co/2YwXqhf/file.png",
-        "sorter": 5
+        "sorter": 2
+    },
+    {
+        "id": 769809,
+        "category_id": 15735,
+        "name": "VIVO FLARE 06",
+        "description": "VIVO TURBO 30 DIAS att",
+        "cdns": null,
+        "config_payload": {
+            "payload": "[rotate=GET;ACL] /[split] HTTP/1.1 [crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]#GET / HTTP/1.1 [crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]",
+            "sni": ""
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.3",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "162.159.140.159#shop.kaspersky.com.br#cart.kaspersky.com.br#www.fs.com.br#s-homol.fs.com.br#s.fs.com.br",
+            "port": 80
+        },
+        "server": {
+            "host": "sk.skalassh.store",
+            "port": 80
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "8.8.8.8"
+        },
+        "udp_ports": [
+            10096,
+            10100,
+            11455,
+            6006,
+            7100,
+            7200,
+            7300,
+            7400,
+            7500
+        ],
+        "mode": "SSH_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.imgur.com/Ji4EqOP.png",
+        "sorter": 8
+    },
+    {
+        "id": 775220,
+        "category_id": 33146,
+        "name": "TIM GCP 06.",
+        "description": "ATUALIZADO EM /2025 02/09",
+        "cdns": null,
+        "config_payload": {
+            "payload": "GET /app182 HTTP/1.1[crlf]Host: [rotate=kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kafta-986235522250.southamerica-east1.run.app;redlinevpn-16464680209.southamerica-east1.run.app;kikoru-986235522250.southamerica-east1.run.app;grandnet-16464680209.southamerica-east1.run.app;reno-986235522250.southamerica-east1.run.app;vpnnomi-16464680209.southamerica-east1.run.app;mina-986235522250.southamerica-east1.run.app;sunnytunnel-16464680209.southamerica-east1.run.app][crlf]Connection: Upgrade[crlf]User-Agent: Mobile Safari/9 OPR/9[crlf]Upgrade: Websocket[crlf][crlf]",
+            "sni": "172.217.172.38#172.217.28.198#172.217.29.230#172.217.30.70"
+        },
+        "config_openvpn": "",
+        "config_v2ray": "",
+        "tls_version": "TLSv1.2",
+        "auth": {
+            "username": null,
+            "password": null,
+            "v2ray_uuid": null
+        },
+        "proxy": {
+            "host": "172.217.172.38#172.217.28.198#172.217.29.230#172.217.30.70",
+            "port": 443
+        },
+        "server": {
+            "host": "1.1.1.1",
+            "port": 443
+        },
+        "dnstt_key": "",
+        "dnstt_name_server": "",
+        "dnstt_server": "",
+        "hy_obfs": "",
+        "hy_up_mbps": 100,
+        "hy_down_mbps": 150,
+        "hy_insecure": true,
+        "hy_port": "13375",
+        "hy_version": 1,
+        "dns_server": {
+            "dns1": "1.1.1.1",
+            "dns2": "1.0.0.1"
+        },
+        "udp_ports": [
+            7300
+        ],
+        "mode": "SSL_PROXY",
+        "status": "ACTIVE",
+        "url_check_user": "http://sk.skalassh.store:2052",
+        "icon": "https://i.postimg.cc/634hgPMp/ic-tim.png",
+        "sorter": 17
     }
 ]
