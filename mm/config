@@ -139,7 +139,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
+  "url_check_user": "http://uol.alfalemos.shop:2052",
   "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
   "sorter": 3
  },
@@ -286,5 +286,100 @@
   "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
   "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
   "sorter": 6
+ {
+  "id": 702770,
+  "category_id": 23176,
+  "name": "TIM -➔ 03",
+  "description": "Flex",
+  "cdns": null,
+  "config_payload": {
+   "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
+   "sni": ""
+  },
+  "config_openvpn": "",
+  "config_v2ray": "",
+  "tls_version": "TLSv1.2",
+  "auth": {
+   "username": null,
+   "password": null,
+   "v2ray_uuid": null
+  },
+  "proxy": {
+   "host": "bancah.com.br",
+   "port": 80
+  },
+  "server": {
+   "host": "uol.alfalemos.shop",
+   "port": 80
+  },
+  "dnstt_key": "",
+  "dnstt_name_server": "",
+  "dnstt_server": "",
+  "hy_obfs": "",
+  "hy_up_mbps": 100,
+  "hy_down_mbps": 150,
+  "hy_insecure": true,
+  "hy_port": "13375",
+  "hy_version": 1,
+  "dns_server": {
+   "dns1": "8.8.8.8",
+   "dns2": "8.8.4.4"
+  },
+  "udp_ports": [
+   7300
+  ],
+  "mode": "SSH_PROXY",
+  "status": "ACTIVE",
+  "url_check_user": "https://151.244.242.224:2052",
+  "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+  "sorter": 7
+ },
+ {
+  "id": 702775,
+  "category_id": 23176,
+  "name": "TIM -➔ 04",
+  "description": "Flex",
+  "cdns": null,
+  "config_payload": {
+   "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: uol.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
+   "sni": ""
+  },
+  "config_openvpn": "",
+  "config_v2ray": "",
+  "tls_version": "TLSv1.2",
+  "auth": {
+   "username": null,
+   "password": null,
+   "v2ray_uuid": null
+  },
+  "proxy": {
+   "host": "bancah.com.br",
+   "port": 80
+  },
+  "server": {
+   "host": "uol.alfalemos.shop",
+   "port": 80
+  },
+  "dnstt_key": "",
+  "dnstt_name_server": "",
+  "dnstt_server": "",
+  "hy_obfs": "",
+  "hy_up_mbps": 100,
+  "hy_down_mbps": 150,
+  "hy_insecure": true,
+  "hy_port": "13375",
+  "hy_version": 1,
+  "dns_server": {
+   "dns1": "8.8.8.8",
+   "dns2": "8.8.4.4"
+  },
+  "udp_ports": [
+   7300
+  ],
+  "mode": "SSH_PROXY",
+  "status": "ACTIVE",
+  "url_check_user": "http://151.244.242.224:2052",
+  "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+  "sorter": 8
  }
 ]
