@@ -2,7 +2,7 @@
     {
         "id": 378411,
         "category_id": 23176,
-        "name": "CLARO -➔ PLANOS -➔ 01",
+        "name": "VIVO -➔ 01",
         "description": "Flex & controle!",
         "cdns": null,
         "config_payload": {
@@ -44,13 +44,13 @@
         "mode": "SSL_DIRECT",
         "status": "ACTIVE",
         "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+        "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
         "sorter": 1
     },
     {
         "id": 378528,
         "category_id": 23176,
-        "name": "CLARO -➔ PLANOS -➔ 02",
+        "name": "VIVO -➔ 02",
         "description": "Flex & controle!",
         "cdns": null,
         "config_payload": {
@@ -92,13 +92,13 @@
         "mode": "SSL_DIRECT",
         "status": "ACTIVE",
         "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+        "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
         "sorter": 2
     },
     {
         "id": 378529,
         "category_id": 23176,
-        "name": "CLARO -➔ PLANOS -➔ 03",
+        "name": "TIM PLANOS -➔ 01",
         "description": "Flex & controle!",
         "cdns": null,
         "config_payload": {
@@ -140,13 +140,13 @@
         "mode": "SSL_DIRECT",
         "status": "ACTIVE",
         "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+        "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
         "sorter": 3
     },
     {
         "id": 378530,
         "category_id": 23176,
-        "name": "CLARO -➔ PLANOS -➔ 04",
+        "name": "TIM PLANOS -➔ 02",
         "description": "Flex & controle!",
         "cdns": null,
         "config_payload": {
@@ -188,13 +188,13 @@
         "mode": "SSL_DIRECT",
         "status": "ACTIVE",
         "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
-        "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+        "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
         "sorter": 4
     },
     {
         "id": 561830,
         "category_id": 23176,
-        "name": "CLARO -➔ EXPIRADO -➔  05",
+        "name": "CLARO -➔ EXPIRADO -➔  01",
         "description": "Planos ativos!",
         "cdns": null,
         "config_payload": {
@@ -243,27 +243,27 @@
         "id": 702766,
         "category_id": 23176,
         "name": "CLARO -➔ VÁLIDO -➔ 06",
-        "description": "Planos ativos!",
+        "description": "Flex & controle!",
         "cdns": null,
         "config_payload": {
-            "payload": "GET / HTTP/1.1[crlf]Host: whatsapp.com[rotate=support.twitter.com;help.twitter.com] [lf]",
-            "sni": ""
+            "payload": "",
+            "sni": "beacons.gcp.gvt2.com#m.twitter.com#twitter.com#web.whatsapp.com#api.whatsapp.com#c.whatsapp.net#m.waze.com#social-row.waze.com#waze.com#m.waze.com#m.twitter.com#c.whatsapp.net#dns.web.whatsapp.com"
         },
         "config_openvpn": "",
         "config_v2ray": "",
-        "tls_version": "TLSv1.2",
+        "tls_version": "TLSv1.3",
         "auth": {
             "username": null,
             "password": null,
             "v2ray_uuid": null
         },
         "proxy": {
-            "host": "209.14.87.45",
-            "port": 80
+            "host": "",
+            "port": 0
         },
         "server": {
-            "host": "209.14.87.45",
-            "port": 80
+            "host": "asxtronet.shop",
+            "port": 443
         },
         "dnstt_key": "",
         "dnstt_name_server": "",
@@ -281,7 +281,7 @@
         "udp_ports": [
             7300
         ],
-        "mode": "SSH_PROXY",
+        "mode": "SSL_DIRECT",
         "status": "ACTIVE",
         "url_check_user": "https://c6f114d5ea.dtunnel.shop:2053",
         "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
