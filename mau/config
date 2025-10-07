@@ -1,8 +1,8 @@
 [
   {
     "id": 378411,
-    "category_id": 850066,
-    "name": "VIVO  -➔ 01",
+    "category_id": 705479,
+    "name": "VIVO -➔ 01",
     "description": "Pré",
     "cdns": null,
     "config_payload": {
@@ -49,7 +49,7 @@
   },
   {
     "id": 378528,
-    "category_id": 850066,
+    "category_id": 705479,
     "name": "VIVO -➔ 02",
     "description": "Pré",
     "cdns": null,
@@ -97,7 +97,7 @@
   },
   {
     "id": 378529,
-    "category_id": 850066,
+    "category_id": 705479,
     "name": "TIM -➔ 01",
     "description": "Flex",
     "cdns": null,
@@ -145,7 +145,7 @@
   },
   {
     "id": 378530,
-    "category_id": 850066,
+    "category_id": 705479,
     "name": "TIM -➔ 02",
     "description": "Flex",
     "cdns": null,
@@ -193,7 +193,7 @@
   },
   {
     "id": 561830,
-    "category_id": 850066,
+    "category_id": 705479,
     "name": "CLARO -➔  01",
     "description": "Planos ativos!",
     "cdns": null,
@@ -241,7 +241,7 @@
   },
   {
     "id": 702766,
-    "category_id": 850066,
+    "category_id": 705479,
     "name": "CLARO -➔  02",
     "description": "Planos ativos!",
     "cdns": null,
@@ -288,10 +288,58 @@
     "sorter": 6
   },
   {
-    "id": 335634,
-    "category_id": 819954,
+    "id": 392302,
+    "category_id": 865457,
     "name": "Claro 3",
-    "description": "Flex",
+    "description": "Servidor VIP : 🇧🇷",
+    "cdns": null,
+    "config_payload": {
+      "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "bancah.com.br",
+      "port": 80
+    },
+    "server": {
+      "host": "nnn.alfalemos.shop",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "",
+    "icon": "",
+    "sorter": 1
+  },
+  {
+    "id": 440104,
+    "category_id": 865457,
+    "name": "Claro 4",
+    "description": "Servidor VIP : 🇧🇷",
     "cdns": null,
     "config_payload": {
       "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
