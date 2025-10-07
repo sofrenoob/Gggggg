@@ -2,11 +2,11 @@
   {
     "id": 845592,
     "category_id": 533703,
-    "name": "Vivo",
+    "name": "Teste 1",
     "description": "",
     "cdns": null,
     "config_payload": {
-      "payload": "ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf",
+      "payload": "Hhghuuiihh",
       "sni": ""
     },
     "config_openvpn": "",
@@ -18,11 +18,11 @@
       "v2ray_uuid": null
     },
     "proxy": {
-      "host": "104.18.21.132",
+      "host": "Ghhhhhhh",
       "port": 80
     },
     "server": {
-      "host": "104.18.21.132",
+      "host": "Vgggghhg",
       "port": 80
     },
     "dnstt_key": "",
@@ -43,18 +43,18 @@
     ],
     "mode": "SSH_PROXY",
     "status": "ACTIVE",
-    "url_check_user": "http://aws.alfalemos.shop:2052",
-    "icon": "https://i.postimg.cc/YqSVjpLz/ic-vivo.png",
+    "url_check_user": "",
+    "icon": "",
     "sorter": 1
   },
   {
     "id": 660367,
-    "category_id": 564565,
-    "name": "Tim",
+    "category_id": 533703,
+    "name": "Teste 2",
     "description": "",
     "cdns": null,
     "config_payload": {
-      "payload": "ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf",
+      "payload": "Fgyhgggg",
       "sni": ""
     },
     "config_openvpn": "",
@@ -66,11 +66,11 @@
       "v2ray_uuid": null
     },
     "proxy": {
-      "host": "104.18.21.132",
+      "host": "Ggghhhhh",
       "port": 80
     },
     "server": {
-      "host": "104.18.21.132",
+      "host": "Bhhhjhh",
       "port": 80
     },
     "dnstt_key": "",
@@ -91,18 +91,18 @@
     ],
     "mode": "SSH_PROXY",
     "status": "ACTIVE",
-    "url_check_user": "http://aws.alfalemos.shop:2052",
-    "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+    "url_check_user": "",
+    "icon": "",
     "sorter": 2
   },
   {
     "id": 176042,
-    "category_id": 260010,
-    "name": "Claro ",
+    "category_id": 533703,
+    "name": "Teste 3",
     "description": "",
     "cdns": null,
     "config_payload": {
-      "payload": "ACL / HTTP/1.1[crlf]Host: aws.alfalemos.shop[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf",
+      "payload": "Hhhhbbbbv",
       "sni": ""
     },
     "config_openvpn": "",
@@ -114,11 +114,11 @@
       "v2ray_uuid": null
     },
     "proxy": {
-      "host": "104.18.21.132",
+      "host": "Hhhhhhh",
       "port": 80
     },
     "server": {
-      "host": "104.18.21.132",
+      "host": "Hhhhhhh",
       "port": 80
     },
     "dnstt_key": "",
@@ -139,8 +139,8 @@
     ],
     "mode": "SSH_PROXY",
     "status": "ACTIVE",
-    "url_check_user": "http://aws.alfalemos.shop:2052",
-    "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+    "url_check_user": "",
+    "icon": "",
     "sorter": 3
   }
 ]
