@@ -1,0 +1,18 @@
+{
+  "content": [
+    {
+      "id": 850066,
+      "name": "Conexões ",
+      "status": "ACTIVE",
+      "sorter": 1,
+      "color": "#3357ff"
+    },
+    {
+      "id": 819954,
+      "name": "Claro ",
+      "status": "ACTIVE",
+      "sorter": 2,
+      "color": "#ff0000"
+    }
+  ]
+}
