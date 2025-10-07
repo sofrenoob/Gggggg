@@ -1,7 +1,7 @@
 [
   {
     "id": 378411,
-    "category_id": 23176,
+    "category_id": 850066,
     "name": "VIVO -➔ 01",
     "description": "Pré",
     "cdns": null,
@@ -49,7 +49,7 @@
   },
   {
     "id": 378528,
-    "category_id": 23176,
+    "category_id": 850066,
     "name": "VIVO -➔ 02",
     "description": "Pré",
     "cdns": null,
@@ -97,7 +97,7 @@
   },
   {
     "id": 378529,
-    "category_id": 23176,
+    "category_id": 850066,
     "name": "TIM -➔ 01",
     "description": "Flex",
     "cdns": null,
@@ -145,7 +145,7 @@
   },
   {
     "id": 378530,
-    "category_id": 23176,
+    "category_id": 850066,
     "name": "TIM -➔ 02",
     "description": "Flex",
     "cdns": null,
@@ -193,7 +193,7 @@
   },
   {
     "id": 561830,
-    "category_id": 23176,
+    "category_id": 850066,
     "name": "CLARO -➔  01",
     "description": "Planos ativos!",
     "cdns": null,
@@ -241,7 +241,7 @@
   },
   {
     "id": 702766,
-    "category_id": 23176,
+    "category_id": 850066,
     "name": "CLARO -➔  02",
     "description": "Planos ativos!",
     "cdns": null,
@@ -289,7 +289,7 @@
   },
   {
     "id": 335634,
-    "category_id": 23176,
+    "category_id": 819954,
     "name": "Claro 3",
     "description": "Flex",
     "cdns": null,
@@ -333,6 +333,6 @@
     "status": "ACTIVE",
     "url_check_user": "",
     "icon": "",
-    "sorter": 7
+    "sorter": 1
   }
 ]
