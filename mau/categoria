@@ -2,24 +2,10 @@
   "content": [
     {
       "id": 533703,
-      "name": "Vivo",
+      "name": "Conexões ",
       "status": "ACTIVE",
       "sorter": 1,
-      "color": "#8f20a8"
-    },
-    {
-      "id": 564565,
-      "name": "Tim ",
-      "status": "ACTIVE",
-      "sorter": 2,
       "color": "#3357ff"
-    },
-    {
-      "id": 260010,
-      "name": "Claro ",
-      "status": "ACTIVE",
-      "sorter": 3,
-      "color": "#cf5353"
     }
   ]
 }
