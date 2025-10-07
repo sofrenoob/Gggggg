@@ -1,338 +1,338 @@
 [
- {
-  "id": 378411,
-  "category_id": 23176,
-  "name": "VIVO -➔ 01",
-  "description": "Pré",
-  "cdns": null,
-  "config_payload": {
-   "payload": "[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]PATCH / HTTP/1.1[crlf]Host: [host][crlf]Host: ws.revservers.online[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[lf]Host: [app_host][lf]Upgrade: Websocket[lf][split][lf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: meuplano.tim.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split]GET /HTTP 1.2#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]",
-   "sni": ""
+  {
+    "id": 378411,
+    "category_id": 23176,
+    "name": "VIVO -➔ 01",
+    "description": "Pré",
+    "cdns": null,
+    "config_payload": {
+      "payload": "[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]PATCH / HTTP/1.1[crlf]Host: [host][crlf]Host: ws.revservers.online[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[lf]Host: [app_host][lf]Upgrade: Websocket[lf][split][lf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: meuplano.tim.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split]GET /HTTP 1.2#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "151.244.242.224",
+      "port": 80
+    },
+    "server": {
+      "host": "151.244.242.224",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "http://nnn.alfalemos.shop:2052",
+    "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
+    "sorter": 1
   },
-  "config_openvpn": "",
-  "config_v2ray": "",
-  "tls_version": "TLSv1.2",
-  "auth": {
-   "username": null,
-   "password": null,
-   "v2ray_uuid": null
+  {
+    "id": 378528,
+    "category_id": 23176,
+    "name": "VIVO -➔ 02",
+    "description": "Pré",
+    "cdns": null,
+    "config_payload": {
+      "payload": "MERGE ok.ru HTTP/1.1[crlf]Host: ok.ru[crlf]Connection: upgrade, Keep-Alive[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]Referer: http://www.google.com[crlf]#[protocol][crlf] [crlf][crlf]@#HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]#PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net[crlf]#HTTP/1.0[crlf] [crlf][crlf]@#MOVE / HTTP/1.1[crlf]Host: @shaka_news[crlf]Upgrade: websocket[crlf][crlf]#HTTP/ [crlf][crlf]#[crlf]#HTTP/ 1[lf]HTTP/ [lf]Host: www.dropbox.com[lf][lf]#PUT / Cache-Control: private: Web-security[crlf]#ACL HTTP/1.1[lf]Host: google.es[lf]#ACL / HTTP/1.1[crlf][crlf]#ACL buzzfeed.com HTTP/1.1[lf]Host:buzzfeed.com[lf]#ACL http://1.1.1.1rotate=buzzfeed.com;mobile.adobe.com;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate=buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5[crlf]#HTTP/ 2\nHOST : m.opera.com\n\n#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n#HTTP/1.1 [lf]CONNECT HTTP/1.1[lf][lf][lf]#HTTP/1.0 [lf]Host: music.yandex.com[crlf]#[protocol] \n\n/#HTTP/ 2[lf]Host: vivo.com#HTTP/1.1[crlf] [crlf][crlf]•#HTTP/1.1 200[crlf]Host: swcdn.apple.com[crlf]Connection: keep-alive[crlf]#MERGE indexer10.sjc.northshore.akamai.com HTTP/2.0[crlf]Host: r03.spine101.lax01.fab.netarch.akamai.com [crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@RevHunter[crlf]Referer: http://www.google.com[crlf]#HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]#http/ \n\n°#http/ \n\n/",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "151.244.242.224",
+      "port": 80
+    },
+    "server": {
+      "host": "151.244.242.224",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "http://nnn.alfalemos.shop:2052",
+    "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
+    "sorter": 2
   },
-  "proxy": {
-   "host": "151.244.242.224",
-   "port": 80
+  {
+    "id": 378529,
+    "category_id": 23176,
+    "name": "TIM -➔ 01",
+    "description": "Flex",
+    "cdns": null,
+    "config_payload": {
+      "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "bancah.com.br",
+      "port": 80
+    },
+    "server": {
+      "host": "nnn.alfalemos.shop",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "http://nnn.alfalemos.shop:2052",
+    "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+    "sorter": 3
   },
-  "server": {
-   "host": "151.244.242.224",
-   "port": 80
+  {
+    "id": 378530,
+    "category_id": 23176,
+    "name": "TIM -➔ 02",
+    "description": "Flex",
+    "cdns": null,
+    "config_payload": {
+      "payload": "[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]PATCH / HTTP/1.1[crlf]Host: [host][crlf]Host: ws.revservers.online[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[lf]Host: [app_host][lf]Upgrade: Websocket[lf][split][lf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: meuplano.tim.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split]GET /HTTP 1.2#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]#MERGE ok.ru HTTP/1.1[crlf]Host: ok.ru[crlf]Connection: upgrade, Keep-Alive[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]Referer: http://www.google.com[crlf]#[protocol][crlf] [crlf][crlf]@#HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]#PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net[crlf]#HTTP/1.0[crlf] [crlf][crlf]@#MOVE / HTTP/1.1[crlf]Host: @shaka_news[crlf]Upgrade: websocket[crlf][crlf]#HTTP/ [crlf][crlf]#[crlf]#HTTP/ 1[lf]HTTP/ [lf]Host: www.dropbox.com[lf][lf]#PUT / Cache-Control: private: Web-security[crlf]#ACL HTTP/1.1[lf]Host: google.es[lf]#ACL / HTTP/1.1[crlf][crlf]#ACL buzzfeed.com HTTP/1.1[lf]Host:buzzfeed.com[lf]#ACL http://1.1.1.1rotate=buzzfeed.com;mobile.adobe.com;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate=buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5[crlf]#HTTP/ 2\nHOST : m.opera.com\n\n#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n#HTTP/1.1 [lf]CONNECT HTTP/1.1[lf][lf][lf]#HTTP/1.0 [lf]Host: music.yandex.com[crlf]#[protocol] \n\n/#HTTP/ 2[lf]Host: vivo.com#HTTP/1.1[crlf] [crlf][crlf]•#HTTP/1.1 200[crlf]Host: swcdn.apple.com[crlf]Connection: keep-alive[crlf]#MERGE indexer10.sjc.northshore.akamai.com HTTP/2.0[crlf]Host: r03.spine101.lax01.fab.netarch.akamai.com [crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@RevHunter[crlf]Referer: http://www.google.com[crlf]#HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]#http/ \n\n°#http/ \n\n/",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "bancah.com.br#151.244.242.224",
+      "port": 80
+    },
+    "server": {
+      "host": "151.244.242.224",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "http://nnn.alfalemos.shop:2052",
+    "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
+    "sorter": 4
   },
-  "dnstt_key": "",
-  "dnstt_name_server": "",
-  "dnstt_server": "",
-  "hy_obfs": "",
-  "hy_up_mbps": 100,
-  "hy_down_mbps": 150,
-  "hy_insecure": true,
-  "hy_port": "13375",
-  "hy_version": 1,
-  "dns_server": {
-   "dns1": "8.8.8.8",
-   "dns2": "8.8.4.4"
+  {
+    "id": 561830,
+    "category_id": 23176,
+    "name": "CLARO -➔  01",
+    "description": "Planos ativos!",
+    "cdns": null,
+    "config_payload": {
+      "payload": "GET / HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Content-Length:9999999999999[crlf][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "whatsapp.com#web-login.waze.com#v.whatsapp.net#media.whatsapp.net#www.whatsapp.com#twitter.com#m.waze.com#m.claro.com.br#combo-mult-net.cdn.prismic.io#www.combomultinet.com#telefoneclaro.cdn.prismic.io#telefoneclaro.com.br#vendas-claro.cdn.prismic.io#vendasclaro.com.br#mondrian.claro.com.br#qa-minhaclaro.claro.com.br#dev-minhaclaro.claro.com.br#hmg-statics-recarga.claro.com.br#statics-recarga.claro.com.br#m.claro.com.br",
+      "port": 80
+    },
+    "server": {
+      "host": "151.244.242.224",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "http://nnn.alfalemos.shop:2052",
+    "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+    "sorter": 5
   },
-  "udp_ports": [
-   7300
-  ],
-  "mode": "SSH_PROXY",
-  "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
-  "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
-  "sorter": 1
- },
- {
-  "id": 378528,
-  "category_id": 23176,
-  "name": "VIVO -➔ 02",
-  "description": "Pré",
-  "cdns": null,
-  "config_payload": {
-   "payload": "MERGE ok.ru HTTP/1.1[crlf]Host: ok.ru[crlf]Connection: upgrade, Keep-Alive[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]Referer: http://www.google.com[crlf]#[protocol][crlf] [crlf][crlf]@#HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]#PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net[crlf]#HTTP/1.0[crlf] [crlf][crlf]@#MOVE / HTTP/1.1[crlf]Host: @shaka_news[crlf]Upgrade: websocket[crlf][crlf]#HTTP/ [crlf][crlf]#[crlf]#HTTP/ 1[lf]HTTP/ [lf]Host: www.dropbox.com[lf][lf]#PUT / Cache-Control: private: Web-security[crlf]#ACL HTTP/1.1[lf]Host: google.es[lf]#ACL / HTTP/1.1[crlf][crlf]#ACL buzzfeed.com HTTP/1.1[lf]Host:buzzfeed.com[lf]#ACL http://1.1.1.1rotate=buzzfeed.com;mobile.adobe.com;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate=buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5[crlf]#HTTP/ 2\nHOST : m.opera.com\n\n#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n#HTTP/1.1 [lf]CONNECT HTTP/1.1[lf][lf][lf]#HTTP/1.0 [lf]Host: music.yandex.com[crlf]#[protocol] \n\n/#HTTP/ 2[lf]Host: vivo.com#HTTP/1.1[crlf] [crlf][crlf]•#HTTP/1.1 200[crlf]Host: swcdn.apple.com[crlf]Connection: keep-alive[crlf]#MERGE indexer10.sjc.northshore.akamai.com HTTP/2.0[crlf]Host: r03.spine101.lax01.fab.netarch.akamai.com [crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@RevHunter[crlf]Referer: http://www.google.com[crlf]#HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]#http/ \n\n°#http/ \n\n/",
-   "sni": ""
+  {
+    "id": 702766,
+    "category_id": 23176,
+    "name": "CLARO -➔  02",
+    "description": "Planos ativos!",
+    "cdns": null,
+    "config_payload": {
+      "payload": "GET / HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Content-Length:9999999999999[crlf][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "whatsapp.com#web-login.waze.com#v.whatsapp.net#media.whatsapp.net#www.whatsapp.com#twitter.com#m.waze.com#m.claro.com.br#combo-mult-net.cdn.prismic.io#www.combomultinet.com#telefoneclaro.cdn.prismic.io#telefoneclaro.com.br#vendas-claro.cdn.prismic.io#vendasclaro.com.br#mondrian.claro.com.br#qa-minhaclaro.claro.com.br#dev-minhaclaro.claro.com.br#hmg-statics-recarga.claro.com.br#statics-recarga.claro.com.br#m.claro.com.br",
+      "port": 80
+    },
+    "server": {
+      "host": "nnn.alfalemos.shop",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "http://nnn.alfalemos.shop:2052",
+    "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
+    "sorter": 6
   },
-  "config_openvpn": "",
-  "config_v2ray": "",
-  "tls_version": "TLSv1.2",
-  "auth": {
-   "username": null,
-   "password": null,
-   "v2ray_uuid": null
-  },
-  "proxy": {
-   "host": "151.244.242.224",
-   "port": 80
-  },
-  "server": {
-   "host": "151.244.242.224",
-   "port": 80
-  },
-  "dnstt_key": "",
-  "dnstt_name_server": "",
-  "dnstt_server": "",
-  "hy_obfs": "",
-  "hy_up_mbps": 100,
-  "hy_down_mbps": 150,
-  "hy_insecure": true,
-  "hy_port": "13375",
-  "hy_version": 1,
-  "dns_server": {
-   "dns1": "8.8.8.8",
-   "dns2": "8.8.4.4"
-  },
-  "udp_ports": [
-   7300
-  ],
-  "mode": "SSH_PROXY",
-  "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
-  "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
-  "sorter": 2
- },
- {
-  "id": 378529,
-  "category_id": 23176,
-  "name": "TIM -➔ 01",
-  "description": "Flex",
-  "cdns": null,
-  "config_payload": {
-   "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
-   "sni": ""
-  },
-  "config_openvpn": "",
-  "config_v2ray": "",
-  "tls_version": "TLSv1.2",
-  "auth": {
-   "username": null,
-   "password": null,
-   "v2ray_uuid": null
-  },
-  "proxy": {
-   "host": "bancah.com.br",
-   "port": 80
-  },
-  "server": {
-   "host": "nnn.alfalemos.shop",
-   "port": 80
-  },
-  "dnstt_key": "",
-  "dnstt_name_server": "",
-  "dnstt_server": "",
-  "hy_obfs": "",
-  "hy_up_mbps": 100,
-  "hy_down_mbps": 150,
-  "hy_insecure": true,
-  "hy_port": "13375",
-  "hy_version": 1,
-  "dns_server": {
-   "dns1": "8.8.8.8",
-   "dns2": "8.8.4.4"
-  },
-  "udp_ports": [
-   7300
-  ],
-  "mode": "SSH_PROXY",
-  "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
-  "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-  "sorter": 3
- },
- {
-  "id": 378530,
-  "category_id": 23176,
-  "name": "TIM -➔ 02",
-  "description": "Flex",
-  "cdns": null,
-  "config_payload": {
-   "payload": "[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]PATCH / HTTP/1.1[crlf]Host: [host][crlf]Host: ws.revservers.online[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]#ACL / HTTP/1.1[lf]Host: [app_host][lf]Upgrade: Websocket[lf][split][lf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]BCOPY / [crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[instant_split]ACL / HTTP/1.1[crlf]Host: [host_port][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: portalrecarga.vivo.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split]ACL / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split]HEAD / HTTP/1.9Host: ced.vivo.ddivulga.com Connection: keep-alive User-Agent: [crlf]Referer: http://a.vivo.ddivulga.com/index-tag.html[crlf][crlf]#[delay_split][lf]ACL / HTTP/1.1[crlf]Host: meuplano.tim.com.br[crlf]Upgrade: Upgrade[crlf]Connection: [crlf][crlf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split][lf]GET / HTTP/1.1[lf]Host: vivo.com.br[lf]#[delay_split]GET /HTTP 1.2#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]#[delay_split]PATCH http://portal.vivo.com.br/ HTTP/1.1[crlf]Host: portal.vivo.com.br[crlf][crlf]#MERGE ok.ru HTTP/1.1[crlf]Host: ok.ru[crlf]Connection: upgrade, Keep-Alive[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)[crlf]Referer: http://www.google.com[crlf]#[protocol][crlf] [crlf][crlf]@#HTTP/ 2 HTTP/1.1 CONNECT HTTP/1.1[lf][lf]#PROPPATCH global-4-lvs-colossus-10.opera-mini.net HTTP/1.0[crlf]Host: global-4-lvs-colossus-10.opera-mini.net[crlf]#HTTP/1.0[crlf] [crlf][crlf]@#MOVE / HTTP/1.1[crlf]Host: @shaka_news[crlf]Upgrade: websocket[crlf][crlf]#HTTP/ [crlf][crlf]#[crlf]#HTTP/ 1[lf]HTTP/ [lf]Host: www.dropbox.com[lf][lf]#PUT / Cache-Control: private: Web-security[crlf]#ACL HTTP/1.1[lf]Host: google.es[lf]#ACL / HTTP/1.1[crlf][crlf]#ACL buzzfeed.com HTTP/1.1[lf]Host:buzzfeed.com[lf]#ACL http://1.1.1.1rotate=buzzfeed.com;mobile.adobe.com;1.0.0.5 HTTP/1.1[crlf]Host: http://1.1.1.1rotate=buzzfeed.com;myspace.com;mobile.google.com;1.0.0.5[crlf]#HTTP/ 2\nHOST : m.opera.com\n\n#HTTP/ 1[lf]Host: portalrecarga.vivo.com.br;Tim.com.br;xvideos.com;blaze-1.com;sshtproject.com-CDN-GEThttp://ACL-CDN-VIVO.COM.BR;GOOGLE.COM\\n\\n\\n \\n#HTTP/1.1 [lf]CONNECT HTTP/1.1[lf][lf][lf]#HTTP/1.0 [lf]Host: music.yandex.com[crlf]#[protocol] \n\n/#HTTP/ 2[lf]Host: vivo.com#HTTP/1.1[crlf] [crlf][crlf]•#HTTP/1.1 200[crlf]Host: swcdn.apple.com[crlf]Connection: keep-alive[crlf]#MERGE indexer10.sjc.northshore.akamai.com HTTP/2.0[crlf]Host: r03.spine101.lax01.fab.netarch.akamai.com [crlf]Connection: upgrade, Keep-Alive-Status 101[crlf]Upgrade: HTTP/2.0[crlf]User-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)@RevHunter[crlf]Referer: http://www.google.com[crlf]#HTTP/1.1[lf]HTTP/ [lf]Host: [rotate=www.flickr.com;foxnews.com;www.uc.com;tv.com;netfix.com;palcomp3.com;m.operamini.com;m.olx.com.br;www.sky.com;www.waze.com;ff.garena.com;www.hooq.tv;www.terra.com;salesrock.virginmobile.mx;www.yahoo.com;imgur.com;get.adobe.com;youtube.com;google.com;instagram.com;microsoft.com;akamai.net;1.cloudfront.net;www.dropbox.com][lf]#http/ \n\n°#http/ \n\n/",
-   "sni": ""
-  },
-  "config_openvpn": "",
-  "config_v2ray": "",
-  "tls_version": "TLSv1.2",
-  "auth": {
-   "username": null,
-   "password": null,
-   "v2ray_uuid": null
-  },
-  "proxy": {
-   "host": "bancah.com.br#151.244.242.224",
-   "port": 80
-  },
-  "server": {
-   "host": "151.244.242.224",
-   "port": 80
-  },
-  "dnstt_key": "",
-  "dnstt_name_server": "",
-  "dnstt_server": "",
-  "hy_obfs": "",
-  "hy_up_mbps": 100,
-  "hy_down_mbps": 150,
-  "hy_insecure": true,
-  "hy_port": "13375",
-  "hy_version": 1,
-  "dns_server": {
-   "dns1": "8.8.8.8",
-   "dns2": "8.8.4.4"
-  },
-  "udp_ports": [
-   7300
-  ],
-  "mode": "SSH_PROXY",
-  "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
-  "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
-  "sorter": 4
- },
- {
-  "id": 561830,
-  "category_id": 23176,
-  "name": "CLARO -➔  01",
-  "description": "Planos ativos!",
-  "cdns": null,
-  "config_payload": {
-   "payload": "GET / HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Content-Length:9999999999999[crlf][crlf]",
-   "sni": ""
-  },
-  "config_openvpn": "",
-  "config_v2ray": "",
-  "tls_version": "TLSv1.2",
-  "auth": {
-   "username": null,
-   "password": null,
-   "v2ray_uuid": null
-  },
-  "proxy": {
-   "host": "whatsapp.com#web-login.waze.com#v.whatsapp.net#media.whatsapp.net#www.whatsapp.com#twitter.com#m.waze.com#m.claro.com.br#combo-mult-net.cdn.prismic.io#www.combomultinet.com#telefoneclaro.cdn.prismic.io#telefoneclaro.com.br#vendas-claro.cdn.prismic.io#vendasclaro.com.br#mondrian.claro.com.br#qa-minhaclaro.claro.com.br#dev-minhaclaro.claro.com.br#hmg-statics-recarga.claro.com.br#statics-recarga.claro.com.br#m.claro.com.br",
-   "port": 80
-  },
-  "server": {
-   "host": "151.244.242.224",
-   "port": 80
-  },
-  "dnstt_key": "",
-  "dnstt_name_server": "",
-  "dnstt_server": "",
-  "hy_obfs": "",
-  "hy_up_mbps": 100,
-  "hy_down_mbps": 150,
-  "hy_insecure": true,
-  "hy_port": "13375",
-  "hy_version": 1,
-  "dns_server": {
-   "dns1": "8.8.8.8",
-   "dns2": "8.8.4.4"
-  },
-  "udp_ports": [
-   7300
-  ],
-  "mode": "SSH_PROXY",
-  "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
-  "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
-  "sorter": 5
- },
- {
-  "id": 702766,
-  "category_id": 23176,
-  "name": "CLARO -➔  02",
-  "description": "Planos ativos!",
-  "cdns": null,
-  "config_payload": {
-   "payload": "GET / HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Content-Length:9999999999999[crlf][crlf]",
-   "sni": ""
-  },
-  "config_openvpn": "",
-  "config_v2ray": "",
-  "tls_version": "TLSv1.2",
-  "auth": {
-   "username": null,
-   "password": null,
-   "v2ray_uuid": null
-  },
-  "proxy": {
-   "host": "whatsapp.com#web-login.waze.com#v.whatsapp.net#media.whatsapp.net#www.whatsapp.com#twitter.com#m.waze.com#m.claro.com.br#combo-mult-net.cdn.prismic.io#www.combomultinet.com#telefoneclaro.cdn.prismic.io#telefoneclaro.com.br#vendas-claro.cdn.prismic.io#vendasclaro.com.br#mondrian.claro.com.br#qa-minhaclaro.claro.com.br#dev-minhaclaro.claro.com.br#hmg-statics-recarga.claro.com.br#statics-recarga.claro.com.br#m.claro.com.br",
-   "port": 80
-  },
-  "server": {
-   "host": "nnn.alfalemos.shop",
-   "port": 80
-  },
-  "dnstt_key": "",
-  "dnstt_name_server": "",
-  "dnstt_server": "",
-  "hy_obfs": "",
-  "hy_up_mbps": 100,
-  "hy_down_mbps": 150,
-  "hy_insecure": true,
-  "hy_port": "13375",
-  "hy_version": 1,
-  "dns_server": {
-   "dns1": "8.8.8.8",
-   "dns2": "8.8.4.4"
-  },
-  "udp_ports": [
-   7300
-  ],
-  "mode": "SSH_PROXY",
-  "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
-  "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
-  "sorter": 6
- },
- {
-  "id": 520321,
-  "category_id": 36306,
-  "name": "Claro 3",
-  "description": "Flex",
-  "cdns": null,
-  "config_payload": {
-   "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
-   "sni": ""
-  },
-  "config_openvpn": "",
-  "config_v2ray": "",
-  "tls_version": "TLSv1.2",
-  "auth": {
-   "username": null,
-   "password": null,
-   "v2ray_uuid": null
-  },
-  "proxy": {
-   "host": "bancah.com.br",
-   "port": 80
-  },
-  "server": {
-   "host": "nnn.alfalemos.shop",
-   "port": 80
-  },
-  "dnstt_key": "",
-  "dnstt_name_server": "",
-  "dnstt_server": "",
-  "hy_obfs": "",
-  "hy_up_mbps": 100,
-  "hy_down_mbps": 150,
-  "hy_insecure": true,
-  "hy_port": "13375",
-  "hy_version": 1,
-  "dns_server": {
-   "dns1": "8.8.8.8",
-   "dns2": "8.8.4.4"
-  },
-  "udp_ports": [
-   7300
-  ],
-  "mode": "SSH_PROXY",
-  "status": "ACTIVE",
-  "url_check_user": "",
-  "icon": "",
-  "sorter": 7
- }
+  {
+    "id": 335634,
+    "category_id": 23176,
+    "name": "Claro 3",
+    "description": "Flex",
+    "cdns": null,
+    "config_payload": {
+      "payload": "GET / HTTP/1.1[crlf]Host: bancah.com.br[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: nnn.alfalemos.shop[crlf]Connection: upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf][split]UNLOCK /? HTTP/1.1[crlf]Host: bancah.com.br[crlf]Content-Length:9999999999999[crlf][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "bancah.com.br",
+      "port": 80
+    },
+    "server": {
+      "host": "nnn.alfalemos.shop",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "",
+    "icon": "",
+    "sorter": 7
+  }
 ]
