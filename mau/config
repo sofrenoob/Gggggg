@@ -331,8 +331,8 @@
     ],
     "mode": "SSH_PROXY",
     "status": "ACTIVE",
-    "url_check_user": "",
-    "icon": "",
+    "url_check_user": "http://nnn.alfalemos.shop:2052",
+    "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
     "sorter": 1
   }
 ]
