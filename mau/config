@@ -1,1 +1,146 @@
-#
+[
+  {
+    "id": 845592,
+    "category_id": 533703,
+    "name": "Teste 1",
+    "description": "",
+    "cdns": null,
+    "config_payload": {
+      "payload": "ACL / HTTP/1.1[crlf]Host: teste.com[crlf]Upgrade: Websocket[crlf][split][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "104.18.53.111",
+      "port": 80
+    },
+    "server": {
+      "host": "104.18.53.111",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "",
+    "icon": "",
+    "sorter": 1
+  },
+  {
+    "id": 660367,
+    "category_id": 533703,
+    "name": "Teste 2",
+    "description": "",
+    "cdns": null,
+    "config_payload": {
+      "payload": "ACL / HTTP/1.1[crlf]Host: teste.com[crlf]Upgrade: Websocket[crlf][split][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "104.18.53.111",
+      "port": 80
+    },
+    "server": {
+      "host": "104.18.53.111",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "",
+    "icon": "",
+    "sorter": 2
+  },
+  {
+    "id": 176042,
+    "category_id": 533703,
+    "name": "Teste 3",
+    "description": "",
+    "cdns": null,
+    "config_payload": {
+      "payload": "ACL / HTTP/1.1[crlf]Host: teste.com[crlf]Upgrade: Websocket[crlf][split][crlf]",
+      "sni": ""
+    },
+    "config_openvpn": "",
+    "config_v2ray": "",
+    "tls_version": "TLSv1.2",
+    "auth": {
+      "username": null,
+      "password": null,
+      "v2ray_uuid": null
+    },
+    "proxy": {
+      "host": "104.18.53.111",
+      "port": 80
+    },
+    "server": {
+      "host": "104.18.53.111",
+      "port": 80
+    },
+    "dnstt_key": "",
+    "dnstt_name_server": "",
+    "dnstt_server": "",
+    "hy_obfs": "",
+    "hy_up_mbps": 100,
+    "hy_down_mbps": 150,
+    "hy_insecure": true,
+    "hy_port": "13375",
+    "hy_version": 1,
+    "dns_server": {
+      "dns1": "8.8.8.8",
+      "dns2": "8.8.4.4"
+    },
+    "udp_ports": [
+      7300
+    ],
+    "mode": "SSH_PROXY",
+    "status": "ACTIVE",
+    "url_check_user": "",
+    "icon": "",
+    "sorter": 3
+  }
+]
