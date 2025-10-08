@@ -18,11 +18,11 @@
    "v2ray_uuid": null
   },
   "proxy": {
-   "host": "151.244.242.224",
+   "host": "151.244.242.224#nnn.alfalemos.shop",
    "port": 80
   },
   "server": {
-   "host": "151.244.242.224",
+   "host": "151.244.242.224#nnn.alfalemos.shop",
    "port": 80
   },
   "dnstt_key": "",
@@ -43,7 +43,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
+  "url_check_user": "http://151.244.242.224:2052",
   "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
   "sorter": 1
  },
@@ -66,11 +66,11 @@
    "v2ray_uuid": null
   },
   "proxy": {
-   "host": "151.244.242.224",
+   "host": "151.244.242.224#nnn.alfalemos.shop",
    "port": 80
   },
   "server": {
-   "host": "151.244.242.224",
+   "host": "151.244.242.224#nnn.alfalemos.shop",
    "port": 80
   },
   "dnstt_key": "",
@@ -91,7 +91,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
+  "url_check_user": "http://151.244.242.224:2052",
   "icon": "https://i.ibb.co/LrXCxcX/7115d01b5b4f.png",
   "sorter": 2
  },
@@ -118,7 +118,7 @@
    "port": 80
   },
   "server": {
-   "host": "nnn.alfalemos.shop",
+   "host": "nnn.alfalemos.shop#151.244.242.224",
    "port": 80
   },
   "dnstt_key": "",
@@ -139,7 +139,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
+  "url_check_user": "http://151.244.242.224:2052",
   "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
   "sorter": 3
  },
@@ -166,7 +166,7 @@
    "port": 80
   },
   "server": {
-   "host": "151.244.242.224",
+   "host": "151.244.242.224#nnn.alfalemos.shop",
    "port": 80
   },
   "dnstt_key": "",
@@ -187,7 +187,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
+  "url_check_user": "http://151.244.242.224:2052",
   "icon": "https://i.postimg.cc/8kYdBDnH/ic-tim.png",
   "sorter": 4
  },
@@ -214,7 +214,7 @@
    "port": 80
   },
   "server": {
-   "host": "151.244.242.224",
+   "host": "151.244.242.224#nnn.alfalemos.shop",
    "port": 80
   },
   "dnstt_key": "",
@@ -233,9 +233,9 @@
   "udp_ports": [
    7300
   ],
-  "mode": "SSH_PROXY",
+  "mode": "SSH_DIRECT",
   "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
+  "url_check_user": "http://151.244.242.224:2052",
   "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
   "sorter": 5
  },
@@ -262,7 +262,7 @@
    "port": 80
   },
   "server": {
-   "host": "nnn.alfalemos.shop",
+   "host": "151.244.242.224#nnn.alfalemos.shop",
    "port": 80
   },
   "dnstt_key": "",
@@ -283,7 +283,7 @@
   ],
   "mode": "SSH_PROXY",
   "status": "ACTIVE",
-  "url_check_user": "http://nnn.alfalemos.shop:2052",
+  "url_check_user": "http://151.244.242.224:2052",
   "icon": "https://i.ibb.co/8bMhy9F/Inserir-um-subt-tulo-20240430-114257-0000.png",
   "sorter": 6
  }
