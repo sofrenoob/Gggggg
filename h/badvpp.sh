@@ -44,8 +44,8 @@ NORMAL=\'\033[0m\'
 check_badvpn_installed() {
     if [ ! -f "$BADVPN_BIN" ]; then
         clear
-        echo -e "${VERMELHO}badvpn-udpgw não encontrado em $BADVPN_BIN${NORMAL}"
-        echo -e "${BRANCO}Por favor, use a opção de instalar/atualizar o BadVPN no menu.${NORMAL}"
+        echo -e "\033[1;32mbadvpn-udpgw não encontrado em \033[1;37m"
+        echo -e "\033[1;32mPor favor, use a opção de instalar/atualizar o BadVPN no menu.\033[1;37m"
         sleep 4
         return 1
     fi
@@ -55,8 +55,8 @@ check_badvpn_installed() {
 # Instala/Atualiza o BadVPN a partir do código fonte
 install_update_badvpn() {
     clear
-    echo -e "${AZUL}Instalando/Atualizando o BadVPN...${NORMAL}"
-    echo -e "${BRANCO}Isso irá baixar o código fonte e compilá-lo. Pode levar alguns minutos.${NORMAL}"
+    echo -e "\033[1;32mInstalando/Atualizando o BadVPN...\033[1;37m"
+    echo -e "\033[1;32mIsso irá baixar o código fonte e compilá-lo. Pode levar alguns minutos.\033[1;37m"
     
     # Instala dependências de compilação
     apt-get update > /dev/null 2>&1
@@ -74,9 +74,9 @@ install_update_badvpn() {
     make install > /dev/null 2>&1
 
     if [ -f "$BADVPN_BIN" ]; then
-        echo -e "${VERDE}BadVPN instalado com sucesso em $BADVPN_BIN${NORMAL}"
+        echo -e "\033[1;32mBadVPN instalado com sucesso em \033[1;37m"
     else
-        echo -e "${VERMELHO}Falha na instalação do BadVPN.${NORMAL}"
+        echo -e "\033[1;32mFalha na instalação do BadVPN.\033[1;37m"
     fi
     sleep 3
 }
@@ -100,11 +100,11 @@ toggle_badvpn_default() {
     if ps x | grep -w "$BADVPN_BIN" | grep -w "7300" | grep -v grep > /dev/null; then
         # Desativar
         clear
-        echo -e "${BRANCO}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NORMAL}"
+        echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\E[44;1;37m            GERENCIAR BADVPN             \E[0m"
-        echo -e "${BRANCO}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NORMAL}"
+        echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo ""
-        echo -e "${VERDE}DESATIVANDO O BADVPN (Porta 7300)...${NORMAL}"
+        echo -e "\033[1;32mDESATIVANDO O BADVPN (Porta 7300)...${NORMAL}"
         
         pid=$(screen -ls | grep "udpvpn7300" | awk 	'{print $1}')
         if [[ ! -z "$pid" ]]; then
@@ -114,12 +114,12 @@ toggle_badvpn_default() {
         screen -wipe >/dev/null 2>&1
 
         echo ""
-        echo -e "${VERDE}BADVPN (Porta 7300) DESATIVADO COM SUCESSO!${NORMAL}"
+        echo -e "\033[1;32mBADVPN DESATIVADO COM SUCESSO!\033[1;37m"
         sleep 3
     else
         # Ativar
         clear
-        echo -e "${VERDE}INICIANDO O BADVPN (Porta 7300)... ${NORMAL}\n"
+        echo -e "\033[1;32mINICIANDO O BADVPN... \033[0m\n"
         
         screen -dmS udpvpn7300 $BADVPN_BIN --listen-addr $LISTEN_ADDR:7300 --max-clients $MAX_CLIENTS --max-connections-for-client $MAX_CONNS_PER_CLIENT --client-socket-sndbuf $CLIENT_SOCKET_SNDBUF --loglevel $LOG_LEVEL --logger $LOGGER
         
@@ -128,7 +128,7 @@ toggle_badvpn_default() {
         echo "screen -dmS udpvpn7300 $BADVPN_BIN --listen-addr $LISTEN_ADDR:7300 --max-clients $MAX_CLIENTS --max-connections-for-client $MAX_CONNS_PER_CLIENT --client-socket-sndbuf $CLIENT_SOCKET_SNDBUF --loglevel $LOG_LEVEL --logger $LOGGER" >> /etc/autostart
 
         echo ""
-        echo -e "${VERDE}BADVPN ATIVADO COM SUCESSO NA PORTA 7300${NORMAL}"
+        echo -e "\033[1;32mBADVPN ATIVADO COM SUCESSO\033[1;37m"
         sleep 3
     fi
 }
@@ -145,20 +145,20 @@ open_new_port() {
 
     if [[ -z "$porta" || ! "$porta" =~ ^[0-9]+$ || "$porta" -lt 1 || "$porta" -gt 65535 ]]; then
         echo ""
-        echo -e "${VERMELHO}Porta inválida!${NORMAL}"
+        echo -e "\033[1;32mPorta inválida!\033[1;37m"
         sleep 2
         return
     fi
 
     if ps x | grep -w "$BADVPN_BIN" | grep -w "$porta" | grep -v grep > /dev/null; then
         echo ""
-        echo -e "${VERMELHO}A porta $porta já está em uso pelo BadVPN.${NORMAL}"
+        echo -e "${VERMELHO}A porta $porta já está em uso pelo BadVPN.\033[1;37m"
         sleep 2
         return
     fi
 
     echo ""
-    echo -e "${VERDE}INICIANDO O BADVPN NA PORTA ${VERMELHO}$porta${NORMAL}"
+    echo -e "\033[1;32mINICIANDO O BADVPN NA PORTA \033[1;31m$porta\033[1;37m"
     echo ""
     
     screen -dmS udpvpn$porta $BADVPN_BIN --listen-addr $LISTEN_ADDR:$porta --max-clients $MAX_CLIENTS --max-connections-for-client $MAX_CONNS_PER_CLIENT --client-socket-sndbuf $CLIENT_SOCKET_SNDBUF --loglevel $LOG_LEVEL --logger $LOGGER
@@ -168,7 +168,7 @@ open_new_port() {
     echo "screen -dmS udpvpn$porta $BADVPN_BIN --listen-addr $LISTEN_ADDR:$porta --max-clients $MAX_CLIENTS --max-connections-for-client $MAX_CONNS_PER_CLIENT --client-socket-sndbuf $CLIENT_SOCKET_SNDBUF --loglevel $LOG_LEVEL --logger $LOGGER" >> /etc/autostart
 
     echo ""
-    echo -e "PORTA ${VERDE}$porta${NORMAL} ATIVADA COM SUCESSO"
+    echo -e "PORTA \033[1;32m$porta\033[1;37m ATIVADA COM SUCESSO"
     sleep 2
 }
 
@@ -177,19 +177,19 @@ stop_specific_port() {
     clear
     echo -e "\E[44;1;37m            BADVPN             \E[0m"
     echo ""
-    echo -ne "${VERDE}QUAL PORTA DESEJA PARAR ${BRANCO}?${NORMAL}: "
+    echo -ne "\033[1;32mQUAL PORTA DESEJA ULTILIZAR \033[1;37m?\033[1;37m: "
     read porta
 
     if [[ -z "$porta" || ! "$porta" =~ ^[0-9]+$ ]]; then
         echo ""
-        echo -e "${VERMELHO}Porta inválida!${NORMAL}"
+        echo -e "\033[1;32mPorta inválida!\033[1;37m"
         sleep 2
         return
     fi
 
     if ! ps x | grep -w "$BADVPN_BIN" | grep -w "$porta" | grep -v grep > /dev/null; then
         echo ""
-        echo -e "${VERMELHO}A porta $porta não está sendo usada pelo BadVPN.${NORMAL}"
+        echo -e "\033[1;32mA porta $porta não está sendo usada pelo BadVPN.\033[1;37m"
         sleep 2
         return
     fi
@@ -202,7 +202,7 @@ stop_specific_port() {
     screen -wipe >/dev/null 2>&1
 
     echo ""
-    echo -e "${VERDE}BADVPN (Porta $porta) DESATIVADO COM SUCESSO!${NORMAL}"
+    echo -e "\033[1;32mBADVPN (Porta $porta) DESATIVADO COM SUCESSO!\033[1;37m"
     sleep 3
 }
 
@@ -220,7 +220,7 @@ echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━�
         sleep 0.1
     fi
     var_sks1=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
-    echo ""echo ""
+    
     echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;37mATIVAR BADVPN(PADRÃO 7300) $var_sks1 \033[0m"
     echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;37mABRIR PORTA\033[0m"
     echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;37mPARAR PORTA ESPECÍFICA\033[0m"
@@ -238,7 +238,7 @@ echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━�
             4) stop_all_badvpn ;;
             5) install_update_badvpn ;;
             0) break ;;
-            *) echo "" ; echo -e "${VERMELHO}Opção inválida!${NORMAL}" ; sleep 1 ;;
+            *) echo "" ; echo -e "\033[1;32mOpção inválida!\033[1;37m" ; sleep 1 ;;
         esac
     done
     clear
