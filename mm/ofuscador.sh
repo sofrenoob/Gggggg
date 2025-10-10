@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Diretório de entrada e saída padrão
-DOWNLOAD_DIR="/storage/emulated/0/Download"
+DOWNLOAD_DIR="/root/Download"
 
 # Garante que o diretório de download exista
 mkdir -p "$DOWNLOAD_DIR"
