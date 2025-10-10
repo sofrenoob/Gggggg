@@ -139,8 +139,8 @@ open_new_port() {
 
     clear
     echo -e "\E[44;1;37m            BADVPN             \E[0m"
-    echo ""
-    echo -ne "${VERDE}QUAL PORTA DESEJA UTILIZAR ${BRANCO}?${NORMAL}: "
+            echo ""
+            echo -ne "\033[1;32mQUAL PORTA DESEJA ULTILIZAR \033[1;37m?\033[1;37m: "
     read porta
 
     if [[ -z "$porta" || ! "$porta" =~ ^[0-9]+$ || "$porta" -lt 1 || "$porta" -gt 65535 ]]; then
@@ -210,26 +210,25 @@ stop_specific_port() {
 main_menu() {
     while true; do
         clear
-        echo -e "${BRANCO}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NORMAL}"
-        echo -e "\E[44;1;37m            GERENCIAR BADVPN             \E[0m"
-        echo -e "${BRANCO}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NORMAL}"
-        echo ""
-        
-        portas_ativas=$(ps x | grep -w "$BADVPN_BIN" | grep -v grep | awk -F")[0-9]{1,5}" '{print $2}' | xargs)
-        if [[ ! -z "$portas_ativas" ]]; then
-            echo -e "${BRANCO}PORTAS ATIVAS: ${VERDE}$portas_ativas${NORMAL}"
-        fi
-        
-        var_sks1=$(ps x | grep "$BADVPN_BIN" | grep -w "7300" | grep -v grep > /dev/null && echo -e "${VERDE}◉ " || echo -e "${VERMELHO}○ ")
-        echo ""
-        echo -e "${VERMELHO}[${CYAN}1${VERMELHO}] ${BRANCO}• ${BRANCO}ATIVAR/DESATIVAR BADVPN (PADRÃO 7300) $var_sks1${NORMAL}"
-        echo -e "${VERMELHO}[${CYAN}2${VERMELHO}] ${BRANCO}• ${BRANCO}ABRIR PORTA ADICIONAL${NORMAL}"
-        echo -e "${VERMELHO}[${CYAN}3${VERMELHO}] ${BRANCO}• ${BRANCO}PARAR PORTA ESPECÍFICA${NORMAL}"
-        echo -e "${VERMELHO}[${CYAN}4${VERMELHO}] ${BRANCO}• ${BRANCO}PARAR TODOS OS BADVPN${NORMAL}"
-        echo -e "${VERMELHO}[${CYAN}5${VERMELHO}] ${BRANCO}• ${BRANCO}INSTALAR/ATUALIZAR BADVPN${NORMAL}"
-        echo -e "${VERMELHO}[${CYAN}0${VERMELHO}] ${BRANCO}• ${BRANCO}SAIR${NORMAL}"
-        echo ""
-        echo -ne "${VERDE}O QUE DESEJA FAZER ${BRANCO}?${NORMAL} "
+        echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\E[44;1;37m            GERENCIAR BADVPN             \E[0m"
+echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo ""
+    if ps x | grep -w udpvpn | grep -v grep 1>/dev/null 2>/dev/null; then
+        echo -e "\033[1;37mPORTAS\033[1;37m: \033[1;32m$(netstat -nplt | grep 'badvpn-ud' | awk {'print $4'} | cut -d: -f2 | xargs)"
+    else
+        sleep 0.1
+    fi
+    var_sks1=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
+    echo ""echo ""
+    echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;37mATIVAR BADVPN(PADRÃO 7300) $var_sks1 \033[0m"
+    echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;37mABRIR PORTA\033[0m"
+    echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;37mPARAR PORTA ESPECÍFICA\033[0m"
+    echo -e "\033[1;31m[\033[1;36m4\033[1;31m] \033[1;37m• \033[1;37mPARAR TODOS OS BADVPN\033[0m"
+    echo -e "\033[1;31m[\033[1;36m5\033[1;31m] \033[1;37m• \033[1;37mINSTALAR/ATUALIZAR BADVPN\033[0m"
+    echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;37mVOLTAR\033[0m"
+    echo ""
+    echo -ne "\033[1;32mO QUE DESEJA FAZER \033[1;37m?\033[1;37m "
         read resposta
 
         case "$resposta" in
