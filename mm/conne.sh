@@ -1,8 +1,7 @@
 #!/bin/bash
 clear
-echo -e "\E[41;1;37m      ⇱⇲         SSHPLUS MANAGER         ⇱⇲       \E[0m"
 echo "   SSHPlus" | figlet
-echo -e "\033[1;32m      INFORMACOES E OPCOES DO MENU \033[0m\n\n"
+echo -e "\033[1;32mEU SOU UMA CÓPIA DA CÓPIA 😏 \033[0m\n\n"
 echo -e " \033[1;37m[\033[1;31m01\033[1;37m] - \033[1;33m Cria usuario ssh"
 echo -e " \033[1;37m[\033[1;31m02\033[1;37m] - \033[1;33m Cria usuario test ssh"
 echo -e " \033[1;37m[\033[1;31m03\033[1;37m] - \033[1;33m Remove usuario ssh"
