@@ -33,3 +33,56 @@ echo -e " \033[1;37m[\033[1;31m27\033[1;37m] - \033[1;33m Atualiza o script SSHP
 echo -e " \033[1;37m[\033[1;31m28\033[1;37m] - \033[1;33m Remove o script SSHPLUS"
 echo -e " \033[1;37m[\033[1;31m29\033[1;37m] - \033[1;33m Exibe informacoes sobre o script"
 echo -e " \033[1;37m[\033[1;31m30\033[1;37m] - \033[1;33m Retorna ao menu anterior\033[0m"
+echo ""
+echo -ne "\033[1;32m O QUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m : "; read x
+
+case "$x" in 
+   1 | 01)
+   clear
+   SINCRONIZARPAINEL
+   exit;
+   ;;
+    3 | 03)
+   clear
+   SLOWDNS
+   exit;
+   ;;
+   4 | 04)
+   clear
+   PAINELV20
+   exit;
+   ;;
+    2 | 02)
+   clear
+   nome
+   exit;
+   ;;
+   5 | 05)
+   clear
+   BOTFREE
+   exit;
+   ;;
+   6 | 06)
+   clear
+   ATTSSL
+   exit;
+   ;;
+    7 | 07)
+   clear
+   MENU
+   exit;
+   ;;
+   0 | 00)
+   echo -e "\033[1;31mSaindo...\033[0m"
+   sleep 2
+   clear
+   exit;
+   ;;
+   *)
+   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
+   sleep 2
+esac
+done
+}
+#fim
+
