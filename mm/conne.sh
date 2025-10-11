@@ -3,12 +3,7 @@
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%50s%s%-20s\n' "BADVPN PRO 2" ; tput sgr0
 if [ -f "/usr/local/bin/badvpn-udpgw" ]
 then
-	tput setaf 3 ; tput bold ; echo ""
-	echo ""
-	echo "O BadVPN já foi instalado com sucesso."
-	echo "" ; tput sgr0
-	exit
-echo -e "\033[1;31mA instalação pode demorar bastante... seja paciente!\033[0m"
+	echo -e "\033[1;31mA instalação pode demorar bastante... seja paciente!\033[0m"
 	sleep 3
 	apt-get update -y
 	apt-get install screen wget gcc build-essential g++ make -y
