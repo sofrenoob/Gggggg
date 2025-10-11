@@ -8,8 +8,6 @@ then
 	echo "O BadVPN já foi instalado com sucesso."
 	echo "" ; tput sgr0
 	exit
-else
-tput setaf 2 ; tput bold ; echo ""
 echo -e "\033[1;31mA instalação pode demorar bastante... seja paciente!\033[0m"
 	sleep 3
 	apt-get update -y
