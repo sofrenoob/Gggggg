@@ -1,87 +1,62 @@
 #!/bin/bash
-clear
-echo "   SSHPlus" | figlet
-echo -e "\E[41;1;37m      ⇱⇲         EU SOU UMA CÓPIA DA CÓPIA 😏         ⇱⇲       \E[0m\n\n"
-echo -e " \033[1;37m[\033[1;31m01\033[1;37m] - \033[1;33m Cria usuario ssh"
-echo -e " \033[1;37m[\033[1;31m02\033[1;37m] - \033[1;33m Cria usuario test ssh"
-echo -e " \033[1;37m[\033[1;31m03\033[1;37m] - \033[1;33m Remove usuario ssh"
-echo -e " \033[1;37m[\033[1;31m04\033[1;37m] - \033[1;33m Monitora usuarios ssh e dropbear"
-echo -e " \033[1;37m[\033[1;31m05\033[1;37m] - \033[1;33m Muda data de usuario ssh"
-echo -e " \033[1;37m[\033[1;31m06\033[1;37m] - \033[1;33m Altera limite de conexoes simutaneas"
-echo -e " \033[1;37m[\033[1;31m07\033[1;37m] - \033[1;33m Altera senha de usuario ssh"
-echo -e " \033[1;37m[\033[1;31m08\033[1;37m] - \033[1;33m Remove todos usuarios expirados"
-echo -e " \033[1;37m[\033[1;31m09\033[1;37m] - \033[1;33m Ativa o limitador de conexoes simutaneas"
-echo -e " \033[1;37m[\033[1;31m10\033[1;37m] - \033[1;33m Modo de conexao squid, dropbear e etc \033[1;32mNEW"
-echo -e " \033[1;37m[\033[1;31m11\033[1;37m] - \033[1;33m Efetua teste de velocidade do servidor \033[1;32mNEW"
-echo -e " \033[1;37m[\033[1;31m12\033[1;37m] - \033[1;33m Define um banner para a vps"
-echo -e " \033[1;37m[\033[1;31m13\033[1;37m] - \033[1;33m Exibe o trafego comsumido"
-echo -e " \033[1;37m[\033[1;31m14\033[1;37m] - \033[1;33m Efetua limpeza e reparacoes de erros \033[1;32mNEW"
-echo -e " \033[1;37m[\033[1;31m15\033[1;37m] - \033[1;33m Instala o OpenVPN "
-echo -e " \033[1;37m[\033[1;31m16\033[1;37m] - \033[1;33m Cria backup de usuarios"
-echo -e " \033[1;37m[\033[1;31m17\033[1;37m] - \033[1;33m Instala o Bad Udp para ligacoes via VoIP"
-echo -e " \033[1;37m[\033[1;31m18\033[1;37m] - \033[1;33m Melhora a latencia 'Experimental'"
-echo -e " \033[1;37m[\033[1;31m19\033[1;37m] - \033[1;33m Exibe o segundo Menu"
-echo -e " \033[1;37m[\033[1;31m20\033[1;37m] - \033[1;33m Adiciona host na vps para conexao squid"
-echo -e " \033[1;37m[\033[1;31m21\033[1;37m] - \033[1;33m Remove host da vps "
-echo -e " \033[1;37m[\033[1;31m22\033[1;37m] - \033[1;33m Reinicia sistema"
-echo -e " \033[1;37m[\033[1;31m23\033[1;37m] - \033[1;33m Reinicia servicos 'squid' 'dropbear' e etc"
-echo -e " \033[1;37m[\033[1;31m24\033[1;37m] - \033[1;33m Opcao para gerenciar a vps pelo telegram \033[1;32mNEW"
-echo -e " \033[1;37m[\033[1;31m25\033[1;37m] - \033[1;33m Exibe informacoes da vps"
-echo -e " \033[1;37m[\033[1;31m26\033[1;37m] - \033[1;33m Muda a senha da vps"
-echo -e " \033[1;37m[\033[1;31m27\033[1;37m] - \033[1;33m Atualiza o script SSHPLUS"
-echo -e " \033[1;37m[\033[1;31m28\033[1;37m] - \033[1;33m Remove o script SSHPLUS"
-echo -e " \033[1;37m[\033[1;31m29\033[1;37m] - \033[1;33m Exibe informacoes sobre o script"
-echo -e " \033[1;37m[\033[1;31m30\033[1;37m] - \033[1;33m Retorna ao menu anterior\033[0m"
-echo ""
-echo -ne "\033[1;32m O QUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m : "; read x
 
-case "$x" in 
-   1 | 01)
-   clear
-   SINCRONIZARPAINEL
-   exit;
-   ;;
-    3 | 03)
-   clear
-   SLOWDNS
-   exit;
-   ;;
-   4 | 04)
-   clear
-   PAINELV20
-   exit;
-   ;;
-    2 | 02)
-   clear
-   nome
-   exit;
-   ;;
-   5 | 05)
-   clear
-   BOTFREE
-   exit;
-   ;;
-   6 | 06)
-   clear
-   ATTSSL
-   exit;
-   ;;
-    7 | 07)
-   clear
-   MENU
-   exit;
-   ;;
-   0 | 00)
-   echo -e "\033[1;31mSaindo...\033[0m"
-   sleep 2
-   clear
-   exit;
-   ;;
-   *)
-   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-   sleep 2
-esac
-done
-}
-#fim
-
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%50s%s%-20s\n' "BadVPN, created By Mr.Devim" ; tput sgr0
+if [ -f "/usr/local/bin/badvpn-udpgw" ]
+then
+	tput setaf 3 ; tput bold ; echo ""
+	echo ""
+	echo "O BadVPN já foi instalado com sucesso."
+	echo "Para executar, crie uma sessão screen"
+	echo "E execute o comando:"
+	echo ""
+	echo "badudp"
+	echo ""
+	echo "E deixe a sessão screen rodando em segundo plano."
+	echo "" ; tput sgr0
+	exit
+else
+tput setaf 2 ; tput bold ; echo ""
+echo -e "\033[1;36mEste é um script que compila e instala automaticamente o programa BadVPN em servidores Debian e Ubuntu para ativar o encaminhamento UDP na porta 7300, usado por programas como HTTP Injector da Evozi. Permitindo assim a utilização do protocolo UDP para jogos online, chamadas VoIP e outras coisas interessantes.\033[0m"
+echo "" ; tput sgr0
+read -p "Deseja continuar? [s/n]: " -e -i n resposta
+if [[ "$resposta" = 's' ]]; then
+	echo ""
+	echo -e "\033[1;31mA instalação pode demorar bastante... seja paciente!\033[0m"
+	sleep 3
+	apt-get update -y
+	apt-get install screen wget gcc build-essential g++ make -y
+	wget http://www.cmake.org/files/v2.8/cmake-2.8.12.tar.gz
+	tar xvzf cmake*.tar.gz
+	cd cmake*
+	./bootstrap --prefix=/usr
+	make 
+	make install
+	cd ..
+	rm -r cmake*
+	mkdir badvpn-build
+	cd badvpn-build
+	wget https://github.com/ambrop72/badvpn/archive/refs/tags/1.999.130.tar.gz
+	tar xf 1.999.130.tar.gz
+	cd bad*
+	cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
+	make install
+	cd ..
+	rm -r bad*
+	cd ..
+	rm -r badvpn-build
+    chmod +x badvpn.sh
+    ./badvpn.sh
+	echo "#!/bin/bash
+	badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 8" > /bin/badudp
+	chmod +x /bin/badudp
+	clear
+	tput setaf 3 ; tput bold ; echo ""
+	echo ""
+	echo -e "\033[1;36mBadVPN instalado com sucesso. Para usar, crie uma sessão screen e execute o comando badudp e deixe a sessão screen rodando em segundo plano.\033[0m"
+	echo "" ; tput sgr0
+	exit
+else 
+	echo ""
+	exit
+fi
+fi
