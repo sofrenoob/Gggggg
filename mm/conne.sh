@@ -1,8 +1,5 @@
 #!/bin/bash
 
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%50s%s%-20s\n' "BADVPN PRO 2" ; tput sgr0
-if [ -f "/usr/local/bin/badvpn-udpgw" ]
-then
 	echo -e "\033[1;31mA instalação pode demorar bastante... seja paciente!\033[0m"
 	sleep 3
 	apt-get update -y
@@ -29,11 +26,9 @@ then
     chmod +x badvpn.sh
     ./badvpn.sh
 	echo "#!/bin/bash
-	badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 100000 --max-connections-for-client 1000" > /bin/badudp
-	chmod +x /bin/badudp
+	badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 100000 --max-connections-for-client 1000" > /bin/udpvpn
+	chmod +x /bin/udpvpn
 	clear
-	tput setaf 3 ; tput bold ; echo ""
-	echo ""
 	echo -e "\033[1;36mBadVPN instalado com sucesso.\033[0m"
 	echo "" ; tput sgr0
 	exit
