@@ -2,7 +2,7 @@
 clear
 fun_badvpn() {
 echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\E[44;1;37m              BADVPN PRO 2               \E[0m"
+    echo -e "\E[44;1;37m            GERENCIAR BADVPN             \E[0m"
 echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo ""
     if ps x | grep -w udpvpn | grep -v grep 1>/dev/null 2>/dev/null; then
@@ -22,7 +22,7 @@ echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━�
         if ps x | grep -w udpvpn | grep -v grep 1>/dev/null 2>/dev/null; then
             clear
 echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\E[44;1;37m              BADVPN PRO 2               \E[0m"
+    echo -e "\E[44;1;37m            GERENCIAR BADVPN             \E[0m"
 echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
             echo ""
             fun_stopbad () {
@@ -36,57 +36,24 @@ echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━�
                 sleep 1
                 screen -wipe >/dev/null
             }
-            echo -e "\033[1;32mDESATIVANDO O BADVPN \033[1;37m"
+            echo -e "\033[1;32mDESATIVANDO O BADVPN\033[1;37m"
             echo ""
             fun_stopbad
             echo ""
-            echo -e "\033[1;32mBADVPN DESATIVADO COM SUCESSO ! \033[1;37m"
+            echo -e "\033[1;32mBADVPN DESATIVADO COM SUCESSO!\033[1;37m"
             sleep 3
 	    clear
             fun_badvpn
         else
             clear
-        echo -e "\033[1;32mINSTALANDO O BADVPN PRO 2 AGUARDE... ! \033[0m\n"
-	    inst_udp () {
-	        cd $HOME
-	        apt-get install dos2unix -y
-	        apt-get update -y
-	        apt-get install screen wget gcc build-essential g++ make -y
-	        wget http://www.cmake.org/files/v2.8/cmake-2.8.12.tar.gz
-	        tar xvzf cmake*.tar.gz
-	        cd cmake*
-	        ./bootstrap --prefix=/usr
-	        make 
-	        make install
-	        cd ..
-	        rm -r cmake*
-	        mkdir badvpn-build
-	        cd badvpn-build
-	        wget https://github.com/ambrop72/badvpn/archive/refs/tags/1.999.130.tar.gz
-	        tar xf 1.999.130.tar.gz
-	        cd bad*
-	        cmake -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
-	        make install
-	        cd ..
-	        rm -r bad*
-	        cd ..
-	        rm -r badvpn-build
-	        chmod +x badvpn.sh
-	        ./badvpn.sh
-	        echo "#!/bin/bash
-	badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 100000 --max-connections-for-client 1000" > /bin/udpvpn
-	chmod +x /bin/udpvpn
-	clear
-	echo -e "\033[1;36mBADVPN INSTALADO COM SUCESSO ! \033[0m"
-	clear
             echo -e "\033[1;32mINICIANDO O BADVPN... \033[0m\n"
             fun_udpon () {
-                screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 100000 --max-connections-for-client 1000
+                screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 9000 --max-connections-for-client 5
                 [[ $(grep -wc "udpvpn" /etc/autostart) = '0' ]] && {
-                    echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 100000 --max-connections-for-client 1000 --client-socket-sndbuf 100000" >> /etc/autostart
+                    echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 9000 --max-connections-for-client 5 --client-socket-sndbuf 10000" >> /etc/autostart
                 } || {
                     sed -i '/udpvpn/d' /etc/autostart
-                    echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 100000 --max-connections-for-client 1000 --client-socket-sndbuf 100000" >> /etc/autostart
+                    echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 9000 --max-connections-for-client 5 --client-socket-sndbuf 10000" >> /etc/autostart
                 }
                 sleep 1
             }
@@ -95,7 +62,7 @@ echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━�
                     sleep 0.1
                 } || {
                     cd $HOME
-                    wget https://raw.githubusercontent.com/BGXSJYRABJE/hdisbsi/main/badvpn/badvpn-udpgw -o /dev/null
+                    wget https://www.dropbox.com/s/48b36clnxkkurlz/badvpn-udpgw -o /dev/null
                     mv -f $HOME/badvpn-udpgw /bin/badvpn-udpgw
                     chmod 777 /bin/badvpn-udpgw
                 }
@@ -128,7 +95,7 @@ echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━�
             echo ""
             fun_abrirptbad() {
                 sleep 1
-                screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:$porta --max-clients 100000 --max-connections-for-client 1000
+                screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:$porta --max-clients 9000 --max-connections-for-client 5
                 sleep 1
 		
             }
