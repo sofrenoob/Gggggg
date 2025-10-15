@@ -33,7 +33,7 @@ case "$x" in
    ;;
    0 | 00)
    clear
-   menu
+   conexao.sh
    ;;
    *)
    echo -e "\n\033[1;31mOpcao invalida !\033[0m"
