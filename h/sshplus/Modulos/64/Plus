@@ -1,0 +1,254 @@
+#!/bin/bash
+
+#================================================================================#
+# SCRIPT DE INSTALAÇÃO SSH-PLUS - VERSÃO MODERNIZADA
+# Autor: Seu Nome/Comunidade
+# Descrição: Instala e configura o ambiente SSH-PLUS.
+#================================================================================#
+
+# --- PREVENÇÃO DE ERROS ---
+# Sai imediatamente se um comando falhar.
+set -e
+
+# --- VARIÁVEIS DE COR E ESTILO ---
+C_OFF='\033[0m'
+C_RED='\033[0;31m'
+C_GREEN='\033[0;32m'
+C_YELLOW='\033[0;33m'
+C_BLUE='\033[0;34m'
+C_PURPLE='\033[0;35m'
+C_CYAN='\033[0;36m'
+C_WHITE='\033[0;37m'
+C_BOLD='\033[1m'
+C_DIM='\033[2m'
+
+# --- FUNÇÕES DE LOG (MENSAGENS PADRONIZADAS) ---
+log_info() {
+    echo -e "${C_BOLD}${C_BLUE}[INFO]${C_OFF} $1"
+}
+log_success() {
+    echo -e "${C_BOLD}${C_GREEN}[OK]${C_OFF} $1"
+}
+log_warning() {
+    echo -e "${C_BOLD}${C_YELLOW}[AVISO]${C_OFF} $1"
+}
+log_error() {
+    echo -e "${C_BOLD}${C_RED}[ERRO]${C_OFF} $1"
+    exit 1
+}
+print_separator() {
+    printf "%*s\n" "$(tput cols)" "" | tr ' ' '─' | lolcat
+}
+
+# --- FUNÇÃO DA BARRA DE PROGRESSO (LÓGICA ORIGINAL COM VISUAL MELHORADO) ---
+run_with_progress() {
+    local task_name="$1"
+    shift
+    local command_to_run="$@"
+    
+    (
+        [[ -e $HOME/fim ]] && rm -f $HOME/fim
+        $command_to_run >/dev/null 2>&1
+        touch $HOME/fim
+    ) &
+    
+    local pid=$!
+    local spin='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+    
+    tput civis # Oculta o cursor
+    echo -ne "${C_PURPLE}${C_BOLD}$task_name... ${C_OFF}"
+    while kill -0 $pid 2>/dev/null; do
+        local i=$(( (i+1) % ${#spin} ))
+        echo -ne "${C_CYAN}${spin:$i:1}${C_OFF}"
+        sleep 0.1
+        echo -ne "\b"
+    done
+    tput cnorm # Exibe o cursor
+    
+    if [[ -e $HOME/fim ]]; then
+        rm -f $HOME/fim
+        echo -e "${C_GREEN}${C_BOLD}Concluído!${C_OFF}"
+    else
+        echo -e "${C_RED}${C_BOLD}Falhou!${C_OFF}"
+    fi
+}
+
+# --- VERIFICAÇÕES INICIAIS ---
+check_root() {
+    if [[ "$(whoami)" != "root" ]]; then
+        log_error "Você precisa executar este script como usuário root."
+    fi
+}
+
+# --- FUNÇÕES DE INSTALAÇÃO (LÓGICA ORIGINAL) ---
+install_dependencies() {
+    log_info "Verificando e instalando dependências essenciais..."
+    local pkgs=("lolcat" "figlet" "curl" "git" "boxes" "bc" "screen" "nano" "unzip" "lsof" "net-tools" "dos2unix" "nload" "jq" "python3" "python3-pip" "python" "at" "shc")
+    
+    # Esconde a saída para um visual mais limpo
+    for pkg in "${pkgs[@]}"; do
+        if ! dpkg -l | grep -q " $pkg "; then
+            apt-get install -y "$pkg" &>/dev/null
+        fi
+    done
+    
+    # Instala o speedtest-cli via pip
+    pip install speedtest-cli &>/dev/null
+    log_success "Dependências verificadas e instaladas."
+}
+
+define_obfuscated_vars() {
+    # Lógica original de ofuscação de variáveis. Não alterar.
+    _lnk=$(echo 'z1:y#x.5s0ul&p4hs$s.0a72d*n-e!v89e032:3r' | sed -e 's/[^a-z.]//ig' | rev)
+    _Ink=$(echo '/3×u3#s87r/l32o4×c1a×l1/83×l24×i0b×' | sed -e 's/[^a-z/]//ig')
+    _1nk=$(echo '/3×u3#s×87r/83×l2×4×i0b×' | sed -e 's/[^a-z/]//ig')
+}
+
+verify_key() {
+    log_info "Verificando a chave de instalação..."
+    rm -f $_Ink/list &>/dev/null
+    wget -P $_Ink https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/list &>/dev/null
+    
+    if [[ ! -e "$_Ink/list" ]]; then
+        log_error "Chave de instalação inválida ou falha no download. Abortando."
+    fi
+    log_success "Chave validada com sucesso."
+}
+
+prompt_user_database() {
+    if [[ -f "$HOME/usuarios.db" ]]; then
+        clear
+        figlet "SSH-PLUS" | lolcat
+        print_separator
+        echo -e "${C_YELLOW}${C_BOLD}Foi detectada uma base de dados de usuários existente!${C_OFF}" | boxes -d stone -p a1c
+        echo ""
+        log_warning "Arquivo encontrado: ${C_CYAN}$HOME/usuarios.db${C_OFF}"
+        echo -e "Este arquivo contém os dados de login, senha, limite e validade dos seus usuários."
+        echo ""
+        echo -e " ${C_CYAN}[1]${C_OFF} ${C_BOLD}Manter os dados atuais (Recomendado).${C_OFF}"
+        echo -e " ${C_CYAN}[2]${C_OFF} ${C_BOLD}Apagar e criar uma nova base de dados.${C_OFF}"
+        echo ""
+        read -p "Escolha uma opção [1]: " optiondb
+        optiondb=${optiondb:-1}
+    else
+        # Se não existe, cria a base de dados
+        awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' >$HOME/usuarios.db
+    fi
+
+    [[ "$optiondb" = '2' ]] && {
+        log_info "Criando uma nova base de dados de usuários."
+        awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' >$HOME/usuarios.db
+    }
+}
+
+download_core_files() {
+    log_info "Baixando arquivos de configuração e módulos..."
+    # Lógica original de downloads
+    echo "/bin/menu" >/bin/h && chmod +x /bin/h &>/dev/null
+    wget -q https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/versao -O $HOME/versao
+    wget -q https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/v2raymanager -O $HOME/v2raymanager
+    wget -q https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/botteste.sh -O $HOME/botteste.sh
+    chmod +x $HOME/v2raymanager $HOME/botteste.sh
+    
+    mkdir -p $HOME/BOT
+    wget -q https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/ShellBot.sh -O $HOME/BOT/ShellBot.sh
+    chmod +x $HOME/BOT/ShellBot.sh
+    
+    mkdir -p /etc/rec
+    wget -q https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/licence -O /etc/rec/licence
+    chmod +x /etc/rec/licence
+    log_success "Arquivos principais baixados."
+}
+
+optimize_python_env() {
+    # Lógica original de otimização do Python
+    apt-get install -y python python2 python3.6 python3.7 python3.8 python3.9 pip socat &>/dev/null
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1 &>/dev/null
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 3 &>/dev/null
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2 &>/dev/null
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 4 &>/dev/null
+    update-alternatives --set python3 /usr/bin/python3.6 &>/dev/null
+}
+
+configure_firewall() {
+    if command -v ufw &>/dev/null; then
+        log_info "Configurando regras de firewall (UFW)..."
+        ufw allow 443/tcp >/dev/null
+        ufw allow 80/tcp >/dev/null
+        ufw allow 3128/tcp >/dev/null
+        ufw allow 8799/tcp >/dev/null
+        ufw allow 8080/tcp >/dev/null
+        log_success "Firewall configurado."
+    fi
+}
+
+configure_welcome_message() {
+    log_info "Configurando mensagem de boas-vindas no login..."
+    # Adiciona comandos ao .bashrc para uma tela de login informativa
+    cat > /root/.bashrc <<- "EOF"
+clear
+DATE=$(date +"%d-%m-%y")
+TIME=$(date +"%T")
+figlet -k SSH-PLUS | lolcat
+echo -e ""
+echo -e " NOME DO SERVIDOR : $HOSTNAME"
+echo -e " SERVIDOR LIGADO À : $(uptime -p)"
+echo -e " DATA : $DATE"
+echo -e " HORA : $TIME"
+echo -e "\n\033[1;32m DIGITE (menu) PARA ACESSAR O PAINEL\033[0m."
+echo -e ""
+EOF
+    log_success "Mensagem de boas-vindas configurada."
+}
+
+# --- FUNÇÃO PRINCIPAL (ORQUESTRA A INSTALAÇÃO) ---
+main() {
+    clear
+    check_root
+    
+    figlet "SSH-PLUS" | lolcat
+    print_separator
+    echo -e "${C_BOLD}Bem-vindo ao instalador do SSH-PLUS! Este script está sendo atualizado...${C_OFF}"
+    echo ""
+    echo -e "${C_YELLOW}Sistemas Operacionais Suportados:${C_OFF}" | boxes -d simple
+    printf " %-20s %s\n" "• Ubuntu 18/20 x64" "🐧"
+    printf " %-20s %s\n" "• Debian 9/10/11 x64" "🐧"
+    log_warning "Para melhor compatibilidade (V2Ray), use ${C_BOLD}Ubuntu 18.04 x64${C_OFF}."
+    print_separator
+    read -p "Pressione [Enter] para iniciar a instalação..."
+    
+    clear
+    install_dependencies
+    define_obfuscated_vars
+    verify_key
+    prompt_user_database
+    download_core_files
+    
+    clear
+    log_info "Iniciando a fase final da configuração. Isso pode levar alguns minutos."
+    print_separator
+    
+    run_with_progress "Atualizando listas do sistema" "apt-get update -y"
+    run_with_progress "Instalando pacotes base" "apt-get install -y bc screen nano unzip lsof net-tools dos2unix nload"
+    run_with_progress "Otimizando ambiente Python" optimize_python_env
+    run_with_progress "Finalizando definições" "chmod +x $_Ink/list"
+    
+    configure_firewall
+    configure_welcome_message
+    
+    # Limpeza final
+    rm -f $HOME/Plus $HOME/versao &>/dev/null
+    cat /dev/null > ~/.bash_history && history -c
+    
+    clear
+    figlet "Concluido!" | lolcat
+    print_separator
+    echo -e "${C_GREEN}${C_BOLD}A instalação do SSH-PLUS foi concluída com sucesso!${C_OFF}" | boxes -d double -p a1c
+    echo ""
+    log_info "Para acessar o painel, digite o comando: ${C_CYAN}menu${C_OFF}"
+    log_info "Para mais informações, contate-nos no Telegram: ${C_CYAN}@ALFAINTERNET${C_OFF}"
+    echo ""
+}
+
+# --- PONTO DE ENTRADA DO SCRIPT ---
+main
