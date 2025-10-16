@@ -2,7 +2,7 @@
 clear
 #--------------------------
 # SCRIPR SSH-PLUS
-# CANAL TELEGRAM: @ALFAINTERNET
+# CANAL TELEGRAM: @alfalemos
 #--------------------------
 
 # - Cores
@@ -60,4 +60,4 @@ sysctl -p -f /etc/sysctl.d/70-disable-ipv6.conf
 
 # - Execulta instalador
 [[ -e Plus ]] && rm Plus
-wget raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/${arch}/Plus && chmod 777 Plus && ./Plus
+wget raw.githubusercontent.com/sofrenoob/Gggggg//main/h/sshplus/Modulos/${arch}/Plus && chmod 777 Plus && ./Plus
