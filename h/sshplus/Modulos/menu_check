@@ -143,7 +143,7 @@ main() {
         1) install_checkuser; main ;;
         2) reinstall_checkuser; main ;;
         3) uninstall_checkuser; main ;;
-        0) clear; menu.sh 0 ;;
+        0) clear; menu ;;
         *) echo -e "\e[1;31mOpção inválida. Tente novamente.\e[0m"; read; main ;;
     esac
 }
