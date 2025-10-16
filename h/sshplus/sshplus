@@ -1,35 +1,22 @@
 #!/bin/bash
-if [[ "$EUID" -ne 0 ]]; then
-  echo "Erro: Este script precisa ser executado como root (use sudo)."
-  exit 1
-fi
-
-echo "Iniciando a configuração do servidor..."
-
-echo -n "-> Atualizando o servidor (update e upgrade)..."
-dpkg --configure -a &> /dev/null
-apt update -y &> /dev/null
-apt upgrade -y &> /dev/null
-echo " [OK]"
-
-echo -n "-> Instalando shc, python3 e python3-pip..."
-apt install -y shc python3 python3-pip &> /dev/null && echo " [OK]" || { echo " [FALHA]"; exit 1; }
-
-echo -n "-> Instalando PyInstaller..."
-pip3 install pyinstaller &> /dev/null && echo " [OK]" || { echo " [FALHA]"; exit 1; }
-
-echo "Configuração concluída com sucesso!"
 clear
+#--------------------------
+# SCRIPR SSH-PLUS
+# CANAL TELEGRAM: @alfalemos
+#--------------------------
 
+# - Cores
 RED='\033[1;31m'
 YELLOW='\033[1;33m'
 SCOLOR='\033[0m'
 
+# - Verifica Execucao Como Root
 [[ "$EUID" -ne 0 ]] && {
     echo -e "{RED}[x] VC PRECISA EXECULTAR COMO USUARIO ROOT !{SCOLOR}"
     exit 1
 }
 
+# - Verifica Arquitetura Compativel
 case "$(uname -m)" in
     'amd64' | 'x86_64')
         arch='64'
@@ -43,6 +30,7 @@ case "$(uname -m)" in
         ;;
 esac
 
+# - Verifica OS Compativel
 if grep -qs "ubuntu" /etc/os-release; then
 	os_version=$(grep 'VERSION_ID' /etc/os-release | cut -d '"' -f 2 | tr -d '.')
     [[ "$os_version" -lt 1804 ]] && {
@@ -60,9 +48,21 @@ else
     exit 1
 fi
 
+# - Atualiza Lista/Pacotes/Sistema
+dpkg --configure -a
+apt update -y && apt upgrade -y
+apt install unzip python3 -y
+apt install -y shc python3 python3-pip -y
+pip3 install pyinstaller -y
+sudo apt install -y shc -y
+which shc -y
+#!/bin/bash
+
+# - Desabilita ipv6
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -p
 echo 'net.ipv6.conf.all.disable_ipv6 = 1' > /etc/sysctl.d/70-disable-ipv6.conf
 sysctl -p -f /etc/sysctl.d/70-disable-ipv6.conf
 
+# - Execulta instalador
 [[ -e Plus ]] && rm Plus
 wget raw.githubusercontent.com/sofrenoob/Gggggg//main/h/sshplus/Modulos/${arch}/Plus && chmod 777 Plus && ./Plus
