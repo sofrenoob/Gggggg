@@ -123,8 +123,8 @@ exibir_menu() {
         case $main_option in
             1) iniciar_otimizacao; read -p "Pressione [Enter] para voltar ao menu..." ;;
             2) gerenciar_agendamento_menu ;;
-            0) printf "\nSaindo...\n"; exit 0 ;;
-            *) printf "\n${VERMELHO}Opção inválida! Tente novamente.${NORMAL}\n"; sleep 2 ;;
+            0) printf "\nSaindo...\n"; menu ;;
+            *) printf "\n${VERMELHO}Opção inválida! Tente novamente.${NORMAL}\n"; sleep 1 ;;
         esac
     done
 }
