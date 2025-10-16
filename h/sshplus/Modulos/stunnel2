@@ -241,7 +241,7 @@ while true; do
     case "$main_option" in
         1) menu_stunnel;;
         2) menu_sslh;;
-        0) clear; break;;
-        *) echo -e "\n\033[1;31m Opção inválida!\033[0m"; sleep 2;;
+        0) clear; conexao;;
+        *) echo -e "\n\033[1;31m Opção inválida!\033[0m"; sleep 1;;
     esac
 done
