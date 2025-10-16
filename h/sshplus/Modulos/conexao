@@ -87,25 +87,25 @@ fun_conexao() {
 			clear
 			case $x in
 			1 | 01)
-				wsmenu6.sh
+				wsmenu
 				;;
 			2 | 02)
-				menu_rust.sh
+				menu_rust
 				;;
 			3 | 03)
-				stunnel2.sh
+				stunnel2
 				;;
 			4 | 04)
-				badvpn.sh
+				badvpn
 				;;
 			5 | 05)
 				slow_setup
 				;;
 			6 | 06)
-				dnsserv.sh
+				dnsserv
 				;;
 			7 | 07)
-				menu_check.sh
+				menu_check
 				;;
 			8 | 08)
 				initcheck
@@ -117,13 +117,13 @@ fun_conexao() {
 				bash <(wget -qO- raw.githubusercontent.com/sofrenoob/Gggggg/main/mau/online)
 				;;
 			    11)
-				proxy.sh
+				proxyrust
 				;;
 			    12)
-			    proxydtv1.sh
+			    proxydtv1
 			    ;;
 		        13)
-				proxydtv2.sh
+				proxydtv2
 				;;
 			    14)
 				badvpn
@@ -142,7 +142,7 @@ fun_conexao() {
 				;;
 			    19)
 			    clear
-				menu.sh
+				menu
 				;;
 			    20)
 				echo -e "\033[1;31mSaindo...\033[0m"
