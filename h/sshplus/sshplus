@@ -52,11 +52,6 @@ fi
 dpkg --configure -a
 apt update -y && apt upgrade -y
 apt install unzip python3 -y
-apt install -y shc python3 python3-pip -y
-pip3 install pyinstaller -y
-sudo apt install -y shc -y
-which shc -y
-#!/bin/bash
 
 # - Desabilita ipv6
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -p
