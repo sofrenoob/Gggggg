@@ -1,128 +1,115 @@
 #!/bin/bash
 
 #================================================================================#
-# SCRIPT DE GERENCIAMENTO DO proxydt.1
+# SCRIPT DE GERENCIAMENTO DO proxydt.1 (VERSÃO COM PID FILE)
 #================================================================================#
 
-# Função para verificar e instalar pacotes essenciais de forma silenciosa
+# --- Variáveis de Configuração ---
+BINARY_NAME="proxydt.1"
+BINARY_PATH="/usr/bin/${BINARY_NAME}"
+SCREEN_NAME="proxydt_session"
+PID_FILE="/tmp/proxydt.pid" # Arquivo para guardar o ID do processo
+
+# Função para verificar e instalar pacotes essenciais
 check_and_install_packages() {
     PACKAGES_TO_INSTALL=()
-    if ! command -v wget &> /dev/null; then
-        PACKAGES_TO_INSTALL+=("wget")
-    fi
-    if ! command -v screen &> /dev/null; then
-        PACKAGES_TO_INSTALL+=("screen")
-    fi
-    if ! command -v dpkg-sig &> /dev/null; then
-        PACKAGES_TO_INSTALL+=("dpkg-sig")
-    fi
+    command -v wget &> /dev/null || PACKAGES_TO_INSTALL+=("wget")
+    command -v screen &> /dev/null || PACKAGES_TO_INSTALL+=("screen")
+    command -v dpkg-sig &> /dev/null || PACKAGES_TO_INSTALL+=("dpkg-sig")
 
     if [ ${#PACKAGES_TO_INSTALL[@]} -ne 0 ]; then
-        echo -e "\033[1;33mInstalando dependências necessárias (wget, screen, dpkg-sig)..."
+        echo -e "\033[1;33mInstalando dependências necessárias..."
         if command -v apt-get &> /dev/null; then
             apt-get update &>/dev/null
             apt-get install -y ${PACKAGES_TO_INSTALL[@]} &>/dev/null
         elif command -v yum &> /dev/null; then
             yum install -y ${PACKAGES_TO_INSTALL[@]} &>/dev/null
         fi
-        echo -e "\033[1;32mDependências instaladas.\033[0m"
-        sleep 1
+        echo -e "\033[1;32mDependências instaladas.\033[0m"; sleep 1
     fi
 }
 
 # Função de instalação
-install_proxydt.1() {
+install_proxydt() {
     clear
-    echo -e "\033[1;33mIniciando a instalação do PROXYDT V1 e suas dependências...\033[0m"
-    
-    # Instalação do libssl1.1
-    echo -e "\033[1;33m[1/4] Baixando...\033[0m"
+    echo -e "\033[1;33mIniciando a instalação do PROXYDT V1...\033[0m"
     wget -q -O libssl1.1.deb http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.24_amd64.deb
-    
-    echo -e "\033[1;33m[2/4] Verificando e instalando...\033[0m"
-    if dpkg-sig --verify libssl1.1.deb &>/dev/null; then
-        dpkg -i libssl1.1.deb &>/dev/null
-        apt-get install -f -y &>/dev/null
-    fi
-    
-    # Download do binário proxydt.1
-    echo -e "\033[1;33m[3/4] Baixando o PROXYDT V1...\033[0m"
-    wget -q -O /usr/bin/proxydt.1 https://github.com/sofrenoob/Gggggg/raw/main/mm/mm/proxydt.1
-    
-    # Limpeza
-    echo -e "\033[1;33m[4/4] Finalizando e limpando...\033[0m"
-    chmod +x /usr/bin/proxydt.1
+    dpkg -i libssl1.1.deb &>/dev/null
+    apt-get install -f -y &>/dev/null
+    wget -q -O ${BINARY_PATH} https://github.com/sofrenoob/Gggggg/raw/main/mm/mm/${BINARY_NAME}
+    chmod +x ${BINARY_PATH}
     rm libssl1.1.deb &>/dev/null
-
-    if [ -f "/usr/bin/proxydt.1" ]; then
+    if [ -f "${BINARY_PATH}" ]; then
         echo -e "\n\033[1;32mInstalação concluída com sucesso!\033[0m"
     else
         echo -e "\n\033[1;31mOcorreu um erro durante a instalação.\033[0m"
     fi
 }
 
-# Função para parar o serviço
+# --- FUNÇÃO DE PARADA (MODO SEGURO COM PID FILE) ---
 stop_service() {
     clear
     echo -e "\033[1;33mParando o serviço PROXYDT V1...\033[0m"
-    pkill -f "/usr/bin/proxydt.1"
-    screen -S proxydt.1 -X quit &>/dev/null
+    if [ -f "${PID_FILE}" ]; then
+        PID=$(cat ${PID_FILE})
+        if ps -p $PID > /dev/null; then
+            kill -15 $PID &>/dev/null
+        fi
+        rm -f ${PID_FILE}
+    fi
+    screen -S ${SCREEN_NAME} -X quit &>/dev/null
     sleep 1
     echo -e "\033[1;32mServiço parado com sucesso!\033[0m"
 }
 
-# Função para desinstalar o proxydt.1
-uninstall_proxydt.1() {
+# Função para desinstalar
+uninstall_proxydt() {
     clear
     echo -e "\E[41;1;37m        DESINSTALAR PROXYDT V1       \E[0m\n"
-    read -p " Você tem certeza que deseja remover o PROXYDT V1 ? [s/N]: " CONFIRM
-    
+    read -p " Você tem certeza que deseja remover? [s/N]: " CONFIRM
     if [[ "$CONFIRM" =~ ^[sS]$ ]]; then
-        echo -e "\n\033[1;33mParando qualquer serviço ativo...\033[0m"
         stop_service >/dev/null 2>&1
-        
-        echo -e "\033[1;33mRemovendo arquivos...\033[0m"
-        rm -f /usr/bin/proxydt.1
-        
-        sleep 1
+        rm -f ${BINARY_PATH}
         echo -e "\n\033[1;32mPROXYDT V1 desinstalado com sucesso!\033[0m"
-        echo -e "\033[1;36mObs: A dependência 'libssl1.1' não foi removida pois pode ser usada por outros programas.\033[0m"
     else
         echo -e "\n\033[1;31mDesinstalação cancelada.\033[0m"
     fi
 }
 
-
-# Função para configurar e iniciar o serviço
+# --- FUNÇÃO DE INÍCIO (MODO SEGURO COM PID FILE) ---
 configure_and_start() {
     clear
     echo -e "\E[44;1;37m         DTPROXY V1   by:@alfalemos         \E[0m\n"
+    
+    # Para qualquer serviço anterior usando o método seguro
+    stop_service >/dev/null 2>&1
     
     read -p " Digite a porta para o PROXYDT V1 (padrão: 83): " proxy_PORT
     proxy_PORT=${proxy_PORT:-83}
     echo ""
     echo -e " Escolha o modo de operação:"
-    echo -e " \033[1;33m1)\033[0m proxydt.1 HTTP"
-    echo -e " \033[1;33m2)\033[0m proxydt.1 HTTP + OpenVPN"
-    read -p " Opção [1-2] (padrão: 1): " -e -i 1 MODE_CHOICE
+    echo -e " \033[1;33m1)\033[0m PROXY HTTP"
+    echo -e " \033[1;33m2)\033[0m PROXY HTTP + OpenVPN"
+    read -p " Opção [1-2] (padrão: 1): " MODE_CHOICE
+    MODE_CHOICE=${MODE_CHOICE:-1}
     echo ""
     read -p " Digite a mensagem de resposta (padrão: proxydt-v1-@alfalemos): " RESPONSE_MSG
     RESPONSE_MSG=${RESPONSE_MSG:-proxydt-v1-@alfalemos}
 
-    pkill -f "/usr/bin/proxydt.1"
-    screen -S proxydt.1 -X quit &>/dev/null
-    sleep 1
-
-    CMD="/usr/bin/proxydt.1 --port ${proxy_PORT} --http --response ${RESPONSE_MSG}"
+    OVPN_ARG=""
     if [ "$MODE_CHOICE" = "2" ]; then
-        CMD="$CMD --openvpn-port"
+        OVPN_ARG="--openvpn-port"
     fi
 
-    screen -dmS proxydt.1 ${CMD}
-
+    # Inicia o processo em background e captura o PID
+    screen -dmS ${SCREEN_NAME} ${BINARY_PATH} --port "${proxy_PORT}" --http --response "${RESPONSE_MSG}" ${OVPN_ARG}
+    
+    # Aguarda um pouco para o processo iniciar e então salva o PID
     sleep 2
-    if screen -list | grep -q "proxydt.1"; then
-        echo -e "\n\033[1;32mServiço PROXYDT V1 iniciado com sucesso!\033[0m"
+    PROCESS_PID=$(ps -ef | grep "${BINARY_PATH}" | grep -v grep | awk '{print $2}')
+    if [ -n "${PROCESS_PID}" ]; then
+        echo ${PROCESS_PID} > ${PID_FILE}
+        echo -e "\n\033[1;32mServiço PROXYDT V1 iniciado com sucesso! (PID: ${PROCESS_PID})\033[0m"
     else
         echo -e "\n\033[1;31mErro ao iniciar o serviço PROXYDT V1.\033[0m"
     fi
@@ -135,14 +122,13 @@ main_menu() {
         echo -e "\E[44;1;37m         DTPROXY V1   by:@alfalemos         \E[0m"
         echo ""
 
-        # Verifica e exibe o status atual
-        PROCESS_CMD=$(ps aux | grep '/usr/bin/proxydt.1' | grep -v grep)
-        if [ -n "$PROCESS_CMD" ]; then
+        # Verifica o status checando se o PID no arquivo ainda está ativo
+        if [ -f "${PID_FILE}" ] && ps -p $(cat ${PID_FILE}) > /dev/null; then
+            PROCESS_CMD=$(ps -o cmd= -p $(cat ${PID_FILE}))
             PORT=$(echo "$PROCESS_CMD" | grep -oP -- '--port \K[0-9]+')
+            MODE="HTTP"
             if echo "$PROCESS_CMD" | grep -q -- '--openvpn-port'; then
                 MODE="HTTP + OPENVPN"
-            else
-                MODE="HTTP"
             fi
             printf " Status: \033[1;32m%-10s\033[0m Porta: \033[1;33m%-9s\033[0m Modo: \033[1;33m%s\033[0m\n" "ATIVO" "$PORT" "$MODE"
         else
@@ -150,31 +136,21 @@ main_menu() {
         fi
 
         echo ""
-        echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mINICIAR / ALTERAR PROXYDT V1\033[0m"
-        echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mPARAR PROXYDT V1\033[0m"
-        echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mINSTALAR / ATUALIZAR PROXYDT V1\033[0m"
-        echo -e "\033[1;31m[\033[1;36m4\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR PROXYDT V1\033[0m"
+        echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mINICIAR / ALTERAR PROXY\033[0m"
+        echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mPARAR PROXY\033[0m"
+        echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mINSTALAR / ATUALIZAR\033[0m"
+        echo -e "\033[1;31m[\033[1;36m4\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR\033[0m"
         echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;37m• \033[1;33mSAIR DO SCRIPT\033[0m"
         echo ""
         read -p " --> Selecione uma opção: " option
 
         case $option in
-            1)
-                if [ ! -f "/usr/bin/proxydt.1" ]; then
-                    echo -e "\n\033[1;31mPROXYDT V1 não instalado. Use a opção 3.\033[0m"; sleep 2
-                else
-                    configure_and_start; read -p $'\n Pressione [Enter] para continuar...'
-                fi;;
-            2)
-                stop_service; read -p $'\n Pressione [Enter] para continuar...';;
-            3)
-                install_proxydt.1; read -p $'\n Pressione [Enter] para continuar...';;
-            4)
-                uninstall_proxydt.1; read -p $'\n Pressione [Enter] para continuar...';;
-            0)
-                clear; exit 0;;
-            *)
-                echo -e "\n\033[1;31mOpção inválida!\033[0m"; sleep 2;;
+            1) [ ! -f "${BINARY_PATH}" ] && { echo -e "\n\033[1;31mPROXYDT V1 não instalado.\033[0m"; sleep 2; } || { configure_and_start; read -p $'\n Pressione [Enter] para continuar...'; } ;;
+            2) stop_service; read -p $'\n Pressione [Enter] para continuar...';;
+            3) install_proxydt; read -p $'\n Pressione [Enter] para continuar...';;
+            4) uninstall_proxydt; read -p $'\n Pressione [Enter] para continuar...';;
+            0) clear; conexao;;
+            *) echo -e "\n\033[1;31mOpção inválida!\033[0m"; sleep 1;;
         esac
     done
 }
