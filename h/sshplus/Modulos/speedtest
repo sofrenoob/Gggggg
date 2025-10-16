@@ -113,11 +113,12 @@ while true; do
         0)
             clear
             echo -e "\033[1;36mSaindo...\033[0m"
-            exit 0
+            sleep 1
+            menu
             ;;
         *)
             echo -e "\n\033[1;31mOpção inválida! Tente novamente.\033[0m"
-            sleep 2
+            sleep 1
             ;;
     esac
 done
