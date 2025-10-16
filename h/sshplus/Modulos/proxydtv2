@@ -173,9 +173,9 @@ main_menu() {
             4)
                 uninstall_dtproxy; read -p $'\n Pressione [Enter] para continuar...';;
             0)
-                clear; exit 0;;
+                clear; conexao;;
             *)
-                echo -e "\n\033[1;31mOpção inválida!\033[0m"; sleep 2;;
+                echo -e "\n\033[1;31mOpção inválida!\033[0m"; sleep 1;;
         esac
     done
 }
