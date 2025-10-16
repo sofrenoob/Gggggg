@@ -2,7 +2,7 @@
 #====================================================
 #	@alfalemos
 #====================================================
-_lvk=$(wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/versao)
+_lvk=$(wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/main/h/sshplus/Modulos/versao)
 IP=$(wget -qO- ipv4.icanhazip.com)
 IP2=$(wget -qO- http://whatismyip.akamai.com/)
 [[ "$IP" != "$IP2" ]] && ipdovps="$IP2" || ipdovps="$IP"
@@ -36,39 +36,21 @@ echo "PasswordAuthentication yes" >>/etc/ssh/sshd_config
 _dir1='/bin'
 _dir2='/etc/SSHPlus'
 rm $_dir2/ShellBot.sh $_dir2/cabecalho $_dir2/open.py $_dir2/proxy.py $_dir2/wsproxy.py >/dev/null 2>&1
-_mdls=("addhost" "ajuda" "alterarlimite" "alterarsenha" "attscript" "badvpn" "badvpn.sh" "banner" "blockt" "bot" "botssh" "cabecalho" "conexao" "criarteste" "criarusuario" "delhost" "delscript" "detalhes" "dnsserv" "expcleaner" "htop" "infousers" "initcheck" "inst-botteste" "install" "ShellBot.sh" "limiter" "menu" "menu_check" "proxyrust" "mudardata" "open.py" "otimizar" "pkill.sh" "proxyd" "proxydtv1" "proxydtv2" "reiniciarservicos" "reiniciarsistema" "remover" "senharoot" "speedtest" "sshmonitor" "stunnel2" "swapmemory" "uexpired" "uncompress" "userbackup" "v2raymanager" "verifbot" "versao" "wsmenu" "wsproxy.py")
+_mdls=("alterarlimite" "alterarsenha" "attscript" "badvpn" "badvpn.sh" "banner" "blockt" "bot" "botssh" "cabecalho" "conexao" "criarteste" "criarusuario" "delhost" "delscript" "detalhes" "dnsserv" "expcleaner" "htop" "infousers" "initcheck" "inst-botteste" "install" "limiter" "menu" "menu_check" "proxyrust" "mudardata" "open.py" "otimizar" "pkill.sh" "proxyd" "proxydtv1" "proxydtv2" "reiniciarservicos" "reiniciarsistema" "remover" "senharoot" "speedtest" "sshmonitor" "stunnel2" "swapmemory" "uexpired" "uncompress" "userbackup" "verifbot" "wsmenu" "wsproxy.py")
 for _arq in ${_mdls[@]}; do
 	[[ -e $_dir1/$_arq ]] && rm $_dir1/$_arq >/dev/null 2>&1
-	wget -c -P $_dir1 https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/$_arq
+	wget -c -P $_dir1 https://raw.githubusercontent.com/sofrenoob/Gggggg/main/h/sshplus/Modulos/$_arq
 	chmod +x $_dir1/$_arq
 done
 mv $_dir1/cabecalho $_dir1/bot $_dir1/open.py $_dir1/proxy.py $_dir1/wsproxy.py $_dir2
 _arq_host="/etc/hosts"
-_host[0]="d1n212ccp6ldpw.cloudfront.net/"
-_host[1]="dns.whatsapp.net/"
-_host[2]="portalrecarga.vivo.com.br/recarga/"
+_host[0]="d1n212ccp6ldpw.cloudfront.net"
+_host[1]="dns.whatsapp.net"
+_host[2]="portalrecarga.vivo.com.br/recarga"
 _host[3]="navegue.vivo.com.br/controle/"
 _host[4]="navegue.vivo.com.br/pre/"
-_host[5]="www.whatsapp.net/"
+_host[5]="www.whatsapp.net"
 _host[6]="/SSHPLUS?"
-_host[7]="cloudfront.net/"
-_host[8]="whatsapp.com/"
-_host[9]="google.com/"
-_host[10]="pt.wikipedia.org/"
-_host[11]="www.cloudflare.com/pt-br/"
-_host[12]="aws.amazon.com/pt/cloudfront/"
-_host[13]="cloud.google.com/free/"
-_host[14]="www.akamai.com/pt"
-_host[15]="cloud.google.com/"
-_host[16]="www.akamai.com/"
-_host[17]="altinity.com/"
-_host[18]="azure.microsoft.com/pt-br/"
-_host[19]="www.keycdn.com/"
-_host[20]="www.cdn77.com/"
-_host[21]="www.cachefly.com/"
-_host[22]="facebook.com/"
-_host[23]="m.facebook.com/"
-_host[24]="www.instagram.com/"
 for host in ${_host[@]}; do
 	if [[ "$(grep -w "$host" $_arq_host | wc -l)" = "0" ]]; then
 		sed -i "3i\127.0.0.1 $host" $_arq_host
@@ -80,7 +62,7 @@ clear
 #INICIO AUTOMATICO' >/etc/autostart
 	chmod +x /etc/autostart
 } || {
-	[[ $(ps x | grep "bot_plus" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/ShellBot.sh
+	[[ $(ps x | grep "bot_plus" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/main/h/sshplus/Modulos/ShellBot.sh
 	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
 		screen -r -S "$proc" -X quit	
 done
@@ -99,7 +81,7 @@ crontab -r >/dev/null 2>&1
 	echo "0 */6 * * * /bin/uexpired"
 ) | crontab -
 echo "$_lvk" | sed -n '1 p' | cut -d' ' -f2 >/bin/versao && cat /bin/versao >/home/sshplus
-wget https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/jq-linux64 >/dev/null 2>&1
+wget https://github.com/sofrenoob/Gggggg/raw/main/h/sshplus/Modulos/jq-linux64 >/dev/null 2>&1
 chmod +x jq-linux64 && mv jq-linux64 $(which jq)
 service cron restart >/dev/null 2>&1
 service ssh restart >/dev/null 2>&1
