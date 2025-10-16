@@ -1,0 +1,81 @@
+#!/bin/bash
+fun_swap() {
+    _diskText=$(df -h --output=used,size,pcent / | tail -n 1)
+    _swapTotal=$(free -h | awk '/Swap/ {print $2}')
+    _swapUsed=$(free -h | awk '/Swap/ {print $3}')
+
+    clear
+    echo -e "\E[44;1;37m            GERENCIAR MEMÓRIA VIRTUAL (SWAP)          \E[0m"
+    echo -e "\033[01;34m===================================================================="
+    echo -e "\033[1;36mSWAP ATUAL:\033[1;37m $_swapUsed / $_swapTotal   |   \033[1;36mESPAÇO EM DISCO (Usado/Total/Uso%):\033[1;37m $_diskText"
+    echo -e "\033[01;34m===================================================================="
+    echo -e "\033[1;34m[\033[1;37m1\033[1;34m] •\033[1;37m > \033[1;33mHABILITAR ou ALTERAR Memória Swap"
+    echo -e "\033[1;34m[\033[1;37m2\033[1;34m] •\033[1;37m > \033[1;33mDESATIVAR Memória Swap"
+    echo -e "\033[1;34m[\033[1;37m0\033[1;34m] •\033[1;37m > \033[1;33mVOLTAR AO MENU"
+    echo -e "\033[01;34m===================================================================="
+    echo -ne "\033[1;37mESCOLHA UMA OPÇÃO: \033[0m"; read resposta
+
+    case "$resposta" in
+        1)
+            clear
+            echo -e "\E[44;1;37m            HABILITAR / ALTERAR SWAP              \E[0m"
+            echo ""
+            echo -ne "\033[1;33mQuantos GIGAS de Swap deseja criar? (Ex: 2): \033[1;37m"
+            read gigas
+
+            if ! [[ "$gigas" =~ ^[0-9]+$ ]]; then
+                echo -e "\n\033[1;31mEntrada inválida! Por favor, insira apenas números.\033[0m"
+                sleep 3
+                fun_swap
+                return
+            fi
+            
+            echo -e "\n\033[1;33mConfigurando $gigas GB de Swap... Isso pode levar um momento.\033[0m"
+            
+            SWAP_FILE="/swapfile"
+
+            swapoff -a
+            sed -i '/swapfile/d' /etc/fstab
+            rm -f "$SWAP_FILE"
+
+            fallocate -l "${gigas}G" "$SWAP_FILE"
+            chmod 600 "$SWAP_FILE"
+            mkswap "$SWAP_FILE"
+            swapon "$SWAP_FILE"
+            
+            sysctl vm.swappiness=10
+            echo 'vm.swappiness=10' | tee -a /etc/sysctl.conf > /dev/null
+
+            echo "$SWAP_FILE none swap sw 0 0" | tee -a /etc/fstab > /dev/null
+            
+            echo -e "\n\033[1;32mMemória Swap de $gigas GB ativada com sucesso!\033[0m"
+            sleep 4
+            fun_swap
+            ;;
+        2)
+            clear
+            echo -e "\E[44;1;37m            DESATIVANDO MEMÓRIA SWAP              \E[0m"
+            
+            SWAP_FILE="/swapfile"
+            
+            swapoff -a
+            sed -i '/swapfile/d' /etc/fstab
+            rm -f "$SWAP_FILE"
+            
+            echo -e "\n\033[1;31mMemória Swap desativada e removida com sucesso!\033[0m"
+            sleep 4
+            fun_swap
+            ;;
+        0)
+            clear 
+            menu.sh
+            ;;
+        *)
+            echo -e "\n\033[1;31mOpção inválida!\033[0m"
+            sleep 2
+            fun_swap
+            ;;
+    esac
+}
+
+fun_swap

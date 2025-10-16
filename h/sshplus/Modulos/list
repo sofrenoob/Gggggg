@@ -1,0 +1,234 @@
+#!/bin/bash
+
+#================================================================================#
+# SCRIPT DE ATUALIZAÇÃO E CONFIGURAÇÃO SSH-PLUS - VERSÃO 2025
+# Contato: @ALFAINTERNET
+#================================================================================#
+
+# --- PREVENÇÃO DE ERROS ---
+set -e
+
+# --- VARIÁVEIS DE COR E ESTILO ---
+C_OFF='\033[0m'
+C_RED='\033[0;31m'
+C_GREEN='\033[0;32m'
+C_YELLOW='\033[0;33m'
+C_BLUE='\033[0;34m'
+C_BOLD='\033[1m'
+
+# --- FUNÇÕES DE LOG ---
+log_info() { echo -e "${C_BLUE}${C_BOLD}[INFO]${C_OFF} $1"; }
+log_success() { echo -e "${C_GREEN}${C_BOLD}[OK]${C_OFF} $1"; }
+log_warning() { echo -e "${C_YELLOW}${C_BOLD}[AVISO]${C_OFF} $1"; }
+log_error() { echo -e "${C_RED}${C_BOLD}[ERRO]${C_OFF} $1"; exit 1; }
+print_separator() { printf "%*s\n" "$(tput cols)" "" | tr ' ' '─'; }
+
+# --- VARIÁVEIS GLOBAIS E LISTAS ---
+# Diretórios principais
+_DIR_BIN='/bin'
+_DIR_SSHPLUS='/etc/SSHPlus'
+
+# Lista de módulos a serem baixados
+MODULES=(
+    "EasyRSA-3.0.1.tgz" "ShellBot.sh" "addhost" "ajuda" "alterarlimite" "alterarsenha" "attscript" "autodns" "badvpn" "badvpn-udp.sh" "badvpn-udpgw" "badvpn.sh" "banner" "blockt" "bot" "botssh" "botteste.sh" "cabecalho" "cert" "conexao" "criarteste" "criarusuario" "delhost" "delscript" "detalhes" "dns" "dns-server" "dnsserv" "dnstt-install" "dnstt-manager" "expcleaner" "htop" "infousers" "initcheck" "inst-botteste" "install" "install_slow" "jq-linux64" "key" "licence" "limiter" "menu" "menu_check" "menu_rust" "mudardata" "open.py" "otimizar" "pkill.sh" "proxydtv1" "proxydtv2" "proxyrust" "rc.local" "reiniciarservicos" "reiniciarsistema" "remove-slow" "remover" "senharoot" "server.key" "server.pub" "slowdns" "slowdns-drop" "slowdns-info" "slowdns-socks" "slowdns-ssh" "slowdns-ssl" "speedtest" "sshd_config" "sshmonitor" "stopdns" "stunnel" "stunnel.pem" "stunnel2" "swapmemory" "udp" "uexpired" "uncompress" "update" "userbackup" "v2raymanager" "verifbot" "versao" "wsmenu" "wsproxy.py"
+)
+
+# Lista de hosts para adicionar ao /etc/hosts
+HOSTS_TO_ADD=(
+    "d1n212ccp6ldpw.cloudfront.net/"
+    "dns.whatsapp.net/"
+    "portalrecarga.vivo.com.br/recarga/"
+    "navegue.vivo.com.br/controle/"
+    "navegue.vivo.com.br/pre/"
+    "www.whatsapp.net/"
+    "/SSHPLUS?"
+    "cloudfront.net/"
+    "whatsapp.com/"
+    "google.com/"
+    "pt.wikipedia.org/"
+    "www.cloudflare.com/pt-br/"
+    "aws.amazon.com/pt/cloudfront/"
+    "cloud.google.com/free/"
+    "www.akamai.com/pt"
+    "cloud.google.com/"
+    "www.akamai.com/"
+    "altinity.com/"
+    "azure.microsoft.com/pt-br/"
+    "www.keycdn.com/"
+    "www.cdn77.com/"
+    "www.cachefly.com/"
+    "facebook.com/"
+    "m.facebook.com/"
+    "www.instagram.com/"
+)
+
+# --- FUNÇÕES DE CONFIGURAÇÃO ---
+
+# Configura o fuso horário e obtém o IP
+initial_setup() {
+    log_info "Configurando fuso horário para America/Sao_Paulo..."
+    echo "America/Sao_Paulo" >/etc/timezone
+    ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime &>/dev/null
+    dpkg-reconfigure --frontend noninteractive tzdata &>/dev/null
+
+    log_info "Obtendo endereço IP do servidor..."
+    IP1=$(wget -qO- ipv4.icanhazip.com)
+    IP2=$(wget -qO- http://whatismyip.akamai.com/)
+    [[ "$IP1" != "$IP2" ]] && ipdovps="$IP2" || ipdovps="$IP1"
+    echo "$ipdovps" >/etc/IP
+    log_success "IP do servidor salvo em /etc/IP: $ipdovps"
+}
+
+# Cria a estrutura de diretórios e arquivos necessários
+setup_environment() {
+    log_info "Verificando e criando estrutura de diretórios..."
+    # Lista de diretórios a serem criados
+    local DIRS=(
+        "/etc/SSHPlus" "/etc/SSHPlus/v2ray" "/etc/SSHPlus/senha" "/etc/SSHPlus/userteste"
+        "/etc/SSHPlus/.tmp" "/etc/bot" "/etc/bot/info-users" "/etc/bot/arquivos"
+        "/etc/bot/revenda" "/etc/bot/suspensos" "/etc/rec"
+    )
+    for dir in "${DIRS[@]}"; do
+        [[ ! -d "$dir" ]] && mkdir -p "$dir"
+    done
+
+    # Lista de arquivos a serem criados (se não existirem)
+    local FILES=("/etc/SSHPlus/Exp" "/etc/bot/lista_ativos" "/etc/bot/lista_suspensos")
+    for file in "${FILES[@]}"; do
+        [[ ! -e "$file" ]] && touch "$file"
+    done
+    
+    # Arquivo de licença (lógica original)
+    echo 'by: @KIRITO_SSH' > /usr/lib/sshplus
+    cat /usr/lib/sshplus > "$lst2/licence"
+    cat /usr/lib/sshplus > /etc/SSHPlus/.tmp/crazy
+    log_success "Estrutura de diretórios e arquivos verificada."
+}
+
+# Ajusta configurações de serviços como Apache e SSH
+configure_services() {
+    log_info "Verificando e ajustando configurações de serviços..."
+    # Altera a porta do Apache se estiver usando a porta 80
+    if netstat -nplt | grep -w 'apache2' | grep -q '80'; then
+        sed -i "s/Listen 80/Listen 81/g" /etc/apache2/ports.conf
+        service apache2 restart &>/dev/null
+        log_warning "Apache2 foi movido para a porta 81 para evitar conflitos."
+    fi
+
+    # Garante que o SSH escute na porta 22 e aceite senhas
+    sed -i "s/#Port 22/Port 22/g" /etc/ssh/sshd_config
+    grep -v "^PasswordAuthentication" /etc/ssh/sshd_config >/tmp/passlogin
+    mv /tmp/passlogin /etc/ssh/sshd_config
+    echo "PasswordAuthentication yes" >>/etc/ssh/sshd_config
+    log_success "Configurações do SSHD ajustadas."
+}
+
+# Baixa e instala os módulos do sistema
+download_modules() {
+    log_info "Iniciando download e instalação dos módulos..."
+    # Limpa módulos antigos de locais incorretos
+    rm -f "$_DIR_SSHPLUS/ShellBot.sh" "$_DIR_SSHPLUS/cabecalho" "$_DIR_SSHPLUS/open.py" "$_DIR_SSHPLUS/proxy.py" "$_DIR_SSHPLUS/wsproxy.py" &>/dev/null
+
+    for module in "${MODULES[@]}"; do
+        echo -ne "  -> Baixando módulo ${C_YELLOW}$module...${C_OFF}"
+        rm -f "$_DIR_BIN/$module" &>/dev/null
+        wget -q -O "$_DIR_BIN/$module" "https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/$module"
+        chmod +x "$_DIR_BIN/$module"
+        echo -e " ${C_GREEN}OK${C_OFF}"
+    done
+    
+    # Move arquivos específicos para o diretório de configuração
+    mv "$_DIR_BIN/cabecalho" "$_DIR_BIN/bot" "$_DIR_BIN/open.py" "$_DIR_BIN/proxy.py" "$_DIR_BIN/wsproxy.py" "$_DIR_SSHPLUS/"
+    log_success "Todos os módulos foram baixados e instalados."
+}
+
+# Adiciona hosts essenciais ao arquivo /etc/hosts
+update_hosts_file() {
+    log_info "Atualizando arquivo /etc/hosts com domínios necessários..."
+    for host in "${HOSTS_TO_ADD[@]}"; do
+        if ! grep -q -w "$host" /etc/hosts; then
+            sed -i "3i\127.0.0.1 $host" /etc/hosts
+        fi
+    done
+    log_success "Arquivo /etc/hosts atualizado."
+}
+
+# Configura o script de autostart e as tarefas agendadas (cron)
+setup_autostart_and_cron() {
+    log_info "Configurando script de autostart e tarefas agendadas (cron)..."
+    # Lógica original para o script de autostart
+    if [[ ! -e /etc/autostart ]]; then
+        echo -e '#!/bin/bash\nclear\n#INICIO AUTOMATICO' >/etc/autostart
+    else
+        # Se já existe, limpa processos antigos e recria o arquivo
+        [[ $(ps x | grep "bot_plus" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/ShellBot.sh &>/dev/null
+        for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
+            screen -r -S "$proc" -X quit &>/dev/null
+        done
+        screen -wipe &>/dev/null
+        echo -e '#!/bin/bash\nclear\n#INICIO AUTOMATICO' >/etc/autostart
+    fi
+    chmod +x /etc/autostart
+
+    # Lógica original para reescrever o crontab
+    crontab -r &>/dev/null
+    (
+        crontab -l 2>/dev/null
+        echo "@daily /bin/verifatt"
+        echo "@reboot /etc/autostart"
+        echo "* * * * * /etc/autostart" # Nota: Esta linha executa a cada minuto
+        echo "0 */6 * * * /bin/uexpired"
+    ) | crontab -
+    log_success "Autostart e cron configurados."
+}
+
+# Etapas finais: atualiza versão, jq e reinicia serviços
+finalize_installation() {
+    log_info "Finalizando a instalação..."
+    local _lvk
+    _lvk=$(wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/versao)
+    echo "$_lvk" | sed -n '1 p' | cut -d' ' -f2 >/bin/versao
+    cat /bin/versao >/home/sshplus
+
+    # Atualiza o JQ
+    wget -qO /usr/bin/jq https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/jq-linux64
+    chmod +x /usr/bin/jq
+
+    log_info "Reiniciando serviços essenciais..."
+    service cron restart &>/dev/null
+    service ssh restart &>/dev/null
+    [[ -d /var/www/html/openvpn ]] && service apache2 restart &>/dev/null
+    
+    # Limpeza final
+    rm -rf "$lst1/list" &>/dev/null
+    log_success "Instalação finalizada e serviços reiniciados."
+}
+
+# --- FUNÇÃO PRINCIPAL ---
+main() {
+    clear
+    echo -e "${C_BOLD}====================================================${C_OFF}"
+    echo -e "${C_YELLOW}${C_BOLD}  INICIANDO ATUALIZAÇÃO DO SISTEMA SSH-PLUS  ${C_OFF}"
+    echo -e "${C_BOLD}====================================================${C_OFF}"
+
+    # Lógica original de verificação de parâmetros
+    lst=$1 && lst1=$2 && lst2=$3
+    if [[ -z "$lst1" ]]; then
+        rm -rf "$_Ink/list" &>/dev/null
+        cat /dev/null >~/.bash_history && history -c
+        log_error "Parâmetros de inicialização inválidos. Abortando."
+    fi
+
+    initial_setup
+    setup_environment
+    configure_services
+    download_modules
+    update_hosts_file
+    setup_autostart_and_cron
+    finalize_installation
+    
+    echo -e "\n${C_GREEN}${C_BOLD}O SCRIPT FOI ATUALIZADO COM SUCESSO!${C_OFF}"
+}
+
+# --- PONTO DE ENTRADA DO SCRIPT ---
+main "$@"
