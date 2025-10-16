@@ -21,7 +21,7 @@ slow_setup() {
 			slowdns
 		} || {
 			cd $HOME
-			wget https://raw.githubusercontent.com/sofrenoob/Gggggg/refs/heads/main/h/sshplus/Modulos/install_slow -o /dev/null
+			wget https://raw.githubusercontent.com/kiritosshxd/SSHPLUS/main/Slowdns/install -o /dev/null
 			chmod 777 install
 			./install
 		}
@@ -90,13 +90,13 @@ fun_conexao() {
 				wsmenu
 				;;
 			2 | 02)
-				menu_rust
+				proxyrust
 				;;
 			3 | 03)
 				stunnel2
 				;;
 			4 | 04)
-				badvpn
+				badvpn.sh
 				;;
 			5 | 05)
 				slow_setup
@@ -117,7 +117,7 @@ fun_conexao() {
 				bash <(wget -qO- raw.githubusercontent.com/sofrenoob/Gggggg/main/mau/online)
 				;;
 			    11)
-				proxyrust
+				proxyd
 				;;
 			    12)
 			    proxydtv1
