@@ -197,38 +197,6 @@ swap3=$(printf '%-1s' "$(free -h | grep -i swap | awk {'print $3'})")
 }
 
 # Função para exibir o cabeçalho e o menu
-print_menu2_static() {
-    tput clear
-    collect_system_data
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\E[41;1;37m    ⇱   MENU 2   SSHPLUS   by: @alfalemos   ⇲     \E[0m"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\033[1;32mSISTEMA            MEMÓRIA RAM      PROCESSADOR "
-    echo -e "\033[1;31mOS: \033[1;37m$_system      \033[1;31mTotal:\033[1;37m$_ram      \033[1;31mNucleos: \033[1;37m$_core\033[0m"
-    echo -e "\033[1;31mHora: \033[1;37m$_hora     \033[1;31mEm uso: \033[1;37m$_usor    \033[1;31mEm uso: \033[1;37m$_usop\033[0m"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    if [[ ! -e /tmp/att ]]; then
-        echo -e "\033[1;32mOnlines:\033[1;37m $_onlin         \033[1;31mExpirados: \033[1;37m$_userexp     \033[1;33mTotal: \033[1;37m$_tuser\033[0m"
-    else
-        echo -e "  \033[1;33m[\033[1;31m!\033[1;33m]  \033[1;32mEXISTE UMA ATUALIZACAO DISPONIVEL  \033[1;33m[\033[1;31m!\033[1;33m]\033[0m"
-    fi
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
-    stsu=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m◉ " || echo -e "\033[1;31m○ ")
-    echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;33mPROXY DRAGON X \033[1;31m           [\033[1;36m11\033[1;31m] \033[1;37m• \033[1;33mSPEEDTEST \033[1;31m
-[\033[1;36m02\033[1;31m] \033[1;37m• \033[1;33mBADVPN / TUN2SOCKS\033[1;31m        [\033[1;36m12\033[1;31m] \033[1;37m• \033[1;33mBANNER \033[1;31m
-[\033[1;36m03\033[1;31m] \033[1;37m\033[1;37m• \033[1;33mRUSTY PROXY \033[1;31m              [\033[1;36m13\033[1;31m] \033[1;37m• \033[1;33mTRAFEGO \033[1;31m
-[\033[1;36m04\033[1;31m] \033[1;37m• \033[1;33mCHECKUSER DTUNNEL\033[1;31m         [\033[1;36m14\033[1;31m] \033[1;37m• \033[1;33mOTIMIZAR \033[1;31m
-[\033[1;36m05\033[1;31m] \033[1;37m• \033[1;33mMONITOR (HTOP)\033[1;31m            [\033[1;36m15\033[1;31m] \033[1;37m• \033[1;33mBACKUP \033[1;31m
-[\033[1;36m06\033[1;31m] \033[1;37m• \033[1;33mCRIAR MEMORIA SWAP \033[1;31m       [\033[1;36m16\033[1;31m] \033[1;37m• \033[1;33mLIMITER $stsl\033[1;31m
-[\033[1;36m07\033[1;31m] \033[1;37m• \033[1;33mMONITOR (HT)\033[1;31m              [\033[1;36m17\033[1;31m] \033[1;37m• \033[1;33mMENU ONLINE\033[1;31m
-[\033[1;36m08\033[1;31m] \033[1;37m• \033[1;33mREMOVER EXPIRADOS \033[1;31m        [\033[1;36m18\033[1;31m] \033[1;37m• \033[1;33mMENU \033[1;32m<\033[1;33m<\033[1;31m<\033[0m \033[1;31m
-[\033[1;36m09\033[1;31m] \033[1;37m• \033[1;33mRELATORIO DE USUARIOS \033[1;31m    [\033[1;36m19\033[1;31m] \033[1;37m• \033[1;33mMENU 3 \033[1;31m>\033[1;33m>\033[1;32m>\033[0m\033[1;31m
-[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;33mMODO DE CONEXAO \033[1;31m          [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;33mSAIR \033[1;32m<\033[1;33m<\033[1;31m<\033[0m \033[0m
-\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-}
-
-# Função para exibir o cabeçalho e o menu
 print_menu_static() {
     tput clear
     collect_system_data
@@ -261,11 +229,11 @@ print_menu_static() {
 }
 
 # Função para exibir o menu secundário (menu2)
-print_menu3_static() {
+print_menu2_static() {
     tput clear
     collect_system_data
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\E[41;1;37m      ⇱⇲         SSHPLUS MENU 3          ⇱⇲       \E[0m"
+    echo -e "\E[41;1;37m    ⇱         SSHPLUS  by: @alfalemos        ⇲    \E[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "\033[1;32mSISTEMA            MEMÓRIA RAM      PROCESSADOR "
     echo -e "\033[1;31mOS: \033[1;37m$_system      \033[1;31mTotal:\033[1;37m$_ram      \033[1;31mNucleos: \033[1;37m$_core\033[0m"
@@ -383,7 +351,7 @@ menu() {
             ;;
             11)
             clear
-            speedtest
+            velocity
             echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
             menu
             ;;
@@ -458,140 +426,6 @@ menu2() {
         wait $bg_pid 2>/dev/null
 
         case "$x" in
-            1 | 01)
-            clear
-            criarusuario
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu2
-            ;;
-            2 | 02)
-            clear
-            criarteste
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu2
-            ;;
-            3 | 03)
-            clear
-            remover
-            sleep 3
-            menu2
-            ;;
-            4 | 04)
-            clear
-            sshmonitor
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu2
-            ;;
-            5 | 05)
-            clear
-            htop.sh
-            sleep 3
-            menu2
-            ;;
-            6 | 06)
-            clear
-            alterarlimite
-            sleep 3
-            menu2
-            ;;
-            7 | 07)
-            clear
-            alterarsenha
-            sleep 3
-            menu2
-            ;;
-            8 | 08)
-            clear
-            expcleaner
-            echo ""
-            sleep 3
-            menu2
-            ;;
-            9 | 09)
-            clear
-            infousers
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu2
-            ;;
-            10)
-            conexao
-            exit;
-            ;;
-            11)
-            clear
-            velocity
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu2
-            ;;
-            12)
-            clear
-            banner
-            sleep 3
-            menu2
-            ;;
-            13)
-            clear
-            echo -e "\033[1;32mPARA SAIR CLICK CTRL + C\033[1;36m"
-            sleep 4
-            nload
-            menu2
-            ;;
-            14)
-            clear
-            otimizar
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu2
-            ;;
-            15)
-            userbackup
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu2
-            ;;
-            16)
-            limit_ssh
-            menu2
-            ;;
-            17)
-            clear
-            badvpn
-            exit;
-            ;;
-            18)
-            menu
-            ;;
-            19)
-            menu3
-            ;;
-            0 | 00)
-            echo -e "\033[1;31mSaindo...\033[0m"
-            sleep 2
-            clear
-            exit;
-            ;;
-            *)
-            echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-            sleep 2
-            menu2
-        esac
-    done
-}
-
-# Função do menu secundário
-menu3() {
-    print_menu3_static
-    update_header & # Inicia a atualização do cabeçalho em segundo plano
-    local bg_pid=$!
-
-    while true; do
-        tput cup 20 0 # Move o cursor para a linha de entrada
-        tput el # Limpa a linha de entrada
-        echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;33m?\033[1;31m?\033[1;37m : "
-        read x
-
-        kill $bg_pid # Para a atualização do cabeçalho
-        wait $bg_pid 2>/dev/null
-
-        case "$x" in
             1)
             clear
             addhost
@@ -644,12 +478,9 @@ menu3() {
             13)
             menu
             ;;
-            14)
-            menu2
-            ;;
             0|00)
             echo -e "\033[1;31mSaindo...\033[0m"
-            sleep 2
+            sleep 1
             clear
             exit;
             ;;
@@ -664,4 +495,3 @@ menu3() {
 # Inicia o menu principal
 menu
 #fim
-
