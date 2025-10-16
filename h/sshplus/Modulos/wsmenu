@@ -36,7 +36,7 @@ install_websocket() {
     
     chmod +x /usr/bin/wssecury.sh.1
     
-    screen -dmS wssecury /usr/bin/wssecury.sh.1 && wsmenu6.sh
+    screen -dmS wssecury /usr/bin/wssecury.sh.1 && wsmenu
     echo -e "\033[1;32mBaixando....\033[0m"
     sleep 1
     
@@ -171,9 +171,9 @@ main_menu() {
             4)
                 uninstall_websocket; read -p $'\n Pressione [Enter] para continuar...';;
             0)
-                clear; menu 0;;
+                clear; conexao 0;;
             *)
-                echo -e "\n\033[1;31mOpção inválida!\033[0m"; sleep 2;;
+                echo -e "\n\033[1;31mOpção inválida!\033[0m"; sleep 1;;
         esac
     done
 }
