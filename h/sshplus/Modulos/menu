@@ -351,9 +351,7 @@ menu() {
             ;;
             11)
             clear
-            velocity
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu
+            speedtest
             ;;
             12)
             clear
@@ -366,13 +364,10 @@ menu() {
             echo -e "\033[1;32mPARA SAIR CLICK CTRL + C\033[1;36m"
             sleep 4
             nload
-            menu
             ;;
             14)
             clear
             otimizar
-            echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu
             ;;
             15)
             userbackup
@@ -405,7 +400,7 @@ menu() {
             ;;
             *)
             echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-            sleep 2
+            sleep 1
             menu
         esac
     done
@@ -430,13 +425,13 @@ menu2() {
             clear
             addhost
             echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu3
+            menu2
             ;;
             2)
             clear
             delhost
             echo -ne "\n\033[1;31mENTER \033[1;33mpara retornar ao \033[1;32mMENU!\033[0m"; read
-            menu3
+            menu2
             ;;
             3)
             clear
@@ -486,8 +481,8 @@ menu2() {
             ;;
             *)
             echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-            sleep 2
-            menu3
+            sleep 1
+            menu2
         esac
     done
 }
