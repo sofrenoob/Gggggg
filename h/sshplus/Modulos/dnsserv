@@ -86,10 +86,10 @@ while true; do
             if [[ "$STATUS_ATUAL" == *INATIVO* ]]; then
                 ativar_stub_resolver
             else
-                echo -e "\n${VERMELHO}Opção inválida.${NORMAL}"; sleep 2
+                echo -e "\n${VERMELHO}Opção inválida.${NORMAL}"; sleep 1
             fi
             ;;
         0) clear; exit 0 ;;
-        *) echo -e "\n${VERMELHO}Opção inválida.${NORMAL}"; sleep 2 ;;
+        *) echo -e "\n${VERMELHO}Opção inválida.${NORMAL}"; sleep 1 ;;
     esac
 done
