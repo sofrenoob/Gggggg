@@ -1,6 +1,6 @@
 #!/bin/bash
 #====================================================
-#	@alfalemos
+#	@kiritosshxd
 #====================================================
 _lvk=$(wget -qO- https://raw.githubusercontent.com/sofrenoob/Gggggg/main/h/sshplus/Modulos/versao)
 IP=$(wget -qO- ipv4.icanhazip.com)
