@@ -1,1 +1,0 @@
-config = ProxyConfig(host='127.0.0.1', port=8888, remote_host='google.com', remote_port=443, intercept_tls=True)
