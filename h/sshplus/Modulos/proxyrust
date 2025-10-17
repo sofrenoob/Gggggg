@@ -189,7 +189,7 @@ show_menu() {
                 log_error "RustyProxy não está instalado. Use a opção 3."
             else
                 read -p "Digite a porta a ser aberta: " port
-                read -p "Digite o status de conexão (padrão: @RustyProxy): " status
+                read -p "Digite o status de conexão (padrão: Rustyproxy@alfalemos): " status
                 add_proxy_port "$port" "$status"
             fi
             ;;
@@ -208,7 +208,7 @@ show_menu() {
             uninstall_rustyproxy
             ;;
         0)
-            clear; conexao
+            clear; exit 0
             ;;
         *)
             log_error "Opção inválida."
