@@ -44,8 +44,9 @@ instalar_ou_atualizar_dragonx() {
     sudo ln -sf "$INSTALL_DIR/proxy.sh" /usr/local/bin/dragonx
 
     echo -e "\n\033[1;32m✅ Instalação/Atualização finalizada!\033[0m"
-    echo "Use o comando 'dragonx' em qualquer terminal para abrir este menu."
-    sleep 4
+    sleep 2 
+    clear 
+    proxyd
 }
 
 # Função para verificar se os arquivos essenciais estão presentes
