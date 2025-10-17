@@ -196,14 +196,14 @@ desinstalar_dragonx() {
     rm -rf "$INSTALL_DIR"
     rm -f /usr/local/bin/dragonx
     echo -e "\n\033[1;32m✅ DragonX removido com sucesso!\033[0m"
-    exit 0
+    proxyd
 }
 
 
 # --- MENU PRINCIPAL ---
 menu() {
     clear
-    echo -e "\E[44;1;37m             GERENCIAR DRAGONX             \E[0m"
+    echo -e "\E[44;1;37m        PROXY DRAGONX   By: @alfalemos       \E[0m"
     echo ""
     echo -e "\033[1;33mSTATUS DAS PORTAS:\033[0m"
     if [ -f "$PORTS_FILE" ] && [ -s "$PORTS_FILE" ]; then
@@ -245,7 +245,7 @@ menu() {
 # Verifica se o script está rodando como root
 if [[ $EUID -ne 0 ]]; then
    echo -e "\033[1;31mEste script precisa ser executado como root (use sudo).\033[0m"
-   exit 1
+   proxyd
 fi
 
 # Garante que os diretórios base existam antes de qualquer outra coisa
@@ -262,7 +262,7 @@ if ! verificar_instalacao; then
         instalar_ou_atualizar_dragonx
     else
         echo -e "\033[1;31mInstalação cancelada. O gerenciador não pode continuar.\033[0m"
-        exit 1
+        proxyd
     fi
 fi
 
