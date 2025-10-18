@@ -1,5 +1,0 @@
-{
-  "ports": [80, 8080, 443, 7300],
-  "backend_target": "http://127.0.0.1:5000",
-  "log_file": "/opt/ggproxy/proxy_logs.txt"
-}
