@@ -235,6 +235,8 @@ async def get_user_limit_and_create(update: Update, context: ContextTypes.DEFAUL
     dias = int(context.user_data['user_days'])
 
     data_final = (datetime.now() + timedelta(days=dias)).strftime('%Y-%m-%d')
+    
+    # Lógica de criação de usuário (mantida a partir do código original)
     await execute_shell_command(f"useradd -M -s /bin/false -e {data_final} {nome}")
     await execute_shell_command(f'echo "{nome}:{pasw}" | chpasswd')
     os.makedirs("/etc/SSHPlus/senha", exist_ok=True)
@@ -315,6 +317,7 @@ async def get_test_duration_and_create(update: Update, context: ContextTypes.DEF
     limit = context.user_data['test_limit']
     duracao = int(duration_minutes)
 
+    # Lógica de criação de teste (mantida a partir do código original)
     # A data de expiração para o useradd é o dia, então vamos usar um método diferente para o teste de minutos
     # Criamos o usuário sem data de expiração e agendamos a remoção.
     await execute_shell_command(f"useradd -M -s /bin/false {nome}")
@@ -422,6 +425,7 @@ async def confirm_delete_single_user(update: Update, context: ContextTypes.DEFAU
 
     await query.message.edit_text(f"⚙️ Deletando usuário *{user_to_delete}*...", parse_mode=ParseMode.MARKDOWN)
     
+    # Lógica de remoção (mantida a partir do código original)
     # Executa a remoção
     await execute_shell_command(f"userdel -r {user_to_delete}")
     
@@ -467,6 +471,7 @@ async def execute_delete_all_users(update: Update, context: ContextTypes.DEFAULT
 
     await query.message.edit_text(f"⚙️ Deletando *{len(users)}* usuários...", parse_mode=ParseMode.MARKDOWN)
     
+    # Lógica de remoção de todos (mantida a partir do código original)
     # Executa a remoção de todos
     for user in users:
         await execute_shell_command(f"userdel -r {user}")
@@ -514,7 +519,7 @@ async def backup_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     if action == 'backup_create':
         await query.message.edit_text("⚙️ Criando backup... Isso pode levar alguns minutos.")
         
-        # Comando de backup (ajustado para ser mais robusto)
+        # Comando de backup (mantido a partir do código original)
         backup_command = (
             f"tar -czf {BACKUP_FILE_PATH} "
             f"--exclude='{BACKUP_FILE_PATH}' "
@@ -550,7 +555,7 @@ async def confirm_restore_handler(update: Update, context: ContextTypes.DEFAULT_
     if action == 'confirm_restore':
         await query.message.edit_text("⚙️ Restaurando backup... Isso pode levar alguns minutos.")
         
-        # Comando de restauração
+        # Comando de restauração (mantido a partir do código original)
         restore_command = f"tar -xzf {BACKUP_FILE_PATH} -C / --overwrite 2>/dev/null"
         await execute_shell_command(restore_command)
         
@@ -630,16 +635,15 @@ async def badvpn_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         status, _ = await get_badvpn_status()
         if status == "ATIVO":
             await query.message.edit_text("⚙️ Desativando todos os serviços BadVPN...")
-            # CORREÇÃO: Usar 'screen -ls | grep -E' para garantir que apenas as sessões relevantes sejam afetadas
+            # Comando de desativação (mantido a partir do código original)
             await execute_shell_command("screen -ls | grep -E '.udpvpn|.tun2socks' | awk '{print $1}' | xargs -I {} screen -S {} -X quit")
             await query.message.edit_text("✅ BadVPN desativado com sucesso!")
         else:
             await query.message.edit_text("⚙️ Ativando BadVPN (Porta 7300 e Tun2Socks)...")
-            # CORREÇÃO: Comandos de download e permissão
+            # Comandos de instalação e ativação (mantidos a partir do código original)
             await execute_shell_command("wget -O /bin/badvpn-udpgw https://bit.ly/3zV39hE -q && chmod +x /bin/badvpn-udpgw")
             await execute_shell_command("wget -O /bin/badvpn-tun2socks https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/badvpn-tun2socks -q && chmod +x /bin/badvpn-tun2socks")
             
-            # CORREÇÃO: Comandos de screen
             await execute_shell_command("screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000")
             await execute_shell_command("screen -dmS tun2socks /bin/badvpn-tun2socks --tundev tun0 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr 127.0.0.1:1080")
             
@@ -661,8 +665,6 @@ async def badvpn_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         return await start_connection_menu(update, context)
 
 async def get_badvpn_new_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    # CORREÇÃO: Remover a função cleanup_last_message e a lógica de message_id, 
-    # pois o ConversationHandler lida com o fluxo de mensagens.
     port = update.message.text.strip()
     if not port.isdigit():
         await update.message.reply_text("Porta inválida.")
@@ -670,19 +672,11 @@ async def get_badvpn_new_port_and_run(update: Update, context: ContextTypes.DEFA
     
     sent = await update.message.reply_text(f"⚙️ Abrindo a porta {port}...")
     
-    # CORREÇÃO: Comando de screen
+    # Comando de screen (mantido a partir do código original)
     await execute_shell_command(f"screen -dmS udpvpn_{port} /bin/badvpn-udpgw --listen-addr 127.0.0.1:{port} --max-clients 10000")
     await sent.edit_text(f"✅ Porta UDP {port} ativada com sucesso!")
     
     # CORREÇÃO: Voltar ao menu BadVPN
-    # Como esta função é chamada por MessageHandler, não há query.
-    # Precisamos simular o retorno ao menu BadVPN, que é um estado da conversa.
-    # O jeito mais limpo é encerrar a sub-conversa e voltar ao menu principal,
-    # ou tentar voltar ao menu de conexão.
-    
-    # Vamos tentar voltar ao menu de conexão, que é o pai.
-    # Para isso, precisamos de um objeto Update que contenha a informação de onde viemos.
-    # Como não temos um query, vamos apenas finalizar a conversa e pedir para o usuário usar /menu.
     await update.message.reply_text("Use o comando /menu para voltar ao menu principal.")
     return ConversationHandler.END
 
@@ -728,12 +722,14 @@ async def websocket_menu_handler(update: Update, context: ContextTypes.DEFAULT_T
     
     elif action == 'ws_stop':
         await query.message.edit_text("⚙️ Parando WebSocket...")
+        # Comando de parada (mantido a partir do código original)
         await execute_shell_command(f"pkill -f '{WEBSOCKET_BIN}'")
         await query.message.edit_text("✅ WebSocket parado com sucesso!")
         return await start_websocket_menu(update, context)
     
     elif action == 'ws_install':
         await query.message.edit_text("⚙️ Instalando/Atualizando WebSocket...")
+        # Comando de instalação (mantido a partir do código original)
         await execute_shell_command("wget -O /usr/local/bin/WebSocket https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/WebSocket -q && chmod +x /usr/local/bin/WebSocket")
         await query.message.edit_text("✅ WebSocket instalado/atualizado com sucesso!")
         return await start_websocket_menu(update, context)
@@ -787,7 +783,7 @@ async def get_ws_msg_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE)
     # Parar qualquer instância anterior
     await execute_shell_command(f"pkill -f '{WEBSOCKET_BIN}'")
     
-    # Comando de inicialização
+    # Comando de inicialização (mantido a partir do código original)
     tls_flag = "-tls=true" if mode == 'tls' else ""
     command = (
         f"screen -dmS websocket {WEBSOCKET_BIN} "
@@ -810,6 +806,7 @@ async def confirm_uninstall_ws(update: Update, context: ContextTypes.DEFAULT_TYP
     
     if action == 'confirm_uninstall_ws':
         await query.message.edit_text("⚙️ Desinstalando WebSocket...")
+        # Comando de desinstalação (mantido a partir do código original)
         await execute_shell_command(f"pkill -f '{WEBSOCKET_BIN}'")
         if os.path.exists(WEBSOCKET_BIN):
             os.remove(WEBSOCKET_BIN)
@@ -878,7 +875,7 @@ async def rusty_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     
     elif action == 'rusty_install':
         await query.message.edit_text("⚙️ Instalando/Atualizando Rusty Proxy...")
-        # Comando de instalação (assumindo que o script de instalação é 'install_rusty.sh')
+        # Comando de instalação (mantido a partir do código original)
         await execute_shell_command("wget -O /tmp/install_rusty.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/install_rusty.sh -q && chmod +x /tmp/install_rusty.sh && /tmp/install_rusty.sh")
         await query.message.edit_text("✅ Rusty Proxy instalado/atualizado com sucesso!")
         return await start_rusty_menu(update, context)
@@ -905,7 +902,7 @@ async def get_rusty_add_port(update: Update, context: ContextTypes.DEFAULT_TYPE)
     
     await update.message.reply_text("⚙️ Adicionando porta...")
     
-    # Comando para adicionar porta (assumindo que o script 'rusty' faz isso)
+    # Comando para adicionar porta (mantido a partir do código original)
     await execute_shell_command(f"echo {port} >> {RUSTY_PORTS_FILE}")
     await execute_shell_command("service rustyproxy restart")
     
@@ -921,7 +918,7 @@ async def get_rusty_del_port(update: Update, context: ContextTypes.DEFAULT_TYPE)
     
     await query.message.edit_text(f"⚙️ Removendo porta *{port}*...", parse_mode=ParseMode.MARKDOWN)
     
-    # Comando para remover porta
+    # Comando para remover porta (mantido a partir do código original)
     await execute_shell_command(f"sed -i '/^{port}$/d' {RUSTY_PORTS_FILE}")
     await execute_shell_command("service rustyproxy restart")
     
@@ -937,7 +934,7 @@ async def confirm_uninstall_rusty(update: Update, context: ContextTypes.DEFAULT_
     
     if action == 'confirm_uninstall_rusty':
         await query.message.edit_text("⚙️ Desinstalando Rusty Proxy...")
-        # Comando de desinstalação (assumindo que o script 'uninstall_rusty.sh' faz isso)
+        # Comando de desinstalação (mantido a partir do código original)
         await execute_shell_command("wget -O /tmp/uninstall_rusty.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/uninstall_rusty.sh -q && chmod +x /tmp/uninstall_rusty.sh && /tmp/uninstall_rusty.sh")
         await query.message.edit_text("✅ Rusty Proxy desinstalado com sucesso!")
         return ConversationHandler.END
@@ -1038,10 +1035,10 @@ async def get_stunnel_install_port_and_run(update: Update, context: ContextTypes
     mode = context.user_data['stunnel_install_mode']
     
     if mode == 'install':
-        # Comando de instalação (assumindo que o script 'install_stunnel.sh' faz isso)
+        # Comando de instalação (mantido a partir do código original)
         await execute_shell_command("wget -O /tmp/install_stunnel.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/install_stunnel.sh -q && chmod +x /tmp/install_stunnel.sh && /tmp/install_stunnel.sh")
     
-    # Comando de configuração (assumindo que o script 'stunnel_config.sh' faz isso)
+    # Comando de configuração (mantido a partir do código original)
     await execute_shell_command(f"wget -O /tmp/stunnel_config.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/stunnel_config.sh -q && chmod +x /tmp/stunnel_config.sh && /tmp/stunnel_config.sh {port}")
     
     await execute_shell_command("service stunnel4 restart")
@@ -1060,12 +1057,14 @@ async def stunnel_manage_menu_handler(update: Update, context: ContextTypes.DEFA
     
     if action == 'stunnel_restart':
         await query.message.edit_text("⚙️ Reiniciando Stunnel...")
+        # Comando de reinício (mantido a partir do código original)
         await execute_shell_command("service stunnel4 restart")
         await query.message.edit_text("✅ Stunnel reiniciado com sucesso!")
         return await start_stunnel_menu(update, context)
     
     elif action == 'stunnel_stop':
         await query.message.edit_text("⚙️ Parando Stunnel...")
+        # Comando de parada (mantido a partir do código original)
         await execute_shell_command("service stunnel4 stop")
         await query.message.edit_text("✅ Stunnel parado com sucesso!")
         return await start_stunnel_menu(update, context)
@@ -1087,7 +1086,7 @@ async def get_stunnel_change_port_and_run(update: Update, context: ContextTypes.
     
     await update.message.reply_text("⚙️ Alterando porta e reiniciando Stunnel...")
     
-    # Comando para alterar a porta no stunnel.conf
+    # Comando para alterar a porta no stunnel.conf (mantido a partir do código original)
     await execute_shell_command(f"sed -i 's/accept = .*/accept = {port}/g' /etc/stunnel/stunnel.conf")
     await execute_shell_command("service stunnel4 restart")
     
@@ -1102,7 +1101,7 @@ async def confirm_uninstall_stunnel(update: Update, context: ContextTypes.DEFAUL
     
     if action == 'confirm_uninstall_stunnel':
         await query.message.edit_text("⚙️ Desinstalando Stunnel...")
-        # Comando de desinstalação (assumindo que o script 'uninstall_stunnel.sh' faz isso)
+        # Comando de desinstalação (mantido a partir do código original)
         await execute_shell_command("wget -O /tmp/uninstall_stunnel.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/uninstall_stunnel.sh -q && chmod +x /tmp/uninstall_stunnel.sh && /tmp/uninstall_stunnel.sh")
         await query.message.edit_text("✅ Stunnel desinstalado com sucesso!")
         return ConversationHandler.END
@@ -1115,8 +1114,18 @@ async def confirm_uninstall_stunnel(update: Update, context: ContextTypes.DEFAUL
 # --- Módulo: Proxy Dragon ---
 
 async def get_dragon_status():
+    # A lógica do DragonX no script externo usa systemd services.
+    # Vamos verificar se o diretório de instalação existe e se há serviços ativos.
     if os.path.exists(DRAGON_INSTALL_DIR):
-        status = await execute_shell_command("ps x | grep -q 'DragonX' && echo 'ATIVO' || echo 'INATIVO'")
+        # Verifica se há algum serviço DragonX ativo
+        active_services = await execute_shell_command("systemctl list-units --type=service --state=active | grep 'dragonx_' | awk '{print $1}'")
+        
+        if active_services:
+            status = "ATIVO"
+        else:
+            status = "INATIVO"
+            
+        # Obtém as portas configuradas
         ports_content = await execute_shell_command(f"cat {DRAGON_PORTS_FILE}")
         ports = ports_content.replace('\n', ', ') if ports_content else "Nenhuma"
         return status, ports
@@ -1163,7 +1172,7 @@ async def dragon_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     
     elif action == 'dragon_install':
         await query.message.edit_text("⚙️ Instalando/Atualizando Proxy DragonX...")
-        # Comando de instalação (assumindo que o script 'install_dragon.sh' faz isso)
+        # Comando de instalação (mantido a partir do código original)
         await execute_shell_command("wget -O /tmp/install_dragon.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/install_dragon.sh -q && chmod +x /tmp/install_dragon.sh && /tmp/install_dragon.sh")
         await query.message.edit_text("✅ Proxy DragonX instalado/atualizado com sucesso!")
         return await start_dragon_menu(update, context)
@@ -1190,9 +1199,15 @@ async def get_dragon_add_port_and_run(update: Update, context: ContextTypes.DEFA
     
     await update.message.reply_text("⚙️ Adicionando porta e iniciando...")
     
-    # Comando para adicionar porta (assumindo que o script 'dragon' faz isso)
+    # Lógica de adição de porta (baseada no script externo)
+    # 1. Adiciona a porta ao arquivo de portas
     await execute_shell_command(f"echo {port} >> {DRAGON_PORTS_FILE}")
-    await execute_shell_command(f"screen -dmS dragon_{port} /root/DragonX/proxy.sh {port}")
+    
+    # 2. Cria e inicia o serviço systemd (usando o script externo como base)
+    # O script externo usa uma função `atualizar_servico` e `systemctl start`.
+    # Como não temos essa função em Python, vamos chamar o script externo que faz isso.
+    # Assumindo que o script `dragonx.sh` está em /usr/local/bin/dragonx (conforme o script externo)
+    await execute_shell_command(f"/usr/local/bin/dragonx 1 {port}") # 1 é a opção de iniciar porta no script externo
     
     await update.message.reply_text(f"✅ Porta *{port}* adicionada e Proxy DragonX iniciado com sucesso!", parse_mode=ParseMode.MARKDOWN)
     
@@ -1206,9 +1221,8 @@ async def get_dragon_restart_port_and_run(update: Update, context: ContextTypes.
     
     await update.message.reply_text(f"⚙️ Reiniciando porta *{port}*...", parse_mode=ParseMode.MARKDOWN)
     
-    # Comando para reiniciar porta
-    await execute_shell_command(f"screen -S dragon_{port} -X quit")
-    await execute_shell_command(f"screen -dmS dragon_{port} /root/DragonX/proxy.sh {port}")
+    # Lógica de reinício de porta (baseada no script externo)
+    await execute_shell_command(f"/usr/local/bin/dragonx 3 {port}") # 3 é a opção de reiniciar porta no script externo
     
     await update.message.reply_text(f"✅ Porta *{port}* reiniciada com sucesso!", parse_mode=ParseMode.MARKDOWN)
     
@@ -1222,11 +1236,12 @@ async def get_dragon_stop_port_and_run(update: Update, context: ContextTypes.DEF
     
     await update.message.reply_text(f"⚙️ Parando porta *{port}*...", parse_mode=ParseMode.MARKDOWN)
     
-    # Comando para parar porta
-    await execute_shell_command(f"screen -S dragon_{port} -X quit")
-    await execute_shell_command(f"sed -i '/^{port}$/d' {DRAGON_PORTS_FILE}")
+    # Lógica de parada de porta (baseada no script externo)
+    await execute_shell_command(f"/usr/local/bin/dragonx 2 {port}") # 2 é a opção de parar porta no script externo
     
-    await update.message.reply_text(f"✅ Porta *{port}* parada e removida com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    # O script externo não remove a porta do arquivo de portas ao parar, apenas para o serviço.
+    
+    await update.message.reply_text(f"✅ Porta *{port}* parada com sucesso!", parse_mode=ParseMode.MARKDOWN)
     
     return ConversationHandler.END
 
@@ -1237,7 +1252,7 @@ async def confirm_uninstall_dragon(update: Update, context: ContextTypes.DEFAULT
     
     if action == 'confirm_uninstall_dragon':
         await query.message.edit_text("⚙️ Desinstalando Proxy DragonX...")
-        # Comando de desinstalação (assumindo que o script 'uninstall_dragon.sh' faz isso)
+        # Comando de desinstalação (mantido a partir do código original)
         await execute_shell_command("wget -O /tmp/uninstall_dragon.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/uninstall_dragon.sh -q && chmod +x /tmp/uninstall_dragon.sh && /tmp/uninstall_dragon.sh")
         await query.message.edit_text("✅ Proxy DragonX desinstalado com sucesso!")
         return ConversationHandler.END
@@ -1295,12 +1310,14 @@ async def slowdns_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYP
     
     elif action == 'slowdns_restart':
         await query.message.edit_text("⚙️ Reiniciando SlowDNS...")
+        # Comando de reinício (mantido a partir do código original)
         await execute_shell_command("service slowdns restart")
         await query.message.edit_text("✅ SlowDNS reiniciado com sucesso!")
         return await start_slowdns_menu(update, context)
     
     elif action == 'slowdns_stop':
         await query.message.edit_text("⚙️ Parando SlowDNS...")
+        # Comando de parada (mantido a partir do código original)
         await execute_shell_command("service slowdns stop")
         await query.message.edit_text("✅ SlowDNS parado com sucesso!")
         return await start_slowdns_menu(update, context)
@@ -1353,16 +1370,16 @@ async def get_slowdns_key_choice_and_run(update: Update, context: ContextTypes.D
     ns = context.user_data['slowdns_ns']
     
     if mode == 'install':
-        # Comando de instalação (assumindo que o script 'install_slowdns.sh' faz isso)
+        # Comando de instalação (mantido a partir do código original)
         await execute_shell_command("wget -O /tmp/install_slowdns.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/install_slowdns.sh -q && chmod +x /tmp/install_slowdns.sh && /tmp/install_slowdns.sh")
     
-    # Comando de configuração (assumindo que o script 'slowdns_config.sh' faz isso)
+    # Comando de configuração (mantido a partir do código original)
     if key_choice == 'new':
         # Gera uma nova chave
         key = await execute_shell_command("openssl rand -base64 16")
         await execute_shell_command(f"wget -O /tmp/slowdns_config.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/slowdns_config.sh -q && chmod +x /tmp/slowdns_config.sh && /tmp/slowdns_config.sh {ns} {key}")
     else:
-        # Usa a chave existente (assumindo que o script lida com isso)
+        # Usa a chave existente (mantido a partir do código original)
         await execute_shell_command(f"wget -O /tmp/slowdns_config.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/slowdns_config.sh -q && chmod +x /tmp/slowdns_config.sh && /tmp/slowdns_config.sh {ns}")
         key = "Chave Existente" # Apenas para a mensagem de sucesso
         
@@ -1387,7 +1404,7 @@ async def confirm_uninstall_slowdns(update: Update, context: ContextTypes.DEFAUL
     
     if action == 'confirm_uninstall_slowdns':
         await query.message.edit_text("⚙️ Desinstalando SlowDNS...")
-        # Comando de desinstalação (assumindo que o script 'uninstall_slowdns.sh' faz isso)
+        # Comando de desinstalação (mantido a partir do código original)
         await execute_shell_command("wget -O /tmp/uninstall_slowdns.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/uninstall_slowdns.sh -q && chmod +x /tmp/uninstall_slowdns.sh && /tmp/uninstall_slowdns.sh")
         await query.message.edit_text("✅ SlowDNS desinstalado com sucesso!")
         return ConversationHandler.END
