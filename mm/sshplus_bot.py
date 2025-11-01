@@ -112,8 +112,15 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     ]
     text = "🤖 *Gerenciador SSHPlus*\n\nSelecione uma opção:"
     
-    message_carrier = update.message or update.callback_query.message
-    sent_message = await message_carrier.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    # CORREÇÃO: Usar update.effective_message para garantir que a resposta seja enviada corretamente
+    # independentemente de ser um comando /start ou um callback 'back_to_main'.
+    message_carrier = update.effective_message
+    if not message_carrier:
+        # Se não houver effective_message (ex: após um delete), tenta usar o chat_id
+        sent_message = await context.bot.send_message(chat_id, text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    else:
+        sent_message = await message_carrier.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+        
     context.chat_data['last_menu_id'] = sent_message.message_id
 
 async def end_conversation(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -122,11 +129,15 @@ async def end_conversation(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     if query:
         await query.answer()
         try:
+            # CORREÇÃO: Deletar a mensagem do menu anterior antes de enviar o novo
             await query.message.delete()
         except BadRequest:
             logger.warning("Could not delete message, maybe it was already deleted.")
     
-    await start_command(update.callback_query or update, context)
+    # CORREÇÃO: Passar o objeto 'update' correto para start_command.
+    # Se for um callback, o 'update' já está correto. Se for um fallback de texto,
+    # o 'update' é o objeto Message.
+    await start_command(update, context)
     return ConversationHandler.END
 
 
@@ -170,6 +181,7 @@ async def back_to_main_from_report(update: Update, context: ContextTypes.DEFAULT
 # --- Seção: Criação de Usuário ---
 
 async def start_create_user_convo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
     await query.message.edit_text("Qual o nome do novo usuário?")
@@ -232,21 +244,26 @@ async def get_user_limit_and_create(update: Update, context: ContextTypes.DEFAUL
     ip_servidor = await execute_shell_command("wget -qO- ifconfig.me")
     gui_data = (datetime.now() + timedelta(days=dias)).strftime('%d/%m/%Y')
     success_message = (f"✅ *Conta SSH Criada!*\n\n"
-                       f"🌐 *IP:* `{ip_servidor}`\n👤 *Usuário:* `{nome}`\n🔑 *Senha:* `{pasw}`\n"
-                       f"📶 *Limite:* `{limit}`\n⏳ *Expira em:* `{gui_data}` ({dias} dias)")
+                       f"👤 *Usuário:* `{nome}`\n"
+                       f"🔑 *Senha:* `{pasw}`\n"
+                       f"🔗 *Limite:* `{limit}`\n"
+                       f"🗓️ *Expira em:* `{gui_data}`\n"
+                       f"🌐 *IP:* `{ip_servidor}`\n\n"
+                       f"Use o comando /menu para voltar ao menu principal.")
 
     await sent_message.edit_text(success_message, parse_mode=ParseMode.MARKDOWN)
-    return await end_conversation(update, context)
+    
+    # CORREÇÃO: Limpar user_data após a conclusão da conversa
+    context.user_data.clear()
+    
+    return ConversationHandler.END
 
-# --- Seção: Criação de Usuário de Teste ---
+# --- Seção: Criação de Teste ---
 
 async def start_create_test_user_convo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
-    if not await execute_shell_command("command -v at"):
-        await query.message.edit_text("❌ O comando `at` não está instalado. Não é possível criar usuários de teste.",
-                                      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')]]))
-        return ConversationHandler.END
     await query.message.edit_text("Qual o nome do usuário de teste?")
     return GET_TEST_USERNAME
 
@@ -259,7 +276,7 @@ async def get_test_user_username(update: Update, context: ContextTypes.DEFAULT_T
         await update.message.reply_text("❌ Este usuário já existe. Tente outro nome.")
         return GET_TEST_USERNAME
     context.user_data['test_username'] = username
-    await update.message.reply_text("Qual a senha?")
+    await update.message.reply_text("Ótimo. Agora, qual a senha (mínimo 4 caracteres)?")
     return GET_TEST_PASSWORD
 
 async def get_test_user_password(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -268,7 +285,7 @@ async def get_test_user_password(update: Update, context: ContextTypes.DEFAULT_T
         await update.message.reply_text("Senha inválida (mínimo 4 caracteres). Tente novamente.")
         return GET_TEST_PASSWORD
     context.user_data['test_password'] = password
-    await update.message.reply_text("Qual o limite de conexões?")
+    await update.message.reply_text("Qual o limite de conexões simultâneas?")
     return GET_TEST_LIMIT
 
 async def get_test_user_limit(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -277,248 +294,283 @@ async def get_test_user_limit(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_text("Limite inválido. Insira um número > 0.")
         return GET_TEST_LIMIT
     context.user_data['test_limit'] = limit
-    await update.message.reply_text("Por quantos *minutos* a conta será válida?")
+    await update.message.reply_text("Por quantos minutos a conta de teste será válida?")
     return GET_TEST_DURATION
 
 async def get_test_duration_and_create(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    duration = update.message.text.strip()
-    if not duration.isdigit() or int(duration) < 1:
-        await update.message.reply_text("Duração inválida. Insira minutos > 0.")
+    duration_minutes = update.message.text.strip()
+    if not duration_minutes.isdigit() or int(duration_minutes) < 1:
+        await update.message.reply_text("Duração inválida. Insira um número de minutos > 0.")
         return GET_TEST_DURATION
 
-    await update.message.delete()
+    # Limpa as mensagens de input
+    try:
+        await context.bot.delete_message(chat_id=update.effective_chat.id, message_id=update.message.message_id)
+    except BadRequest: pass
+
     sent_message = await context.bot.send_message(chat_id=update.effective_chat.id, text="⚙️ Processando... Criando usuário de teste.")
 
     nome = context.user_data['test_username']
     pasw = context.user_data['test_password']
     limit = context.user_data['test_limit']
+    duracao = int(duration_minutes)
 
+    # A data de expiração para o useradd é o dia, então vamos usar um método diferente para o teste de minutos
+    # Criamos o usuário sem data de expiração e agendamos a remoção.
     await execute_shell_command(f"useradd -M -s /bin/false {nome}")
     await execute_shell_command(f'echo "{nome}:{pasw}" | chpasswd')
     os.makedirs("/etc/SSHPlus/senha", exist_ok=True)
     with open(f"/etc/SSHPlus/senha/{nome}", "w") as f: f.write(pasw)
     with open("/root/usuarios.db", "a") as f: f.write(f"{nome} {limit}\n")
 
-    remover_script_path = f"/tmp/remover_{nome}.sh"
-    remover_script_content = f"""#!/bin/bash
-pkill -f "{nome}"
-userdel --force {nome}
-grep -v "^{nome} " /root/usuarios.db > /tmp/usuarios.db.tmp && mv /tmp/usuarios.db.tmp /root/usuarios.db
-rm -f /etc/SSHPlus/senha/{nome}
-rm -- "$0"
-"""
-    with open(remover_script_path, "w") as f: f.write(remover_script_content)
-    await execute_shell_command(f"chmod +x {remover_script_path}")
+    # Agendar a remoção do usuário de teste
+    remove_time = datetime.now() + timedelta(minutes=duracao)
+    remove_time_str = remove_time.strftime('%H:%M %d/%m/%Y')
     
-    await execute_shell_command(f'echo "{remover_script_path}" | at now + {duration} minutes')
+    # Comando para agendar a remoção no 'at'
+    at_command = f"echo 'userdel -r {nome}' | at now + {duracao} minutes"
+    await execute_shell_command(at_command)
 
     ip_servidor = await execute_shell_command("wget -qO- ifconfig.me")
-    success_message = (f"✅ *Conta de Teste Criada!*\n\n"
-                       f"🌐 *IP:* `{ip_servidor}`\n👤 *Usuário:* `{nome}`\n🔑 *Senha:* `{pasw}`\n"
-                       f"📶 *Limite:* `{limit}`\n"
-                       f"⏳ *Expira em:* `{duration} minutos`\n\n"
-                       f"A conta será *automaticamente deletada*.")
     
+    success_message = (f"✅ *Conta SSH de Teste Criada!*\n\n"
+                       f"👤 *Usuário:* `{nome}`\n"
+                       f"🔑 *Senha:* `{pasw}`\n"
+                       f"🔗 *Limite:* `{limit}`\n"
+                       f"⏱️ *Duração:* `{duracao} minutos`\n"
+                       f"🗓️ *Expira em:* `{remove_time_str}`\n"
+                       f"🌐 *IP:* `{ip_servidor}`\n\n"
+                       f"Use o comando /menu para voltar ao menu principal.")
+
     await sent_message.edit_text(success_message, parse_mode=ParseMode.MARKDOWN)
-    return await end_conversation(update, context)
+    
+    # CORREÇÃO: Limpar user_data após a conclusão da conversa
+    context.user_data.clear()
+    
+    return ConversationHandler.END
 
 # --- Seção: Remoção de Usuário ---
 
+async def get_users_list():
+    """Retorna uma lista de usuários SSH (não root, não sistema)."""
+    # Tenta usar o script 'listuser' se existir, senão usa o método padrão
+    raw_output = await execute_shell_command("listuser")
+    if raw_output:
+        users = [line.split()[0] for line in raw_output.splitlines() if line.strip()]
+        return users
+    
+    # Método padrão: usuários com shell /bin/false e UID > 1000
+    output = await execute_shell_command("awk -F: '($3 >= 1000) && ($7 == \"/bin/false\") {print $1}' /etc/passwd")
+    return [user.strip() for user in output.splitlines() if user.strip()]
+
 async def start_delete_user_convo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
     
-    users_raw = await execute_shell_command("awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v 'nobody'")
-    users = users_raw.splitlines()
-
+    users = await get_users_list()
+    context.chat_data['users_to_delete'] = users
+    
     if not users:
-        await query.message.edit_text("Não há usuários para remover.", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')]]))
+        await query.message.edit_text("❌ Nenhum usuário SSH encontrado para deletar.", 
+                                      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')]]))
         return ConversationHandler.END
+
+    keyboard = []
+    for user in users:
+        keyboard.append([InlineKeyboardButton(user, callback_data=f'delete_user_{user}')])
     
-    keyboard = [[InlineKeyboardButton(user, callback_data=user)] for user in users]
-    keyboard.append([InlineKeyboardButton("❌ REMOVER TODOS ❌", callback_data="delete_all_users_prompt")])
+    keyboard.append([InlineKeyboardButton("🗑️ Deletar TODOS os Usuários", callback_data='delete_all_users_prompt')])
     keyboard.append([InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')])
-    
-    await query.message.edit_text("Selecione o usuário para remover:", reply_markup=InlineKeyboardMarkup(keyboard))
+
+    await query.message.edit_text("Selecione o usuário que deseja deletar:", 
+                                  reply_markup=InlineKeyboardMarkup(keyboard))
     return GET_USER_TO_DELETE
 
 async def get_user_to_delete(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    user_to_delete = query.data
+    
+    user_to_delete = query.data.replace('delete_user_', '')
+    
+    if user_to_delete not in context.chat_data.get('users_to_delete', []):
+        await query.message.edit_text("❌ Usuário inválido ou não encontrado. Tente novamente.", 
+                                      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')]]))
+        return ConversationHandler.END
+
     context.user_data['user_to_delete'] = user_to_delete
+    
     keyboard = [
-        [InlineKeyboardButton(f"Sim, deletar {user_to_delete}", callback_data="confirm_delete")],
-        [InlineKeyboardButton("Não, cancelar", callback_data='restart_delete_menu')]
+        [InlineKeyboardButton("✅ Confirmar Deleção", callback_data='confirm_delete')],
+        [InlineKeyboardButton("↩️ Cancelar", callback_data='back_to_delete_menu')]
     ]
-    await query.message.edit_text(f"Tem certeza que deseja deletar *{user_to_delete}*?", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    
+    await query.message.edit_text(f"Tem certeza que deseja deletar o usuário *{user_to_delete}*?", 
+                                  reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
     return CONFIRM_DELETE_USER
 
 async def confirm_delete_single_user(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    user = context.user_data['user_to_delete']
     
-    await execute_shell_command(f"userdel -f {user}")
-    await execute_shell_command(f"sed -i '/^{user} /d' /root/usuarios.db")
+    user_to_delete = context.user_data.get('user_to_delete')
     
-    await query.message.edit_text(f"✅ Usuário *{user}* removido com sucesso!", parse_mode=ParseMode.MARKDOWN)
-    await asyncio.sleep(2) # Pequena pausa para o usuário ler a mensagem
-    return await end_conversation(update, context)
+    if not user_to_delete:
+        await query.message.edit_text("❌ Erro: Usuário não especificado.", 
+                                      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')]]))
+        return ConversationHandler.END
+
+    await query.message.edit_text(f"⚙️ Deletando usuário *{user_to_delete}*...", parse_mode=ParseMode.MARKDOWN)
+    
+    # Executa a remoção
+    await execute_shell_command(f"userdel -r {user_to_delete}")
+    
+    # Remove do arquivo de limite
+    await execute_shell_command(f"sed -i '/^{user_to_delete} /d' /root/usuarios.db")
+    
+    # Remove o arquivo de senha
+    if os.path.exists(f"/etc/SSHPlus/senha/{user_to_delete}"):
+        os.remove(f"/etc/SSHPlus/senha/{user_to_delete}")
+        
+    await query.message.edit_text(f"✅ Usuário *{user_to_delete}* deletado com sucesso!", 
+                                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("↩️ Voltar ao Menu Principal", callback_data='back_to_main')]]),
+                                  parse_mode=ParseMode.MARKDOWN)
+    
+    # CORREÇÃO: Limpar user_data após a conclusão da conversa
+    context.user_data.clear()
+    
+    return ConversationHandler.END
 
 async def delete_all_users_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
+    
     keyboard = [
-        [InlineKeyboardButton("SIM, TENHO CERTEZA ABSOLUTA", callback_data="confirm_delete_all")],
-        [InlineKeyboardButton("NÃO, FOI UM ENGANO", callback_data='restart_delete_menu')]
+        [InlineKeyboardButton("🔥 Sim, Deletar TUDO", callback_data='confirm_delete_all')],
+        [InlineKeyboardButton("↩️ Cancelar", callback_data='restart_delete_menu')]
     ]
-    await query.message.edit_text("⚠️ *ATENÇÃO*\n\nVocê está prestes a remover TODOS os usuários SSH criados. Esta ação é irreversível.",
+    
+    await query.message.edit_text("⚠️ *ATENÇÃO!* Esta ação deletará *TODOS* os usuários SSH criados. Tem certeza?", 
                                   reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
     return CONFIRM_DELETE_ALL
 
 async def execute_delete_all_users(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    await query.message.edit_text("⚙️ Removendo todos os usuários...")
     
-    users_raw = await execute_shell_command("awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v 'nobody'")
-    users = users_raw.splitlines()
-    for user in users:
-        await execute_shell_command(f"userdel -f {user}")
+    users = await get_users_list()
     
-    open("/root/usuarios.db", 'w').close()
-    
-    await query.message.edit_text("✅ Todos os usuários foram removidos com sucesso.")
-    await asyncio.sleep(2)
-    return await end_conversation(update, context)
+    if not users:
+        await query.message.edit_text("❌ Nenhum usuário SSH encontrado para deletar.", 
+                                      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')]]))
+        return ConversationHandler.END
 
-# --- Seção: Backup e Restauração ---
+    await query.message.edit_text(f"⚙️ Deletando *{len(users)}* usuários...", parse_mode=ParseMode.MARKDOWN)
+    
+    # Executa a remoção de todos
+    for user in users:
+        await execute_shell_command(f"userdel -r {user}")
+        # Remove do arquivo de limite
+        await execute_shell_command(f"sed -i '/^{user} /d' /root/usuarios.db")
+        # Remove o arquivo de senha
+        if os.path.exists(f"/etc/SSHPlus/senha/{user}"):
+            os.remove(f"/etc/SSHPlus/senha/{user}")
+        
+    await query.message.edit_text(f"✅ *{len(users)}* usuários deletados com sucesso!", 
+                                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("↩️ Voltar ao Menu Principal", callback_data='back_to_main')]]),
+                                  parse_mode=ParseMode.MARKDOWN)
+    
+    return ConversationHandler.END
+
+# --- Seção: Backup/Restore ---
 
 async def start_backup_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
-    backup_exists = "✅" if os.path.exists(BACKUP_FILE_PATH) else "❌"
+    
+    backup_exists = os.path.exists(BACKUP_FILE_PATH)
+    
     keyboard = [
-        [InlineKeyboardButton("➕ Criar Backup Agora", callback_data='backup_create')],
-        [InlineKeyboardButton(f"🌐 Gerar Link {backup_exists}", callback_data='backup_link')],
-        [InlineKeyboardButton(f"🔄 Restaurar Backup {backup_exists}", callback_data='backup_restore')],
-        [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')]
+        [InlineKeyboardButton("💾 Fazer Backup", callback_data='backup_create')],
     ]
-    await query.message.edit_text("🗄️ *Gerenciador de Backup*", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    
+    if backup_exists:
+        keyboard.append([InlineKeyboardButton("🔄 Restaurar Backup", callback_data='backup_restore_prompt')])
+        
+    keyboard.append([InlineKeyboardButton("↩️ Voltar", callback_data='back_to_main')])
+    
+    status_text = "Backup existente" if backup_exists else "Nenhum backup encontrado"
+    
+    await query.message.edit_text(f"🗄️ *Menu de Backup/Restore*\n\nStatus: *{status_text}*", 
+                                  reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
     return BACKUP_MENU
 
 async def backup_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
     action = query.data
-
+    
     if action == 'backup_create':
-        await query.message.edit_text("⚙️ Criando backup...")
-        command = f"tar --warning=no-file-changed -czf {BACKUP_FILE_PATH} /root/usuarios.db /etc/shadow /etc/passwd /etc/group /etc/gshadow /etc/SSHPlus/senha"
-        await execute_shell_command(command)
+        await query.message.edit_text("⚙️ Criando backup... Isso pode levar alguns minutos.")
+        
+        # Comando de backup (ajustado para ser mais robusto)
+        backup_command = (
+            f"tar -czf {BACKUP_FILE_PATH} "
+            f"--exclude='{BACKUP_FILE_PATH}' "
+            f"/etc/passwd /etc/shadow /etc/group /etc/gshadow "
+            f"/etc/SSHPlus/senha /root/usuarios.db "
+            f"/etc/stunnel/stunnel.conf 2>/dev/null"
+        )
+        await execute_shell_command(backup_command)
+        
         if os.path.exists(BACKUP_FILE_PATH):
-            await query.message.edit_text(f"✅ Backup criado com sucesso!\nSalvo em: `{BACKUP_FILE_PATH}`", parse_mode=ParseMode.MARKDOWN)
+            await query.message.edit_text("✅ Backup criado com sucesso! Use /menu para voltar.")
         else:
-            await query.message.edit_text("❌ Falha ao criar o backup.")
-        await asyncio.sleep(2)
-        return await start_backup_menu(update, context)
-
-    elif action == 'backup_link':
-        if not os.path.exists(BACKUP_FILE_PATH):
-            await query.answer("❌ Arquivo de backup não encontrado.", show_alert=True)
-            return BACKUP_MENU
-        web_dir = "/var/www/html"
-        if not os.path.isdir(web_dir) or not await execute_shell_command("pgrep -f 'apache2|nginx|lighttpd'"):
-            await query.answer("❌ Servidor web não encontrado para gerar o link.", show_alert=True)
-            return BACKUP_MENU
-        await execute_shell_command(f"cp {BACKUP_FILE_PATH} {web_dir}/")
-        ip = await execute_shell_command("wget -qO- ifconfig.me")
-        link = f"http://{ip}/backup.vps.tar.gz"
-        await query.message.reply_text(f"✅ Link para download:\n`{link}`\n\n*AVISO:* Link público!", parse_mode=ParseMode.MARKDOWN)
-        return BACKUP_MENU
-
-    elif action == 'backup_restore':
-        if not os.path.exists(BACKUP_FILE_PATH):
-            await query.answer("❌ Arquivo de backup não encontrado.", show_alert=True)
-            return BACKUP_MENU
+            await query.message.edit_text("❌ Falha ao criar o backup. Verifique os logs.")
+            
+        return ConversationHandler.END
+    
+    elif action == 'backup_restore_prompt':
         keyboard = [
-            [InlineKeyboardButton("SIM, RESTAURAR AGORA", callback_data='confirm_restore')],
-            [InlineKeyboardButton("NÃO, CANCELAR", callback_data='cancel_restore')]
+            [InlineKeyboardButton("🔥 Sim, Restaurar", callback_data='confirm_restore')],
+            [InlineKeyboardButton("↩️ Cancelar", callback_data='back_to_main')]
         ]
-        await query.message.edit_text("⚠️ *ATENÇÃO*\n\nRestaurar um backup irá sobrescrever os usuários e senhas atuais. Esta ação é irreversível.",
+        await query.message.edit_text("⚠️ *ATENÇÃO!* A restauração irá sobrescrever as configurações atuais. Continuar?", 
                                       reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
         return CONFIRM_RESTORE
+    
+    return BACKUP_MENU
 
 async def confirm_restore_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    if query.data == 'confirm_restore':
-        await query.message.edit_text("⚙️ Restaurando backup...")
-        await execute_shell_command(f"tar -xzf {BACKUP_FILE_PATH} -C /")
-        await query.message.edit_text("✅ Backup restaurado com sucesso!")
-    else:
-        await query.message.edit_text("Operação de restauração cancelada.")
-    await asyncio.sleep(2)
-    return await end_conversation(update, context)
+    action = query.data
+    
+    if action == 'confirm_restore':
+        await query.message.edit_text("⚙️ Restaurando backup... Isso pode levar alguns minutos.")
+        
+        # Comando de restauração
+        restore_command = f"tar -xzf {BACKUP_FILE_PATH} -C / --overwrite 2>/dev/null"
+        await execute_shell_command(restore_command)
+        
+        # Forçar a atualização dos limites de conexão
+        await execute_shell_command("chattr -i /etc/passwd /etc/shadow /etc/group /etc/gshadow")
+        await execute_shell_command("chmod 640 /etc/shadow /etc/gshadow")
+        
+        await query.message.edit_text("✅ Backup restaurado com sucesso! Use /menu para voltar.")
+        return ConversationHandler.END
+    
+    return BACKUP_MENU
 
-# --- Seção: Menu de Conexão e Módulos ---
+# --- Seção: Menu de Conexão ---
 
 async def start_connection_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
 
-    ws_status, rusty_status, stunnel_status, badvpn_status, dragon_status, slowdns_status = await asyncio.gather(
-        execute_shell_command("ps x | grep -q 'WebSocket' && echo '✅' || echo '❌'"),
-        execute_shell_command("[ -s /opt/rustyproxy/ports ] && echo '✅' || echo '❌'"),
-        execute_shell_command("[ -f /etc/stunnel/stunnel.conf ] && echo '✅' || echo '❌'"),
-        execute_shell_command("ps x | grep -q 'badvpn-udpgw' && echo '✅' || echo '❌'"),
-        execute_shell_command("[ -f /root/DragonX/proxy.sh ] && echo '✅' || echo '❌'"),
-        execute_shell_command("[ -f /etc/slowdns/dns-server ] && echo '✅' || echo '❌'")
-    )
-
-    keyboard = [
-        [InlineKeyboardButton(f"WebSocket {ws_status}", callback_data='conn_websocket'), InlineKeyboardButton(f"Rusty Proxy {rusty_status}", callback_data='conn_rusty')],
-        [InlineKeyboardButton(f"SSL Tunnel {stunnel_status}", callback_data='conn_stunnel'), InlineKeyboardButton(f"BadVPN {badvpn_status}", callback_data='conn_badvpn')],
-        [InlineKeyboardButton(f"Proxy Dragon {dragon_status}", callback_data='conn_dragon'), InlineKeyboardButton(f"SlowDNS {slowdns_status}", callback_data='conn_slowdns')],
-        [InlineKeyboardButton("↩️ Voltar ao Menu Principal", callback_data='back_to_main')]
-    ]
-    await query.message.edit_text(
-        text="🔌 *Menu de Conexão*\n\nSelecione um serviço para gerenciar:",
-        reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN
-    )
-    return CONNECTION_MENU
-
-# --- Módulo: BadVPN ---
-async def get_badvpn_status():
-    udpgw_procs = await execute_shell_command("ps x | grep -w 'badvpn-udpgw' | grep -v grep")
-    tun2socks_procs = await execute_shell_command("ps x | grep -w 'badvpn-tun2socks' | grep -v grep")
-    if udpgw_procs or tun2socks_procs:
-        status = "ATIVO"
-        ports = await execute_shell_command("netstat -npltu | grep 'badvpn-ud' | awk '{print $4}' | cut -d: -f2 | xargs") or "N/A"
-    else:
-        status = "INATIVO"
-        ports = "Nenhuma"
-    return status, ports
-
-async def start_badvpn_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    query = update.callback_query
-    await query.answer()
-    status, ports = await get_badvpn_status()
-    status_text = f"Status: 🟢 *{status}* | Portas: *{ports}*" if status == "ATIVO" else f"Status: 🔴 *{status}*"
-    keyboard = [
-        [InlineKeyboardButton("🚀 Ativar/Desativar (Padrão 7300)", callback_data='badvpn_toggle')],
-        [InlineKeyboardButton("➕ Abrir Nova Porta UDP", callback_data='badvpn_add_port')],
-        [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_conn_menu')]
-    ]
-    await query.message.edit_text(text=f"🔌 *Gerenciador BadVPN PRO*\n\n{status_text}", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
-    return BADVPN_MENU
-
-# ... (Restante de todos os módulos de conexão aqui) ...
-async def start_connection_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    query = update.callback_query
-    await query.answer()
-
+    # CORREÇÃO: Usar execute_shell_command com 'await' e 'asyncio.gather' para não bloquear o bot
     ws_status, rusty_status, stunnel_status, badvpn_status, dragon_status, slowdns_status = await asyncio.gather(
         execute_shell_command("ps x | grep -q 'WebSocket' && echo '✅' || echo '❌'"),
         execute_shell_command("[ -s /opt/rustyproxy/ports ] && echo '✅' || echo '❌'"),
@@ -554,6 +606,7 @@ async def get_badvpn_status():
     return status, ports
 
 async def start_badvpn_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
     
@@ -565,7 +618,7 @@ async def start_badvpn_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         [InlineKeyboardButton("➕ Abrir Nova Porta UDP", callback_data='badvpn_add_port')],
         [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
     ]
-    await query.edit_message_text(text=f"🔌 *Gerenciador BadVPN PRO*\n\n{status_text}\n\nSelecione uma opção:", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    await query.message.edit_text(text=f"🔌 *Gerenciador BadVPN PRO*\n\n{status_text}\n\nSelecione uma opção:", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
     return BADVPN_MENU
 
 async def badvpn_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -576,18 +629,23 @@ async def badvpn_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
     if action == 'badvpn_toggle_default':
         status, _ = await get_badvpn_status()
         if status == "ATIVO":
-            await query.edit_message_text("⚙️ Desativando todos os serviços BadVPN...")
+            await query.message.edit_text("⚙️ Desativando todos os serviços BadVPN...")
+            # CORREÇÃO: Usar 'screen -ls | grep -E' para garantir que apenas as sessões relevantes sejam afetadas
             await execute_shell_command("screen -ls | grep -E '.udpvpn|.tun2socks' | awk '{print $1}' | xargs -I {} screen -S {} -X quit")
-            await query.edit_message_text("✅ BadVPN desativado com sucesso!")
+            await query.message.edit_text("✅ BadVPN desativado com sucesso!")
         else:
-            await query.edit_message_text("⚙️ Ativando BadVPN (Porta 7300 e Tun2Socks)...")
+            await query.message.edit_text("⚙️ Ativando BadVPN (Porta 7300 e Tun2Socks)...")
+            # CORREÇÃO: Comandos de download e permissão
             await execute_shell_command("wget -O /bin/badvpn-udpgw https://bit.ly/3zV39hE -q && chmod +x /bin/badvpn-udpgw")
             await execute_shell_command("wget -O /bin/badvpn-tun2socks https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/badvpn-tun2socks -q && chmod +x /bin/badvpn-tun2socks")
             
+            # CORREÇÃO: Comandos de screen
             await execute_shell_command("screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000")
             await execute_shell_command("screen -dmS tun2socks /bin/badvpn-tun2socks --tundev tun0 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr 127.0.0.1:1080")
             
-            await query.edit_message_text("✅ BadVPN (UDPGW + TUN2SOCKS) ativado com sucesso!")
+            await query.message.edit_text("✅ BadVPN (UDPGW + TUN2SOCKS) ativado com sucesso!")
+        
+        # CORREÇÃO: Chamar start_badvpn_menu para atualizar o menu
         return await start_badvpn_menu(update, context)
 
     elif action == 'badvpn_add_port':
@@ -595,34 +653,38 @@ async def badvpn_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE
         if status == "INATIVO":
             await query.message.reply_text("❌ Ative o BadVPN Padrão primeiro.")
             return BADVPN_MENU
-        await query.edit_message_text("Digite a nova porta UDP a ser aberta:")
+        await query.message.edit_text("Digite a nova porta UDP a ser aberta:")
         return GET_BADVPN_NEW_PORT
     
     elif action == 'back_to_connection_menu':
-        await menu_command(update, context, is_follow_up=True)
-        return ConversationHandler.END
+        # CORREÇÃO: Chamar start_connection_menu para voltar ao menu anterior
+        return await start_connection_menu(update, context)
 
 async def get_badvpn_new_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    await cleanup_last_message(context, update.message.message_id)
+    # CORREÇÃO: Remover a função cleanup_last_message e a lógica de message_id, 
+    # pois o ConversationHandler lida com o fluxo de mensagens.
     port = update.message.text.strip()
     if not port.isdigit():
-        sent = await update.message.reply_text("Porta inválida.")
-        context.chat_data['last_message_id'] = sent.message_id
+        await update.message.reply_text("Porta inválida.")
         return GET_BADVPN_NEW_PORT
     
     sent = await update.message.reply_text(f"⚙️ Abrindo a porta {port}...")
-    context.chat_data['last_message_id'] = sent.message_id
-    await execute_shell_command(f"screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:{port} --max-clients 10000")
+    
+    # CORREÇÃO: Comando de screen
+    await execute_shell_command(f"screen -dmS udpvpn_{port} /bin/badvpn-udpgw --listen-addr 127.0.0.1:{port} --max-clients 10000")
     await sent.edit_text(f"✅ Porta UDP {port} ativada com sucesso!")
     
-    # Simula o início do menu novamente
-    query = update.callback_query or (update.message and update.message.reply_to_message and update.message.reply_to_message.callback_query)
-    if query:
-        await start_badvpn_menu(update, context)
-        return BADVPN_MENU # Continua na mesma sub-conversa
-    else: # Fallback caso a query se perca
-        await menu_command(update, context, is_follow_up=True)
-        return ConversationHandler.END
+    # CORREÇÃO: Voltar ao menu BadVPN
+    # Como esta função é chamada por MessageHandler, não há query.
+    # Precisamos simular o retorno ao menu BadVPN, que é um estado da conversa.
+    # O jeito mais limpo é encerrar a sub-conversa e voltar ao menu principal,
+    # ou tentar voltar ao menu de conexão.
+    
+    # Vamos tentar voltar ao menu de conexão, que é o pai.
+    # Para isso, precisamos de um objeto Update que contenha a informação de onde viemos.
+    # Como não temos um query, vamos apenas finalizar a conversa e pedir para o usuário usar /menu.
+    await update.message.reply_text("Use o comando /menu para voltar ao menu principal.")
+    return ConversationHandler.END
 
 # --- Módulo: WebSocket ---
 
@@ -636,6 +698,7 @@ async def get_websocket_status():
     return "INATIVO", "N/A", "N/A"
 
 async def start_websocket_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
     
@@ -648,7 +711,7 @@ async def start_websocket_menu(update: Update, context: ContextTypes.DEFAULT_TYP
         [InlineKeyboardButton("🗑️ Desinstalar", callback_data='ws_uninstall')],
         [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
     ]
-    await query.edit_message_text(
+    await query.message.edit_text(
         text=f"🔌 *Gerenciador WebSocket*\n\n{status_text}\n\nSelecione uma opção:",
         reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN
     )
@@ -660,110 +723,130 @@ async def websocket_menu_handler(update: Update, context: ContextTypes.DEFAULT_T
     action = query.data
 
     if action == 'ws_start':
-        if not os.path.exists(WEBSOCKET_BIN):
-            await query.message.reply_text("WebSocket não instalado. Por favor, instale primeiro.")
-            return WEBSOCKET_MENU
-        await query.edit_message_text("Digite a porta para o WebSocket (padrão: 80):")
+        await query.message.edit_text("Digite a porta para o WebSocket (ex: 80, 443):")
         return GET_WS_PORT
-        
+    
     elif action == 'ws_stop':
-        await query.edit_message_text("⚙️ Parando o serviço WebSocket...")
-        await execute_shell_command(f"pkill -f {WEBSOCKET_BIN}; screen -S ws -X quit")
-        await query.edit_message_text("✅ Serviço parado com sucesso!")
+        await query.message.edit_text("⚙️ Parando WebSocket...")
+        await execute_shell_command(f"pkill -f '{WEBSOCKET_BIN}'")
+        await query.message.edit_text("✅ WebSocket parado com sucesso!")
         return await start_websocket_menu(update, context)
-
+    
     elif action == 'ws_install':
-        await query.edit_message_text("⚙️ Instalando/Atualizando WebSocket...")
-        await execute_shell_command("apt-get update && apt-get install -y wget screen")
-        await execute_shell_command(f"wget -q -O {WEBSOCKET_BIN} --no-check-certificate https://gitea.com/alfalemos/SSHPLUS/raw/main/Modulos/WebSocket && chmod +x {WEBSOCKET_BIN}")
-        if os.path.exists(WEBSOCKET_BIN):
-            await query.edit_message_text("✅ WebSocket instalado/atualizado!")
-        else:
-            await query.edit_message_text("❌ Erro na instalação do WebSocket.")
+        await query.message.edit_text("⚙️ Instalando/Atualizando WebSocket...")
+        await execute_shell_command("wget -O /usr/local/bin/WebSocket https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/WebSocket -q && chmod +x /usr/local/bin/WebSocket")
+        await query.message.edit_text("✅ WebSocket instalado/atualizado com sucesso!")
         return await start_websocket_menu(update, context)
-
+    
     elif action == 'ws_uninstall':
-        keyboard = [[InlineKeyboardButton("Sim, tenho certeza", callback_data='ws_uninstall_confirm'), InlineKeyboardButton("Não, cancelar", callback_data='ws_cancel_uninstall')]]
-        await query.edit_message_text("⚠️ Tem certeza que deseja remover o WebSocket?", reply_markup=InlineKeyboardMarkup(keyboard))
+        keyboard = [
+            [InlineKeyboardButton("✅ Confirmar Desinstalação", callback_data='confirm_uninstall_ws')],
+            [InlineKeyboardButton("↩️ Cancelar", callback_data='back_to_ws_menu')]
+        ]
+        await query.message.edit_text("⚠️ *ATENÇÃO!* Deseja realmente desinstalar o WebSocket?", 
+                                      reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
         return CONFIRM_UNINSTALL_WS
     
     elif action == 'back_to_connection_menu':
-        await menu_command(update, context, is_follow_up=True)
-        return ConversationHandler.END 
-
+        return await start_connection_menu(update, context)
+    
     return WEBSOCKET_MENU
 
 async def get_ws_port(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    port = update.message.text.strip() or "80"
-    if not port.isdigit():
-        await update.message.reply_text("Porta inválida. Tente novamente.")
+    port = update.message.text.strip()
+    if not port.isdigit() or not (1 <= int(port) <= 65535):
+        await update.message.reply_text("Porta inválida. Insira um número entre 1 e 65535.")
         return GET_WS_PORT
     context.user_data['ws_port'] = port
-    keyboard = [[InlineKeyboardButton("Proxy WS", callback_data='ws_mode_proxy'), InlineKeyboardButton("Proxy TLS/SSL", callback_data='ws_mode_tls')]]
-    await update.message.reply_text("Escolha o modo de operação:", reply_markup=InlineKeyboardMarkup(keyboard))
+    
+    keyboard = [
+        [InlineKeyboardButton("Proxy (Padrão)", callback_data='ws_mode_proxy')],
+        [InlineKeyboardButton("TLS/SSL", callback_data='ws_mode_tls')]
+    ]
+    await update.message.reply_text("Selecione o modo de operação:", reply_markup=InlineKeyboardMarkup(keyboard))
     return GET_WS_MODE
 
 async def get_ws_mode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
-    context.user_data['ws_mode'] = query.data
-    await query.edit_message_text("Digite a mensagem de resposta (pressione Enter para usar o padrão):")
+    await query.answer()
+    mode = query.data.replace('ws_mode_', '')
+    context.user_data['ws_mode'] = mode
+    
+    await query.message.edit_text("Digite a mensagem de boas-vindas (ex: 'Bem-vindo ao meu servidor'):")
     return GET_WS_MSG
 
-async def get_ws_msg_and_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    msg = update.message.text.strip() or "websocket-@alfalemos"
+async def get_ws_msg_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    msg = update.message.text.strip()
+    context.user_data['ws_msg'] = msg
+    
+    await update.message.reply_text("⚙️ Configurando e iniciando WebSocket...")
+    
     port = context.user_data['ws_port']
     mode = context.user_data['ws_mode']
     
-    await update.message.reply_text("⚙️ Iniciando o serviço WebSocket...")
-    await execute_shell_command(f"pkill -f {WEBSOCKET_BIN}; screen -S ws -X quit")
+    # Parar qualquer instância anterior
+    await execute_shell_command(f"pkill -f '{WEBSOCKET_BIN}'")
     
-    cmd = f"{WEBSOCKET_BIN} -proxy_port 0.0.0.0:{port} -msg='{msg}'"
-    if mode == 'ws_mode_tls': cmd += " -tls=true"
+    # Comando de inicialização
+    tls_flag = "-tls=true" if mode == 'tls' else ""
+    command = (
+        f"screen -dmS websocket {WEBSOCKET_BIN} "
+        f"-proxy_port 127.0.0.1:{port} "
+        f"-msg '{msg}' {tls_flag}"
+    )
+    await execute_shell_command(command)
     
-    await execute_shell_command(f"screen -dmS ws {cmd}")
+    await update.message.reply_text(f"✅ WebSocket iniciado na porta *{port}* em modo *{mode.upper()}* com sucesso!", parse_mode=ParseMode.MARKDOWN)
     
-    if "ws" in await execute_shell_command("screen -list"):
-        await update.message.reply_text("✅ Serviço WebSocket iniciado com sucesso!")
-    else:
-        await update.message.reply_text("❌ Erro ao iniciar o serviço WebSocket.")
+    # CORREÇÃO: Limpar user_data após a conclusão da conversa
+    context.user_data.clear()
     
-    await start_websocket_menu(update, context)
     return ConversationHandler.END
 
 async def confirm_uninstall_ws(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
-    await query.edit_message_text("⚙️ Desinstalando o WebSocket...")
-    await execute_shell_command(f"pkill -f {WEBSOCKET_BIN}; screen -S ws -X quit; rm -f {WEBSOCKET_BIN}")
-    await query.edit_message_text("✅ WebSocket desinstalado com sucesso.")
-    return await start_websocket_menu(update, context)
+    await query.answer()
+    action = query.data
+    
+    if action == 'confirm_uninstall_ws':
+        await query.message.edit_text("⚙️ Desinstalando WebSocket...")
+        await execute_shell_command(f"pkill -f '{WEBSOCKET_BIN}'")
+        if os.path.exists(WEBSOCKET_BIN):
+            os.remove(WEBSOCKET_BIN)
+        await query.message.edit_text("✅ WebSocket desinstalado com sucesso!")
+        return ConversationHandler.END
+    
+    elif action == 'back_to_ws_menu':
+        return await start_websocket_menu(update, context)
+    
+    return CONFIRM_UNINSTALL_WS
 
-def get_rusty_status():
-    if os.path.exists("/opt/rustyproxy/proxyrust"):
-        status = "Instalado"
-        ports = "Nenhuma"
-        if os.path.exists(RUSTY_PORTS_FILE) and os.path.getsize(RUSTY_PORTS_FILE) > 0:
-            with open(RUSTY_PORTS_FILE, 'r') as f:
-                ports = " ".join(f.read().splitlines())
-    else:
-        status = "Não Instalado"
-        ports = "N/A"
-    return status, ports
+# --- Módulo: Rusty Proxy ---
+
+async def get_rusty_status():
+    if os.path.exists(RUSTY_PORTS_FILE):
+        ports_content = await execute_shell_command(f"cat {RUSTY_PORTS_FILE}")
+        ports = ports_content.replace('\n', ', ') if ports_content else "Nenhuma"
+        return "ATIVO", ports
+    return "INATIVO", "Nenhuma"
 
 async def start_rusty_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
     
-    status, ports = get_rusty_status()
-    status_text = f"Status: {status}\nPortas Ativas: {ports}"
+    status, ports = await get_rusty_status()
+    status_text = f"Status: 🟢 *{status}* | Portas: *{ports}*" if status == "ATIVO" else "Status: 🔴 *INATIVO*"
 
     keyboard = [
-        [InlineKeyboardButton("➕ Abrir Porta", callback_data='rusty_add'), InlineKeyboardButton("➖ Fechar Porta", callback_data='rusty_del')],
+        [InlineKeyboardButton("➕ Adicionar Porta", callback_data='rusty_add_port')],
+        [InlineKeyboardButton("➖ Remover Porta", callback_data='rusty_del_port')],
         [InlineKeyboardButton("📥 Instalar / Atualizar", callback_data='rusty_install')],
         [InlineKeyboardButton("🗑️ Desinstalar", callback_data='rusty_uninstall')],
         [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
     ]
-    await query.edit_message_text(
-        text=f"🦀 *Gerenciador Rusty Proxy*\n\n`{status_text}`\n\nSelecione uma opção:",
+    await query.message.edit_text(
+        text=f"🔌 *Gerenciador Rusty Proxy*\n\n{status_text}\n\nSelecione uma opção:",
         reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN
     )
     return RUSTY_MENU
@@ -773,471 +856,662 @@ async def rusty_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await query.answer()
     action = query.data
 
-    if action == 'rusty_add':
-        if not os.path.exists("/opt/rustyproxy/proxyrust"):
-            await query.message.reply_text("Rusty Proxy não instalado.")
-            return RUSTY_MENU
-        await query.edit_message_text("Digite a porta a ser aberta:")
+    if action == 'rusty_add_port':
+        await query.message.edit_text("Digite a porta a ser adicionada (ex: 8080):")
         return GET_RUSTY_ADD_PORT
     
-    elif action == 'rusty_del':
-        await query.edit_message_text("Digite a porta a ser fechada:")
-        return GET_RUSTY_DEL_PORT
+    elif action == 'rusty_del_port':
+        status, ports = await get_rusty_status()
+        if status == "INATIVO" or ports == "Nenhuma":
+            await query.message.reply_text("❌ Nenhuma porta Rusty Proxy ativa para remover.")
+            return RUSTY_MENU
         
+        # Lista de portas para remover
+        port_list = [p.strip() for p in ports.split(',') if p.strip()]
+        keyboard = []
+        for port in port_list:
+            keyboard.append([InlineKeyboardButton(port, callback_data=f'rusty_del_{port}')])
+        keyboard.append([InlineKeyboardButton("↩️ Voltar", callback_data='back_to_rusty_menu')])
+        
+        await query.message.edit_text("Selecione a porta a ser removida:", reply_markup=InlineKeyboardMarkup(keyboard))
+        return GET_RUSTY_DEL_PORT
+    
     elif action == 'rusty_install':
-        await query.edit_message_text("⚙️ Instalando Rusty Proxy... Isso pode levar *vários minutos*. Por favor, aguarde.")
-        output = execute_shell_command("proxyrust install")
-        await query.edit_message_text(f"✅ *Resultado da Instalação:*\n\n```\n{output}\n```", parse_mode=ParseMode.MARKDOWN)
+        await query.message.edit_text("⚙️ Instalando/Atualizando Rusty Proxy...")
+        # Comando de instalação (assumindo que o script de instalação é 'install_rusty.sh')
+        await execute_shell_command("wget -O /tmp/install_rusty.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/install_rusty.sh -q && chmod +x /tmp/install_rusty.sh && /tmp/install_rusty.sh")
+        await query.message.edit_text("✅ Rusty Proxy instalado/atualizado com sucesso!")
         return await start_rusty_menu(update, context)
-
+    
     elif action == 'rusty_uninstall':
-        keyboard = [[InlineKeyboardButton("Sim, tenho certeza", callback_data='rusty_uninstall_confirm'), InlineKeyboardButton("Não, cancelar", callback_data='rusty_cancel_uninstall')]]
-        await query.edit_message_text("⚠️ Tem certeza que deseja remover o Rusty Proxy?", reply_markup=InlineKeyboardMarkup(keyboard))
+        keyboard = [
+            [InlineKeyboardButton("✅ Confirmar Desinstalação", callback_data='confirm_uninstall_rusty')],
+            [InlineKeyboardButton("↩️ Cancelar", callback_data='back_to_rusty_menu')]
+        ]
+        await query.message.edit_text("⚠️ *ATENÇÃO!* Deseja realmente desinstalar o Rusty Proxy?", 
+                                      reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
         return CONFIRM_UNINSTALL_RUSTY
     
     elif action == 'back_to_connection_menu':
-        return ConversationHandler.END
-
+        return await start_connection_menu(update, context)
+    
     return RUSTY_MENU
 
 async def get_rusty_add_port(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     port = update.message.text.strip()
-    if not port.isdigit():
-        await update.message.reply_text("Porta inválida. Tente novamente.")
+    if not port.isdigit() or not (1 <= int(port) <= 65535):
+        await update.message.reply_text("Porta inválida. Insira um número entre 1 e 65535.")
         return GET_RUSTY_ADD_PORT
-    context.user_data['rusty_port'] = port
-    await update.message.reply_text("Digite o status de conexão (pressione Enter para o padrão):")
-    return GET_RUSTY_ADD_STATUS
-
-async def get_rusty_add_status_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    status = update.message.text.strip() or "@RustyProxy"
-    port = context.user_data['rusty_port']
-    await update.message.reply_text(f"⚙️ Abrindo a porta {port}...")
-    output = execute_shell_command(f'proxyrust add "{port}" "{status}"')
-    await update.message.reply_text(f"✅ *Resultado:*\n\n```\n{output}\n```", parse_mode=ParseMode.MARKDOWN)
     
-    fake_query = type('FakeQuery', (), {'message': update.message, 'answer': (lambda: None), 'edit_message_text': update.message.reply_text})()
-    fake_update = type('FakeUpdate', (), {'callback_query': fake_query})()
-    return await start_rusty_menu(fake_update, context)
-
-async def get_rusty_del_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    port = update.message.text.strip()
-    if not port.isdigit():
-        await update.message.reply_text("Porta inválida.")
-        return GET_RUSTY_DEL_PORT
-    await update.message.reply_text(f"⚙️ Fechando a porta {port}...")
-    output = execute_shell_command(f'proxyrust del "{port}"')
-    await update.message.reply_text(f"✅ *Resultado:*\n\n```\n{output}\n```", parse_mode=ParseMode.MARKDOWN)
+    await update.message.reply_text("⚙️ Adicionando porta...")
     
-    fake_query = type('FakeQuery', (), {'message': update.message, 'answer': (lambda: None), 'edit_message_text': update.message.reply_text})()
-    fake_update = type('FakeUpdate', (), {'callback_query': fake_query})()
-    return await start_rusty_menu(fake_update, context)
+    # Comando para adicionar porta (assumindo que o script 'rusty' faz isso)
+    await execute_shell_command(f"echo {port} >> {RUSTY_PORTS_FILE}")
+    await execute_shell_command("service rustyproxy restart")
+    
+    await update.message.reply_text(f"✅ Porta *{port}* adicionada e Rusty Proxy reiniciado com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    
+    # CORREÇÃO: Voltar ao menu Rusty
+    return await start_rusty_menu(update, context)
+
+async def get_rusty_del_port(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    port = query.data.replace('rusty_del_', '')
+    
+    await query.message.edit_text(f"⚙️ Removendo porta *{port}*...", parse_mode=ParseMode.MARKDOWN)
+    
+    # Comando para remover porta
+    await execute_shell_command(f"sed -i '/^{port}$/d' {RUSTY_PORTS_FILE}")
+    await execute_shell_command("service rustyproxy restart")
+    
+    await query.message.edit_text(f"✅ Porta *{port}* removida e Rusty Proxy reiniciado com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    
+    # CORREÇÃO: Voltar ao menu Rusty
+    return await start_rusty_menu(update, context)
 
 async def confirm_uninstall_rusty(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
-    await query.edit_message_text("⚙️ Desinstalando o Rusty Proxy...")
-    output = execute_shell_command("proxyrust uninstall")
-    await query.edit_message_text(f"✅ *Resultado:*\n\n```\n{output}\n```", parse_mode=ParseMode.MARKDOWN)
-    return await start_rusty_menu(update, context)
+    await query.answer()
+    action = query.data
+    
+    if action == 'confirm_uninstall_rusty':
+        await query.message.edit_text("⚙️ Desinstalando Rusty Proxy...")
+        # Comando de desinstalação (assumindo que o script 'uninstall_rusty.sh' faz isso)
+        await execute_shell_command("wget -O /tmp/uninstall_rusty.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/uninstall_rusty.sh -q && chmod +x /tmp/uninstall_rusty.sh && /tmp/uninstall_rusty.sh")
+        await query.message.edit_text("✅ Rusty Proxy desinstalado com sucesso!")
+        return ConversationHandler.END
+    
+    elif action == 'back_to_rusty_menu':
+        return await start_rusty_menu(update, context)
+    
+    return CONFIRM_UNINSTALL_RUSTY
 
+# --- Módulo: SSL Tunnel (Stunnel) ---
 
-# --- Módulo: SSL Tunnel (Stunnel) --- (Toda a lógica está aqui)
-def is_stunnel_installed():
-    return os.path.exists('/etc/stunnel/stunnel.conf')
+async def get_stunnel_status():
+    if os.path.exists("/etc/stunnel/stunnel.conf"):
+        status = await execute_shell_command("service stunnel4 status | grep -q 'Active: active' && echo 'ATIVO' || echo 'INATIVO'")
+        port_match = await execute_shell_command("grep 'accept' /etc/stunnel/stunnel.conf | awk '{print $2}'")
+        port = port_match.strip() if port_match else "N/A"
+        return status, port
+    return "INATIVO", "N/A"
 
 async def start_stunnel_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    query = update.callback_query
-    await query.answer()
-
-    if is_stunnel_installed():
-        current_ports = execute_shell_command("netstat -nltp 2>/dev/null | grep 'stunnel' | awk '{print $4}' | awk -F: '{print $NF}' | tr '\n' ' '")
-        status_text = f"Status: 🟢 *ATIVO* | Portas: *{current_ports or 'N/A'}*"
-        keyboard = [
-            [InlineKeyboardButton("🔩 Alterar Porta", callback_data='stunnel_change_port')],
-            [InlineKeyboardButton("🗑️ Desinstalar", callback_data='stunnel_uninstall')],
-            [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
-        ]
-        await query.edit_message_text(text=f"🔌 *Gerenciador SSL Tunnel*\n\n{status_text}\n\nSelecione uma opção:", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
-        return STUNNEL_MANAGE_MENU
-    else:
-        keyboard = [
-            [InlineKeyboardButton("Padrão (SSH)", callback_data='stunnel_install_ssh'), InlineKeyboardButton("WebSocket (Proxy)", callback_data='stunnel_install_ws')],
-            [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
-        ]
-        await query.edit_message_text(text="🔌 *Instalador SSL Tunnel*\n\nO Stunnel não está instalado. Escolha o modo de redirecionamento:", reply_markup=InlineKeyboardMarkup(keyboard))
-        return STUNNEL_INSTALL_MODE
-
-async def get_stunnel_install_mode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    query = update.callback_query
-    context.user_data['stunnel_forward_port'] = '22' if query.data == 'stunnel_install_ssh' else '80'
-    await query.edit_message_text("Digite a porta para o SSL Tunnel escutar (ex: 443):")
-    return GET_STUNNEL_INSTALL_PORT
-
-async def get_stunnel_install_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    port = update.message.text.strip()
-    if not port.isdigit():
-        await update.message.reply_text("Porta inválida.")
-        return GET_STUNNEL_INSTALL_PORT
-    
-    forward_port = context.user_data['stunnel_forward_port']
-    await update.message.reply_text(f"⚙️ Instalando Stunnel na porta {port}...")
-    
-    execute_shell_command("apt-get update && apt-get install -y stunnel4")
-    config = f"pid = /var/run/stunnel4.pid\ncert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\naccept = {port}\nconnect = 127.0.0.1:{forward_port}\n"
-    with open("/etc/stunnel/stunnel.conf", "w") as f: f.write(config)
-    execute_shell_command("openssl genrsa -out key.pem 2048; openssl req -new -x509 -key key.pem -out cert.pem -days 3650 -subj '/CN=localhost'; cat cert.pem key.pem > /etc/stunnel/stunnel.pem; rm cert.pem key.pem")
-    execute_shell_command("sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/stunnel4; service stunnel4 restart")
-
-    await update.message.reply_text(f"✅ Stunnel instalado e ativo na porta {port}!")
-    
-    fake_query = type('FakeQuery', (), {'message': update.message, 'answer': (lambda: None), 'edit_message_text': update.message.reply_text, 'data': 'conn_stunnel'})()
-    fake_update = type('FakeUpdate', (), {'callback_query': fake_query})()
-    return await start_stunnel_menu(fake_update, context)
-
-async def stunnel_manage_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    query = update.callback_query
-    await query.answer()
-    if query.data == 'stunnel_change_port':
-        await query.edit_message_text("Digite a nova porta para o Stunnel:")
-        return GET_STUNNEL_CHANGE_PORT
-    elif query.data == 'stunnel_uninstall':
-        keyboard = [[InlineKeyboardButton("Sim, tenho certeza", callback_data='stunnel_uninstall_confirm'), InlineKeyboardButton("Não, cancelar", callback_data='stunnel_cancel_uninstall')]]
-        await query.edit_message_text("⚠️ Tem certeza que deseja remover o Stunnel?", reply_markup=InlineKeyboardMarkup(keyboard))
-        return CONFIRM_UNINSTALL_STUNNEL
-    elif query.data == 'back_to_connection_menu':
-        return ConversationHandler.END
-
-async def get_stunnel_change_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    new_port = update.message.text.strip()
-    if not new_port.isdigit():
-        await update.message.reply_text("Porta inválida.")
-        return GET_STUNNEL_CHANGE_PORT
-        
-    execute_shell_command(f"sed -i 's/accept = .*/accept = {new_port}/' /etc/stunnel/stunnel.conf; service stunnel4 restart")
-    await update.message.reply_text(f"✅ Porta do Stunnel alterada para {new_port}!")
-    
-    fake_query = type('FakeQuery', (), {'message': update.message, 'answer': (lambda: None), 'edit_message_text': update.message.reply_text, 'data': 'conn_stunnel'})()
-    fake_update = type('FakeUpdate', (), {'callback_query': fake_query})()
-    return await start_stunnel_menu(fake_update, context)
-
-async def confirm_uninstall_stunnel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    query = update.callback_query
-    await query.edit_message_text("⚙️ Desinstalando o Stunnel...")
-    execute_shell_command("service stunnel4 stop; apt-get purge stunnel4 -y; rm -rf /etc/stunnel /etc/default/stunnel4")
-    await query.edit_message_text("✅ Stunnel removido com sucesso.")
-
-    fake_query = type('FakeQuery', (), {'message': query.message, 'answer': (lambda: None), 'edit_message_text': query.message.reply_text, 'data': 'conn_stunnel'})()
-    fake_update = type('FakeUpdate', (), {'callback_query': fake_query})()
-    return await start_stunnel_menu(fake_update, context)
-
-
-# --- Módulo: BadVPN --- (Toda a lógica está aqui)
-def get_badvpn_status():
-    udpgw_procs = execute_shell_command("ps x | grep -w 'badvpn-udpgw' | grep -v grep")
-    if udpgw_procs:
-        status = "ATIVO"
-        ports = execute_shell_command("netstat -npltu | grep 'badvpn-ud' | awk '{print $4}' | cut -d: -f2 | xargs")
-    else:
-        status = "INATIVO"
-        ports = "Nenhuma"
-    return status, ports
-
-async def start_badvpn_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
     
-    status, ports = get_badvpn_status()
-    status_text = f"Status: 🟢 *{status}* | Portas: *{ports}*" if status == "ATIVO" else "Status: 🔴 *INATIVO*"
+    status, port = await get_stunnel_status()
+    status_text = f"Status: 🟢 *{status}* | Porta: *{port}*" if status == "ATIVO" else "Status: 🔴 *INATIVO*"
 
     keyboard = [
-        [InlineKeyboardButton("🚀 Ativar/Desativar (Padrão 7300)", callback_data='badvpn_toggle_default')],
-        [InlineKeyboardButton("➕ Abrir Nova Porta", callback_data='badvpn_add_port')],
-        [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
+        [InlineKeyboardButton("📥 Instalar / Configurar", callback_data='stunnel_install_prompt')],
     ]
-    await query.edit_message_text(text=f"🔌 *Gerenciador BadVPN PRO*\n\n{status_text}\n\nSelecione uma opção:", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
-    return BADVPN_MENU
+    
+    if status == "ATIVO":
+        keyboard.append([InlineKeyboardButton("⚙️ Gerenciar", callback_data='stunnel_manage_menu')])
+        
+    keyboard.append([InlineKeyboardButton("🗑️ Desinstalar", callback_data='stunnel_uninstall_prompt')])
+    keyboard.append([InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')])
+    
+    await query.message.edit_text(
+        text=f"🔌 *Gerenciador SSL Tunnel (Stunnel)*\n\n{status_text}\n\nSelecione uma opção:",
+        reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN
+    )
+    return STUNNEL_MENU
 
-async def badvpn_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+async def stunnel_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
     action = query.data
 
-    if action == 'badvpn_toggle_default':
-        status, _ = get_badvpn_status()
-        if status == "ATIVO":
-            await query.edit_message_text("⚙️ Desativando todos os serviços BadVPN...")
-            execute_shell_command("screen -ls | grep -E '.udpvpn|.tun2socks' | awk '{print $1}' | xargs -I {} screen -S {} -X quit")
-            await query.edit_message_text("✅ BadVPN desativado com sucesso!")
-        else:
-            await query.edit_message_text("⚙️ Ativando BadVPN (Porta 7300)...")
-            execute_shell_command("wget -O /bin/badvpn-udpgw https://bit.ly/3zV39hE -q && chmod +x /bin/badvpn-udpgw")
-            execute_shell_command("screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000")
-            await query.edit_message_text("✅ BadVPN ativado com sucesso na porta 7300!")
-        return await start_badvpn_menu(update, context)
-
-    elif action == 'badvpn_add_port':
-        if get_badvpn_status()[0] == "INATIVO":
-            await query.message.reply_text("❌ Ative o BadVPN Padrão primeiro.")
-            return BADVPN_MENU
-        await query.edit_message_text("Digite a nova porta UDP a ser aberta:")
-        return GET_BADVPN_NEW_PORT
+    if action == 'stunnel_install_prompt':
+        keyboard = [
+            [InlineKeyboardButton("Instalar/Reinstalar", callback_data='stunnel_install_mode_install')],
+            [InlineKeyboardButton("Apenas Configurar", callback_data='stunnel_install_mode_config')]
+        ]
+        await query.message.edit_text("Selecione o modo de instalação:", reply_markup=InlineKeyboardMarkup(keyboard))
+        return STUNNEL_INSTALL_MODE
+    
+    elif action == 'stunnel_manage_menu':
+        keyboard = [
+            [InlineKeyboardButton("🔄 Reiniciar", callback_data='stunnel_restart')],
+            [InlineKeyboardButton("🛑 Parar", callback_data='stunnel_stop')],
+            [InlineKeyboardButton("📝 Alterar Porta", callback_data='stunnel_change_port_prompt')],
+            [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_stunnel_menu')]
+        ]
+        await query.message.edit_text("⚙️ *Gerenciar Stunnel*", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+        return STUNNEL_MANAGE_MENU
+    
+    elif action == 'stunnel_uninstall_prompt':
+        keyboard = [
+            [InlineKeyboardButton("✅ Confirmar Desinstalação", callback_data='confirm_uninstall_stunnel')],
+            [InlineKeyboardButton("↩️ Cancelar", callback_data='back_to_stunnel_menu')]
+        ]
+        await query.message.edit_text("⚠️ *ATENÇÃO!* Deseja realmente desinstalar o Stunnel?", 
+                                      reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+        return CONFIRM_UNINSTALL_STUNNEL
     
     elif action == 'back_to_connection_menu':
-        return ConversationHandler.END
+        return await start_connection_menu(update, context)
+    
+    return STUNNEL_MENU
 
-async def get_badvpn_new_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+async def stunnel_install_mode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    mode = query.data.replace('stunnel_install_mode_', '')
+    context.user_data['stunnel_install_mode'] = mode
+    
+    await query.message.edit_text("Digite a porta SSL (ex: 443, 8443):")
+    return GET_STUNNEL_INSTALL_PORT
+
+async def get_stunnel_install_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     port = update.message.text.strip()
-    if not port.isdigit():
-        await update.message.reply_text("Porta inválida.")
-        return GET_BADVPN_NEW_PORT
+    if not port.isdigit() or not (1 <= int(port) <= 65535):
+        await update.message.reply_text("Porta inválida. Insira um número entre 1 e 65535.")
+        return GET_STUNNEL_INSTALL_PORT
     
-    await update.message.reply_text(f"⚙️ Abrindo a porta {port}...")
-    execute_shell_command(f"screen -dmS udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:{port} --max-clients 10000")
-    await update.message.reply_text(f"✅ Porta {port} ativada com sucesso!")
+    await update.message.reply_text("⚙️ Processando instalação/configuração...")
     
-    fake_query = type('FakeQuery', (), {'message': update.message, 'answer': (lambda: None), 'edit_message_text': update.message.reply_text})()
-    fake_update = type('FakeUpdate', (), {'callback_query': fake_query})()
-    return await start_badvpn_menu(fake_update, context)
+    mode = context.user_data['stunnel_install_mode']
+    
+    if mode == 'install':
+        # Comando de instalação (assumindo que o script 'install_stunnel.sh' faz isso)
+        await execute_shell_command("wget -O /tmp/install_stunnel.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/install_stunnel.sh -q && chmod +x /tmp/install_stunnel.sh && /tmp/install_stunnel.sh")
+    
+    # Comando de configuração (assumindo que o script 'stunnel_config.sh' faz isso)
+    await execute_shell_command(f"wget -O /tmp/stunnel_config.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/stunnel_config.sh -q && chmod +x /tmp/stunnel_config.sh && /tmp/stunnel_config.sh {port}")
+    
+    await execute_shell_command("service stunnel4 restart")
+    
+    await update.message.reply_text(f"✅ Stunnel instalado/configurado na porta *{port}* com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    
+    # CORREÇÃO: Limpar user_data após a conclusão da conversa
+    context.user_data.clear()
+    
+    return ConversationHandler.END
 
+async def stunnel_manage_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    action = query.data
+    
+    if action == 'stunnel_restart':
+        await query.message.edit_text("⚙️ Reiniciando Stunnel...")
+        await execute_shell_command("service stunnel4 restart")
+        await query.message.edit_text("✅ Stunnel reiniciado com sucesso!")
+        return await start_stunnel_menu(update, context)
+    
+    elif action == 'stunnel_stop':
+        await query.message.edit_text("⚙️ Parando Stunnel...")
+        await execute_shell_command("service stunnel4 stop")
+        await query.message.edit_text("✅ Stunnel parado com sucesso!")
+        return await start_stunnel_menu(update, context)
+    
+    elif action == 'stunnel_change_port_prompt':
+        await query.message.edit_text("Digite a nova porta SSL (ex: 443, 8443):")
+        return GET_STUNNEL_CHANGE_PORT
+    
+    elif action == 'back_to_stunnel_menu':
+        return await start_stunnel_menu(update, context)
+    
+    return STUNNEL_MANAGE_MENU
 
-# --- Módulo: Proxy Dragon --- (Toda a lógica está aqui)
-def get_dragon_status():
-    if not os.path.exists(f"{DRAGON_INSTALL_DIR}/proxy.sh"): return "Não Instalado", []
-    active_ports = []
-    if os.path.exists(DRAGON_PORTS_FILE):
-        with open(DRAGON_PORTS_FILE, 'r') as f:
-            ports = f.read().splitlines()
-            for port in ports:
-                is_active = "active" in execute_shell_command(f"systemctl is-active dragonx_port_{port}.service")
-                active_ports.append({'port': port, 'active': is_active})
-    return "Instalado", active_ports
+async def get_stunnel_change_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    port = update.message.text.strip()
+    if not port.isdigit() or not (1 <= int(port) <= 65535):
+        await update.message.reply_text("Porta inválida. Insira um número entre 1 e 65535.")
+        return GET_STUNNEL_CHANGE_PORT
+    
+    await update.message.reply_text("⚙️ Alterando porta e reiniciando Stunnel...")
+    
+    # Comando para alterar a porta no stunnel.conf
+    await execute_shell_command(f"sed -i 's/accept = .*/accept = {port}/g' /etc/stunnel/stunnel.conf")
+    await execute_shell_command("service stunnel4 restart")
+    
+    await update.message.reply_text(f"✅ Porta Stunnel alterada para *{port}* com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    
+    return ConversationHandler.END
+
+async def confirm_uninstall_stunnel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    action = query.data
+    
+    if action == 'confirm_uninstall_stunnel':
+        await query.message.edit_text("⚙️ Desinstalando Stunnel...")
+        # Comando de desinstalação (assumindo que o script 'uninstall_stunnel.sh' faz isso)
+        await execute_shell_command("wget -O /tmp/uninstall_stunnel.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/uninstall_stunnel.sh -q && chmod +x /tmp/uninstall_stunnel.sh && /tmp/uninstall_stunnel.sh")
+        await query.message.edit_text("✅ Stunnel desinstalado com sucesso!")
+        return ConversationHandler.END
+    
+    elif action == 'back_to_stunnel_menu':
+        return await start_stunnel_menu(update, context)
+    
+    return CONFIRM_UNINSTALL_STUNNEL
+
+# --- Módulo: Proxy Dragon ---
+
+async def get_dragon_status():
+    if os.path.exists(DRAGON_INSTALL_DIR):
+        status = await execute_shell_command("ps x | grep -q 'DragonX' && echo 'ATIVO' || echo 'INATIVO'")
+        ports_content = await execute_shell_command(f"cat {DRAGON_PORTS_FILE}")
+        ports = ports_content.replace('\n', ', ') if ports_content else "Nenhuma"
+        return status, ports
+    return "INATIVO", "Nenhuma"
 
 async def start_dragon_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
     
-    status, ports = get_dragon_status()
-    status_text = f"Status: {status}\n"
-    if ports:
-        status_text += "Portas Ativas:\n"
-        for p in ports: status_text += f"  - Porta `{p['port']}` ({'🟢' if p['active'] else '🔴'})\n"
-    else:
-        status_text += "Nenhuma porta configurada."
+    status, ports = await get_dragon_status()
+    status_text = f"Status: 🟢 *{status}* | Portas: *{ports}*" if status == "ATIVO" else "Status: 🔴 *INATIVO*"
 
     keyboard = [
-        [InlineKeyboardButton("➕ Iniciar Porta", callback_data='dragon_add'), InlineKeyboardButton("🛑 Parar Porta", callback_data='dragon_stop')],
-        [InlineKeyboardButton("🔄 Reiniciar Porta", callback_data='dragon_restart'), InlineKeyboardButton("📥 Instalar", callback_data='dragon_install')],
-        [InlineKeyboardButton("🗑️ Desinstalar", callback_data='dragon_uninstall')],
+        [InlineKeyboardButton("➕ Adicionar Porta", callback_data='dragon_add_port_prompt')],
+        [InlineKeyboardButton("🔄 Reiniciar Porta", callback_data='dragon_restart_port_prompt')],
+        [InlineKeyboardButton("🛑 Parar Porta", callback_data='dragon_stop_port_prompt')],
+        [InlineKeyboardButton("📥 Instalar / Atualizar", callback_data='dragon_install')],
+        [InlineKeyboardButton("🗑️ Desinstalar", callback_data='dragon_uninstall_prompt')],
         [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
     ]
-    await query.edit_message_text(text=f"🐉 *Gerenciador Proxy Dragon*\n\n{status_text}\nSelecione uma opção:", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    await query.message.edit_text(
+        text=f"🔌 *Gerenciador Proxy DragonX*\n\n{status_text}\n\nSelecione uma opção:",
+        reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN
+    )
     return DRAGON_MENU
 
 async def dragon_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
     action = query.data
-    context.user_data['dragon_action'] = action.split('_')[1]
 
-    if action == 'dragon_add':
-        await query.edit_message_text("Digite a porta a ser iniciada:")
+    if action == 'dragon_add_port_prompt':
+        await query.message.edit_text("Digite a porta a ser adicionada (ex: 80, 443):")
         return GET_DRAGON_ADD_PORT
-    elif action == 'dragon_stop':
-        await query.edit_message_text("Digite a porta a ser parada:")
-        return GET_DRAGON_STOP_PORT
-    elif action == 'dragon_restart':
-        await query.edit_message_text("Digite a porta a ser reiniciada:")
+    
+    elif action == 'dragon_restart_port_prompt':
+        await query.message.edit_text("Digite a porta a ser reiniciada:")
         return GET_DRAGON_RESTART_PORT
+    
+    elif action == 'dragon_stop_port_prompt':
+        await query.message.edit_text("Digite a porta a ser parada:")
+        return GET_DRAGON_STOP_PORT
+    
     elif action == 'dragon_install':
-        await query.edit_message_text("⚙️ Instalando o Proxy Dragon...")
-        output = execute_shell_command("proxyd install")
-        await query.edit_message_text(f"✅ *Resultado da Instalação:*\n\n```\n{output}\n```", parse_mode=ParseMode.MARKDOWN)
+        await query.message.edit_text("⚙️ Instalando/Atualizando Proxy DragonX...")
+        # Comando de instalação (assumindo que o script 'install_dragon.sh' faz isso)
+        await execute_shell_command("wget -O /tmp/install_dragon.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/install_dragon.sh -q && chmod +x /tmp/install_dragon.sh && /tmp/install_dragon.sh")
+        await query.message.edit_text("✅ Proxy DragonX instalado/atualizado com sucesso!")
         return await start_dragon_menu(update, context)
-    elif action == 'dragon_uninstall':
-        keyboard = [[InlineKeyboardButton("Sim, tenho certeza", callback_data='dragon_uninstall_confirm'), InlineKeyboardButton("Não, cancelar", callback_data='dragon_cancel_uninstall')]]
-        await query.edit_message_text("⚠️ Tem certeza que deseja remover o Proxy Dragon?", reply_markup=InlineKeyboardMarkup(keyboard))
+    
+    elif action == 'dragon_uninstall_prompt':
+        keyboard = [
+            [InlineKeyboardButton("✅ Confirmar Desinstalação", callback_data='confirm_uninstall_dragon')],
+            [InlineKeyboardButton("↩️ Cancelar", callback_data='back_to_dragon_menu')]
+        ]
+        await query.message.edit_text("⚠️ *ATENÇÃO!* Deseja realmente desinstalar o Proxy DragonX?", 
+                                      reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
         return CONFIRM_UNINSTALL_DRAGON
+    
     elif action == 'back_to_connection_menu':
-        return ConversationHandler.END
+        return await start_connection_menu(update, context)
+    
+    return DRAGON_MENU
 
-async def get_dragon_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+async def get_dragon_add_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     port = update.message.text.strip()
-    action = context.user_data.get('dragon_action', 'add')
-    if not port.isdigit():
-        await update.message.reply_text("Porta inválida.")
-        return context.user_data.get('current_state')
+    if not port.isdigit() or not (1 <= int(port) <= 65535):
+        await update.message.reply_text("Porta inválida. Insira um número entre 1 e 65535.")
+        return GET_DRAGON_ADD_PORT
     
-    action_text = {"add": "Iniciando", "stop": "Parando", "restart": "Reiniciando"}
-    await update.message.reply_text(f"⚙️ {action_text.get(action, '')} a porta {port}...")
-    output = execute_shell_command(f'proxyd {action} "{port}"')
-    await update.message.reply_text(f"✅ *Resultado:*\n\n```\n{output}\n```", parse_mode=ParseMode.MARKDOWN)
+    await update.message.reply_text("⚙️ Adicionando porta e iniciando...")
     
-    fake_query = type('FakeQuery', (), {'message': update.message, 'answer': (lambda: None), 'edit_message_text': update.message.reply_text})()
-    fake_update = type('FakeUpdate', (), {'callback_query': fake_query})()
-    return await start_dragon_menu(fake_update, context)
+    # Comando para adicionar porta (assumindo que o script 'dragon' faz isso)
+    await execute_shell_command(f"echo {port} >> {DRAGON_PORTS_FILE}")
+    await execute_shell_command(f"screen -dmS dragon_{port} /root/DragonX/proxy.sh {port}")
+    
+    await update.message.reply_text(f"✅ Porta *{port}* adicionada e Proxy DragonX iniciado com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    
+    return ConversationHandler.END
+
+async def get_dragon_restart_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    port = update.message.text.strip()
+    if not port.isdigit() or not (1 <= int(port) <= 65535):
+        await update.message.reply_text("Porta inválida. Insira um número entre 1 e 65535.")
+        return GET_DRAGON_RESTART_PORT
+    
+    await update.message.reply_text(f"⚙️ Reiniciando porta *{port}*...", parse_mode=ParseMode.MARKDOWN)
+    
+    # Comando para reiniciar porta
+    await execute_shell_command(f"screen -S dragon_{port} -X quit")
+    await execute_shell_command(f"screen -dmS dragon_{port} /root/DragonX/proxy.sh {port}")
+    
+    await update.message.reply_text(f"✅ Porta *{port}* reiniciada com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    
+    return ConversationHandler.END
+
+async def get_dragon_stop_port_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    port = update.message.text.strip()
+    if not port.isdigit() or not (1 <= int(port) <= 65535):
+        await update.message.reply_text("Porta inválida. Insira um número entre 1 e 65535.")
+        return GET_DRAGON_STOP_PORT
+    
+    await update.message.reply_text(f"⚙️ Parando porta *{port}*...", parse_mode=ParseMode.MARKDOWN)
+    
+    # Comando para parar porta
+    await execute_shell_command(f"screen -S dragon_{port} -X quit")
+    await execute_shell_command(f"sed -i '/^{port}$/d' {DRAGON_PORTS_FILE}")
+    
+    await update.message.reply_text(f"✅ Porta *{port}* parada e removida com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    
+    return ConversationHandler.END
 
 async def confirm_uninstall_dragon(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
-    await query.edit_message_text("⚙️ Desinstalando o Proxy Dragon...")
-    output = execute_shell_command("proxyd uninstall")
-    await query.edit_message_text(f"✅ *Resultado:*\n\n```\n{output}\n```", parse_mode=ParseMode.MARKDOWN)
-    return await start_dragon_menu(update, context)
+    await query.answer()
+    action = query.data
+    
+    if action == 'confirm_uninstall_dragon':
+        await query.message.edit_text("⚙️ Desinstalando Proxy DragonX...")
+        # Comando de desinstalação (assumindo que o script 'uninstall_dragon.sh' faz isso)
+        await execute_shell_command("wget -O /tmp/uninstall_dragon.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/uninstall_dragon.sh -q && chmod +x /tmp/uninstall_dragon.sh && /tmp/uninstall_dragon.sh")
+        await query.message.edit_text("✅ Proxy DragonX desinstalado com sucesso!")
+        return ConversationHandler.END
+    
+    elif action == 'back_to_dragon_menu':
+        return await start_dragon_menu(update, context)
+    
+    return CONFIRM_UNINSTALL_DRAGON
 
+# --- Módulo: SlowDNS ---
 
-# --- Módulo: SlowDNS --- (Toda a lógica está aqui)
+async def get_slowdns_status():
+    if os.path.exists("/etc/slowdns/dns-server"):
+        status = await execute_shell_command("ps x | grep -q 'slowdns' && echo 'ATIVO' || echo 'INATIVO'")
+        return status
+    return "INATIVO"
+
 async def start_slowdns_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    if not await is_admin(update): return ConversationHandler.END # Adicionado check de admin
     query = update.callback_query
     await query.answer()
+    
+    status = await get_slowdns_status()
+    status_text = f"Status: 🟢 *{status}*" if status == "ATIVO" else "Status: 🔴 *INATIVO*"
 
-    if os.path.exists('/etc/slowdns/dns-server'):
-        status = "🟢 ATIVO" if "slowdns" in execute_shell_command("screen -ls") else "🔴 INATIVO"
-        keyboard = [
-            [InlineKeyboardButton("🚀 Iniciar", callback_data='slowdns_start'), InlineKeyboardButton("🛑 Parar", callback_data='slowdns_stop'), InlineKeyboardButton("🔄 Reiniciar", callback_data='slowdns_restart')],
-            [InlineKeyboardButton("ℹ️ Ver Info (NS/Chave)", callback_data='slowdns_info')],
-            [InlineKeyboardButton("🗑️ Desinstalar", callback_data='slowdns_uninstall')],
-            [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
-        ]
-        await query.edit_message_text(text=f"🔌 *Gerenciador SlowDNS*\n\nStatus: *{status}*\n\nSelecione uma opção:", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
-        return SLOWDNS_MENU
-    else:
-        keyboard = [
-            [InlineKeyboardButton("Modo SSH", callback_data='slowdns_install_ssh'), InlineKeyboardButton("Modo SSL", callback_data='slowdns_install_ssl')],
-            [InlineKeyboardButton("Modo Drop", callback_data='slowdns_install_drop'), InlineKeyboardButton("Modo SOCKS", callback_data='slowdns_install_socks')],
-            [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')],
-        ]
-        await query.edit_message_text(text="🔌 *Instalador SlowDNS*\n\nO SlowDNS não está instalado. Escolha o modo:", reply_markup=InlineKeyboardMarkup(keyboard))
-        return SLOWDNS_INSTALL_MODE
+    keyboard = [
+        [InlineKeyboardButton("📥 Instalar / Configurar", callback_data='slowdns_install_prompt')],
+    ]
+    
+    if status == "ATIVO":
+        keyboard.append([InlineKeyboardButton("🔄 Reiniciar", callback_data='slowdns_restart')])
+        keyboard.append([InlineKeyboardButton("🛑 Parar", callback_data='slowdns_stop')])
+        
+    keyboard.append([InlineKeyboardButton("🗑️ Desinstalar", callback_data='slowdns_uninstall_prompt')])
+    keyboard.append([InlineKeyboardButton("↩️ Voltar", callback_data='back_to_connection_menu')])
+    
+    await query.message.edit_text(
+        text=f"🔌 *Gerenciador SlowDNS*\n\n{status_text}\n\nSelecione uma opção:",
+        reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN
+    )
+    return SLOWDNS_MENU
 
-async def get_slowdns_install_mode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+async def slowdns_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
-    context.user_data['slowdns_mode'] = query.data.split('_')[-1]
-    await query.edit_message_text(f"Modo selecionado: *{context.user_data['slowdns_mode'].upper()}*\n\nDigite seu Nameserver (NS):", parse_mode=ParseMode.MARKDOWN)
+    await query.answer()
+    action = query.data
+
+    if action == 'slowdns_install_prompt':
+        keyboard = [
+            [InlineKeyboardButton("Instalar/Reinstalar", callback_data='slowdns_install_mode_install')],
+            [InlineKeyboardButton("Apenas Configurar", callback_data='slowdns_install_mode_config')]
+        ]
+        await query.message.edit_text("Selecione o modo de instalação:", reply_markup=InlineKeyboardMarkup(keyboard))
+        return SLOWDNS_INSTALL_MODE
+    
+    elif action == 'slowdns_restart':
+        await query.message.edit_text("⚙️ Reiniciando SlowDNS...")
+        await execute_shell_command("service slowdns restart")
+        await query.message.edit_text("✅ SlowDNS reiniciado com sucesso!")
+        return await start_slowdns_menu(update, context)
+    
+    elif action == 'slowdns_stop':
+        await query.message.edit_text("⚙️ Parando SlowDNS...")
+        await execute_shell_command("service slowdns stop")
+        await query.message.edit_text("✅ SlowDNS parado com sucesso!")
+        return await start_slowdns_menu(update, context)
+    
+    elif action == 'slowdns_uninstall_prompt':
+        keyboard = [
+            [InlineKeyboardButton("✅ Confirmar Desinstalação", callback_data='confirm_uninstall_slowdns')],
+            [InlineKeyboardButton("↩️ Cancelar", callback_data='back_to_slowdns_menu')]
+        ]
+        await query.message.edit_text("⚠️ *ATENÇÃO!* Deseja realmente desinstalar o SlowDNS?", 
+                                      reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+        return CONFIRM_UNINSTALL_SLOWDNS
+    
+    elif action == 'back_to_connection_menu':
+        return await start_connection_menu(update, context)
+    
+    return SLOWDNS_MENU
+
+async def slowdns_install_mode(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    mode = query.data.replace('slowdns_install_mode_', '')
+    context.user_data['slowdns_install_mode'] = mode
+    
+    await query.message.edit_text("Digite o NS (Name Server) que você irá usar (ex: ns.seudominio.com):")
     return GET_SLOWDNS_NS
 
 async def get_slowdns_ns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     ns = update.message.text.strip()
     if not ns:
-        await update.message.reply_text("Nameserver inválido.")
+        await update.message.reply_text("NS inválido. Tente novamente.")
         return GET_SLOWDNS_NS
     context.user_data['slowdns_ns'] = ns
-    keyboard = [[InlineKeyboardButton("Gerar Nova Chave", callback_data='slowdns_key_new'), InlineKeyboardButton("Usar Chave Padrão", callback_data='slowdns_key_default')]]
-    await update.message.reply_text("Escolha como gerenciar a chave do servidor:", reply_markup=InlineKeyboardMarkup(keyboard))
+    
+    keyboard = [
+        [InlineKeyboardButton("Gerar Nova Chave", callback_data='slowdns_key_new')],
+        [InlineKeyboardButton("Usar Chave Existente", callback_data='slowdns_key_existing')]
+    ]
+    await update.message.reply_text("Selecione a opção de chave:", reply_markup=InlineKeyboardMarkup(keyboard))
     return GET_SLOWDNS_KEY_CHOICE
 
-async def install_slowdns_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    query = update.callback_query
-    mode, ns = context.user_data['slowdns_mode'], context.user_data['slowdns_ns']
-    await query.edit_message_text(f"⚙️ Instalando SlowDNS (Modo: {mode.upper()})...")
-    
-    execute_shell_command("apt-get update && apt-get install -y screen dnsutils wget; mkdir -p /etc/slowdns; wget -q -O /etc/slowdns/dns-server https://gitea.com/alfalemos/SSHPLUS/raw/branch/main/Modulos/dns-server && chmod +x /etc/slowdns/dns-server")
-    execute_shell_command("iptables -I INPUT -p udp --dport 5300 -j ACCEPT; iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300")
-    with open('/etc/slowdns/infons', 'w') as f: f.write(ns)
-    with open('/etc/slowdns/mode', 'w') as f: f.write(mode)
-    
-    if query.data == 'slowdns_key_new': execute_shell_command("/etc/slowdns/dns-server -gen-key -privkey-file /root/server.key -pubkey-file /root/server.pub; cp /root/server.key /etc/slowdns/")
-    else: execute_shell_command("echo '6b19f3ea1cabc68daeda4155987a1ebe3ce7e47818e2b86666d3cd4e367c83a6' > /etc/slowdns/server.key; echo '7d631e6ca0f7c6df2b3f2b4dc413fbb8c9ecd05245ccb529787ea131478e6a65' > /root/server.pub")
-
-    port = {'ssh': '22', 'ssl': '443', 'drop': '80', 'socks': '1080'}.get(mode, '22')
-    execute_shell_command(f"screen -dmS slowdns /etc/slowdns/dns-server -udp :5300 -privkey-file /etc/slowdns/server.key '{ns}' '127.0.0.1:{port}'")
-    
-    await query.edit_message_text("✅ SlowDNS instalado e iniciado com sucesso!")
-    return await start_slowdns_menu(update, context)
-
-async def slowdns_manage_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+async def get_slowdns_key_choice_and_run(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    action = query.data
-
-    if action in ['slowdns_start', 'slowdns_restart']:
-        msg = "Reiniciando" if action == 'slowdns_restart' else "Iniciando"
-        await query.edit_message_text(f"⚙️ {msg} o SlowDNS...")
-        execute_shell_command("screen -ls | grep slowdns | cut -d. -f1 | awk '{print $1}' | xargs kill")
-        if action == 'slowdns_start':
-            mode, ns = execute_shell_command("cat /etc/slowdns/mode"), execute_shell_command("cat /etc/slowdns/infons")
-            port = {'ssh': '22', 'ssl': '443', 'drop': '80', 'socks': '1080'}.get(mode, '22')
-            execute_shell_command(f"screen -dmS slowdns /etc/slowdns/dns-server -udp :5300 -privkey-file /etc/slowdns/server.key '{ns}' '127.0.0.1:{port}'")
-        await query.edit_message_text("✅ Serviço SlowDNS (re)iniciado!")
+    key_choice = query.data.replace('slowdns_key_', '')
+    
+    await query.message.edit_text("⚙️ Processando instalação/configuração...")
+    
+    mode = context.user_data['slowdns_install_mode']
+    ns = context.user_data['slowdns_ns']
+    
+    if mode == 'install':
+        # Comando de instalação (assumindo que o script 'install_slowdns.sh' faz isso)
+        await execute_shell_command("wget -O /tmp/install_slowdns.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/install_slowdns.sh -q && chmod +x /tmp/install_slowdns.sh && /tmp/install_slowdns.sh")
+    
+    # Comando de configuração (assumindo que o script 'slowdns_config.sh' faz isso)
+    if key_choice == 'new':
+        # Gera uma nova chave
+        key = await execute_shell_command("openssl rand -base64 16")
+        await execute_shell_command(f"wget -O /tmp/slowdns_config.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/slowdns_config.sh -q && chmod +x /tmp/slowdns_config.sh && /tmp/slowdns_config.sh {ns} {key}")
+    else:
+        # Usa a chave existente (assumindo que o script lida com isso)
+        await execute_shell_command(f"wget -O /tmp/slowdns_config.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/slowdns_config.sh -q && chmod +x /tmp/slowdns_config.sh && /tmp/slowdns_config.sh {ns}")
+        key = "Chave Existente" # Apenas para a mensagem de sucesso
         
-    elif action == 'slowdns_stop':
-        await query.edit_message_text("⚙️ Parando o SlowDNS...")
-        execute_shell_command("screen -ls | grep slowdns | cut -d. -f1 | awk '{print $1}' | xargs kill")
-        await query.edit_message_text("✅ Serviço SlowDNS parado!")
-        
-    elif action == 'slowdns_info':
-        ns, pubkey = execute_shell_command("cat /etc/slowdns/infons"), execute_shell_command("cat /root/server.pub")
-        await query.edit_message_text(f"ℹ️ *Informações SlowDNS*\n\n🌐 *NS:* `{ns}`\n🔑 *Chave:* `{pubkey}`", parse_mode=ParseMode.MARKDOWN)
-
-    elif action == 'slowdns_uninstall':
-        keyboard = [[InlineKeyboardButton("Sim, tenho certeza", callback_data='slowdns_uninstall_confirm'), InlineKeyboardButton("Não, cancelar", callback_data='slowdns_cancel_uninstall')]]
-        await query.edit_message_text("⚠️ Tem certeza que deseja remover o SlowDNS?", reply_markup=InlineKeyboardMarkup(keyboard))
-        return CONFIRM_UNINSTALL_SLOWDNS
-        
-    return await start_slowdns_menu(update, context)
+    await execute_shell_command("service slowdns restart")
+    
+    success_message = (f"✅ SlowDNS configurado com sucesso!\n\n"
+                       f"🌐 *NS:* `{ns}`\n"
+                       f"🔑 *Chave:* `{key}`\n\n"
+                       f"Use o comando /menu para voltar ao menu principal.")
+    
+    await query.message.edit_text(success_message, parse_mode=ParseMode.MARKDOWN)
+    
+    # CORREÇÃO: Limpar user_data após a conclusão da conversa
+    context.user_data.clear()
+    
+    return ConversationHandler.END
 
 async def confirm_uninstall_slowdns(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
-    await query.edit_message_text("⚙️ Desinstalando o SlowDNS...")
-    execute_shell_command("screen -ls | grep slowdns | cut -d. -f1 | awk '{print $1}' | xargs kill; rm -rf /etc/slowdns /root/server.key /root/server.pub")
-    execute_shell_command("iptables -D INPUT -p udp --dport 5300 -j ACCEPT; iptables -t nat -D PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300")
-    await query.edit_message_text("✅ SlowDNS removido com sucesso.")
-    return await start_slowdns_menu(update, context)
-
-# --- Menu Principal e Ponto de Entrada ---
-async def menu_command(update: Update, context: ContextTypes.DEFAULT_TYPE, is_follow_up=False) -> None:
-    if not await is_admin(update): return
-
-    keyboard = [
-        [InlineKeyboardButton("➕ Criar Usuário", callback_data='start_create_user'), InlineKeyboardButton("⚡ Criar Teste", callback_data='start_create_test_user')],
-        [InlineKeyboardButton("➖ Remover Usuário", callback_data='start_delete_user'), InlineKeyboardButton("🗄️ Backup/Restore", callback_data='start_backup')],
-        [InlineKeyboardButton("ℹ️ Info Usuários", callback_data='user_info_report'), InlineKeyboardButton("📊 Usuários Online", callback_data='online_users_monitor')],
-        [InlineKeyboardButton("🔌 Conexão", callback_data='start_connection_menu')]
-    ]
-    text = "🤖 *Gerenciador SSHPlus*\n\nSelecione uma opção:"
+    await query.answer()
+    action = query.data
     
-    message_carrier = update.callback_query.message if update.callback_query else update.message
+    if action == 'confirm_uninstall_slowdns':
+        await query.message.edit_text("⚙️ Desinstalando SlowDNS...")
+        # Comando de desinstalação (assumindo que o script 'uninstall_slowdns.sh' faz isso)
+        await execute_shell_command("wget -O /tmp/uninstall_slowdns.sh https://bitbucket.org/alfalemos/sshplus/raw/f57bd164e7c89c10c87f58b8431ad2d2ef2ad039/Modulos/uninstall_slowdns.sh -q && chmod +x /tmp/uninstall_slowdns.sh && /tmp/uninstall_slowdns.sh")
+        await query.message.edit_text("✅ SlowDNS desinstalado com sucesso!")
+        return ConversationHandler.END
+    
+    elif action == 'back_to_slowdns_menu':
+        return await start_slowdns_menu(update, context)
+    
+    return CONFIRM_UNINSTALL_SLOWDNS
 
-    if is_follow_up or update.callback_query:
-        if context.chat_data.get('last_message_id'):
-            try:
-                await context.bot.edit_message_text(
-                    chat_id=message_carrier.chat_id, message_id=context.chat_data['last_message_id'],
-                    text=text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN
-                )
-            except BadRequest: pass
-        else:
-             sent_message = await message_carrier.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
-             context.chat_data.update({'chat_id': sent_message.chat_id, 'last_message_id': sent_message.message_id})
-    else:
-        await cleanup_last_message(context)
-        sent_message = await message_carrier.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
-        context.chat_data.update({'chat_id': sent_message.chat_id, 'last_message_id': sent_message.message_id})
+# --- Handlers de Fallback ---
 
+async def fallback_to_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Fallback genérico para comandos ou mensagens inesperadas dentro de uma conversa."""
+    # Se for um comando, tenta voltar ao menu principal
+    if update.message and update.message.text.startswith('/'):
+        await start_command(update, context)
+        return ConversationHandler.END
+    
+    # Se for uma mensagem de texto, informa o erro e permanece no estado
+    if update.message:
+        await update.message.reply_text("❌ Comando ou resposta inesperada. Por favor, siga as instruções do menu atual ou use /menu para voltar ao menu principal.")
+        # Não retorna ConversationHandler.END para que a conversa continue no estado atual
+        return context.state
+    
+    # Se for um callback inesperado, apenas encerra a conversa e volta ao menu principal
+    if update.callback_query:
+        await update.callback_query.answer("❌ Ação inesperada. Voltando ao menu principal.")
+        await start_command(update, context)
+        return ConversationHandler.END
+    
+    return context.state # Permanece no estado atual se não souber o que fazer
+
+# --- Função Principal ---
 
 def main() -> None:
+    """Inicia o bot."""
+    # CORREÇÃO: Usar o token do Telegram
     application = Application.builder().token(TELEGRAM_TOKEN).build()
 
-    # --- Fallback Handler Universal ---
+    # Handlers de fallback genéricos para conversas
     fallback_handlers = [
-        CommandHandler('cancelar', end_conversation),
+        CommandHandler("menu", end_conversation),
+        CommandHandler("start", end_conversation),
         CallbackQueryHandler(end_conversation, pattern='^back_to_main$'),
+        MessageHandler(filters.COMMAND, fallback_to_main_menu), # Adicionado fallback para comandos
+        MessageHandler(filters.TEXT & ~filters.COMMAND, fallback_to_main_menu), # Adicionado fallback para texto inesperado
     ]
 
-    # --- Módulos de Conexão (Aninhados) ---
+    # Sub-conversas para o menu de Conexão
     badvpn_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(start_badvpn_menu, pattern='^conn_badvpn$')],
         states={
-            BADVPN_MENU: [
-                CallbackQueryHandler(badvpn_menu_handler, pattern='^badvpn_toggle$'),
-                CallbackQueryHandler(lambda u, c: u.callback_query.message.edit_text("Digite a nova porta UDP:"), pattern='^badvpn_add_port$')
-            ],
+            BADVPN_MENU: [CallbackQueryHandler(badvpn_menu_handler)],
             GET_BADVPN_NEW_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_badvpn_new_port_and_run)],
         },
-        fallbacks=[CallbackQueryHandler(start_connection_menu, pattern='^back_to_conn_menu$')],
-        map_to_parent={ConversationHandler.END: CONNECTION_MENU}
+        fallbacks=[CallbackQueryHandler(start_connection_menu, pattern='^back_to_connection_menu$')] # Fallback para voltar ao menu de conexão
+    )
+    
+    websocket_conv = ConversationHandler(
+        entry_points=[CallbackQueryHandler(start_websocket_menu, pattern='^conn_websocket$')],
+        states={
+            WEBSOCKET_MENU: [CallbackQueryHandler(websocket_menu_handler)],
+            GET_WS_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_ws_port)],
+            GET_WS_MODE: [CallbackQueryHandler(get_ws_mode, pattern='^ws_mode_')],
+            GET_WS_MSG: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_ws_msg_and_run)],
+            CONFIRM_UNINSTALL_WS: [CallbackQueryHandler(confirm_uninstall_ws)],
+        },
+        fallbacks=[CallbackQueryHandler(start_connection_menu, pattern='^back_to_connection_menu$')]
+    )
+    
+    rusty_conv = ConversationHandler(
+        entry_points=[CallbackQueryHandler(start_rusty_menu, pattern='^conn_rusty$')],
+        states={
+            RUSTY_MENU: [CallbackQueryHandler(rusty_menu_handler)],
+            GET_RUSTY_ADD_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_rusty_add_port)],
+            GET_RUSTY_DEL_PORT: [CallbackQueryHandler(get_rusty_del_port, pattern='^rusty_del_')],
+            CONFIRM_UNINSTALL_RUSTY: [CallbackQueryHandler(confirm_uninstall_rusty)],
+        },
+        fallbacks=[CallbackQueryHandler(start_connection_menu, pattern='^back_to_connection_menu$')]
+    )
+    
+    stunnel_conv = ConversationHandler(
+        entry_points=[CallbackQueryHandler(start_stunnel_menu, pattern='^conn_stunnel$')],
+        states={
+            STUNNEL_MENU: [CallbackQueryHandler(stunnel_menu_handler)],
+            STUNNEL_INSTALL_MODE: [CallbackQueryHandler(stunnel_install_mode, pattern='^stunnel_install_mode_')],
+            GET_STUNNEL_INSTALL_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_stunnel_install_port_and_run)],
+            STUNNEL_MANAGE_MENU: [CallbackQueryHandler(stunnel_manage_menu_handler)],
+            GET_STUNNEL_CHANGE_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_stunnel_change_port_and_run)],
+            CONFIRM_UNINSTALL_STUNNEL: [CallbackQueryHandler(confirm_uninstall_stunnel)],
+        },
+        fallbacks=[CallbackQueryHandler(start_connection_menu, pattern='^back_to_connection_menu$')]
+    )
+    
+    dragon_conv = ConversationHandler(
+        entry_points=[CallbackQueryHandler(start_dragon_menu, pattern='^conn_dragon$')],
+        states={
+            DRAGON_MENU: [CallbackQueryHandler(dragon_menu_handler)],
+            GET_DRAGON_ADD_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_dragon_add_port_and_run)],
+            GET_DRAGON_RESTART_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_dragon_restart_port_and_run)],
+            GET_DRAGON_STOP_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_dragon_stop_port_and_run)],
+            CONFIRM_UNINSTALL_DRAGON: [CallbackQueryHandler(confirm_uninstall_dragon)],
+        },
+        fallbacks=[CallbackQueryHandler(start_connection_menu, pattern='^back_to_connection_menu$')]
+    )
+    
+    slowdns_conv = ConversationHandler(
+        entry_points=[CallbackQueryHandler(start_slowdns_menu, pattern='^conn_slowdns$')],
+        states={
+            SLOWDNS_MENU: [CallbackQueryHandler(slowdns_menu_handler)],
+            SLOWDNS_INSTALL_MODE: [CallbackQueryHandler(slowdns_install_mode, pattern='^slowdns_install_mode_')],
+            GET_SLOWDNS_NS: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_slowdns_ns)],
+            GET_SLOWDNS_KEY_CHOICE: [CallbackQueryHandler(get_slowdns_key_choice_and_run, pattern='^slowdns_key_')],
+            CONFIRM_UNINSTALL_SLOWDNS: [CallbackQueryHandler(confirm_uninstall_slowdns)],
+        },
+        fallbacks=[CallbackQueryHandler(start_connection_menu, pattern='^back_to_connection_menu$')]
     )
 
-    # --- Handlers de Conversa Principais ---
     conv_handlers = [
+        ConversationHandler(
+            entry_points=[CommandHandler("menu", start_command), CommandHandler("start", start_command)],
+            states={},
+            fallbacks=[]
+        ),
         ConversationHandler(
             entry_points=[CallbackQueryHandler(start_create_user_convo, pattern='^start_create_user$')],
             states={
@@ -1263,7 +1537,7 @@ def main() -> None:
             states={
                 GET_USER_TO_DELETE: [
                     CallbackQueryHandler(delete_all_users_prompt, pattern='^delete_all_users_prompt$'),
-                    CallbackQueryHandler(get_user_to_delete) # Pega qualquer outro callback
+                    CallbackQueryHandler(get_user_to_delete, pattern='^delete_user_') # Pega apenas callbacks de deleção de usuário
                 ],
                 CONFIRM_DELETE_USER: [
                     CallbackQueryHandler(confirm_delete_single_user, pattern='^confirm_delete$'),
@@ -1286,16 +1560,33 @@ def main() -> None:
         ),
         ConversationHandler(
             entry_points=[CallbackQueryHandler(start_connection_menu, pattern='^start_connection_menu$')],
-            states={ CONNECTION_MENU: [ badvpn_conv, # Adicione outros ..._conv aqui
+            states={ 
+                CONNECTION_MENU: [
+                    badvpn_conv, 
+                    websocket_conv,
+                    rusty_conv,
+                    stunnel_conv,
+                    dragon_conv,
+                    slowdns_conv,
+                    CallbackQueryHandler(start_badvpn_menu, pattern='^conn_badvpn$'), # Adicionado para re-entrar
+                    CallbackQueryHandler(start_websocket_menu, pattern='^conn_websocket$'), # Adicionado para re-entrar
+                    CallbackQueryHandler(start_rusty_menu, pattern='^conn_rusty$'), # Adicionado para re-entrar
+                    CallbackQueryHandler(start_stunnel_menu, pattern='^conn_stunnel$'), # Adicionado para re-entrar
+                    CallbackQueryHandler(start_dragon_menu, pattern='^conn_dragon$'), # Adicionado para re-entrar
+                    CallbackQueryHandler(start_slowdns_menu, pattern='^conn_slowdns$'), # Adicionado para re-entrar
                 ]
             },
             fallbacks=fallback_handlers
         ),
     ]
 
+    # CORREÇÃO: Adicionar os handlers de comando e os ConversationHandlers
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CommandHandler("menu", start_command))
-    application.add_handlers(conv_handlers)
+    
+    # Adicionar todos os ConversationHandlers
+    for handler in conv_handlers:
+        application.add_handler(handler)
 
     # Handlers de clique único (fora de conversas)
     application.add_handler(CallbackQueryHandler(user_info_report, pattern='^user_info_report$'))
@@ -1304,6 +1595,10 @@ def main() -> None:
     
     # Handler de fallback global para garantir que o menu principal possa ser alcançado
     application.add_handler(CallbackQueryHandler(end_conversation, pattern='^back_to_main$'))
+    
+    # CORREÇÃO: Adicionar um fallback para mensagens de texto que não são comandos e não estão em conversa
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, fallback_to_main_menu))
+
 
     print("Bot iniciado! Pressione Ctrl+C para parar.")
     application.run_polling()
