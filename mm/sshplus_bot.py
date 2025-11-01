@@ -30,40 +30,28 @@ logger = logging.getLogger(__name__)
 # ==========================================================
 #               CONFIGURAÇÃO INICIAL
 # ==========================================================
-TELEGRAM_TOKEN = "SEU_NOVO_TOKEN_AQUI" # IMPORTANTE: USE UM NOVO TOKEN
-ADMIN_USER_ID = 123456789  # SEU ID NUMÉRICO
+TELEGRAM_TOKEN = "SEU_TOKEN_AQUI" # COLOQUE SEU TOKEN AQUI
+ADMIN_USER_ID = 123456789  # COLOQUE SEU ID NUMÉRICO AQUI
 # ==========================================================
 
 
-# --- Definição dos Estados ---
+# --- Definição dos Estados (Método à prova de erros) ---
 _states = [
-    # Usuário normal
     "GET_USER_USERNAME", "GET_USER_PASSWORD", "GET_USER_DAYS", "GET_USER_LIMIT",
-    # Usuário de teste
     "GET_TEST_USERNAME", "GET_TEST_PASSWORD", "GET_TEST_LIMIT", "GET_TEST_DURATION",
-    # Deleção
     "GET_USER_TO_DELETE", "CONFIRM_DELETE_USER", "CONFIRM_DELETE_ALL",
-    # Backup
     "BACKUP_MENU", "CONFIRM_RESTORE",
-    # Menu Principal de Conexão
     "CONNECTION_MENU",
-    # WebSocket
     "WEBSOCKET_MENU", "GET_WS_PORT", "GET_WS_MODE", "GET_WS_MSG", "CONFIRM_UNINSTALL_WS",
-    # Rusty Proxy
     "RUSTY_MENU", "GET_RUSTY_ADD_PORT", "GET_RUSTY_ADD_STATUS", "GET_RUSTY_DEL_PORT", "CONFIRM_UNINSTALL_RUSTY",
-    # Stunnel
     "STUNNEL_MENU", "STUNNEL_INSTALL_MODE", "GET_STUNNEL_INSTALL_PORT", "STUNNEL_MANAGE_MENU", "GET_STUNNEL_CHANGE_PORT", "CONFIRM_UNINSTALL_STUNNEL",
-    # BadVPN
     "BADVPN_MENU", "GET_BADVPN_NEW_PORT",
-    # Dragon Proxy
     "DRAGON_MENU", "GET_DRAGON_ADD_PORT", "GET_DRAGON_STOP_PORT", "GET_DRAGON_RESTART_PORT", "CONFIRM_UNINSTALL_DRAGON",
-    # SlowDNS
     "SLOWDNS_MENU", "SLOWDNS_INSTALL_MODE", "GET_SLOWDNS_NS", "GET_SLOWDNS_KEY_CHOICE", "CONFIRM_UNINSTALL_SLOWDNS"
 ]
-# Gera os estados dinamicamente, eliminando erros de contagem manual
 for i, state_name in enumerate(_states):
     globals()[state_name] = i
-) = range(43)
+# Fim da definição de estados
 
 
 # --- Constantes de Caminhos ---
@@ -114,7 +102,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         try:
             await context.bot.delete_message(chat_id, context.chat_data['last_menu_id'])
         except BadRequest:
-            pass
+            pass # A mensagem pode já ter sido deletada
 
     keyboard = [
         [InlineKeyboardButton("➕ Criar Usuário", callback_data='start_create_user'), InlineKeyboardButton("⚡ Criar Teste", callback_data='start_create_test_user')],
@@ -124,7 +112,8 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     ]
     text = "🤖 *Gerenciador SSHPlus*\n\nSelecione uma opção:"
     
-    sent_message = await context.bot.send_message(chat_id, text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    message_carrier = update.message or update.callback_query.message
+    sent_message = await message_carrier.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
     context.chat_data['last_menu_id'] = sent_message.message_id
 
 async def end_conversation(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -139,7 +128,9 @@ async def end_conversation(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     
     await start_command(update.callback_query or update, context)
     return ConversationHandler.END
-# --- Funções de Relatório e Ações Diretas ---
+
+
+# --- Funções de Relatório ---
 
 async def user_info_report(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not await is_admin(update): return
@@ -174,6 +165,7 @@ async def back_to_main_from_report(update: Update, context: ContextTypes.DEFAULT
     await query.answer()
     await query.message.delete()
     await start_command(update, context)
+
 
 # --- Seção: Criação de Usuário ---
 
@@ -219,7 +211,11 @@ async def get_user_limit_and_create(update: Update, context: ContextTypes.DEFAUL
         await update.message.reply_text("Limite inválido. Insira um número > 0.")
         return GET_USER_LIMIT
 
-    await update.message.delete()
+    # Limpa as mensagens de input
+    try:
+        await context.bot.delete_message(chat_id=update.effective_chat.id, message_id=update.message.message_id)
+    except BadRequest: pass
+
     sent_message = await context.bot.send_message(chat_id=update.effective_chat.id, text="⚙️ Processando... Criando usuário.")
 
     nome = context.user_data['user_username']
@@ -256,11 +252,34 @@ async def start_create_test_user_convo(update: Update, context: ContextTypes.DEF
 
 async def get_test_user_username(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     username = update.message.text.strip()
-    # (validações)
+    if not username or not username.isalnum() or not (2 <= len(username) <= 10):
+        await update.message.reply_text("Nome inválido (2-10 letras/números). Tente novamente.")
+        return GET_TEST_USERNAME
+    if await execute_shell_command(f"id -u {username}"):
+        await update.message.reply_text("❌ Este usuário já existe. Tente outro nome.")
+        return GET_TEST_USERNAME
     context.user_data['test_username'] = username
     await update.message.reply_text("Qual a senha?")
     return GET_TEST_PASSWORD
-# ... (demais funções do teste) ...
+
+async def get_test_user_password(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    password = update.message.text.strip()
+    if not password or len(password) < 4:
+        await update.message.reply_text("Senha inválida (mínimo 4 caracteres). Tente novamente.")
+        return GET_TEST_PASSWORD
+    context.user_data['test_password'] = password
+    await update.message.reply_text("Qual o limite de conexões?")
+    return GET_TEST_LIMIT
+
+async def get_test_user_limit(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    limit = update.message.text.strip()
+    if not limit.isdigit() or int(limit) < 1:
+        await update.message.reply_text("Limite inválido. Insira um número > 0.")
+        return GET_TEST_LIMIT
+    context.user_data['test_limit'] = limit
+    await update.message.reply_text("Por quantos *minutos* a conta será válida?")
+    return GET_TEST_DURATION
+
 async def get_test_duration_and_create(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     duration = update.message.text.strip()
     if not duration.isdigit() or int(duration) < 1:
@@ -276,9 +295,21 @@ async def get_test_duration_and_create(update: Update, context: ContextTypes.DEF
 
     await execute_shell_command(f"useradd -M -s /bin/false {nome}")
     await execute_shell_command(f'echo "{nome}:{pasw}" | chpasswd')
-    # ... resto da lógica
+    os.makedirs("/etc/SSHPlus/senha", exist_ok=True)
+    with open(f"/etc/SSHPlus/senha/{nome}", "w") as f: f.write(pasw)
+    with open("/root/usuarios.db", "a") as f: f.write(f"{nome} {limit}\n")
+
     remover_script_path = f"/tmp/remover_{nome}.sh"
-    # ...
+    remover_script_content = f"""#!/bin/bash
+pkill -f "{nome}"
+userdel --force {nome}
+grep -v "^{nome} " /root/usuarios.db > /tmp/usuarios.db.tmp && mv /tmp/usuarios.db.tmp /root/usuarios.db
+rm -f /etc/SSHPlus/senha/{nome}
+rm -- "$0"
+"""
+    with open(remover_script_path, "w") as f: f.write(remover_script_content)
+    await execute_shell_command(f"chmod +x {remover_script_path}")
+    
     await execute_shell_command(f'echo "{remover_script_path}" | at now + {duration} minutes')
 
     ip_servidor = await execute_shell_command("wget -qO- ifconfig.me")
@@ -318,7 +349,7 @@ async def get_user_to_delete(update: Update, context: ContextTypes.DEFAULT_TYPE)
     context.user_data['user_to_delete'] = user_to_delete
     keyboard = [
         [InlineKeyboardButton(f"Sim, deletar {user_to_delete}", callback_data="confirm_delete")],
-        [InlineKeyboardButton("Não, cancelar", callback_data='back_to_delete_menu')]
+        [InlineKeyboardButton("Não, cancelar", callback_data='restart_delete_menu')]
     ]
     await query.message.edit_text(f"Tem certeza que deseja deletar *{user_to_delete}*?", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
     return CONFIRM_DELETE_USER
@@ -332,14 +363,34 @@ async def confirm_delete_single_user(update: Update, context: ContextTypes.DEFAU
     await execute_shell_command(f"sed -i '/^{user} /d' /root/usuarios.db")
     
     await query.message.edit_text(f"✅ Usuário *{user}* removido com sucesso!", parse_mode=ParseMode.MARKDOWN)
+    await asyncio.sleep(2) # Pequena pausa para o usuário ler a mensagem
     return await end_conversation(update, context)
 
 async def delete_all_users_prompt(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    # ...
+    query = update.callback_query
+    await query.answer()
+    keyboard = [
+        [InlineKeyboardButton("SIM, TENHO CERTEZA ABSOLUTA", callback_data="confirm_delete_all")],
+        [InlineKeyboardButton("NÃO, FOI UM ENGANO", callback_data='restart_delete_menu')]
+    ]
+    await query.message.edit_text("⚠️ *ATENÇÃO*\n\nVocê está prestes a remover TODOS os usuários SSH criados. Esta ação é irreversível.",
+                                  reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
     return CONFIRM_DELETE_ALL
 
 async def execute_delete_all_users(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    # ...
+    query = update.callback_query
+    await query.answer()
+    await query.message.edit_text("⚙️ Removendo todos os usuários...")
+    
+    users_raw = await execute_shell_command("awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v 'nobody'")
+    users = users_raw.splitlines()
+    for user in users:
+        await execute_shell_command(f"userdel -f {user}")
+    
+    open("/root/usuarios.db", 'w').close()
+    
+    await query.message.edit_text("✅ Todos os usuários foram removidos com sucesso.")
+    await asyncio.sleep(2)
     return await end_conversation(update, context)
 
 # --- Seção: Backup e Restauração ---
@@ -357,12 +408,113 @@ async def start_backup_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     await query.message.edit_text("🗄️ *Gerenciador de Backup*", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
     return BACKUP_MENU
 
-# ... (funções de backup) ...
+async def backup_menu_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    action = query.data
+
+    if action == 'backup_create':
+        await query.message.edit_text("⚙️ Criando backup...")
+        command = f"tar --warning=no-file-changed -czf {BACKUP_FILE_PATH} /root/usuarios.db /etc/shadow /etc/passwd /etc/group /etc/gshadow /etc/SSHPlus/senha"
+        await execute_shell_command(command)
+        if os.path.exists(BACKUP_FILE_PATH):
+            await query.message.edit_text(f"✅ Backup criado com sucesso!\nSalvo em: `{BACKUP_FILE_PATH}`", parse_mode=ParseMode.MARKDOWN)
+        else:
+            await query.message.edit_text("❌ Falha ao criar o backup.")
+        await asyncio.sleep(2)
+        return await start_backup_menu(update, context)
+
+    elif action == 'backup_link':
+        if not os.path.exists(BACKUP_FILE_PATH):
+            await query.answer("❌ Arquivo de backup não encontrado.", show_alert=True)
+            return BACKUP_MENU
+        web_dir = "/var/www/html"
+        if not os.path.isdir(web_dir) or not await execute_shell_command("pgrep -f 'apache2|nginx|lighttpd'"):
+            await query.answer("❌ Servidor web não encontrado para gerar o link.", show_alert=True)
+            return BACKUP_MENU
+        await execute_shell_command(f"cp {BACKUP_FILE_PATH} {web_dir}/")
+        ip = await execute_shell_command("wget -qO- ifconfig.me")
+        link = f"http://{ip}/backup.vps.tar.gz"
+        await query.message.reply_text(f"✅ Link para download:\n`{link}`\n\n*AVISO:* Link público!", parse_mode=ParseMode.MARKDOWN)
+        return BACKUP_MENU
+
+    elif action == 'backup_restore':
+        if not os.path.exists(BACKUP_FILE_PATH):
+            await query.answer("❌ Arquivo de backup não encontrado.", show_alert=True)
+            return BACKUP_MENU
+        keyboard = [
+            [InlineKeyboardButton("SIM, RESTAURAR AGORA", callback_data='confirm_restore')],
+            [InlineKeyboardButton("NÃO, CANCELAR", callback_data='cancel_restore')]
+        ]
+        await query.message.edit_text("⚠️ *ATENÇÃO*\n\nRestaurar um backup irá sobrescrever os usuários e senhas atuais. Esta ação é irreversível.",
+                                      reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+        return CONFIRM_RESTORE
+
 async def confirm_restore_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    # ...
+    query = update.callback_query
+    await query.answer()
+    if query.data == 'confirm_restore':
+        await query.message.edit_text("⚙️ Restaurando backup...")
+        await execute_shell_command(f"tar -xzf {BACKUP_FILE_PATH} -C /")
+        await query.message.edit_text("✅ Backup restaurado com sucesso!")
+    else:
+        await query.message.edit_text("Operação de restauração cancelada.")
+    await asyncio.sleep(2)
     return await end_conversation(update, context)
+
 # --- Seção: Menu de Conexão e Módulos ---
 
+async def start_connection_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+
+    ws_status, rusty_status, stunnel_status, badvpn_status, dragon_status, slowdns_status = await asyncio.gather(
+        execute_shell_command("ps x | grep -q 'WebSocket' && echo '✅' || echo '❌'"),
+        execute_shell_command("[ -s /opt/rustyproxy/ports ] && echo '✅' || echo '❌'"),
+        execute_shell_command("[ -f /etc/stunnel/stunnel.conf ] && echo '✅' || echo '❌'"),
+        execute_shell_command("ps x | grep -q 'badvpn-udpgw' && echo '✅' || echo '❌'"),
+        execute_shell_command("[ -f /root/DragonX/proxy.sh ] && echo '✅' || echo '❌'"),
+        execute_shell_command("[ -f /etc/slowdns/dns-server ] && echo '✅' || echo '❌'")
+    )
+
+    keyboard = [
+        [InlineKeyboardButton(f"WebSocket {ws_status}", callback_data='conn_websocket'), InlineKeyboardButton(f"Rusty Proxy {rusty_status}", callback_data='conn_rusty')],
+        [InlineKeyboardButton(f"SSL Tunnel {stunnel_status}", callback_data='conn_stunnel'), InlineKeyboardButton(f"BadVPN {badvpn_status}", callback_data='conn_badvpn')],
+        [InlineKeyboardButton(f"Proxy Dragon {dragon_status}", callback_data='conn_dragon'), InlineKeyboardButton(f"SlowDNS {slowdns_status}", callback_data='conn_slowdns')],
+        [InlineKeyboardButton("↩️ Voltar ao Menu Principal", callback_data='back_to_main')]
+    ]
+    await query.message.edit_text(
+        text="🔌 *Menu de Conexão*\n\nSelecione um serviço para gerenciar:",
+        reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN
+    )
+    return CONNECTION_MENU
+
+# --- Módulo: BadVPN ---
+async def get_badvpn_status():
+    udpgw_procs = await execute_shell_command("ps x | grep -w 'badvpn-udpgw' | grep -v grep")
+    tun2socks_procs = await execute_shell_command("ps x | grep -w 'badvpn-tun2socks' | grep -v grep")
+    if udpgw_procs or tun2socks_procs:
+        status = "ATIVO"
+        ports = await execute_shell_command("netstat -npltu | grep 'badvpn-ud' | awk '{print $4}' | cut -d: -f2 | xargs") or "N/A"
+    else:
+        status = "INATIVO"
+        ports = "Nenhuma"
+    return status, ports
+
+async def start_badvpn_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    query = update.callback_query
+    await query.answer()
+    status, ports = await get_badvpn_status()
+    status_text = f"Status: 🟢 *{status}* | Portas: *{ports}*" if status == "ATIVO" else f"Status: 🔴 *{status}*"
+    keyboard = [
+        [InlineKeyboardButton("🚀 Ativar/Desativar (Padrão 7300)", callback_data='badvpn_toggle')],
+        [InlineKeyboardButton("➕ Abrir Nova Porta UDP", callback_data='badvpn_add_port')],
+        [InlineKeyboardButton("↩️ Voltar", callback_data='back_to_conn_menu')]
+    ]
+    await query.message.edit_text(text=f"🔌 *Gerenciador BadVPN PRO*\n\n{status_text}", reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+    return BADVPN_MENU
+
+# ... (Restante de todos os módulos de conexão aqui) ...
 async def start_connection_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
@@ -1064,89 +1216,94 @@ async def menu_command(update: Update, context: ContextTypes.DEFAULT_TYPE, is_fo
 def main() -> None:
     application = Application.builder().token(TELEGRAM_TOKEN).build()
 
-    # Handlers de Conversação para Módulos
-    websocket_conv = ConversationHandler(
-        entry_points=[CallbackQueryHandler(start_websocket_menu, pattern='^conn_websocket$')],
-        states={
-            WEBSOCKET_MENU: [CallbackQueryHandler(websocket_menu_handler, pattern='^ws_')],
-            GET_WS_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_ws_port)],
-            GET_WS_MODE: [CallbackQueryHandler(get_ws_mode, pattern='^ws_mode_')],
-            GET_WS_MSG: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_ws_msg_and_start)],
-            CONFIRM_UNINSTALL_WS: [
-                CallbackQueryHandler(confirm_uninstall_ws, pattern='^ws_uninstall_confirm$'),
-                CallbackQueryHandler(start_websocket_menu, pattern='^ws_cancel_uninstall$')
-            ],
-        },
-        fallbacks=[CallbackQueryHandler(cancel, pattern='^back_to_connection_menu$')],
-        map_to_parent={ConversationHandler.END: CONNECTION_MENU}
-    )
+    # --- Fallback Handler Universal ---
+    fallback_handlers = [
+        CommandHandler('cancelar', end_conversation),
+        CallbackQueryHandler(end_conversation, pattern='^back_to_main$'),
+    ]
+
+    # --- Módulos de Conexão (Aninhados) ---
     badvpn_conv = ConversationHandler(
         entry_points=[CallbackQueryHandler(start_badvpn_menu, pattern='^conn_badvpn$')],
         states={
-            BADVPN_MENU: [CallbackQueryHandler(badvpn_menu_handler, pattern='^badvpn_')],
+            BADVPN_MENU: [
+                CallbackQueryHandler(badvpn_menu_handler, pattern='^badvpn_toggle$'),
+                CallbackQueryHandler(lambda u, c: u.callback_query.message.edit_text("Digite a nova porta UDP:"), pattern='^badvpn_add_port$')
+            ],
             GET_BADVPN_NEW_PORT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_badvpn_new_port_and_run)],
         },
-        fallbacks=[CallbackQueryHandler(cancel, pattern='^back_to_connection_menu$')],
+        fallbacks=[CallbackQueryHandler(start_connection_menu, pattern='^back_to_conn_menu$')],
         map_to_parent={ConversationHandler.END: CONNECTION_MENU}
     )
-    
-    # Handler da Conversa Principal de Conexão
-    connection_conv = ConversationHandler(
-        entry_points=[CallbackQueryHandler(start_connection_menu, pattern='^start_connection_menu$')],
-        states={CONNECTION_MENU: [websocket_conv, badvpn_conv]}, # Adicione outros módulos aqui
-        fallbacks=[CommandHandler('cancelar', cancel), CallbackQueryHandler(cancel, pattern='^back_to_main$')],
-    )
-    
-    # Handlers de Conversa do Menu Principal
-    create_user_conv = ConversationHandler(
-        entry_points=[CallbackQueryHandler(start_create_user_convo, pattern='^start_create_user$')],
-        states={
-            GET_USER_USERNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_user_username)],
-            GET_USER_PASSWORD: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_user_password)],
-            GET_USER_DAYS: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_user_days)],
-            GET_USER_LIMIT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_user_limit_and_create)],
-        },
-        fallbacks=[CommandHandler('cancelar', cancel), CallbackQueryHandler(cancel, pattern='^back_to_main$')]
-    )
-    create_test_user_conv = ConversationHandler(
-        entry_points=[CallbackQueryHandler(start_create_test_user_convo, pattern='^start_create_test_user$')],
-        states={
-            GET_TEST_USERNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_test_user_username)],
-            GET_TEST_PASSWORD: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_test_user_password)],
-            GET_TEST_LIMIT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_test_user_limit)],
-            GET_TEST_DURATION: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_test_duration_and_create)],
-        },
-        fallbacks=[CommandHandler('cancelar', cancel), CallbackQueryHandler(cancel, pattern='^back_to_main$')]
-    )
-    delete_user_conv = ConversationHandler(
-        entry_points=[CallbackQueryHandler(start_delete_user, pattern='^start_delete_user$')],
-        states={
-            GET_USER_TO_DELETE: [CallbackQueryHandler(get_user_to_delete, pattern='^del_'), CallbackQueryHandler(confirm_delete_all_users_prompt, pattern='^del_all$')],
-            CONFIRM_DELETE_USER: [CallbackQueryHandler(confirm_delete_single_user, pattern='^confirm_delete_user$')],
-            CONFIRM_DELETE_ALL: [CallbackQueryHandler(execute_delete_all_users, pattern='^confirm_delete_all$')]
-        },
-        fallbacks=[CommandHandler('cancelar', cancel), CallbackQueryHandler(cancel, pattern='^back_to_main$')]
-    )
-    backup_conv = ConversationHandler(
-        entry_points=[CallbackQueryHandler(start_backup_menu, pattern='^start_backup$')],
-        states={
-            BACKUP_MENU: [CallbackQueryHandler(backup_menu_handler, pattern='^backup_')],
-            CONFIRM_RESTORE: [CallbackQueryHandler(confirm_restore_handler, pattern='^confirm_restore$|^cancel_restore$')],
-        },
-        fallbacks=[CommandHandler('cancelar', cancel), CallbackQueryHandler(cancel, pattern='^back_to_main$')]
-    )
 
-    # Adicionando todos os handlers à aplicação
-    application.add_handler(CommandHandler("start", menu_command))
-    application.add_handler(CommandHandler("menu", menu_command))
-    application.add_handler(create_user_conv)
-    application.add_handler(create_test_user_conv)
-    application.add_handler(delete_user_conv)
-    application.add_handler(backup_conv)
-    application.add_handler(connection_conv)
+    # --- Handlers de Conversa Principais ---
+    conv_handlers = [
+        ConversationHandler(
+            entry_points=[CallbackQueryHandler(start_create_user_convo, pattern='^start_create_user$')],
+            states={
+                GET_USER_USERNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_user_username)],
+                GET_USER_PASSWORD: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_user_password)],
+                GET_USER_DAYS: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_user_days)],
+                GET_USER_LIMIT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_user_limit_and_create)],
+            },
+            fallbacks=fallback_handlers
+        ),
+        ConversationHandler(
+            entry_points=[CallbackQueryHandler(start_create_test_user_convo, pattern='^start_create_test_user$')],
+            states={
+                GET_TEST_USERNAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_test_user_username)],
+                GET_TEST_PASSWORD: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_test_user_password)],
+                GET_TEST_LIMIT: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_test_user_limit)],
+                GET_TEST_DURATION: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_test_duration_and_create)],
+            },
+            fallbacks=fallback_handlers
+        ),
+        ConversationHandler(
+            entry_points=[CallbackQueryHandler(start_delete_user_convo, pattern='^start_delete_user$')],
+            states={
+                GET_USER_TO_DELETE: [
+                    CallbackQueryHandler(delete_all_users_prompt, pattern='^delete_all_users_prompt$'),
+                    CallbackQueryHandler(get_user_to_delete) # Pega qualquer outro callback
+                ],
+                CONFIRM_DELETE_USER: [
+                    CallbackQueryHandler(confirm_delete_single_user, pattern='^confirm_delete$'),
+                    CallbackQueryHandler(start_delete_user_convo, pattern='^back_to_delete_menu$')
+                ],
+                CONFIRM_DELETE_ALL: [
+                    CallbackQueryHandler(execute_delete_all_users, pattern='^confirm_delete_all$'),
+                    CallbackQueryHandler(start_delete_user_convo, pattern='^restart_delete_menu$')
+                ],
+            },
+            fallbacks=fallback_handlers
+        ),
+        ConversationHandler(
+            entry_points=[CallbackQueryHandler(start_backup_menu, pattern='^start_backup$')],
+            states={
+                BACKUP_MENU: [CallbackQueryHandler(backup_menu_handler)],
+                CONFIRM_RESTORE: [CallbackQueryHandler(confirm_restore_handler)],
+            },
+            fallbacks=fallback_handlers
+        ),
+        ConversationHandler(
+            entry_points=[CallbackQueryHandler(start_connection_menu, pattern='^start_connection_menu$')],
+            states={ CONNECTION_MENU: [ badvpn_conv, # Adicione outros ..._conv aqui
+                ]
+            },
+            fallbacks=fallback_handlers
+        ),
+    ]
+
+    application.add_handler(CommandHandler("start", start_command))
+    application.add_handler(CommandHandler("menu", start_command))
+    application.add_handlers(conv_handlers)
+
+    # Handlers de clique único (fora de conversas)
     application.add_handler(CallbackQueryHandler(user_info_report, pattern='^user_info_report$'))
     application.add_handler(CallbackQueryHandler(online_users_monitor, pattern='^online_users_monitor$'))
-    application.add_handler(CallbackQueryHandler(cancel, pattern='^back_to_main$'))
+    application.add_handler(CallbackQueryHandler(back_to_main_from_report, pattern='^back_to_main_special$'))
+    
+    # Handler de fallback global para garantir que o menu principal possa ser alcançado
+    application.add_handler(CallbackQueryHandler(end_conversation, pattern='^back_to_main$'))
 
     print("Bot iniciado! Pressione Ctrl+C para parar.")
     application.run_polling()
