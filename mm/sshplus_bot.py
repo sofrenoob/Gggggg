@@ -91,6 +91,46 @@ async def is_admin(update: Update) -> bool:
         return False
     return True
 
+# --- Seção: ShellBot (Comando /shell) ---
+
+async def shell_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Executa um comando de shell enviado pelo usuário."""
+    if not await is_admin(update): return
+
+    # O comando é o texto após /shell
+    command = " ".join(context.args)
+    
+    if not command:
+        await update.message.reply_text("❌ Por favor, forneça um comando para executar (ex: `/shell ls -la`).")
+        return
+
+    sent_message = await update.message.reply_text(f"⚙️ Executando comando: `{command}`...", parse_mode=ParseMode.MARKDOWN)
+    
+    # Executa o comando de shell
+    raw_output = await execute_shell_command(command)
+    
+    # Formata a saída
+    if raw_output:
+        # Limpa caracteres de controle ANSI (cores, etc.)
+        clean_output = re.sub(r'\x1B\[[0-?]*[ -/]*[@-~]', '', raw_output)
+        
+        # Limita o tamanho da resposta para evitar erros do Telegram
+        if len(clean_output) > 4000:
+            clean_output = clean_output[:3900] + "\n... (saída truncada)"
+            
+        response = f"✅ *Saída do Comando:*\n\n```bash\n{clean_output}\n```"
+    else:
+        # Se não houver saída, verifica se houve erro (execute_shell_command retorna string vazia em caso de erro)
+        # Como o execute_shell_command não retorna o stderr, vamos assumir que se não há output,
+        # o comando pode ter falhado ou não ter produzido saída.
+        response = f"✅ Comando executado. Nenhuma saída produzida ou falha na execução."
+
+    try:
+        await sent_message.edit_text(response, parse_mode=ParseMode.MARKDOWN)
+    except BadRequest as e:
+        # Se a edição falhar (ex: erro de formatação Markdown), envia como texto simples
+        await sent_message.edit_text(f"✅ Comando executado. Saída:\n\n{raw_output}")
+
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Envia o menu principal como uma nova mensagem, limpando o estado anterior."""
     if not await is_admin(update): return
@@ -1600,6 +1640,9 @@ def main() -> None:
     # CORREÇÃO: Adicionar os handlers de comando e os ConversationHandlers
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CommandHandler("menu", start_command))
+    
+    # Adicionar o handler do shellbot
+    application.add_handler(CommandHandler("shell", shell_command))
     
     # Adicionar todos os ConversationHandlers
     for handler in conv_handlers:
